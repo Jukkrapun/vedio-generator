@@ -93,6 +93,12 @@ codex exec --skip-git-repo-check "Generate an image using your image generation 
 - Never send photos of real people to Codex; describe only general style traits in text. User inspiration photos go in `shared/characters/_inspiration/` (git-ignored).
 - Image prompt library: `PROMPTS.md` section 8.
 
+## Git & files outside git
+
+- Repo initialised 2026-11-20 (branch `main`). Commit after meaningful changes; never edit docs with blind bulk-replace scripts — use the Edit tool (a PowerShell replace bug once corrupted PROMPTS.md/persona.md).
+- Not in git (see `.gitignore`): `.env`, `output/`, all `*.mp4` (lip-sync results, `shared/characters/*/base/*.mp4` — irreplaceable, ~27k ElevenLabs credits each; back up to cloud), `_archive/` (old experiments: candidate host images, lip-sync comparisons, edge-vs-ElevenLabs test), `shared/characters/_inspiration/`.
+- Python deps: `pip install -r requirements.txt`.
+
 ## Conventions
 
 - Reply to the user in Thai; code, filenames and commit messages in English.
