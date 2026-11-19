@@ -1,0 +1,5 @@
+{
+  "engine": "fal-ai/sync-lipsync/v2/pro",
+  "base_video": "shared/characters/baitoey/base/01-leather-sofa.mp4",
+  "voice_sha1": "2b49002a35626e399ccc69fca1904027b5edba38"
+}

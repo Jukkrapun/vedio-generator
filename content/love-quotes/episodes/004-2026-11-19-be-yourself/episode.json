@@ -1,0 +1,41 @@
+{
+  "mode": "video",
+  "title": "สิ่งที่เหนื่อยที่สุดในความรัก",
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": { "tts": "edge", "voice": "th-TH-PremwadeeNeural", "rate": "-8%" },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "host": {
+    "character": "baitoey",
+    "scene": "shared/characters/baitoey/scenes/01-leather-sofa.png",
+    "base_video": "shared/characters/baitoey/base/01-leather-sofa.mp4",
+    "lipsync": "sync-2-pro"
+  },
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "text": "[softly] รู้ไหม... สิ่งที่เหนื่อยที่สุดในความรัก ไม่ใช่การรอ",
+      "cards": ["รู้ไหม", "สิ่งที่เหนื่อยที่สุดในความรัก\nไม่ใช่การรอ"]
+    },
+    {
+      "id": "turn",
+      "text": "แต่คือการพยายามเป็นคนที่เขาอยากได้ ทั้งที่มันไม่ใช่ตัวเรา",
+      "cards": ["แต่คือการพยายาม\nเป็นคนที่เขาอยากได้", "ทั้งที่มัน\nไม่ใช่ตัวเรา"]
+    },
+    {
+      "id": "lesson",
+      "text": "คนที่ใช่ จะไม่ทำให้เราต้องแสดงตลอดเวลา",
+      "cards": ["คนที่ใช่", "จะไม่ทำให้เรา\nต้องแสดงตลอดเวลา"]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "text": "[warmly] เขาจะรัก... ตอนที่เราเป็นตัวเองนี่แหละ",
+      "cards": ["เขาจะรัก", "ตอนที่เรา\nเป็นตัวเองนี่แหละ"]
+    }
+  ]
+}

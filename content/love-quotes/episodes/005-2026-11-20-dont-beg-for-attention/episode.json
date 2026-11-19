@@ -1,0 +1,37 @@
+{
+  "mode": "image",
+  "title": "ถ้าต้องขอให้เขาสนใจ",
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": { "tts": "edge", "voice": "th-TH-PremwadeeNeural", "rate": "-8%" },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a young woman seen from behind sitting by a window at night, holding a phone with a softly glowing screen, waiting, city bokeh outside",
+      "text": "[softly] ถ้าต้องขอให้เขาสนใจ... นั่นอาจไม่ใช่ความรัก",
+      "cards": ["ถ้าต้องขอให้เขาสนใจ", "นั่นอาจ\nไม่ใช่ความรัก"]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a single cup of tea on a quiet cafe table by the window, the chair opposite is empty, soft afternoon light",
+      "text": "เพราะคนที่รักเราจริง จะไม่ปล่อยให้เราต้องสงสัย ว่าเราสำคัญกับเขาแค่ไหน",
+      "cards": ["เพราะคนที่รักเราจริง", "จะไม่ปล่อยให้เรา\nต้องสงสัย", "ว่าเราสำคัญ\nกับเขาแค่ไหน"]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman seen from behind walking confidently along a calm beach at sunset, hair moving in the wind",
+      "text": "[warmly] อย่าลดคุณค่าตัวเอง... เพื่อแลกกับความสนใจของใคร",
+      "cards": ["อย่าลดคุณค่าตัวเอง", "เพื่อแลกกับ\nความสนใจของใคร"]
+    }
+  ]
+}

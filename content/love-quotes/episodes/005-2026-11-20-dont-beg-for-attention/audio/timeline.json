@@ -1,0 +1,50 @@
+{
+  "total": 16.16,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a young woman seen from behind sitting by a window at night, holding a phone with a softly glowing screen, waiting, city bokeh outside",
+      "text": "[softly] ถ้าต้องขอให้เขาสนใจ... นั่นอาจไม่ใช่ความรัก",
+      "cards": [
+        "ถ้าต้องขอให้เขาสนใจ",
+        "นั่นอาจ\nไม่ใช่ความรัก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.14,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a single cup of tea on a quiet cafe table by the window, the chair opposite is empty, soft afternoon light",
+      "text": "เพราะคนที่รักเราจริง จะไม่ปล่อยให้เราต้องสงสัย ว่าเราสำคัญกับเขาแค่ไหน",
+      "cards": [
+        "เพราะคนที่รักเราจริง",
+        "จะไม่ปล่อยให้เรา\nต้องสงสัย",
+        "ว่าเราสำคัญ\nกับเขาแค่ไหน"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.59,
+      "end": 10.43,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman seen from behind walking confidently along a calm beach at sunset, hair moving in the wind",
+      "text": "[warmly] อย่าลดคุณค่าตัวเอง... เพื่อแลกกับความสนใจของใคร",
+      "cards": [
+        "อย่าลดคุณค่าตัวเอง",
+        "เพื่อแลกกับ\nความสนใจของใคร"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 10.88,
+      "end": 14.96,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

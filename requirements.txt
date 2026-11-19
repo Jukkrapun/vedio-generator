@@ -1,0 +1,7 @@
+# Python 3.13. Also needs on PATH: ffmpeg/ffprobe, codex CLI (logged in via `codex login`).
+# Secrets in .env: ELEVENLABS_API_KEY, FAL_KEY
+edge-tts
+python-dotenv
+fonttools
+fal-client
+pythainlp

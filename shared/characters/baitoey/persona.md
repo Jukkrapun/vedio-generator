@@ -1,0 +1,37 @@
+# Host: ใบเตย (Baitoey)
+
+Fictional AI-generated person. Must not resemble any real person or celebrity.
+Style inspired by general traits only (hair/makeup/vibe) — no real-person photo was ever sent to an image model.
+
+## Identity
+- On-screen persona: ใบเตย — guest on a talk-show sofa who shares quotes, short stories, attitudes and life lessons
+- Age look: 27–29
+- Vibe: warm, thoughtful, sincere, cool modern office woman; speaks like a wise older sister/friend
+- Default voice: ElevenLabs `MYZYcGOqrkYQcwDunXl7` (Hammy — Warm & friendly, calm Thai female), model `eleven_v3`
+
+## Look (keep identical in every image)
+- Face: see `reference/face-closeup.png` (identity source for Codex `--image`)
+- Glasses: slim gold metal oval frames — always
+- Hair: glossy black, high messy bun with soft face-framing strands
+- Makeup: fair skin, soft rosy blush, natural rose lips
+- Outfit: tailored blazer (black / camel / slate-blue) over a simple top
+- Mic: small black lavalier clipped on the lapel — no big mic in frame
+
+## Scenes (`scenes/`, 1080x1920 ready for lip-sync upload; 1024x1536 sources in `scenes/original/`)
+
+| File | Mood | Use for |
+|------|------|---------|
+| `01-leather-sofa.png` | talk-show set, warm wood slats, studio light | **default** — most episodes |
+| `02-velvet-sofa-evening.png` | dark green velvet, evening lamps, tea | deep / sad / heartbreak topics |
+| `03-boucle-sofa-cozy.png` | cream sofa, bookshelf, fairy lights | gentle / comforting / self-love |
+
+## Base talking videos (`base/`)
+Real lip-synced talking footage, reusable as the input video for video-to-video lip-sync (Sync lipsync-2 on fal) so new episodes don't need expensive image-to-video lip-sync.
+
+| File | Source | Length |
+|------|--------|--------|
+| `01-leather-sofa.mp4` | ElevenLabs Lip sync (HeyGen Avatar 6), episode 003-2026-11-19-got-myself-back | 33.8s, 1080x1920, 25fps |
+
+## New scenes
+Use `PROMPTS.md` section 8.2 with `--image shared/characters/baitoey/reference/face-closeup.png`.
+Keep: face, glasses, bun, makeup, lavalier mic, seated waist-up, face to camera, hands away from face.
