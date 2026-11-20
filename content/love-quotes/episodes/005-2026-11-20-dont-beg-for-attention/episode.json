@@ -5,7 +5,16 @@
     "self-worth",
     "relationship-red-flags"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "youtube",
+      "date": "2026-11-20",
+      "url": "https://youtube.com/shorts/rwojYXNX2mE",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",
