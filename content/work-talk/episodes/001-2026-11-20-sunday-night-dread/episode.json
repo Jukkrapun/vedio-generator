@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "คืนวันอาทิตย์ที่ใจหวิว",
+  "tags": [
+    "monday",
+    "anxiety"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person lying in bed seen from behind, phone glowing in hand, dark bedroom, clock on nightstand",
+      "text": "[sighs] สี่ทุ่มคืนวันอาทิตย์... ใจเริ่มหวิวอีกแล้วใช่ไหม",
+      "cards": [
+        "สี่ทุ่มคืนวันอาทิตย์",
+        "ใจเริ่มหวิวอีกแล้วใช่ไหม"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a work bag and folded office clothes on a chair, dim lamp light, quiet night",
+      "text": "มันไม่ได้แปลว่าเราอ่อนแอนะ... แค่ใจเรารู้ว่าอาทิตย์นี้มีอะไรรออยู่",
+      "cards": [
+        "มันไม่ได้แปลว่าเราอ่อนแอนะ",
+        "แค่ใจเรารู้ว่าอาทิตย์นี้มีอะไรรออยู่"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a hand writing on a small notepad on a bedside table, warm lamp, blank unreadable lines",
+      "text": "ลองเขียนสามเรื่องที่ต้องทำพรุ่งนี้ลงกระดาษ... แล้ววางไว้ตรงนั้นก่อน",
+      "cards": [
+        "ลองเขียนสามเรื่องที่ต้องทำพรุ่งนี้ลงกระดาษ",
+        "แล้ววางไว้ตรงนั้นก่อน"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a dark bedroom window with soft city lights outside, curtains slightly open",
+      "text": "[warmly] คืนนี้นอนก่อนนะ... พรุ่งนี้ค่อยว่ากัน",
+      "cards": [
+        "คืนนี้นอนก่อนนะ",
+        "พรุ่งนี้ค่อยว่ากัน"
+      ]
+    }
+  ]
+}

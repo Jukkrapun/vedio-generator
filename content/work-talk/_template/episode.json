@@ -1,0 +1,45 @@
+{
+  "mode": "image",
+  "title": "ชื่อคลิป",
+  "tags": [],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": { "tts": "edge", "voice": "th-TH-PremwadeeNeural", "rate": "-8%" },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "host": {
+    "character": "baitoey",
+    "scene": "shared/characters/baitoey/scenes/01-leather-sofa.png",
+    "base_video": "shared/characters/baitoey/base/01-leather-sofa.mp4",
+    "lipsync": "sync-2"
+  },
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "ฉากเปิด เช่น an office worker seen from behind at a desk late at night, laptop glow",
+      "text": "[softly] ประโยคเปิดที่ชวนฟังต่อ",
+      "cards": ["ประโยคเปิด", "ที่ชวนฟังต่อ"]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body.png",
+      "image_prompt": "ฉากบรรยากาศช่วงกลาง เช่น a cold cup of coffee beside a laptop and sticky notes, desk lamp at night",
+      "text": "บทพูดช่วงที่หนึ่ง... เว้นจังหวะด้วยจุดสามจุด",
+      "cards": ["บทพูดช่วงที่หนึ่ง", "เว้นจังหวะ\nด้วยจุดสามจุด"]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "ฉากปิด เช่น a person seen from behind walking out of an office building into a quiet city night",
+      "text": "[warmly] ประโยคปิด ชวนคอมเมนต์",
+      "cards": ["ประโยคปิด\nชวนคอมเมนต์"]
+    }
+  ]
+}

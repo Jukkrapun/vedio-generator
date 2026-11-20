@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "เพื่อนไปไกลแล้ว แต่เรายังอยู่ที่เดิม",
+  "tags": [
+    "career-doubt",
+    "comparison"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand scrolling a glowing phone in a dark room, blurred unreadable social feed",
+      "text": "[softly] เลื่อนเจอเพื่อนได้เลื่อนตำแหน่งอีกแล้ว... แล้วเราล่ะ",
+      "cards": [
+        "เลื่อนเจอเพื่อนได้เลื่อนตำแหน่งอีกแล้ว",
+        "แล้วเราล่ะ"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "an empty running track at night under stadium lights, lanes stretching ahead",
+      "text": "แต่ละคนออกวิ่งไม่พร้อมกัน... และไม่ได้วิ่งไปเส้นชัยเดียวกันด้วย",
+      "cards": [
+        "แต่ละคนออกวิ่งไม่พร้อมกัน",
+        "และไม่ได้วิ่งไปเส้นชัยเดียวกันด้วย"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a person seen from behind looking at their reflection in a dark office window at night",
+      "text": "ลองเทียบตัวเองกับเราเมื่อปีที่แล้ว... ไม่ใช่กับคนอื่น",
+      "cards": [
+        "ลองเทียบตัวเองกับเราเมื่อปีที่แล้ว",
+        "ไม่ใช่กับคนอื่น"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a lone figure walking on an empty city sidewalk at night, warm streetlights ahead",
+      "text": "[warmly] ช้าก็ไม่เป็นไร... ขอแค่ยังเดินอยู่",
+      "cards": [
+        "ช้าก็ไม่เป็นไร",
+        "ขอแค่ยังเดินอยู่"
+      ]
+    }
+  ]
+}

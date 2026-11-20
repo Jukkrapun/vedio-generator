@@ -31,6 +31,7 @@ output/<series>/            rendered videos (git-ignored)
 ## Current series
 
 - `content/love-quotes/` — Thai love-quote podcast clips, 9:16, max 90s. See its `series.md`.
+- `content/work-talk/` — Thai work-life clips (burnout, boss, quitting, career doubt), late-night look, 20–30s. See its `series.md`.
 
 ## Workflows
 

@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "หัวหน้าทักไลน์ตอนห้าทุ่ม",
+  "tags": [
+    "boundaries",
+    "boss"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a phone lighting up on a dark nightstand with a notification glow, no readable text",
+      "text": "ห้าทุ่มแล้ว... แจ้งเตือนจากหัวหน้าดังขึ้นอีก",
+      "cards": [
+        "ห้าทุ่มแล้ว",
+        "แจ้งเตือนจากหัวหน้าดังขึ้นอีก"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind sitting on the edge of a bed at night, staring at a glowing phone",
+      "text": "[sighs] เราตอบเพราะกลัว... ไม่ใช่เพราะมันด่วนจริง ๆ",
+      "cards": [
+        "เราตอบเพราะกลัว",
+        "ไม่ใช่เพราะมันด่วนจริง ๆ"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a phone set to night mode on a nightstand next to glasses, soft dim light",
+      "text": "ถ้าไม่ด่วน... ตอบพรุ่งนี้เช้าก็ได้ ขอบเขตต้องเริ่มที่เรา",
+      "cards": [
+        "ถ้าไม่ด่วน",
+        "ตอบพรุ่งนี้เช้าก็ได้ ขอบเขตต้องเริ่มที่เรา"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a quiet city skyline at night seen from a dark window, a few lit apartments",
+      "text": "[warmly] เวลาพักก็เป็นของเรานะ... ส่งคลิปนี้ให้เพื่อนที่ยังไม่ได้นอนสิ",
+      "cards": [
+        "เวลาพักก็เป็นของเรานะ",
+        "ส่งคลิปนี้ให้เพื่อนที่ยังไม่ได้นอนสิ"
+      ]
+    }
+  ]
+}

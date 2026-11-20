@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "การพักก็เป็นส่วนหนึ่งของการทำงาน",
+  "tags": [
+    "burnout",
+    "rest"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a laptop open on a desk at night with a cold cup of coffee and scattered sticky notes",
+      "text": "[softly] เราเคยคิดว่าการพัก... คือการเสียเวลา",
+      "cards": [
+        "เราเคยคิดว่าการพัก",
+        "คือการเสียเวลา"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind resting their head on a desk beside a laptop, dim lamp",
+      "text": "จนวันที่ร่างกายสั่งให้หยุดเอง... ถึงได้รู้ว่าเราฝืนมานานแค่ไหน",
+      "cards": [
+        "จนวันที่ร่างกายสั่งให้หยุดเอง",
+        "ถึงได้รู้ว่าเราฝืนมานานแค่ไหน"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a paper planner on a wooden desk with a pen, warm lamp light, handwriting blurred and unreadable",
+      "text": "ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ... แล้วรักษามันให้ได้",
+      "cards": [
+        "ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ",
+        "แล้วรักษามันให้ได้"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind stretching by an open window at dawn-blue night, city calm",
+      "text": "[warmly] คนที่พักเป็น... คือคนที่ไปได้ไกลกว่า",
+      "cards": [
+        "คนที่พักเป็น",
+        "คือคนที่ไปได้ไกลกว่า"
+      ]
+    }
+  ]
+}

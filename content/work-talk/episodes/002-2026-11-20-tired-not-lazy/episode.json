@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "ไม่ได้ขี้เกียจ แค่เหนื่อยมานาน",
+  "tags": [
+    "burnout",
+    "rest"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an office worker seen from behind slumped at a desk late at night, laptop glow",
+      "text": "[softly] ถ้าช่วงนี้ไม่อยากทำอะไรเลย... เราไม่ได้ขี้เกียจหรอก",
+      "cards": [
+        "ถ้าช่วงนี้ไม่อยากทำอะไรเลย",
+        "เราไม่ได้ขี้เกียจหรอก"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "an empty office floor at night, rows of desks, one desk lamp still on",
+      "text": "เราแค่วิ่งมานานเกินไป... โดยไม่เคยได้หยุดหายใจ",
+      "cards": [
+        "เราแค่วิ่งมานานเกินไป",
+        "โดยไม่เคยได้หยุดหายใจ"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a phone placed face down on a sofa beside a cup of tea, cozy dim living room",
+      "text": "ลองให้ตัวเองพักจริง ๆ สักวัน... ไม่ต้องเช็กไลน์งาน ไม่ต้องรู้สึกผิด",
+      "cards": [
+        "ลองให้ตัวเองพักจริง ๆ สักวัน",
+        "ไม่ต้องเช็กไลน์งาน ไม่ต้องรู้สึกผิด"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind sitting on a balcony at night, wrapped in a blanket, city lights",
+      "text": "[warmly] เซฟไว้นะ... วันไหนเหนื่อยจะได้กลับมาฟัง",
+      "cards": [
+        "เซฟไว้นะ",
+        "วันไหนเหนื่อยจะได้กลับมาฟัง"
+      ]
+    }
+  ]
+}
