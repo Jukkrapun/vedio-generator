@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: ฉันได้ตัวเองคืนมา
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+ฉันไม่ได้เสียเขาไป… ฉันได้ตัวเองคืนมา
+
+มีคนเคยถามว่า ทำไมยังยิ้มได้ หลังเลิกกับคนที่รักที่สุด
+เพราะความรักที่ดี ไม่ควรทำให้เราต้องตัวเล็กลง
+
+เคยได้ตัวเองคืนมาจากความรักครั้งไหนบ้าง 🤍
+
+#ตอนตีสอง #รักตัวเอง #มูฟออน
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

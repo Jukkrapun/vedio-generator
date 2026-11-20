@@ -39,3 +39,19 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: ถูกคน แต่ผิดเวลา
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+บางคนเข้ามาถูกคน… แต่ผิดเวลา
+
+ไม่มีใครผิดหรอก แค่ตอนนั้นเรายังไม่พร้อมจะรักใครให้ดีพอ
+
+เคยเจอคนที่ใช่ ในเวลาที่ไม่ใช่ไหม 🤍
+
+#ตอนตีสอง #คนที่ใช่ #ปล่อยวาง
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

@@ -39,3 +39,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: คืนวันอาทิตย์ที่ใจหวิว
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+สี่ทุ่มคืนวันอาทิตย์… ใจเริ่มหวิวอีกแล้ว
+
+ไม่ได้แปลว่าเราอ่อนแอ แค่ใจรู้ว่าอาทิตย์นี้มีอะไรรออยู่
+ลองเขียนสามเรื่องที่ต้องทำพรุ่งนี้ลงกระดาษ แล้ววางไว้ตรงนั้นก่อน
+
+คืนวันอาทิตย์ของคุณ ใจหวิวแบบนี้ไหม 🤍
+
+#ตอนตีสอง #วันจันทร์ #ความเครียด
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

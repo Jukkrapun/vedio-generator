@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: การพักไม่ใช่การเสียเวลา
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+เคยคิดว่าการพัก… คือการเสียเวลา
+
+จนวันที่ร่างกายสั่งให้หยุดเอง ถึงได้รู้ว่าเราฝืนมานานแค่ไหน
+ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ แล้วรักษามันให้ได้
+
+ครั้งล่าสุดที่ได้พักจริง ๆ คือเมื่อไหร่ 🤍
+
+#ตอนตีสอง #พักผ่อน #หมดไฟ
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

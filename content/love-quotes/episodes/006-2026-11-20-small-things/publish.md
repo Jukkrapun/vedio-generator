@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: คนที่รักเราจริง ไม่ค่อยพูดว่ารัก
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+คนที่รักเราจริง… ไม่ค่อยพูดคำว่ารักหรอก
+
+เขาแค่จำได้ว่าเราไม่กินผัก ถามว่าถึงบ้านหรือยัง แล้วรอจนเราตอบ
+ความรักอยู่ในเรื่องเล็ก ๆ แบบนี้แหละ
+
+คนที่รักคุณ แสดงออกด้วยเรื่องเล็ก ๆ แบบไหน 🤍
+
+#ตอนตีสอง #รักแท้ #แฟน
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

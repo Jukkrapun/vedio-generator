@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: หัวหน้าทักไลน์ตอนห้าทุ่ม
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+หัวหน้าทักไลน์ตอนห้าทุ่ม… ต้องตอบไหม
+
+เราตอบเพราะกลัว ไม่ใช่เพราะมันด่วนจริง ๆ
+ถ้าไม่ด่วน ตอบพรุ่งนี้เช้าก็ได้ ขอบเขตต้องเริ่มที่เรา
+
+หัวหน้าทักตอนดึก คุณตอบทันทีไหม 🤍
+
+#ตอนตีสอง #ขอบเขต #หัวหน้า
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

@@ -41,3 +41,19 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: ถ้าต้องขอให้เขาสนใจ…
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+ถ้าต้องขอให้เขาสนใจ… นั่นอาจไม่ใช่ความรัก
+
+เพราะคนที่รักเราจริง จะไม่ปล่อยให้เราต้องสงสัย ว่าเราสำคัญกับเขาแค่ไหน
+
+เคยต้องขอให้ใครสักคนสนใจไหม 🤍
+
+#ตอนตีสอง #รักตัวเอง #คุณค่าในตัวเอง
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

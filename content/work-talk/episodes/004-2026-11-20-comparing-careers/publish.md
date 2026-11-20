@@ -39,3 +39,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: เพื่อนไปไกลแล้ว แล้วเราล่ะ
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+เพื่อนไปไกลแล้ว… แล้วเราล่ะ
+
+แต่ละคนออกวิ่งไม่พร้อมกัน และไม่ได้วิ่งไปเส้นชัยเดียวกันด้วย
+ลองเทียบตัวเองกับเราเมื่อปีที่แล้ว ไม่ใช่กับคนอื่น
+
+เคยรู้สึกว่าเพื่อนไปไกลกว่าเราไหม 🤍
+
+#ตอนตีสอง #เปรียบเทียบ #ความสำเร็จ
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

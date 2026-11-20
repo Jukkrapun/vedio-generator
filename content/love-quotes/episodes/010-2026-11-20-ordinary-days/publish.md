@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: แค่อยากได้คนในวันธรรมดา
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+ไม่ได้อยากได้คนที่ทำให้ทุกวันพิเศษ
+
+แค่อยากได้คนที่อยู่ด้วยกันในวันธรรมดา วันเหนื่อย ๆ วันที่ไม่มีอะไรเลย
+เพราะชีวิตส่วนใหญ่ ก็คือวันธรรมดานี่แหละ
+
+วันธรรมดาของคุณ มีใครอยู่ด้วยไหม 🤍
+
+#ตอนตีสอง #รักแท้ #คู่รัก
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

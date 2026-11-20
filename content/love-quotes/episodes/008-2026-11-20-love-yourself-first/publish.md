@@ -39,3 +39,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: รักตัวเองให้เป็นก่อน
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+รอให้ใครมารัก… ทั้งที่ยังไม่เคยรักตัวเอง
+
+ลองพักบ้าง กินข้าวดี ๆ ใจดีกับตัวเองเหมือนที่เราใจดีกับคนอื่น
+คนที่รักตัวเองเป็น จะรู้ว่าตัวเองควรได้ความรักแบบไหน
+
+วันนี้ใจดีกับตัวเองแล้วหรือยัง 🤍
+
+#ตอนตีสอง #รักตัวเอง #ฮีลใจ
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

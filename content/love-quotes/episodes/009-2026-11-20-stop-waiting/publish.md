@@ -39,3 +39,19 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: ถ้าเขาอยากอยู่…
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+ถ้าเขาอยากอยู่… เขาไม่ปล่อยให้เรารอหรอก
+
+การรอคนที่ไม่เลือกเรา คือการทิ้งตัวเองไว้ข้างหลังทีละนิด
+
+ตอนนี้ยังรอใครอยู่หรือเปล่า 🤍
+
+#ตอนตีสอง #เลิกรอ #มูฟออน
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

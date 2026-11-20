@@ -37,7 +37,7 @@ output/<series>/            rendered videos (git-ignored)
 
 **New episode:** `python tools/new_episode.py <series> <slug> [--mode image|video]` → creates `content/<series>/episodes/<NNN>-<YYYY-MM-DD>-<slug>/` from `_template/` with the next number. Output files reuse the folder name, so `output/<series>/` sorts in production order too. Fill `episode.json` + `script.md` + `publish.md`, follow that series' `series.md`.
 
-**Publishing:** every episode has `publish.md` (from `_template/`) with ready-to-paste YouTube Shorts (title, description, playlist, settings) and TikTok (caption, cover text, settings) sections. Write it at the SAME time as the script — never leave it for later. Playlists: `ตอนตีสอง · เรื่อง<topic>` (one per series). Always tick the platform's AI-generated / altered-content label. When the user reports a post, append it to `episode.json` → `posts` and re-run `tools/catalog.py`.
+**Publishing:** every episode has `publish.md` (from `_template/`) with ready-to-paste YouTube Shorts (title, description, playlist, settings), TikTok (caption, cover text, settings) and Facebook Reels (caption ending in a question, 2-3 hashtags, AI label) sections. Write it at the SAME time as the script — never leave it for later. Playlists: `ตอนตีสอง · เรื่อง<topic>` (one per series). Always tick the platform's AI-generated / altered-content label. When the user reports a post, append it to `episode.json` → `posts` and re-run `tools/catalog.py`.
 
 **New series:** create `content/<new-series>/` with its own `series.md`, `_template/`, `episodes/`, plus `output/<new-series>/`. Add it to "Current series" above.
 

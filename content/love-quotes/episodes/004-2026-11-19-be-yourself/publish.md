@@ -39,3 +39,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: เหนื่อยที่สุดในความรัก คือ…
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+สิ่งที่เหนื่อยที่สุดในความรัก ไม่ใช่การรอ
+
+แต่คือการพยายามเป็นคนที่เขาอยากได้ ทั้งที่มันไม่ใช่ตัวเรา
+คนที่ใช่ จะรักเราตอนที่เราเป็นตัวเองนี่แหละ
+
+เคยต้องพยายามเป็นคนอื่นเพื่อให้เขารักไหม 🤍
+
+#ตอนตีสอง #เป็นตัวเอง #รักตัวเอง
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

@@ -40,3 +40,19 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: <3-6 word hook>
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+<hook line>
+
+<1-2 lines from the script>
+
+<question that invites comments> 🤍
+
+#ตอนตีสอง <1-2 topic tags>
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it

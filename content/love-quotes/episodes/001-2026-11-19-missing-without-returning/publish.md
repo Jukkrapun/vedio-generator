@@ -40,3 +40,20 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 - Cover text: คิดถึงได้ โดยไม่ต้องกลับไป
 - Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+คิดถึงได้… โดยไม่ต้องกลับไป
+
+บางครั้ง การคิดถึง ไม่ได้แปลว่าเราต้องกลับไป
+มันแค่แปลว่าช่วงเวลานั้น เคยสำคัญกับเรามากแค่ไหน
+
+วันนี้คุณกำลังคิดถึงใครอยู่หรือเปล่า 🤍
+
+#ตอนตีสอง #มูฟออน #คิดถึง
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed) so followers see it
