@@ -27,6 +27,7 @@ output/<series>/            rendered videos (git-ignored)
 - Page name: **ตอนตีสอง** (handle idea `@ton.tee.song` — availability not checked yet). Chosen 2026-11-20.
 - Concept: thoughts you have at 2 a.m. when you can't sleep — the channel covers many topics (love, work, horoscope, friends, trends), each as its own series. Host ใบเตย across all series.
 - Tone for every series: quiet, late-night, honest; night/dim-light visuals fit the brand.
+- Posting schedule (user's decision 2026-11-20): one clip **every day at 22:00** (Thai time), scheduled on each platform. Whenever giving posting info, remind the user to schedule it for 22:00 and suggest which clip is next.
 
 ## Current series
 
