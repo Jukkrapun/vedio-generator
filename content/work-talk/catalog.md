@@ -9,7 +9,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 |---|---|---|---|---|---|---|
 | 001-2026-11-20-sunday-night-dread | คืนวันอาทิตย์ที่ใจหวิว | monday, anxiety | image | rendered | 20.9s | - |
 | 002-2026-11-20-tired-not-lazy | ไม่ได้ขี้เกียจ แค่เหนื่อยมานาน | burnout, rest | image | rendered | 19.3s | - |
-| 003-2026-11-20-boss-line-at-night | หัวหน้าทักไลน์ตอนห้าทุ่ม | boundaries, boss | image | rendered | 20.4s | - |
+| 003-2026-11-20-boss-line-at-night | หัวหน้าทักไลน์ตอนห้าทุ่ม | boundaries, boss | image | posted | 20.4s | 0 views / 0 likes / 0 saves |
 | 004-2026-11-20-comparing-careers | เพื่อนไปไกลแล้ว แต่เรายังอยู่ที่เดิม | career-doubt, comparison | image | rendered | 18.4s | - |
 | 005-2026-11-20-rest-is-work | การพักก็เป็นส่วนหนึ่งของการทำงาน | burnout, rest | image | rendered | 20.1s | - |
 
@@ -23,6 +23,10 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 - **comparison** (1): 004
 - **monday** (1): 001
 - **rest** (2): 002, 005
+
+## Best performing (by views)
+
+1. 003-2026-11-20-boss-line-at-night - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 
