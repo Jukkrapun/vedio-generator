@@ -22,6 +22,12 @@ shared/                     assets reused across series
 output/<series>/            rendered videos (git-ignored)
 ```
 
+## Channel
+
+- Page name: **ตอนตีสอง** (handle idea `@ton.tee.song` — availability not checked yet). Chosen 2026-11-20.
+- Concept: thoughts you have at 2 a.m. when you can't sleep — the channel covers many topics (love, work, horoscope, friends, trends), each as its own series. Host ใบเตย across all series.
+- Tone for every series: quiet, late-night, honest; night/dim-light visuals fit the brand.
+
 ## Current series
 
 - `content/love-quotes/` — Thai love-quote podcast clips, 9:16, max 90s. See its `series.md`.
