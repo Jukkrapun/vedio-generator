@@ -1,0 +1,63 @@
+{
+  "total": 20.93,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person lying in bed seen from behind, phone glowing in hand, dark bedroom, clock on nightstand",
+      "text": "[sighs] สี่ทุ่มคืนวันอาทิตย์... ใจเริ่มหวิวอีกแล้วใช่ไหม",
+      "cards": [
+        "สี่ทุ่มคืนวันอาทิตย์",
+        "ใจเริ่มหวิวอีกแล้วใช่ไหม"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.78,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a work bag and folded office clothes on a chair, dim lamp light, quiet night",
+      "text": "มันไม่ได้แปลว่าเราอ่อนแอนะ... แค่ใจเรารู้ว่าอาทิตย์นี้มีอะไรรออยู่",
+      "cards": [
+        "มันไม่ได้แปลว่าเราอ่อนแอนะ",
+        "แค่ใจเรารู้ว่าอาทิตย์นี้มีอะไรรออยู่"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 5.23,
+      "end": 10.43,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a hand writing on a small notepad on a bedside table, warm lamp, blank unreadable lines",
+      "text": "ลองเขียนสามเรื่องที่ต้องทำพรุ่งนี้ลงกระดาษ... แล้ววางไว้ตรงนั้นก่อน",
+      "cards": [
+        "ลองเขียนสามเรื่องที่ต้องทำพรุ่งนี้ลงกระดาษ",
+        "แล้ววางไว้ตรงนั้นก่อน"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 10.88,
+      "end": 16.48,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a dark bedroom window with soft city lights outside, curtains slightly open",
+      "text": "[warmly] คืนนี้นอนก่อนนะ... พรุ่งนี้ค่อยว่ากัน",
+      "cards": [
+        "คืนนี้นอนก่อนนะ",
+        "พรุ่งนี้ค่อยว่ากัน"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 16.93,
+      "end": 19.73,
+      "align": "03-closing.align.json"
+    }
+  ]
+}
