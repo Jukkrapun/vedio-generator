@@ -20,3 +20,5 @@ publish_date:
 
 ## Caption & hashtags
 
+See `publish.md` (YouTube + TikTok).
+
