@@ -1,0 +1,63 @@
+{
+  "total": 20.37,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a phone lighting up on a dark nightstand with a notification glow, no readable text",
+      "text": "ห้าทุ่มแล้ว... แจ้งเตือนจากหัวหน้าดังขึ้นอีก",
+      "cards": [
+        "ห้าทุ่มแล้ว",
+        "แจ้งเตือนจากหัวหน้าดังขึ้นอีก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.14,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind sitting on the edge of a bed at night, staring at a glowing phone",
+      "text": "[sighs] เราตอบเพราะกลัว... ไม่ใช่เพราะมันด่วนจริง ๆ",
+      "cards": [
+        "เราตอบเพราะกลัว",
+        "ไม่ใช่เพราะมันด่วนจริง ๆ"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 4.59,
+      "end": 8.35,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a phone set to night mode on a nightstand next to glasses, soft dim light",
+      "text": "ถ้าไม่ด่วน... ตอบพรุ่งนี้เช้าก็ได้ ขอบเขตต้องเริ่มที่เรา",
+      "cards": [
+        "ถ้าไม่ด่วน",
+        "ตอบพรุ่งนี้เช้าก็ได้ ขอบเขตต้องเริ่มที่เรา"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 8.8,
+      "end": 13.84,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a quiet city skyline at night seen from a dark window, a few lit apartments",
+      "text": "[warmly] เวลาพักก็เป็นของเรานะ... ส่งคลิปนี้ให้เพื่อนที่ยังไม่ได้นอนสิ",
+      "cards": [
+        "เวลาพักก็เป็นของเรานะ",
+        "ส่งคลิปนี้ให้เพื่อนที่ยังไม่ได้นอนสิ"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 14.29,
+      "end": 19.17,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

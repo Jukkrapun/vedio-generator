@@ -1,0 +1,63 @@
+{
+  "total": 20.05,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a laptop open on a desk at night with a cold cup of coffee and scattered sticky notes",
+      "text": "[softly] เราเคยคิดว่าการพัก... คือการเสียเวลา",
+      "cards": [
+        "เราเคยคิดว่าการพัก",
+        "คือการเสียเวลา"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.34,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind resting their head on a desk beside a laptop, dim lamp",
+      "text": "จนวันที่ร่างกายสั่งให้หยุดเอง... ถึงได้รู้ว่าเราฝืนมานานแค่ไหน",
+      "cards": [
+        "จนวันที่ร่างกายสั่งให้หยุดเอง",
+        "ถึงได้รู้ว่าเราฝืนมานานแค่ไหน"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 3.79,
+      "end": 9.87,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a paper planner on a wooden desk with a pen, warm lamp light, handwriting blurred and unreadable",
+      "text": "ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ... แล้วรักษามันให้ได้",
+      "cards": [
+        "ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ",
+        "แล้วรักษามันให้ได้"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 10.32,
+      "end": 15.2,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind stretching by an open window at dawn-blue night, city calm",
+      "text": "[warmly] คนที่พักเป็น... คือคนที่ไปได้ไกลกว่า",
+      "cards": [
+        "คนที่พักเป็น",
+        "คือคนที่ไปได้ไกลกว่า"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 15.65,
+      "end": 18.85,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

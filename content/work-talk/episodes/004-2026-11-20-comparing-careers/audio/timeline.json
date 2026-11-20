@@ -1,0 +1,63 @@
+{
+  "total": 18.45,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand scrolling a glowing phone in a dark room, blurred unreadable social feed",
+      "text": "[softly] เลื่อนเจอเพื่อนได้เลื่อนตำแหน่งอีกแล้ว... แล้วเราล่ะ",
+      "cards": [
+        "เลื่อนเจอเพื่อนได้เลื่อนตำแหน่งอีกแล้ว",
+        "แล้วเราล่ะ"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.74,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "an empty running track at night under stadium lights, lanes stretching ahead",
+      "text": "แต่ละคนออกวิ่งไม่พร้อมกัน... และไม่ได้วิ่งไปเส้นชัยเดียวกันด้วย",
+      "cards": [
+        "แต่ละคนออกวิ่งไม่พร้อมกัน",
+        "และไม่ได้วิ่งไปเส้นชัยเดียวกันด้วย"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 4.19,
+      "end": 8.91,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a person seen from behind looking at their reflection in a dark office window at night",
+      "text": "ลองเทียบตัวเองกับเราเมื่อปีที่แล้ว... ไม่ใช่กับคนอื่น",
+      "cards": [
+        "ลองเทียบตัวเองกับเราเมื่อปีที่แล้ว",
+        "ไม่ใช่กับคนอื่น"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 9.36,
+      "end": 13.76,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a lone figure walking on an empty city sidewalk at night, warm streetlights ahead",
+      "text": "[warmly] ช้าก็ไม่เป็นไร... ขอแค่ยังเดินอยู่",
+      "cards": [
+        "ช้าก็ไม่เป็นไร",
+        "ขอแค่ยังเดินอยู่"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 14.21,
+      "end": 17.25,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

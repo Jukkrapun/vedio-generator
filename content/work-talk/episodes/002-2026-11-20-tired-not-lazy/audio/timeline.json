@@ -1,0 +1,63 @@
+{
+  "total": 19.33,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an office worker seen from behind slumped at a desk late at night, laptop glow",
+      "text": "[softly] ถ้าช่วงนี้ไม่อยากทำอะไรเลย... เราไม่ได้ขี้เกียจหรอก",
+      "cards": [
+        "ถ้าช่วงนี้ไม่อยากทำอะไรเลย",
+        "เราไม่ได้ขี้เกียจหรอก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.7,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "an empty office floor at night, rows of desks, one desk lamp still on",
+      "text": "เราแค่วิ่งมานานเกินไป... โดยไม่เคยได้หยุดหายใจ",
+      "cards": [
+        "เราแค่วิ่งมานานเกินไป",
+        "โดยไม่เคยได้หยุดหายใจ"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 5.15,
+      "end": 9.07,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a phone placed face down on a sofa beside a cup of tea, cozy dim living room",
+      "text": "ลองให้ตัวเองพักจริง ๆ สักวัน... ไม่ต้องเช็กไลน์งาน ไม่ต้องรู้สึกผิด",
+      "cards": [
+        "ลองให้ตัวเองพักจริง ๆ สักวัน",
+        "ไม่ต้องเช็กไลน์งาน ไม่ต้องรู้สึกผิด"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 9.52,
+      "end": 14.64,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind sitting on a balcony at night, wrapped in a blanket, city lights",
+      "text": "[warmly] เซฟไว้นะ... วันไหนเหนื่อยจะได้กลับมาฟัง",
+      "cards": [
+        "เซฟไว้นะ",
+        "วันไหนเหนื่อยจะได้กลับมาฟัง"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 15.09,
+      "end": 18.13,
+      "align": "03-closing.align.json"
+    }
+  ]
+}
