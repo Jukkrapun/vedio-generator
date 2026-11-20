@@ -1,6 +1,8 @@
 {
   "mode": "image",
   "title": "ชื่อคลิป",
+  "tags": [],
+  "posts": [],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",

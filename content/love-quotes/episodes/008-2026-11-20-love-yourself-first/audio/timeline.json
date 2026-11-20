@@ -1,0 +1,49 @@
+{
+  "total": 19.36,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman seen from behind sitting alone on a bed by a window, rain outside, soft grey morning",
+      "text": "[softly] เราชอบรอให้ใครสักคนมารักเรา... ทั้งที่ตัวเรายังไม่เคยรักตัวเองเลย",
+      "cards": [
+        "เราชอบรอให้ใครสักคนมารักเรา",
+        "ทั้งที่ตัวเรายังไม่เคยรักตัวเองเลย"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 5.58,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a simple breakfast tray with tea and flowers on white sheets, sunlight streaming in",
+      "text": "ลองพักบ้าง กินข้าวดี ๆ... ใจดีกับตัวเองเหมือนที่เราใจดีกับคนอื่น",
+      "cards": [
+        "ลองพักบ้าง กินข้าวดี ๆ",
+        "ใจดีกับตัวเองเหมือนที่เราใจดีกับคนอื่น"
+      ],
+      "audio": "01-body.mp3",
+      "start": 6.03,
+      "end": 11.79,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman's silhouette walking toward a bright sunrise in an open meadow",
+      "text": "[warmly] เพราะคนที่รักตัวเองเป็น... จะรู้ว่าตัวเองควรได้ความรักแบบไหน",
+      "cards": [
+        "เพราะคนที่รักตัวเองเป็น",
+        "จะรู้ว่าตัวเองควรได้ความรักแบบไหน"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 12.24,
+      "end": 18.16,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

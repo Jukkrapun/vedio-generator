@@ -1,0 +1,54 @@
+{
+  "mode": "image",
+  "title": "รักตัวเองให้เป็นก่อน",
+  "tags": [
+    "self-love"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman seen from behind sitting alone on a bed by a window, rain outside, soft grey morning",
+      "text": "[softly] เราชอบรอให้ใครสักคนมารักเรา... ทั้งที่ตัวเรายังไม่เคยรักตัวเองเลย",
+      "cards": [
+        "เราชอบรอให้ใครสักคนมารักเรา",
+        "ทั้งที่ตัวเรายังไม่เคยรักตัวเองเลย"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a simple breakfast tray with tea and flowers on white sheets, sunlight streaming in",
+      "text": "ลองพักบ้าง กินข้าวดี ๆ... ใจดีกับตัวเองเหมือนที่เราใจดีกับคนอื่น",
+      "cards": [
+        "ลองพักบ้าง กินข้าวดี ๆ",
+        "ใจดีกับตัวเองเหมือนที่เราใจดีกับคนอื่น"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman's silhouette walking toward a bright sunrise in an open meadow",
+      "text": "[warmly] เพราะคนที่รักตัวเองเป็น... จะรู้ว่าตัวเองควรได้ความรักแบบไหน",
+      "cards": [
+        "เพราะคนที่รักตัวเองเป็น",
+        "จะรู้ว่าตัวเองควรได้ความรักแบบไหน"
+      ]
+    }
+  ]
+}

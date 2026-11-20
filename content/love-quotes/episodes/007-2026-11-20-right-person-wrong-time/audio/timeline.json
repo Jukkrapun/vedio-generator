@@ -1,0 +1,49 @@
+{
+  "total": 14.56,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a vintage wall clock in a dim room, soft dust in a beam of afternoon light",
+      "text": "[softly] บางคนเข้ามาถูกคน... แต่ผิดเวลา",
+      "cards": [
+        "บางคนเข้ามาถูกคน",
+        "แต่ผิดเวลา"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.18,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a woman seen from behind standing on an empty train platform as a train departs, evening",
+      "text": "ไม่มีใครผิดหรอก... แค่ตอนนั้นเรายังไม่พร้อมจะรักใครให้ดีพอ",
+      "cards": [
+        "ไม่มีใครผิดหรอก",
+        "แค่ตอนนั้นเรายังไม่พร้อมจะรักใครให้ดีพอ"
+      ],
+      "audio": "01-body.mp3",
+      "start": 3.63,
+      "end": 8.91,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "an old polaroid photo on a wooden table beside a dried flower, golden window light",
+      "text": "[warmly] ขอบคุณที่เคยมาเจอกันนะ... แม้จะไม่ได้อยู่ด้วยกันก็ตาม",
+      "cards": [
+        "ขอบคุณที่เคยมาเจอกันนะ",
+        "แม้จะไม่ได้อยู่ด้วยกันก็ตาม"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 9.36,
+      "end": 13.36,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

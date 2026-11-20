@@ -1,0 +1,50 @@
+{
+  "total": 19.52,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand placing a warm cup of coffee next to a sleeping person's pillow, early morning light through curtains",
+      "text": "[softly] รู้ไหมว่าคนที่รักเราจริง... ไม่ค่อยพูดคำว่ารักหรอก",
+      "cards": [
+        "รู้ไหมว่าคนที่รักเราจริง",
+        "ไม่ค่อยพูดคำว่ารักหรอก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 6.14,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a phone screen glowing on a nightstand at night, blurred message bubble, no readable text, cozy bedroom",
+      "text": "เขาแค่จำได้ว่าเราไม่กินผัก... ถามว่าถึงบ้านหรือยัง... แล้วรอจนเราตอบ",
+      "cards": [
+        "เขาแค่จำได้ว่าเราไม่กินผัก",
+        "ถามว่าถึงบ้านหรือยัง",
+        "แล้วรอจนเราตอบ"
+      ],
+      "audio": "01-body.mp3",
+      "start": 6.59,
+      "end": 13.79,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "two people seen from behind sharing an umbrella on a quiet street at dusk",
+      "text": "[warmly] ถ้ามีคนแบบนี้อยู่ข้าง ๆ... ดูแลเขาดี ๆ นะ",
+      "cards": [
+        "ถ้ามีคนแบบนี้อยู่ข้าง ๆ",
+        "ดูแลเขาดี ๆ นะ"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 14.24,
+      "end": 18.32,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

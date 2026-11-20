@@ -19,6 +19,13 @@ Short podcast-style love quote clips for Reels / TikTok / Shorts.
 - If ElevenLabs refuses (402), the renderer warns and falls back to edge-tts `th-TH-PremwadeeNeural` (`episode.json` → `fallback`).
 - Use v3 audio tags (`[softly]`, `[warmly]`, `[sighs]`) in `text` only, at most one per segment. Never in `cards`.
 
+## Topic tracking (check before writing)
+
+- `catalog.md` — generated list of every episode: tags, status, length, results, and every line already spoken. Refresh with `python tools/catalog.py love-quotes` (`produce.py` does it automatically).
+- Before writing a new episode: read `catalog.md` + `ideas.md`. Don't reuse a hook/quote line or the same angle on a topic; a well-performing tag may be revisited with a NEW angle.
+- `ideas.md` — topic backlog. Take ideas from here, remove them once an episode exists.
+- In `episode.json`: `"tags"` (kebab-case English, reuse existing tags) and `"posts"` — append `{"platform","date","url","views","likes","saves"}` when the user reports a post/results, then re-run the catalog. Status: draft → rendered → posted.
+
 ## Clip structure
 
 1. **Hook** (0–3s) — a line that stops the scroll

@@ -1,0 +1,54 @@
+{
+  "mode": "image",
+  "title": "อยากมีคนอยู่ด้วยในวันธรรมดา",
+  "tags": [
+    "true-love",
+    "partnership"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a quiet kitchen in morning light, steam rising from a kettle",
+      "text": "[softly] ฉันไม่ได้อยากได้คนที่ทำให้ทุกวันพิเศษ",
+      "cards": [
+        "ฉันไม่ได้อยากได้คนที่ทำให้ทุกวันพิเศษ"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "two pairs of feet in socks on a sofa under a blanket, a TV glow, cozy evening",
+      "text": "แค่อยากได้คนที่อยู่ด้วยกันในวันธรรมดา... วันเหนื่อย ๆ วันที่ไม่มีอะไรเลย",
+      "cards": [
+        "แค่อยากได้คนที่อยู่ด้วยกันในวันธรรมดา",
+        "วันเหนื่อย ๆ วันที่ไม่มีอะไรเลย"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "two people seen from behind sitting on a balcony watching the city at sunset",
+      "text": "[warmly] เพราะสุดท้าย... ชีวิตส่วนใหญ่ก็คือวันธรรมดานี่แหละ",
+      "cards": [
+        "เพราะสุดท้าย",
+        "ชีวิตส่วนใหญ่ก็คือวันธรรมดานี่แหละ"
+      ]
+    }
+  ]
+}

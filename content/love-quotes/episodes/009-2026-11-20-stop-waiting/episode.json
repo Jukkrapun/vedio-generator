@@ -1,0 +1,55 @@
+{
+  "mode": "image",
+  "title": "เลิกรอคนที่ไม่กลับมา",
+  "tags": [
+    "letting-go",
+    "self-worth"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an empty chair at a cafe table with an untouched cup of coffee, late afternoon",
+      "text": "[softly] ถ้าเขาอยากอยู่... เขาไม่ปล่อยให้เรารอหรอก",
+      "cards": [
+        "ถ้าเขาอยากอยู่",
+        "เขาไม่ปล่อยให้เรารอหรอก"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a woman seen from behind sitting on a bench at a bus stop at night, streetlight glow",
+      "text": "การรอคนที่ไม่เลือกเรา... มันคือการทิ้งตัวเองไว้ข้างหลังทีละนิด",
+      "cards": [
+        "การรอคนที่ไม่เลือกเรา",
+        "มันคือการทิ้งตัวเองไว้ข้างหลังทีละนิด"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "footsteps on a wet road reflecting city lights, a figure walking away into warm bokeh",
+      "text": "[warmly] วันนี้ลุกขึ้นเดินต่อนะ... คนที่ใช่ เขาจะเดินมาหาเราเอง",
+      "cards": [
+        "วันนี้ลุกขึ้นเดินต่อนะ",
+        "คนที่ใช่ เขาจะเดินมาหาเราเอง"
+      ]
+    }
+  ]
+}

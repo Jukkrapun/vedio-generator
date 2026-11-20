@@ -18,6 +18,7 @@ from dotenv import load_dotenv
 
 from images import generate_images
 from lipsync import lipsync
+from catalog import build_catalog
 from media import ROOT
 from render_reel import render
 from tts import build_voice
@@ -35,7 +36,9 @@ def produce(episode_dir: Path) -> Path:
     build_voice(episode_dir)
     if mode == "video":
         lipsync(episode_dir)
-    return render(episode_dir)
+    video = render(episode_dir)
+    build_catalog(episode_dir.parent.parent.name)  # content/<series>/episodes/<episode>
+    return video
 
 
 if __name__ == "__main__":

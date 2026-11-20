@@ -1,0 +1,56 @@
+{
+  "mode": "image",
+  "title": "ความรักอยู่ในเรื่องเล็ก ๆ",
+  "tags": [
+    "true-love",
+    "small-gestures"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand placing a warm cup of coffee next to a sleeping person's pillow, early morning light through curtains",
+      "text": "[softly] รู้ไหมว่าคนที่รักเราจริง... ไม่ค่อยพูดคำว่ารักหรอก",
+      "cards": [
+        "รู้ไหมว่าคนที่รักเราจริง",
+        "ไม่ค่อยพูดคำว่ารักหรอก"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a phone screen glowing on a nightstand at night, blurred message bubble, no readable text, cozy bedroom",
+      "text": "เขาแค่จำได้ว่าเราไม่กินผัก... ถามว่าถึงบ้านหรือยัง... แล้วรอจนเราตอบ",
+      "cards": [
+        "เขาแค่จำได้ว่าเราไม่กินผัก",
+        "ถามว่าถึงบ้านหรือยัง",
+        "แล้วรอจนเราตอบ"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "two people seen from behind sharing an umbrella on a quiet street at dusk",
+      "text": "[warmly] ถ้ามีคนแบบนี้อยู่ข้าง ๆ... ดูแลเขาดี ๆ นะ",
+      "cards": [
+        "ถ้ามีคนแบบนี้อยู่ข้าง ๆ",
+        "ดูแลเขาดี ๆ นะ"
+      ]
+    }
+  ]
+}

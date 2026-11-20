@@ -1,0 +1,48 @@
+{
+  "total": 15.28,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a quiet kitchen in morning light, steam rising from a kettle",
+      "text": "[softly] ฉันไม่ได้อยากได้คนที่ทำให้ทุกวันพิเศษ",
+      "cards": [
+        "ฉันไม่ได้อยากได้คนที่ทำให้ทุกวันพิเศษ"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.18,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "two pairs of feet in socks on a sofa under a blanket, a TV glow, cozy evening",
+      "text": "แค่อยากได้คนที่อยู่ด้วยกันในวันธรรมดา... วันเหนื่อย ๆ วันที่ไม่มีอะไรเลย",
+      "cards": [
+        "แค่อยากได้คนที่อยู่ด้วยกันในวันธรรมดา",
+        "วันเหนื่อย ๆ วันที่ไม่มีอะไรเลย"
+      ],
+      "audio": "01-body.mp3",
+      "start": 3.63,
+      "end": 9.55,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "two people seen from behind sitting on a balcony watching the city at sunset",
+      "text": "[warmly] เพราะสุดท้าย... ชีวิตส่วนใหญ่ก็คือวันธรรมดานี่แหละ",
+      "cards": [
+        "เพราะสุดท้าย",
+        "ชีวิตส่วนใหญ่ก็คือวันธรรมดานี่แหละ"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 10.0,
+      "end": 14.08,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "total": 15.68,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an empty chair at a cafe table with an untouched cup of coffee, late afternoon",
+      "text": "[softly] ถ้าเขาอยากอยู่... เขาไม่ปล่อยให้เรารอหรอก",
+      "cards": [
+        "ถ้าเขาอยากอยู่",
+        "เขาไม่ปล่อยให้เรารอหรอก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.14,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a woman seen from behind sitting on a bench at a bus stop at night, streetlight glow",
+      "text": "การรอคนที่ไม่เลือกเรา... มันคือการทิ้งตัวเองไว้ข้างหลังทีละนิด",
+      "cards": [
+        "การรอคนที่ไม่เลือกเรา",
+        "มันคือการทิ้งตัวเองไว้ข้างหลังทีละนิด"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.59,
+      "end": 9.07,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "footsteps on a wet road reflecting city lights, a figure walking away into warm bokeh",
+      "text": "[warmly] วันนี้ลุกขึ้นเดินต่อนะ... คนที่ใช่ เขาจะเดินมาหาเราเอง",
+      "cards": [
+        "วันนี้ลุกขึ้นเดินต่อนะ",
+        "คนที่ใช่ เขาจะเดินมาหาเราเอง"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 9.52,
+      "end": 14.48,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

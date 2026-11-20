@@ -1,0 +1,55 @@
+{
+  "mode": "image",
+  "title": "คนที่ใช่ในเวลาที่ไม่ใช่",
+  "tags": [
+    "timing",
+    "letting-go"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a vintage wall clock in a dim room, soft dust in a beam of afternoon light",
+      "text": "[softly] บางคนเข้ามาถูกคน... แต่ผิดเวลา",
+      "cards": [
+        "บางคนเข้ามาถูกคน",
+        "แต่ผิดเวลา"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a woman seen from behind standing on an empty train platform as a train departs, evening",
+      "text": "ไม่มีใครผิดหรอก... แค่ตอนนั้นเรายังไม่พร้อมจะรักใครให้ดีพอ",
+      "cards": [
+        "ไม่มีใครผิดหรอก",
+        "แค่ตอนนั้นเรายังไม่พร้อมจะรักใครให้ดีพอ"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "an old polaroid photo on a wooden table beside a dried flower, golden window light",
+      "text": "[warmly] ขอบคุณที่เคยมาเจอกันนะ... แม้จะไม่ได้อยู่ด้วยกันก็ตาม",
+      "cards": [
+        "ขอบคุณที่เคยมาเจอกันนะ",
+        "แม้จะไม่ได้อยู่ด้วยกันก็ตาม"
+      ]
+    }
+  ]
+}
