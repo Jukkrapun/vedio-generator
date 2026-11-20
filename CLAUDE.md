@@ -28,6 +28,7 @@ output/<series>/            rendered videos (git-ignored)
 - Concept: thoughts you have at 2 a.m. when you can't sleep — the channel covers many topics (love, work, horoscope, friends, trends), each as its own series. Host ใบเตย across all series.
 - Tone for every series: quiet, late-night, honest; night/dim-light visuals fit the brand.
 - Posting schedule (user's decision 2026-11-20): one clip **every day at 22:00** (Thai time), scheduled on each platform. Whenever giving posting info, remind the user to schedule it for 22:00 and suggest which clip is next.
+- TikTok (decided 2026-11-20): test the same clips as YouTube/Facebook first for 1–2 weeks, unchanged. Judge by completion rate (<~30% = format not working) and shares/saves, not views. If weak, options discussed: hook text on frame 1 (`-tiktok.mp4` renders), Baitoey video mode, a horoscope series, comment-reply clips.
 
 ## Current series
 
