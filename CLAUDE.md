@@ -111,6 +111,7 @@ codex exec --skip-git-repo-check "Generate an image using your image generation 
 - Repo initialised 2026-11-20 (branch `main`). Commit after meaningful changes; never edit docs with blind bulk-replace scripts — use the Edit tool (a PowerShell replace bug once corrupted PROMPTS.md/persona.md).
 - Not in git (see `.gitignore`): `.env`, `output/`, all `*.mp4` (lip-sync results, `shared/characters/*/base/*.mp4` — irreplaceable, ~27k ElevenLabs credits each; back up to cloud), `_archive/` (old experiments: candidate host images, lip-sync comparisons, edge-vs-ElevenLabs test), `shared/characters/_inspiration/`.
 - Python deps: `pip install -r requirements.txt`.
+- Local setup (2026-11-21): project venv at `.venv/` (Python 3.13 via `uv`, git-ignored). Run tools with `.venv\Scripts\python.exe tools/<script>.py ...` (or activate `.venv\Scripts\Activate.ps1`); bare `python` hits the Microsoft Store alias. ffmpeg installed via winget (`Gyan.FFmpeg`).
 
 ## Conventions
 

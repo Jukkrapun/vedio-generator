@@ -13,3 +13,5 @@ __pycache__/
 # experiments and real-person reference photos stay local
 _archive/
 shared/characters/_inspiration/
+
+.venv/
