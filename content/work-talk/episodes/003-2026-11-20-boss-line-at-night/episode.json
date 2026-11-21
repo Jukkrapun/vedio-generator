@@ -15,6 +15,24 @@
       "views": 0,
       "likes": 0,
       "saves": 0
+    },
+    {
+      "platform": "youtube",
+      "date": "2026-11-21",
+      "time": "22:00",
+      "url": "https://youtube.com/shorts/r-22LmC1W8Y",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    },
+    {
+      "platform": "tiktok",
+      "date": "2026-11-21",
+      "time": "22:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7710529767694404865",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
     }
   ],
   "tts": "elevenlabs",
