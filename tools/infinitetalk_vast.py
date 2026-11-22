@@ -2,13 +2,15 @@
 (head, eyes, shoulders move, not just the lips). POC 2026-11-22, budget approved: $3.
 
 Usage:
-    python tools/infinitetalk_vast.py <episode> [--variants B,A] [--budget 3] [--offers]
+    python tools/infinitetalk_vast.py <episode> [--variants L] [--gpu a100] [--budget 3] [--offers]
 
-Variants (all 480p, fp8-quantised DiT; all run on ONE rented instance, in the order given):
-    A  standard: 40 steps                      (best quality, slowest)
-    B  TeaCache: 40 steps + --use_teacache     (~2x faster)
-  (LoRA speed-ups like lightx2v are NOT possible with the quantised model: InfiniteTalk only applies
-   LoRA when quant is None, which needs the full ~93GB weights.)
+Variants (all 480p; all run on ONE rented instance, in the order given; don't mix fp8 and full):
+    A  fp8 DiT, 40 steps                       (48GB card; was ~185 s/step on A6000 — too slow)
+    B  fp8 DiT, 40 steps + TeaCache
+    L  full bf16 DiT + lightx2v LoRA, 4 steps  (A100 80GB: --gpu a100; ~93GB weights)
+  (LoRA only works without quant — InfiniteTalk applies LoRA only when quant is None.)
+  All variants pass --offload_model False: InfiniteTalk defaults it to True on one GPU, which moves
+  the model to CPU after EVERY forward pass.
 
 Writes <episode>/video/host-infinitetalk-<V>.mp4 (raw clip) and renders
 output/<series>/<episode>-video-infinitetalk-<V>.mp4 (with subtitles) for side-by-side review.
@@ -34,33 +36,49 @@ COMMIT = "50aa0a94184315407a991ae804d9b58d6d311ba8"  # MeiGen-AI/InfiniteTalk ma
 # -devel (has nvcc): optimum-quanto JIT-compiles its fp8 Marlin kernel on first use; -runtime has no
 # compiler -> "which c++" failed mid-generation (2026-11-22).
 IMAGE = "pytorch/pytorch:2.4.1-cuda12.1-cudnn9-devel"  # torch 2.4.1 + cu121 = what InfiniteTalk pins
-DISK_GB = 120
 # compute_cap 800-999: flash-attn 2/bf16 need Ampere+ (Quadro RTX 8000 = Turing); torch 2.4.1+cu121 stops at
 # Hopper (no Blackwell). amd64: GB10 (DGX Spark) is ARM. CMP 170HX = mining card.
-QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=44 compute_cap>=800 compute_cap<1000 cpu_arch=amd64 gpu_name notin [CMP_170HX] reliability>0.98 inet_down>800 disk_space>=120 "
-         "cuda_vers>=12.1 rentable=true verified=true")
-MAX_DPH = 0.7  # 48GB cards; A100 80GB (~$1.10/h) only after asking the user
-SETUP_TIMEOUT_SEC = 3600
+_BASE = ("num_gpus=1 geolocation!=CN compute_cap>=800 compute_cap<1000 cpu_arch=amd64 reliability>0.98 "
+         "inet_down>800 cuda_vers>=12.1 rentable=true verified=true")
+GPUS = {  # profile -> (query, max $/h, disk GB)
+    "48gb": (_BASE + " gpu_ram>=44 gpu_name notin [CMP_170HX] disk_space>=120", 0.7, 120),
+    # A100 80GB approved by the user 2026-11-22 for the full-model + LoRA test
+    "a100": (_BASE + " gpu_ram>=79 gpu_name in [A100_SXM4,A100_PCIE,A100X] disk_space>=230 inet_down>2000", 1.6, 230),
+}
+SETUP_TIMEOUT_SEC = 4800  # full set = ~93GB download
 VARIANT_TIMEOUT_SEC = 75 * 60
 DIR = "/workspace/InfiniteTalk"
+QUANT = (" --quant fp8 --quant_dir weights/InfiniteTalk/quant_models/infinitetalk_single_fp8.safetensors")
+LORA = (" --lora_dir weights/lightx2v_lora.safetensors --lora_scale 1.0 --sample_text_guide_scale 1.0"
+        " --sample_audio_guide_scale 2.0 --sample_shift 2")  # README's LoRA settings
 VARIANTS = {
-    "A": {"label": "standard 40 steps", "args": "--sample_steps 40", "est_min": 45},
-    "B": {"label": "TeaCache 40 steps", "args": "--sample_steps 40 --use_teacache", "est_min": 25},
+    "A": {"label": "fp8 40 steps", "weights": "fp8", "args": QUANT + " --sample_steps 40"},
+    "B": {"label": "fp8 TeaCache 40 steps", "weights": "fp8", "args": QUANT + " --sample_steps 40 --use_teacache"},
+    "L": {"label": "full bf16 + lightx2v 4 steps", "weights": "full", "args": LORA + " --sample_steps 4"},
 }
 
 WEIGHTS_PY = r'''
 import os
 from huggingface_hub import hf_hub_download, snapshot_download
 W = "weights"
-# Wan2.1 base: everything EXCEPT the 65GB bf16 DiT shards and the 11GB bf16 T5 (fp8 versions below)
-snapshot_download("Wan-AI/Wan2.1-I2V-14B-480P", local_dir=f"{W}/Wan2.1-I2V-14B-480P",
-                  allow_patterns=["config.json", "*.json", "google/*", "xlm-roberta-large/*",
-                                  "Wan2.1_VAE.pth", "models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth"],
-                  ignore_patterns=["diffusion_pytorch_model*", "models_t5_*"])
-snapshot_download("MeiGen-AI/InfiniteTalk", local_dir=f"{W}/InfiniteTalk",
-                  allow_patterns=["single/infinitetalk.safetensors", "quant_models/infinitetalk_single_fp8.*",
-                                  "quant_models/t5_fp8.safetensors", "quant_models/t5_map_fp8.json",
-                                  "quant_models/quant.json"])
+SET = os.environ.get("WEIGHTS_SET", "fp8")
+if SET == "full":  # whole Wan2.1 I2V 14B (bf16 DiT shards + bf16 T5) + lightx2v LoRA, ~93GB
+    snapshot_download("Wan-AI/Wan2.1-I2V-14B-480P", local_dir=f"{W}/Wan2.1-I2V-14B-480P",
+                      ignore_patterns=["assets/*", "examples/*"])
+    snapshot_download("MeiGen-AI/InfiniteTalk", local_dir=f"{W}/InfiniteTalk",
+                      allow_patterns=["single/infinitetalk.safetensors"])
+    p = hf_hub_download("Kijai/WanVideo_comfy", "Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank32.safetensors",
+                        local_dir=f"{W}/_lora")
+    os.replace(p, f"{W}/lightx2v_lora.safetensors")
+else:  # fp8: Wan2.1 base WITHOUT the 65GB bf16 DiT shards / 11GB bf16 T5, plus fp8 versions, ~42GB
+    snapshot_download("Wan-AI/Wan2.1-I2V-14B-480P", local_dir=f"{W}/Wan2.1-I2V-14B-480P",
+                      allow_patterns=["config.json", "*.json", "google/*", "xlm-roberta-large/*",
+                                      "Wan2.1_VAE.pth", "models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth"],
+                      ignore_patterns=["diffusion_pytorch_model*", "models_t5_*"])
+    snapshot_download("MeiGen-AI/InfiniteTalk", local_dir=f"{W}/InfiniteTalk",
+                      allow_patterns=["single/infinitetalk.safetensors", "quant_models/infinitetalk_single_fp8.*",
+                                      "quant_models/t5_fp8.safetensors", "quant_models/t5_map_fp8.json",
+                                      "quant_models/quant.json"])
 snapshot_download("TencentGameMate/chinese-wav2vec2-base", local_dir=f"{W}/chinese-wav2vec2-base")
 hf_hub_download("TencentGameMate/chinese-wav2vec2-base", "model.safetensors", revision="refs/pr/1",
                 local_dir=f"{W}/chinese-wav2vec2-base")
@@ -104,9 +122,11 @@ PINS
 pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "misaki[en]" "huggingface_hub>=0.30"
 python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto, diffusers, transformers, xfuser; print('imports ok', torch.__version__, diffusers.__version__, transformers.__version__, torch.cuda.is_available())"
 python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; import generate_infinitetalk; print('wan + generate_infinitetalk imports ok')"
+if [ "$WEIGHTS_SET" = fp8 ]; then
 stage quanto-build
 # Pre-compile optimum-quanto's CUDA kernels (fp8 Marlin) now, not mid-generation (few minutes, once per instance)
 python -c "from optimum.quanto.library.extensions.cuda import ext; ext.lib; print('quanto cuda ext built')"
+fi
 stage weights
 # hf_xet stalled at 0 Mbps mid-file for 20+ min (2026-11-22): plain HTTP (HF_HUB_DISABLE_XET), each attempt
 # capped at 15 min, up to 4 attempts — downloads resume where they stopped.
@@ -118,7 +138,8 @@ for i in 1 2 3 4; do
   echo "weights attempt $i failed or timed out — retrying (resumes)"
   [ "$i" = 4 ] && exit 1
 done
-test -s weights/InfiniteTalk/quant_models/infinitetalk_single_fp8.safetensors
+if [ "$WEIGHTS_SET" = fp8 ]; then test -s weights/InfiniteTalk/quant_models/infinitetalk_single_fp8.safetensors
+else test -s weights/Wan2.1-I2V-14B-480P/diffusion_pytorch_model-00007-of-00007.safetensors && test -s weights/lightx2v_lora.safetensors; fi
 """
 
 
@@ -141,7 +162,7 @@ def run_variant(c: dict, name: str, job: str, out: Path) -> Path:
     base = (f"cd {DIR} && python generate_infinitetalk.py"
             f" --ckpt_dir weights/Wan2.1-I2V-14B-480P --wav2vec_dir weights/chinese-wav2vec2-base"
             f" --infinitetalk_dir weights/InfiniteTalk/single/infinitetalk.safetensors"
-            f" --quant fp8 --quant_dir weights/InfiniteTalk/quant_models/infinitetalk_single_fp8.safetensors"
+            f" --offload_model False"  # default True = model to CPU after every forward pass (185 s/step)
             f" --input_json {job}/input.json --size infinitetalk-480 --mode streaming --motion_frame 9"
             f" --audio_save_dir {job}/audio_{name} --save_file {job}/out_{name} {v['args']}")
     for attempt, extra in enumerate(["", " --num_persistent_param_in_dit 0"]):  # 2nd try: low-VRAM mode
@@ -168,12 +189,14 @@ def main() -> None:
     load_dotenv(ROOT / ".env")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("episode_dir", type=Path, nargs="?")
-    ap.add_argument("--variants", default="B,A")
+    ap.add_argument("--variants", default="L")
+    ap.add_argument("--gpu", choices=list(GPUS), default="a100")
     ap.add_argument("--budget", type=float, default=3.0, help="stop before a variant that would exceed this ($)")
     ap.add_argument("--offers", action="store_true", help="list matching GPUs and exit (no cost)")
     args = ap.parse_args()
     if args.offers:
-        print_offers(find_offers(QUERY, MAX_DPH))
+        query, max_dph, _ = GPUS[args.gpu]
+        print_offers(find_offers(query, max_dph))
         return
     if not args.episode_dir:
         sys.exit(__doc__)
@@ -189,13 +212,20 @@ def main() -> None:
     bad = [n for n in names if n not in VARIANTS]
     if bad:
         sys.exit(f"Unknown variants {bad}; options: {list(VARIANTS)}")
+    sets = {VARIANTS[n]["weights"] for n in names}
+    if len(sets) != 1:
+        sys.exit("Don't mix fp8 (A/B) and full (L) variants in one run — they need different weights")
+    weights_set = sets.pop()
+    query, max_dph, disk_gb = GPUS[args.gpu]
+    print(f"weights {weights_set}, gpu {args.gpu} (max ${max_dph}/h, disk {disk_gb}GB)")
     prompt = prompt_for(episode)
     print(f"Scene: {scene.relative_to(ROOT)}\nPrompt: {prompt}\nVariants: {names}  budget ${args.budget:.2f}")
 
     done: dict[str, Path] = {}
     try:
-        with session(label="vdio-infinitetalk", image=IMAGE, disk_gb=DISK_GB, query=QUERY, max_dph=MAX_DPH,
-                     setup_name="install InfiniteTalk + weights", setup_script=SETUP_SCRIPT,
+        with session(label="vdio-infinitetalk", image=IMAGE, disk_gb=disk_gb, query=query, max_dph=max_dph,
+                     setup_name="install InfiniteTalk + weights",
+                     setup_script=f"export WEIGHTS_SET={weights_set}\n" + SETUP_SCRIPT,
                      setup_timeout=SETUP_TIMEOUT_SEC, budget_usd=args.budget) as (c, cost):
             job = f"/workspace/job{int(time.time())}"
             with step("upload scene + voice"):
