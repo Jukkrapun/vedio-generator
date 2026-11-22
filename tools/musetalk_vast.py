@@ -30,6 +30,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from media import ROOT
+from timing import step
 
 REMOTE_ROOT = "/tmp/vdio-musetalk"
 JOB_TIMEOUT_SEC = 1800
@@ -218,10 +219,10 @@ def fixed_cfg() -> dict | None:
 def infer(c: dict, image_or_video: Path, audio: Path, out: Path, bbox_shift: int, fps: int) -> Path:
     job = f"{REMOTE_ROOT}/{int(time.time())}"
     src_name = "face" + image_or_video.suffix.lower()
-    ssh(c, f"mkdir -p {job}/results")
-    print(f"Uploading {image_or_video.name} + {audio.name} ...")
-    scp(c, str(image_or_video), f"{c['dest']}:{job}/{src_name}")
-    scp(c, str(audio), f"{c['dest']}:{job}/voice{audio.suffix}")
+    with step(f"upload {image_or_video.name} + {audio.name}"):
+        ssh(c, f"mkdir -p {job}/results")
+        scp(c, str(image_or_video), f"{c['dest']}:{job}/{src_name}")
+        scp(c, str(audio), f"{c['dest']}:{job}/voice{audio.suffix}")
     config = (f"task_0:\n  video_path: \"{job}/{src_name}\"\n  audio_path: \"{job}/voice{audio.suffix}\"\n"
               f"  bbox_shift: {bbox_shift}\n")
     ssh(c, f"cat > {job}/task.yaml <<'YAML'\n{config}YAML")
@@ -229,15 +230,14 @@ def infer(c: dict, image_or_video: Path, audio: Path, out: Path, bbox_shift: int
            f" --inference_config {job}/task.yaml --result_dir {job}/results"
            f" --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json"
            f" --version v15 --fps {fps}")
-    print("Running MuseTalk 1.5 ...")
-    t0 = time.time()
-    log = ssh(c, f"bash -c {shlex.quote(cmd + ' 2>&1 | tail -n 40; exit ${PIPESTATUS[0]}')}", timeout=JOB_TIMEOUT_SEC)
-    remote = ssh(c, f"ls -t {job}/results/v15/*.mp4 2>/dev/null | head -n 1").strip()
-    if not remote:
-        raise RuntimeError(f"MuseTalk produced no mp4. Last log lines:\n{log}")
-    scp(c, f"{c['dest']}:{remote}", str(out))
-    ssh(c, f"rm -rf {job}")
-    print(f"MuseTalk done in {time.time() - t0:.0f}s")
+    with step("MuseTalk inference"):
+        log = ssh(c, f"bash -c {shlex.quote(cmd + ' 2>&1 | tail -n 40; exit ${PIPESTATUS[0]}')}", timeout=JOB_TIMEOUT_SEC)
+        remote = ssh(c, f"ls -t {job}/results/v15/*.mp4 2>/dev/null | head -n 1").strip()
+        if not remote:
+            raise RuntimeError(f"MuseTalk produced no mp4. Last log lines:\n{log}")
+    with step("download result"):
+        scp(c, f"{c['dest']}:{remote}", str(out))
+        ssh(c, f"rm -rf {job}")
     return out
 
 
@@ -253,14 +253,17 @@ def musetalk_session():
         raise RuntimeError(f"A vast instance from an earlier run may still be billing ({STATE}). "
                            "Run: python tools/musetalk_vast.py --cleanup")
     t0 = time.time()
-    instance_id, offer = create_instance()
+    with step("rent instance"):
+        instance_id, offer = create_instance()
     try:
-        c = wait_ssh(instance_id)
-        print("Installing MuseTalk 1.5 + weights (fresh instance, ~10-20 min) ...")
-        ssh(c, f"bash -c {shlex.quote(SETUP_SCRIPT)}", timeout=SETUP_TIMEOUT_SEC)
+        with step("boot + SSH ready (image pull)"):
+            c = wait_ssh(instance_id)
+        with step("install MuseTalk 1.5 + weights"):
+            ssh(c, f"bash -c {shlex.quote(SETUP_SCRIPT)}", timeout=SETUP_TIMEOUT_SEC)
         yield c
     finally:
-        destroy(instance_id)
+        with step("destroy instance"):
+            destroy(instance_id)
         hours = (time.time() - t0) / 3600
         print(f"Instance time {hours * 60:.0f} min ≈ ${hours * offer['dph_total']:.2f} (+ small storage/bandwidth)")
 
