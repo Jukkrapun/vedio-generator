@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { AudioLines, Check, Clapperboard, Clock3, Copy, MoonStar, Play, Youtube, Facebook } from "lucide-react";
+import { AudioLines, Check, Clapperboard, Clock3, Copy, Image as ImageIcon, MoonStar, Play, UserRound, Youtube, Facebook } from "lucide-react";
 import { toast } from "sonner";
-import type { Episode, EpisodeStatus, Job, Platform, Slot } from "@/lib/types";
+import type { Episode, EpisodeStatus, Job, Mode, Platform, Slot } from "@/lib/types";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/card";
 
@@ -50,4 +50,9 @@ export function VideoPlayer({ episode }: { episode: Episode }) {
 }
 export function PostLink({ url, children }: { url: string; children: React.ReactNode }) {
   return /^https?:\/\//i.test(url) ? <a href={url} target="_blank" rel="noreferrer">{children}</a> : <span>{children}</span>;
+}
+export const modeLabels: Record<Mode, string> = { image: "ภาพนิ่ง", video: "วิดีโอพิธีกร" };
+export function ModeBadge({ mode }: { mode: Mode }) {
+  const Icon = mode === "video" ? UserRound : ImageIcon;
+  return <Badge className={"mode-" + mode}><Icon size={13} aria-hidden />{modeLabels[mode]}</Badge>;
 }

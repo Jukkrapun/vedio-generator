@@ -277,3 +277,5 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
   .slot-card, .stat-card { padding: 14px; }
   .slot-actions .button { font-size: .82rem; }
 }
+.badge.mode-image { color: var(--muted); }
+.badge.mode-video { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--gold-text); }

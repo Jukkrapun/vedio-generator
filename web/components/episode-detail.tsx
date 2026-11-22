@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import type { PublishField } from "@/lib/publish";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type EpisodeDetail, type Platform, type Post } from "@/lib/types";
-import { CopyButton, Empty, EpisodeStatusBadge, PlatformBadge, PostLink, SeriesChip, VideoPlayer } from "./common";
+import { CopyButton, Empty, EpisodeStatusBadge, ModeBadge, PlatformBadge, PostLink, SeriesChip, VideoPlayer } from "./common";
 import { useOps } from "./ops-provider";
 import { PostForm } from "./post-form";
 import { Button } from "./ui/button";
@@ -34,7 +34,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
   const produce = <Button onClick={() => queue("produce")}><WandSparkles size={16} /> ผลิตคลิป</Button>;
   return <>
     <Link className="back-link" href="/episodes"><ArrowLeft size={16} /> คลิปทั้งหมด</Link>
-    <header className="page-heading"><div><div className="tag-row"><SeriesChip series={episode.series} /><EpisodeStatusBadge status={episode.status} /></div><h1>{episode.title}</h1></div>
+    <header className="page-heading"><div><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} /><EpisodeStatusBadge status={episode.status} /></div><h1>{episode.title}</h1></div>
       <div className="heading-actions">{produce}<Button variant="outline" onClick={() => queue("catalog")}><ListRestart size={16} /> สร้างแค็ตตาล็อกใหม่</Button></div>
     </header>
     <div className="detail-grid">
