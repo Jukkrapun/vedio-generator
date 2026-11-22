@@ -11,7 +11,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | 003-2026-11-19-got-myself-back | ฉันไม่ได้เสียเขาไป ฉันได้ตัวเองคืนมา | self-love, moving-on | video | rendered | 25.4s | - |
 | 004-2026-11-19-be-yourself | สิ่งที่เหนื่อยที่สุดในความรัก | self-love, self-worth | video | rendered | 18.3s | - |
 | 005-2026-11-20-dont-beg-for-attention | ถ้าต้องขอให้เขาสนใจ | self-worth, relationship-red-flags | image | posted | 16.2s | 0 views / 0 likes / 0 saves |
-| 006-2026-11-20-small-things | ความรักอยู่ในเรื่องเล็ก ๆ | true-love, small-gestures | image | rendered | 19.5s | - |
+| 006-2026-11-20-small-things | ความรักอยู่ในเรื่องเล็ก ๆ | true-love, small-gestures | image | posted | 19.5s | 0 views / 0 likes / 0 saves |
 | 007-2026-11-20-right-person-wrong-time | คนที่ใช่ในเวลาที่ไม่ใช่ | timing, letting-go | image | rendered | 14.6s | - |
 | 008-2026-11-20-love-yourself-first | รักตัวเองให้เป็นก่อน | self-love | image | rendered | 19.3s | - |
 | 009-2026-11-20-stop-waiting | เลิกรอคนที่ไม่กลับมา | letting-go, self-worth | image | posted | 15.7s | 0 views / 0 likes / 0 saves |
@@ -33,7 +33,8 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 ## Best performing (by views)
 
 1. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
-2. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
+2. 006-2026-11-20-small-things - 0 views / 0 likes / 0 saves
+3. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

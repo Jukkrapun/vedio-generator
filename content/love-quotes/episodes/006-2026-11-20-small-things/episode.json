@@ -5,7 +5,26 @@
     "true-love",
     "small-gestures"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "youtube",
+      "date": "2026-11-23",
+      "time": "12:00",
+      "url": "https://youtube.com/shorts/L5F1G1ZsAik",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    },
+    {
+      "platform": "tiktok",
+      "date": "2026-11-23",
+      "time": "12:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7710981778915282194",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",
