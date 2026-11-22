@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowLeft, ExternalLink, ListRestart, Pencil, Plus, Trash2, WandSparkles } from "lucide-react";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
-import type { PublishField } from "@/lib/data";
+import type { PublishField } from "@/lib/publish";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type EpisodeDetail, type Platform, type Post } from "@/lib/types";
 import { CopyButton, Empty, EpisodeStatusBadge, PlatformBadge, PostLink, SeriesChip, VideoPlayer } from "./common";

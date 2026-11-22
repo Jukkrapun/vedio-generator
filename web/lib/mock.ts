@@ -35,14 +35,14 @@ const posts: Record<string, Post[]> = {
   ],
 };
 
-export const mockEpisodes: EpisodeDetail[] = fixtures.map(([seriesIndex, slug, title, mode, line, tag, status], index) => {
+export const mockEpisodes: EpisodeDetail[] = fixtures.map(([seriesIndex, slug, title, mode, line, tag, status]) => {
   const series = mockSeries[seriesIndex];
   const fence = "```";
   const hashtags = seriesIndex === 0 ? "#ตอนตีสอง #เรื่องความรัก" : "#ตอนตีสอง #ชีวิตทำงาน";
   return {
     id: series + "/" + slug, series, slug, title, tags: [tag], mode, status,
-    videoUrl: status === "draft" ? null : "/demo/preview.mp4",
-    posterUrl: status === "draft" ? null : "/demo/poster-" + (index % 5) + ".jpg",
+    videoUrl: status === "draft" ? null : "/demo/" + slug + ".mp4",
+    posterUrl: status === "draft" ? null : "/demo/" + slug + ".jpg",
     posts: posts[slug] ?? [],
     segments: [{ id: "hook", text: title }, { id: "body", text: line }, { id: "close", text: "คืนนี้ค่อย ๆ วางเรื่องนี้ลงก็ได้นะ" }],
     script: "# " + title + "\n\n" + line + "\n\nคืนนี้ค่อย ๆ วางเรื่องนี้ลงก็ได้นะ",

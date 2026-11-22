@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Check, Search } from "lucide-react";
 import { useState } from "react";
-import { candidates } from "@/lib/data";
+import { candidates } from "@/lib/planner";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type Episode, type EpisodeStatus, type Platform } from "@/lib/types";
 import { Empty, EpisodeStatusBadge, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, platformNames, seriesNames, statusLabels } from "./common";

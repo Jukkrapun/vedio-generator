@@ -8,7 +8,7 @@ import { Button } from "./button";
 export function Modal({ open, close, title, description, children, sheet }: { open: boolean; close: () => void; title: string; description?: string; children: ReactNode; sheet?: boolean }) {
   return <Dialog.Root open={open} onOpenChange={next => { if (!next) close(); }}>
     <Dialog.Portal><Dialog.Overlay className="overlay" />
-      <Dialog.Content className={"modal" + (sheet ? " sheet" : "")} aria-describedby={description ? undefined : undefined}>
+      <Dialog.Content className={"modal" + (sheet ? " sheet" : "")} {...(!description && { "aria-describedby": undefined })}>
         <header><Dialog.Title>{title}</Dialog.Title><Dialog.Close asChild><Button variant="ghost" size="icon" aria-label="ปิด"><X size={19} /></Button></Dialog.Close></header>
         {description && <Dialog.Description className="muted">{description}</Dialog.Description>}
         {children}

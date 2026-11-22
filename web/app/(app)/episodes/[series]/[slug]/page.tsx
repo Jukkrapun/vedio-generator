@@ -1,5 +1,7 @@
-import { getEpisode, getToday, parsePublish } from "@/lib/data";
+import { getEpisode, getToday } from "@/lib/data";
+import { parsePublish } from "@/lib/publish";
 import { EpisodeScreen } from "@/components/episode-detail";
+
 export const metadata = { title: "รายละเอียดคลิป" };
 export default async function EpisodePage({ params }: { params: Promise<{ series: string; slug: string }> }) {
   const { series, slug } = await params;
