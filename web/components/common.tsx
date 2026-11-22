@@ -60,7 +60,7 @@ export function ModeBadge({ mode }: { mode: Mode }) {
 export function VersionBadge({ episode }: { episode: Episode }) {
   const take = episode.versions.find(v => v.id === episode.selectedVersion);
   if (!take) return null;
-  return <Badge className="version" title={"render " + take.rendered_at}>รอบ {take.number}/{episode.versions.length}</Badge>;
+  return <Badge className="version" title={"render " + take.rendered_at}>รอบ {take.number}/{episode.versions.length}{take.variant ? " · " + take.variant : ""}</Badge>;
 }
 export function takeTime(iso: string) {
   if (!iso) return "—";

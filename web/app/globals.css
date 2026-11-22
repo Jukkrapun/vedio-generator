@@ -290,3 +290,4 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
 .take-changes { margin: 6px 0 0; padding-left: 16px; font-size: .8rem; }
 .take-changes li { color: var(--muted); }
 .take-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.badge.variant { color: var(--platform-tt); }

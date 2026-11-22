@@ -56,7 +56,7 @@ export function videoFile(series: string, slug: string) {
 }
 
 // ---- render history (archived by ops/worker.py) ---------------------------
-export const VERSION_RE = /^\d{8}-\d{6}-(image|video)$/;
+export const VERSION_RE = /^\d{8}-\d{6}-(image|video)(-[a-z0-9-]+)?$/;
 const historyDir = (series: string, slug: string) => path.join(ROOT, "output", series, "history", slug);
 export function historyFile(series: string, slug: string, version: string) {
   if (!VERSION_RE.test(version)) throw new Error("bad version");
@@ -75,16 +75,18 @@ async function listVersions(series: string, slug: string): Promise<Version[]> {
   return Promise.all(ids.map(async (v, i) => {
     const meta = await readJson<Partial<Version>>(path.join(dir, v + ".json"), {});
     return {
-      id: v, number: i + 1, mode: v.endsWith("-video") ? "video" : "image",
+      id: v, number: i + 1, mode: VERSION_RE.exec(v)![1] as Mode, variant: (VERSION_RE.exec(v)![2] ?? "").slice(1),
       rendered_at: meta.rendered_at ?? "", duration: meta.duration ?? null, lines: meta.lines ?? [],
       videoUrl: `/api/video/${id}?v=${v}`, posterUrl: `/api/poster/${id}?v=${v}`,
     } satisfies Version;
   }));
 }
 
-/** Chosen take: episode.json "publish_version" if it still exists, else the newest take of the current mode, else the newest. */
+/** Chosen take: episode.json "publish_version" if it still exists, else the newest non-experiment take of the current mode. */
 function pickVersion(versions: Version[], wanted: string | undefined, mode: Mode) {
-  return versions.find(v => v.id === wanted) ?? [...versions].reverse().find(v => v.mode === mode) ?? versions.at(-1) ?? null;
+  // auto pick skips experiment takes (variant); pin one explicitly to post it
+  const newest = [...versions].reverse();
+  return versions.find(v => v.id === wanted) ?? newest.find(v => v.mode === mode && !v.variant) ?? newest.find(v => !v.variant) ?? newest[0] ?? null;
 }
 
 /** Validates series/slug against the real folders (no path traversal). */

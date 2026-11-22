@@ -86,8 +86,9 @@ def command(job: dict) -> list[str]:
 # Every render of output/<series>/<slug>-<mode>.mp4 is copied to
 # output/<series>/history/<slug>/<YYYYMMDD-HHMMSS>-<mode>.mp4 (+ .json with mode, time, duration,
 # spoken lines) so older takes survive re-renders and one can be picked for posting.
-VERSION_RE = re.compile(r"^\d{8}-\d{6}-(image|video)$")
-OUTPUT_RE = re.compile(r"^(\d{3}-\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(image|video)\.mp4$")
+VERSION_RE = re.compile(r"^\d{8}-\d{6}-(image|video)(-[a-z0-9-]+)?$")
+# <slug>-<mode>.mp4, or an experiment <slug>-<mode>-<variant>.mp4 (e.g. -video-infinitetalk-L.mp4)
+OUTPUT_RE = re.compile(r"^(\d{3}-\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(image|video)(?:-([A-Za-z0-9-]+))?\.mp4$")
 THAI = dt.timezone(dt.timedelta(hours=7))
 SETTLE_SEC = 15  # skip files still being written
 
@@ -117,21 +118,23 @@ def archive_renders() -> int:
         if not match or not (ROOT / "content" / series / "episodes" / match[1] / "episode.json").exists():
             continue
         slug, mode = match[1], match[2]
+        variant = re.sub(r"[^a-z0-9-]", "", (match[3] or "").lower()).strip("-")
         stat = video.stat()
         if time.time() - stat.st_mtime < SETTLE_SEC:
             continue
         folder = video.parent / "history" / slug
-        metas = [read(p) or {} for p in folder.glob(f"*-{mode}.json")]
-        if any(m.get("source_mtime") == int(stat.st_mtime) and m.get("size") == stat.st_size for m in metas):
+        metas = [read(p) or {} for p in folder.glob("*.json")]
+        if any(m.get("source", video.name) == video.name and m.get("source_mtime") == int(stat.st_mtime)
+               and m.get("size") == stat.st_size for m in metas):
             continue
-        version = dt.datetime.fromtimestamp(stat.st_mtime, THAI).strftime("%Y%m%d-%H%M%S") + f"-{mode}"
+        version = dt.datetime.fromtimestamp(stat.st_mtime, THAI).strftime("%Y%m%d-%H%M%S") + f"-{mode}" + (f"-{variant}" if variant else "")
         folder.mkdir(parents=True, exist_ok=True)
         target = folder / f"{version}.mp4"
         shutil.copy2(video, target)
         episode = read(ROOT / "content" / series / "episodes" / slug / "episode.json") or {}
         lines = [s.get("text", "") for s in episode.get("segments", []) if not s.get("skip")]
         write(folder / f"{version}.json", {
-            "id": version, "mode": mode, "rendered_at": dt.datetime.fromtimestamp(stat.st_mtime, THAI).isoformat(),
+            "id": version, "mode": mode, "variant": variant, "source": video.name, "rendered_at": dt.datetime.fromtimestamp(stat.st_mtime, THAI).isoformat(),
             "archived_at": now(), "size": stat.st_size, "source_mtime": int(stat.st_mtime),
             "duration": duration(target), "lines": lines,
         })

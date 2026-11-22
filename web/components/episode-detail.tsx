@@ -41,7 +41,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
       <div className="heading-actions">{produce}<Button variant="outline" onClick={() => queue("catalog")}><ListRestart size={16} /> สร้างแค็ตตาล็อกใหม่</Button></div>
     </header>
     <div className="detail-grid">
-      <div className="video-panel"><VideoPlayer key={playing.videoUrl ?? "none"} episode={playing} />{shown && <p className="small muted">กำลังแสดงรอบ {shown.number} · {takeTime(shown.rendered_at)}{shown.id === episode.selectedVersion ? " · ⭐ รอบที่จะลง" : ""}</p>}{!episode.videoUrl && produce}</div>
+      <div className="video-panel"><VideoPlayer key={playing.videoUrl ?? "none"} episode={playing} />{shown && <p className="small muted">กำลังแสดงรอบ {shown.number}{shown.variant ? " (" + shown.variant + ")" : ""} · {takeTime(shown.rendered_at)}{shown.id === episode.selectedVersion ? " · ⭐ รอบที่จะลง" : ""}</p>}{!episode.videoUrl && produce}</div>
       <Card className="detail-card"><Tabs defaultValue="script">
         <TabsList aria-label="รายละเอียดคลิป"><TabsTrigger value="script">สคริปต์</TabsTrigger><TabsTrigger value="publish">ข้อมูลลงคลิป</TabsTrigger><TabsTrigger value="posts">โพสต์ ({episode.posts.length})</TabsTrigger><TabsTrigger value="history">ประวัติ ({episode.versions.length})</TabsTrigger></TabsList>
         <TabsContent value="script" className="tab-panel">
@@ -67,7 +67,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
             return <div key={take.id} className={"take" + (selected ? " selected" : "") + (shown?.id === take.id ? " previewing" : "")}>
               <button className="take-thumb" aria-label={"ดูรอบ " + take.number} onClick={() => setPreview(take.id)}><img src={take.posterUrl} alt="" loading="lazy" onError={event => { event.currentTarget.style.display = "none"; }} /></button>
               <div>
-                <div className="take-head"><strong>รอบ {take.number}</strong><ModeBadge mode={take.mode} />{selected && <span className="main-slot"><Star size={12} fill="currentColor" /> รอบที่จะลง</span>}
+                <div className="take-head"><strong>รอบ {take.number}</strong><ModeBadge mode={take.mode} />{take.variant && <span className="badge variant">ทดลอง · {take.variant}</span>}{selected && <span className="main-slot"><Star size={12} fill="currentColor" /> รอบที่จะลง</span>}
                   {posted.map((post, index) => <PlatformBadge key={index} platform={post.platform} compact />)}</div>
                 <p className="small muted">{takeTime(take.rendered_at)}{take.duration ? " · " + take.duration + " วิ" : ""}</p>
                 {prev ? changed.length ? <ul className="take-changes">{changed.map((line, index) => <li key={index}>แก้: {line}</li>)}</ul> : <p className="small muted">บทพูดเหมือนรอบก่อน</p> : <p className="small muted">รอบแรกที่เก็บไว้</p>}
