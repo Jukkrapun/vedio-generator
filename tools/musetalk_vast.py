@@ -1,52 +1,154 @@
-"""MuseTalk 1.5 lip-sync on a running vast.ai instance, driven over SSH/SCP.
+"""MuseTalk 1.5 lip-sync on vast.ai — rents a GPU instance only for the job, then destroys it.
 
-Used by tools/lipsync.py when the engine is "musetalk". Can also be run alone to test the connection:
-    python tools/musetalk_vast.py --check
+Used by tools/lipsync.py when the engine is "musetalk". Standalone:
+    python tools/musetalk_vast.py --offers     # show the cheapest matching GPUs (no cost)
+    python tools/musetalk_vast.py --cleanup    # destroy an instance left over from a crashed run
+    python tools/musetalk_vast.py --check      # (fixed-instance mode) test the SSH connection
 
-.env (vast.ai → Instances → "Connect" shows the ssh command):
-    VAST_SSH_HOST=ssh4.vast.ai        VAST_SSH_PORT=12345
-    VAST_SSH_USER=root                (default root)
-    VAST_SSH_KEY=C:/Users/<you>/.ssh/id_ed25519   (optional; default ssh key otherwise)
-    MUSETALK_DIR=/workspace/MuseTalk  (repo on the instance, models already downloaded)
-    MUSETALK_PYTHON=python            (python with MuseTalk deps on the instance, e.g. a conda env path)
+Flow per job (on-demand, default):
+  search cheapest offer -> create instance -> wait for SSH -> install MuseTalk 1.5 + weights
+  -> upload face/voice -> inference -> download mp4 -> DESTROY instance (always, also on errors).
+The live instance id is written to .vast-instance.json (git-ignored) until destroyed, so a crash
+can be cleaned up with --cleanup. Billing stops only when the instance is destroyed.
 
-Input "video" may be a still image (POC) or a talking clip; MuseTalk outputs a clip as long as the audio.
+.env:
+    VAST_API_KEY=...            vast.ai → Account → API Keys  (never print it)
+    VAST_SSH_KEY=C:/Users/<you>/.ssh/id_ed25519   optional; its .pub must be in vast.ai → Account → SSH Keys
+    VAST_QUERY=...              optional offer filter (default DEFAULT_QUERY below)
+    VAST_MAX_DPH=0.6            optional max $/hour
+  Fixed-instance mode instead (instance you keep running yourself): VAST_SSH_HOST + VAST_SSH_PORT,
+  optional VAST_SSH_USER, MUSETALK_DIR, MUSETALK_PYTHON.
 """
+import json
 import os
 import shlex
+import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
 
+from media import ROOT
+
 REMOTE_ROOT = "/tmp/vdio-musetalk"
 JOB_TIMEOUT_SEC = 1800
+STATE = ROOT / ".vast-instance.json"
+IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTalk 1.5 expects
+DISK_GB = 40
+DEFAULT_QUERY = ("num_gpus=1 gpu_ram>=16 reliability>0.98 inet_down>300 disk_space>=50 "
+                 "cuda_vers>=11.8 rentable=true verified=true")
+BOOT_TIMEOUT_SEC = 900
+SETUP_TIMEOUT_SEC = 2400
+MUSETALK_DIR = "/workspace/MuseTalk"
+SETUP_SCRIPT = f"""set -e
+if [ -f {MUSETALK_DIR}/.ready ]; then echo ready; exit 0; fi
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -qq && apt-get install -y -qq git ffmpeg wget libgl1 libglib2.0-0 > /dev/null
+mkdir -p /workspace && cd /workspace
+[ -d MuseTalk ] || git clone -q https://github.com/TMElyralab/MuseTalk.git
+cd MuseTalk
+pip install -q -r requirements.txt
+pip install -q -U openmim
+mim install -q mmengine
+mim install -q "mmcv==2.0.1"
+mim install -q "mmdet==3.1.0"
+mim install -q "mmpose==1.1.0"
+pip install -q huggingface_hub gdown
+sh ./download_weights.sh > /tmp/weights.log 2>&1 || (tail -n 30 /tmp/weights.log; exit 1)
+test -f models/musetalkV15/unet.pth
+touch .ready && echo ready
+"""
 
 
-def _cfg() -> dict:
-    host, port = os.getenv("VAST_SSH_HOST"), os.getenv("VAST_SSH_PORT")
-    if not host or not port:
-        raise RuntimeError("Set VAST_SSH_HOST and VAST_SSH_PORT in .env (from vast.ai → Connect)")
-    return {
-        "dest": f"{os.getenv('VAST_SSH_USER', 'root')}@{host}",
-        "port": port,
-        "key": os.getenv("VAST_SSH_KEY"),
-        "dir": os.getenv("MUSETALK_DIR", "/workspace/MuseTalk"),
-        "python": os.getenv("MUSETALK_PYTHON", "python"),
-    }
+# ---------- vast.ai CLI ----------
 
+def vast(*args: str, timeout: int = 120) -> object:
+    exe = shutil.which("vastai") or str(Path(sys.executable).parent / "vastai")
+    key = os.getenv("VAST_API_KEY")
+    if not key:
+        raise RuntimeError("Set VAST_API_KEY in .env (vast.ai → Account → API Keys)")
+    r = subprocess.run([exe, *args, "--raw", "--api-key", key], capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, timeout=timeout)
+    if r.returncode != 0:
+        raise RuntimeError(f"vastai {args[0]} {args[1] if len(args) > 1 else ''} failed:\n{(r.stderr or r.stdout)[-2000:]}")
+    out = r.stdout.strip()
+    try:
+        return json.loads(out)
+    except json.JSONDecodeError:
+        return out
+
+
+def find_offers(limit: int = 5) -> list[dict]:
+    query = os.getenv("VAST_QUERY", DEFAULT_QUERY) + f" dph<{os.getenv('VAST_MAX_DPH', '0.6')}"
+    offers = vast("search", "offers", query, "-o", "dph")
+    if not offers:
+        raise RuntimeError(f"No vast.ai offers match: {query}")
+    return offers[:limit]
+
+
+def destroy(instance_id: int) -> None:
+    for attempt in range(3):
+        try:
+            vast("destroy", "instance", str(instance_id))
+            STATE.unlink(missing_ok=True)
+            print(f"Destroyed vast instance {instance_id} (billing stopped)")
+            return
+        except Exception as e:  # retry: a leaked instance keeps billing
+            print(f"WARNING: destroy attempt {attempt + 1} failed: {e}", file=sys.stderr)
+            time.sleep(5)
+    print(f"!!! Could not destroy instance {instance_id}. Run: python tools/musetalk_vast.py --cleanup "
+          f"or destroy it at https://cloud.vast.ai/instances/", file=sys.stderr)
+
+
+def cleanup() -> None:
+    if not STATE.exists():
+        print("No leftover instance recorded.")
+        return
+    destroy(json.loads(STATE.read_text())["id"])
+
+
+def create_instance() -> tuple[int, dict]:
+    offer = find_offers(1)[0]
+    print(f"Renting {offer.get('gpu_name')} ({offer.get('gpu_ram', 0) / 1024:.0f}GB) at ${offer['dph_total']:.3f}/h, offer {offer['id']}")
+    res = vast("create", "instance", str(offer["id"]), "--image", IMAGE, "--disk", str(DISK_GB),
+               "--ssh", "--direct", "--label", "vdio-musetalk")
+    instance_id = res["new_contract"]
+    STATE.write_text(json.dumps({"id": instance_id, "created": time.time()}))
+    return instance_id, offer
+
+
+def wait_ssh(instance_id: int) -> dict:
+    t0 = time.time()
+    print("Waiting for instance to boot ...")
+    while time.time() - t0 < BOOT_TIMEOUT_SEC:
+        info = vast("show", "instance", str(instance_id))
+        if isinstance(info, dict) and info.get("actual_status") == "running" and info.get("ssh_host"):
+            c = {"dest": f"root@{info['ssh_host']}", "port": str(info["ssh_port"]),
+                 "key": os.getenv("VAST_SSH_KEY"), "dir": MUSETALK_DIR, "python": "python"}
+            try:
+                ssh(c, "echo ok", timeout=30)
+                print(f"SSH ready after {time.time() - t0:.0f}s")
+                return c
+            except Exception:
+                pass  # sshd not up yet / key not propagated
+        time.sleep(15)
+    raise TimeoutError(f"Instance {instance_id} not reachable over SSH after {BOOT_TIMEOUT_SEC}s "
+                       "(is your SSH public key in vast.ai → Account → SSH Keys?)")
+
+
+# ---------- ssh / scp ----------
 
 def _opts(c: dict, port_flag: str) -> list[str]:
-    o = [port_flag, c["port"], "-o", "StrictHostKeyChecking=accept-new", "-o", "BatchMode=yes",
-         "-o", "ServerAliveInterval=30"]
-    return o + (["-i", c["key"]] if c["key"] else [])
+    o = [port_flag, c["port"], "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null",
+         "-o", "BatchMode=yes", "-o", "ServerAliveInterval=30", "-o", "LogLevel=ERROR"]
+    return o + (["-i", c["key"]] if c.get("key") else [])
 
 
 def ssh(c: dict, command: str, timeout: int = 120) -> str:
     r = subprocess.run(["ssh", *_opts(c, "-p"), c["dest"], command], capture_output=True, text=True,
                        encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, timeout=timeout)
     if r.returncode != 0:
-        raise RuntimeError(f"ssh failed ({r.returncode}): {command[:80]}...\n{(r.stderr or r.stdout)[-3000:]}")
+        raise RuntimeError(f"ssh failed ({r.returncode}): {command[:80]}...\n{(r.stderr + r.stdout)[-3000:]}")
     return r.stdout
 
 
@@ -57,22 +159,24 @@ def scp(c: dict, src: str, dst: str, timeout: int = 600) -> None:
         raise RuntimeError(f"scp failed: {src} -> {dst}\n{r.stderr[-2000:]}")
 
 
-def check() -> None:
-    c = _cfg()
-    out = ssh(c, f"cd {shlex.quote(c['dir'])} && ls models/musetalkV15 && nvidia-smi --query-gpu=name,memory.used,memory.total --format=csv,noheader")
-    print(out.strip())
+def fixed_cfg() -> dict | None:
+    host, port = os.getenv("VAST_SSH_HOST"), os.getenv("VAST_SSH_PORT")
+    if not host or not port:
+        return None
+    return {"dest": f"{os.getenv('VAST_SSH_USER', 'root')}@{host}", "port": port,
+            "key": os.getenv("VAST_SSH_KEY"), "dir": os.getenv("MUSETALK_DIR", MUSETALK_DIR),
+            "python": os.getenv("MUSETALK_PYTHON", "python")}
 
 
-def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int = 0, fps: int = 25) -> Path:
-    """Upload inputs, run MuseTalk 1.5 inference, download the result to `out`."""
-    c = _cfg()
+# ---------- job ----------
+
+def infer(c: dict, image_or_video: Path, audio: Path, out: Path, bbox_shift: int, fps: int) -> Path:
     job = f"{REMOTE_ROOT}/{int(time.time())}"
     src_name = "face" + image_or_video.suffix.lower()
     ssh(c, f"mkdir -p {job}/results")
-    print(f"Uploading {image_or_video.name} + {audio.name} to vast ...")
+    print(f"Uploading {image_or_video.name} + {audio.name} ...")
     scp(c, str(image_or_video), f"{c['dest']}:{job}/{src_name}")
     scp(c, str(audio), f"{c['dest']}:{job}/voice{audio.suffix}")
-
     config = (f"task_0:\n  video_path: \"{job}/{src_name}\"\n  audio_path: \"{job}/voice{audio.suffix}\"\n"
               f"  bbox_shift: {bbox_shift}\n")
     ssh(c, f"cat > {job}/task.yaml <<'YAML'\n{config}YAML")
@@ -80,9 +184,9 @@ def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int =
            f" --inference_config {job}/task.yaml --result_dir {job}/results"
            f" --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json"
            f" --version v15 --fps {fps}")
-    print("Running MuseTalk 1.5 on vast (first run loads models, can take a few minutes) ...")
+    print("Running MuseTalk 1.5 ...")
     t0 = time.time()
-    log = ssh(c, f"{cmd} 2>&1 | tail -n 40; exit ${{PIPESTATUS[0]}}", timeout=JOB_TIMEOUT_SEC)
+    log = ssh(c, f"bash -c {shlex.quote(cmd + ' 2>&1 | tail -n 40; exit ${PIPESTATUS[0]}')}", timeout=JOB_TIMEOUT_SEC)
     remote = ssh(c, f"ls -t {job}/results/v15/*.mp4 2>/dev/null | head -n 1").strip()
     if not remote:
         raise RuntimeError(f"MuseTalk produced no mp4. Last log lines:\n{log}")
@@ -92,11 +196,38 @@ def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int =
     return out
 
 
+def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int = 0, fps: int = 25) -> Path:
+    c = fixed_cfg()
+    if c:  # user keeps an instance running
+        return infer(c, image_or_video, audio, out, bbox_shift, fps)
+    if STATE.exists():
+        raise RuntimeError(f"A vast instance from an earlier run may still be billing ({STATE}). "
+                           "Run: python tools/musetalk_vast.py --cleanup")
+    t0 = time.time()
+    instance_id, offer = create_instance()
+    try:
+        c = wait_ssh(instance_id)
+        print("Installing MuseTalk 1.5 + weights (fresh instance, ~10-20 min) ...")
+        ssh(c, f"bash -c {shlex.quote(SETUP_SCRIPT)}", timeout=SETUP_TIMEOUT_SEC)
+        return infer(c, image_or_video, audio, out, bbox_shift, fps)
+    finally:
+        destroy(instance_id)
+        hours = (time.time() - t0) / 3600
+        print(f"Instance time {hours * 60:.0f} min ≈ ${hours * offer['dph_total']:.2f} (+ small storage/bandwidth)")
+
+
 if __name__ == "__main__":
     from dotenv import load_dotenv
-    from media import ROOT
     load_dotenv(ROOT / ".env")
-    if sys.argv[1:] == ["--check"]:
-        check()
+    arg = sys.argv[1:]
+    if arg == ["--offers"]:
+        for o in find_offers():
+            print(f"{o['id']:>10}  {o.get('gpu_name'):<16} {o.get('gpu_ram', 0) / 1024:>4.0f}GB  ${o['dph_total']:.3f}/h  "
+                  f"rel {o.get('reliability2', o.get('reliability', 0)):.3f}  {o.get('geolocation', '')}")
+    elif arg == ["--cleanup"]:
+        cleanup()
+    elif arg == ["--check"]:
+        c = fixed_cfg() or sys.exit("--check is for fixed-instance mode (VAST_SSH_HOST/PORT)")
+        print(ssh(c, f"cd {shlex.quote(c['dir'])} && ls models/musetalkV15 && nvidia-smi -L").strip())
     else:
         sys.exit(__doc__)

@@ -15,3 +15,6 @@ _archive/
 shared/characters/_inspiration/
 
 .venv/
+
+# live vast.ai instance id (musetalk_vast.py)
+.vast-instance.json
