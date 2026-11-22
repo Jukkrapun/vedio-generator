@@ -81,9 +81,24 @@ PYV=$(python -c 'import sys; print(f"cp{{sys.version_info[0]}}{{sys.version_info
 pip install -q --no-deps xformers==0.0.28 --index-url https://download.pytorch.org/whl/cu121
 pip install -q --no-deps "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.4cxx11abiFALSE-$PYV-$PYV-linux_x86_64.whl"
 grep -viE '^(gradio|dashscope)' requirements.txt > /tmp/req.txt
-pip install -q -r /tmp/req.txt librosa einops "huggingface_hub[hf_xet]>=0.30,<1.0" \\
-    torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1
-python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto; print('imports ok', torch.__version__, torch.cuda.is_available())"
+# requirements.txt only has minimums: latest diffusers/transformers need torch>=2.6 and crash on 2.4.1
+# (infer_schema error, 2026-11-22). Pin versions from InfiniteTalk's release era (mid-2025).
+cat > /tmp/constraints.txt <<'PINS'
+torch==2.4.1
+torchvision==0.19.1
+torchaudio==2.4.1
+diffusers==0.31.0
+transformers==4.49.0
+tokenizers==0.21.0
+accelerate==1.1.1
+xfuser==0.4.1
+optimum-quanto==0.2.6
+numpy<2
+huggingface_hub<1.0
+PINS
+pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "huggingface_hub[hf_xet]>=0.30"
+python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto, diffusers, transformers, xfuser; print('imports ok', torch.__version__, diffusers.__version__, transformers.__version__, torch.cuda.is_available())"
+python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; print('wan imports ok')"
 stage weights
 python - <<'PY'
 {WEIGHTS_PY}
