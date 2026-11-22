@@ -4,7 +4,7 @@ Usage:
     python tools/render_reel.py content/<series>/episodes/<episode>
 
 Steps: voice track (tools/tts.py, cached) -> backgrounds per span -> ASS subtitles
--> mux voice (+ optional music) -> burn subs -> output/<series>/<episode>.mp4
+-> mux voice (+ optional music) -> burn subs -> output/<series>/<episode>-<mode>.mp4
 
 Visuals per segment ("visual" in episode.json):
   "host"  - podcast host talking. Uses <episode>/video/host.mp4 (lip-sync video made from
@@ -20,7 +20,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from fontTools.ttLib import TTFont
 
-from media import FPS, HEIGHT, ROOT, WIDTH, host_look, run
+from media import FPS, HEIGHT, ROOT, WIDTH, host_look, output_path, run
 from subtitles import build_subtitles
 from tts import build_voice
 
@@ -179,8 +179,7 @@ def render(episode_dir: Path) -> Path:
     music = ROOT / episode["music"] if episode.get("music") else None
     mux_audio(episode_dir / "audio" / "voice.mp3", kept, total, music, work / "audio.m4a")
 
-    series = episode_dir.parent.parent.name
-    out = ROOT / "output" / series / f"{episode_dir.name}.mp4"
+    out = output_path(episode_dir, episode.get("mode", "image"))
     out.parent.mkdir(parents=True, exist_ok=True)
     # Run in the build dir so the subtitle filter gets plain relative paths (avoids Windows escaping issues)
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "clips.txt", "-i", "audio.m4a",

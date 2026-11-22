@@ -84,7 +84,7 @@ python tools/render_reel.py content/<series>/episodes/<episode>  # full render (
 - Shorten an episode AFTER lip-sync with `"skip": true` on segments: the same source windows are cut from voice.mp3 and host.mp4 (split at mid-pause), so lips stay in sync and no new lip-sync is needed. Editing `text` instead changes the voice and requires a new lip-sync.
 - TTS cache always keeps what was produced, including fallback audio, so `voice.mp3` never changes under an existing lip-sync video. To regenerate the voice (e.g. after upgrading ElevenLabs), delete `<episode>/audio/` AND redo the lip-sync.
 - Characters live in `shared/characters/<name>/` (`persona.md`, `reference/`, `scenes/`); copy `shared/characters/_template/` for a new one.
-- Output: `output/<series>/<episode>.mp4`, 1080x1920 30fps H.264/AAC, burned-in Thai subtitles (Leelawadee via libass). Fails if longer than 90s.
+- Output: `output/<series>/<episode>-<mode>.mp4` (one file per mode, e.g. `-image.mp4` and `-video.mp4` side by side; `media.output_path()`; catalog and `publish_fb.py` use the episode's current `mode`, `publish_fb.py --mode` overrides), 1080x1920 30fps H.264/AAC, burned-in Thai subtitles (Leelawadee via libass). Fails if longer than 90s.
 - TTS engine is chosen per episode with `"tts"` in `episode.json`:
   - `"edge"` (default, free): `voice` = `th-TH-PremwadeeNeural` (female) / `th-TH-NiwatNeural` (male). Intermittently returns no audio — the script retries.
   - `"elevenlabs"`: `voice` = ElevenLabs voice_id, optional `model` (default `eleven_v3`). Key is `ELEVENLABS_API_KEY` in `.env` (git-ignored, never print it).

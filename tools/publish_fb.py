@@ -5,7 +5,7 @@ Usage:
     python tools/publish_fb.py <episode_dir> --now
     python tools/publish_fb.py <episode_dir> --at "..." --dry-run      # show what would be sent
 
-Video: output/<series>/<episode>.mp4. Caption: the "## Facebook Reels" block of publish.md.
+Video: output/<series>/<episode>-<mode>.mp4 (--mode, default = episode's mode). Caption: the "## Facebook Reels" block of publish.md.
 The post is logged in episode.json -> "posts" (platform "facebook") and the catalog is refreshed.
 Needs FB_PAGE_ID + FB_PAGE_TOKEN in .env (create with tools/fb_token.py).
 Meta's API cannot set the "AI info" label: add it in Meta Business Suite before the post goes live.
@@ -24,7 +24,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from catalog import build_catalog
-from media import ROOT
+from media import ROOT, output_path
 
 GRAPH = "https://graph.facebook.com/v21.0"
 THAI_TZ = dt.timezone(dt.timedelta(hours=7))
@@ -101,11 +101,12 @@ def main() -> None:
     group.add_argument("--at", help='Thai time "YYYY-MM-DD HH:MM"')
     group.add_argument("--now", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--mode", choices=["image", "video"], help="which render to post (default: episode's mode)")
     args = parser.parse_args()
 
     episode_dir = args.episode_dir.resolve()
     series = episode_dir.parent.parent.name
-    video = ROOT / "output" / series / f"{episode_dir.name}.mp4"
+    video = output_path(episode_dir, args.mode)
     if not video.is_file():
         sys.exit(f"Rendered video not found: {video}")
     episode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8"))

@@ -3,7 +3,7 @@
 Usage:
     python tools/catalog.py <series>        # e.g. love-quotes
 
-The catalog is generated from each episode.json + output/<series>/<episode>.mp4, so it never
+The catalog is generated from each episode.json + output/<series>/<episode>-<mode>.mp4, so it never
 drifts from the real files. Do not edit catalog.md by hand; edit episode.json and re-run.
 
 episode.json fields read (besides title/mode/segments):
@@ -30,7 +30,7 @@ def spoken(text: str) -> str:
 
 def load_episode(folder: Path, output_dir: Path) -> dict:
     data = json.loads((folder / "episode.json").read_text(encoding="utf-8"))
-    video = output_dir / f"{folder.name}.mp4"
+    video = output_dir / f"{folder.name}-{data.get('mode', 'image')}.mp4"  # current mode's render
     posts = data.get("posts") or []
     status = "posted" if posts else "rendered" if video.exists() else "draft"
     try:

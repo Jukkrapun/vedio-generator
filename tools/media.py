@@ -48,3 +48,12 @@ def host_look(host: dict) -> dict:
     if scene is None:
         raise ValueError('episode.json "host" needs "look" (or "scene")')
     return {"scene": scene, "base_video": base, "name": look or scene.stem}
+
+
+def output_path(episode_dir: Path, mode: str | None = None) -> Path:
+    """Rendered video: output/<series>/<episode>-<mode>.mp4 (one file per mode, side by side).
+    mode defaults to the episode's current "mode" in episode.json."""
+    if mode is None:
+        import json
+        mode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8")).get("mode", "image")
+    return ROOT / "output" / episode_dir.parent.parent.name / f"{episode_dir.name}-{mode}.mp4"
