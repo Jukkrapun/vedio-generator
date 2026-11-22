@@ -26,6 +26,7 @@ import shutil
 import subprocess
 import sys
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 from media import ROOT
@@ -35,7 +36,7 @@ JOB_TIMEOUT_SEC = 1800
 STATE = ROOT / ".vast-instance.json"
 IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTalk 1.5 expects
 DISK_GB = 40
-DEFAULT_QUERY = ("num_gpus=1 gpu_ram>=16 reliability>0.98 inet_down>300 disk_space>=50 "
+DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_down>300 disk_space>=50 "
                  "cuda_vers>=11.8 rentable=true verified=true")
 BOOT_TIMEOUT_SEC = 900
 SETUP_TIMEOUT_SEC = 2400
@@ -196,10 +197,14 @@ def infer(c: dict, image_or_video: Path, audio: Path, out: Path, bbox_shift: int
     return out
 
 
-def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int = 0, fps: int = 25) -> Path:
+@contextmanager
+def musetalk_session():
+    """Yield a ready MuseTalk connection; rent + set up once, destroy on exit (also on errors).
+    Use it to lip-sync many clips on one instance: setup time is paid once per batch."""
     c = fixed_cfg()
     if c:  # user keeps an instance running
-        return infer(c, image_or_video, audio, out, bbox_shift, fps)
+        yield c
+        return
     if STATE.exists():
         raise RuntimeError(f"A vast instance from an earlier run may still be billing ({STATE}). "
                            "Run: python tools/musetalk_vast.py --cleanup")
@@ -209,11 +214,17 @@ def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int =
         c = wait_ssh(instance_id)
         print("Installing MuseTalk 1.5 + weights (fresh instance, ~10-20 min) ...")
         ssh(c, f"bash -c {shlex.quote(SETUP_SCRIPT)}", timeout=SETUP_TIMEOUT_SEC)
-        return infer(c, image_or_video, audio, out, bbox_shift, fps)
+        yield c
     finally:
         destroy(instance_id)
         hours = (time.time() - t0) / 3600
         print(f"Instance time {hours * 60:.0f} min ≈ ${hours * offer['dph_total']:.2f} (+ small storage/bandwidth)")
+
+
+def run_musetalk(image_or_video: Path, audio: Path, out: Path, bbox_shift: int = 0, fps: int = 25) -> Path:
+    """One clip on its own instance. For several clips use musetalk_session() + infer()."""
+    with musetalk_session() as c:
+        return infer(c, image_or_video, audio, out, bbox_shift, fps)
 
 
 if __name__ == "__main__":

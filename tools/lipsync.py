@@ -1,21 +1,23 @@
-"""Lip-sync an episode's voice onto the host's base talking video (video-to-video, fal.ai).
+"""Lip-sync episodes' voice onto the host look (MuseTalk on vast.ai, or video-to-video on fal.ai).
 
 Usage:
-    python tools/lipsync.py content/<series>/episodes/<episode> [--force] [--engine NAME] [--compare]
+    python tools/lipsync.py <episode> [<episode> ...] [--force] [--engine NAME] [--compare]
 
-Needs in episode.json:  "host": {"base_video": "shared/characters/<host>/base/<file>.mp4",
-                                 "lipsync": "<engine>"  (optional, default latentsync)}
-Needs in .env:          FAL_KEY=...
+Several episodes = one batch: all MuseTalk clips run on ONE rented vast.ai instance
+(rent + install once, destroyed at the end), so production should lip-sync many clips per run.
 
-Engines (prices checked 2026-11-19):
-  musetalk    MuseTalk 1.5 on own vast.ai GPU over SSH (tools/musetalk_vast.py) — input = look's
-              base.mp4 if present, else its still scene.png (POC). Pay only the instance hours.
+Needs in episode.json:  "host": {"character": "baitoey", "look": "<name>", "lipsync": "<engine>"}
+Needs in .env:          VAST_API_KEY (musetalk) / FAL_KEY (fal engines)
+
+Engines (prices checked 2026-11-19 / 2026-11-22):
+  musetalk    MuseTalk 1.5 on a vast.ai GPU (tools/musetalk_vast.py), ~$0.08-0.10/h — input = look's
+              base.mp4 if present, else its still scene.png (POC).
   latentsync  fal-ai/latentsync           $0.20/run up to 40s  — cheap, mouth looks over-smoothed
   sync-2      fal-ai/sync-lipsync/v2      $3/min (~$0.05/s)
   sync-2-pro  fal-ai/sync-lipsync/v2/pro  $5/min (~$0.083/s)  — best detail (teeth, close-ups)
 
-Writes <episode>/video/host.mp4 and video/lipsync.json (voice hash + engine). Skips if host.mp4
-already matches the current voice.mp3 and engine, so re-running never pays twice.
+Writes <episode>/video/host.mp4 and video/host.lipsync.json (voice hash + engine + base). Skips if
+host.mp4 already matches, so re-running never pays twice.
 --compare writes video/host-<engine>.mp4 instead and leaves host.mp4 alone.
 """
 import hashlib
@@ -28,7 +30,7 @@ import fal_client
 from dotenv import load_dotenv
 
 from media import ROOT, host_look, probe_duration, run
-from musetalk_vast import run_musetalk
+from musetalk_vast import infer, musetalk_session
 from tts import build_voice
 
 # engine -> (fal endpoint, extra arguments). Length mismatch: play the base clip back and forth.
@@ -38,7 +40,7 @@ ENGINES = {
     "sync-2-pro": ("fal-ai/sync-lipsync/v2/pro", {"sync_mode": "bounce"}),
     "musetalk": ("musetalk-1.5@vast", {}),
 }
-DEFAULT_ENGINE = "sync-2"  # user choice 2026-11-19: sync-2 for value, sync-2-pro for hero clips
+DEFAULT_ENGINE = "sync-2"  # for old episodes without "lipsync"; new templates set "musetalk"
 UPLOAD_CRF = 18  # re-encode the base clip (silent, trimmed) so uploads are smaller than the 65MB source
 
 
@@ -47,21 +49,21 @@ def file_hash(path: Path) -> str:
 
 
 def prepare_base(base: Path, total: float, out: Path) -> Path:
-    """Silent copy of the base clip trimmed to the voice length (LatentSync ping-pongs if shorter)."""
+    """Silent copy of the base clip trimmed to the voice length (fal engines ping-pong if shorter)."""
     length = min(probe_duration(base), total)
     run(["ffmpeg", "-y", "-i", str(base), "-t", f"{length:.3f}", "-an",
          "-c:v", "libx264", "-crf", str(UPLOAD_CRF), "-preset", "fast", "-pix_fmt", "yuv420p", str(out)])
     return out
 
 
-def lipsync(episode_dir: Path, force: bool = False, engine: str | None = None, compare: bool = False) -> Path:
+def plan(episode_dir: Path, force: bool = False, engine: str | None = None, compare: bool = False) -> dict:
+    """Resolve one episode's inputs; job["todo"] is False if host.mp4 already matches."""
     episode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8"))
-    engine = engine or (episode.get("host") or {}).get("lipsync", DEFAULT_ENGINE)
-    if engine not in ENGINES:
-        raise ValueError(f"Unknown lip-sync engine '{engine}'. Options: {', '.join(ENGINES)}")
-    endpoint, extra_args = ENGINES[engine]
     if not episode.get("host"):
         raise ValueError('episode.json needs "host": {"character": "baitoey", "look": "<name>"}')
+    engine = engine or episode["host"].get("lipsync", DEFAULT_ENGINE)
+    if engine not in ENGINES:
+        raise ValueError(f"Unknown lip-sync engine '{engine}'. Options: {', '.join(ENGINES)}")
     look = host_look(episode["host"])
     base = look["base_video"]
     if engine == "musetalk" and base is None:
@@ -78,27 +80,34 @@ def lipsync(episode_dir: Path, force: bool = False, engine: str | None = None, c
     video_dir.mkdir(exist_ok=True)
     name = f"host-{engine}" if compare else "host"
     out, meta_path = video_dir / f"{name}.mp4", video_dir / f"{name}.lipsync.json"
+    endpoint = ENGINES[engine][0]
     voice_hash = file_hash(voice)
     meta = json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.exists() else {}
     up_to_date = (meta.get("voice_sha1") == voice_hash and meta.get("engine") == endpoint
                   and meta.get("base_video", base_rel) == base_rel)
-    if out.exists() and up_to_date and not force:
+    todo = force or not (out.exists() and up_to_date)
+    if not todo:
         print(f"Up to date: {out} (voice unchanged) — use --force to redo")
-        return out
+    return {"dir": episode_dir, "engine": engine, "endpoint": endpoint, "base": base, "base_rel": base_rel,
+            "voice": voice, "total": total, "out": out, "meta_path": meta_path, "voice_sha1": voice_hash,
+            "todo": todo}
 
-    if engine == "musetalk":
-        run_musetalk(base, voice, out)
-        meta_path.write_text(json.dumps({"engine": endpoint, "base_video": base_rel, "voice_sha1": voice_hash},
-                                        indent=2), encoding="utf-8")
-        print(f"Lip-sync video: {out} ({probe_duration(out):.1f}s)")
-        return out
 
-    prepared = prepare_base(base, total, episode_dir / ".build-lipsync.mp4")
+def finish(job: dict) -> Path:
+    job["meta_path"].write_text(json.dumps({"engine": job["endpoint"], "base_video": job["base_rel"],
+                                            "voice_sha1": job["voice_sha1"]}, indent=2), encoding="utf-8")
+    print(f"Lip-sync video: {job['out']} ({probe_duration(job['out']):.1f}s)")
+    return job["out"]
+
+
+def run_fal(job: dict) -> Path:
+    endpoint, extra_args = ENGINES[job["engine"]]
+    prepared = prepare_base(job["base"], job["total"], job["dir"] / ".build-lipsync.mp4")
     try:
         print("Uploading base video + voice to fal ...")
         video_url = fal_client.upload_file(str(prepared))
-        audio_url = fal_client.upload_file(str(voice))
-        print(f"Running {endpoint} for {total:.1f}s of audio ...")
+        audio_url = fal_client.upload_file(str(job["voice"]))
+        print(f"Running {endpoint} for {job['total']:.1f}s of audio ...")
         result = fal_client.subscribe(
             endpoint,
             arguments={"video_url": video_url, "audio_url": audio_url, **extra_args},
@@ -106,19 +115,47 @@ def lipsync(episode_dir: Path, force: bool = False, engine: str | None = None, c
         )
     finally:
         prepared.unlink(missing_ok=True)
+    urllib.request.urlretrieve(result["video"]["url"], job["out"])
+    return finish(job)
 
-    urllib.request.urlretrieve(result["video"]["url"], out)
-    meta_path.write_text(json.dumps({"engine": endpoint, "base_video": base_rel, "voice_sha1": voice_hash},
-                                    indent=2), encoding="utf-8")
-    print(f"Lip-sync video: {out} ({probe_duration(out):.1f}s)")
-    return out
+
+def lipsync_many(episode_dirs: list[Path], force: bool = False, engine: str | None = None,
+                 compare: bool = False) -> list[Path]:
+    """Lip-sync several episodes. MuseTalk jobs share ONE vast.ai instance; fal jobs run one by one.
+    Returns each episode's host video path (in input order)."""
+    jobs = [plan(d, force, engine, compare) for d in episode_dirs]
+    todo = [j for j in jobs if j["todo"]]
+    failed = []
+    for j in todo:
+        if j["engine"] != "musetalk":
+            run_fal(j)
+    muse = [j for j in todo if j["engine"] == "musetalk"]
+    if muse:
+        print(f"MuseTalk batch: {len(muse)} clip(s) on one vast.ai instance")
+        with musetalk_session() as c:
+            for i, j in enumerate(muse, 1):
+                print(f"[{i}/{len(muse)}] {j['dir'].name}")
+                try:
+                    infer(c, j["base"], j["voice"], j["out"], bbox_shift=0, fps=25)
+                    finish(j)
+                except Exception as e:  # keep going: the instance is already paid for
+                    print(f"FAILED {j['dir'].name}: {e}", file=sys.stderr)
+                    failed.append(j["dir"].name)
+    if failed:
+        raise RuntimeError(f"Lip-sync failed for: {', '.join(failed)} (others succeeded)")
+    return [j["out"] for j in jobs]
+
+
+def lipsync(episode_dir: Path, force: bool = False, engine: str | None = None, compare: bool = False) -> Path:
+    return lipsync_many([episode_dir], force, engine, compare)[0]
 
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
     engine_arg = argv[argv.index("--engine") + 1] if "--engine" in argv else None
     positional = [a for a in argv if not a.startswith("--") and a != engine_arg]
-    if len(positional) != 1:
+    if not positional:
         sys.exit(__doc__)
     load_dotenv(ROOT / ".env")
-    lipsync(Path(positional[0]).resolve(), force="--force" in argv, engine=engine_arg, compare="--compare" in argv)
+    lipsync_many([Path(a).resolve() for a in positional], force="--force" in argv, engine=engine_arg,
+                 compare="--compare" in argv)
