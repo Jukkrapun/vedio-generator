@@ -68,8 +68,9 @@ def vast(*args: str, timeout: int = 120) -> object:
     key = os.getenv("VAST_API_KEY")
     if not key:
         raise RuntimeError("Set VAST_API_KEY in .env (vast.ai → Account → API Keys)")
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}  # cp874 console crashed the CLI
     r = subprocess.run([exe, *args, "--raw", "--api-key", key], capture_output=True, text=True,
-                       encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, timeout=timeout)
+                       encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, timeout=timeout, env=env)
     if r.returncode != 0:
         raise RuntimeError(f"vastai {args[0]} {args[1] if len(args) > 1 else ''} failed:\n{(r.stderr or r.stdout)[-2000:]}")
     out = r.stdout.strip()
@@ -87,25 +88,39 @@ def find_offers(limit: int = 5) -> list[dict]:
     return offers[:limit]
 
 
+def instance_ids(label: str | None = None) -> set[int]:
+    r = vast("show", "instances")
+    return {i["id"] for i in r if label is None or i.get("label") == label} if isinstance(r, list) else set()
+
+
 def destroy(instance_id: int) -> None:
-    for attempt in range(3):
+    """Destroy and VERIFY it is gone (the CLI asks y/N and exits 0 even when it did nothing)."""
+    for attempt in range(5):
         try:
-            vast("destroy", "instance", str(instance_id))
-            STATE.unlink(missing_ok=True)
-            print(f"Destroyed vast instance {instance_id} (billing stopped)")
-            return
+            vast("destroy", "instance", str(instance_id), "-y")
+            time.sleep(3)
+            if instance_id not in instance_ids():
+                STATE.unlink(missing_ok=True)
+                print(f"Destroyed vast instance {instance_id} (verified gone, billing stopped)")
+                return
+            print(f"WARNING: instance {instance_id} still listed after destroy, retrying ...", file=sys.stderr)
         except Exception as e:  # retry: a leaked instance keeps billing
             print(f"WARNING: destroy attempt {attempt + 1} failed: {e}", file=sys.stderr)
-            time.sleep(5)
+        time.sleep(5)
     print(f"!!! Could not destroy instance {instance_id}. Run: python tools/musetalk_vast.py --cleanup "
           f"or destroy it at https://cloud.vast.ai/instances/", file=sys.stderr)
 
 
 def cleanup() -> None:
-    if not STATE.exists():
-        print("No leftover instance recorded.")
-        return
-    destroy(json.loads(STATE.read_text())["id"])
+    """Destroy every instance this tool created (label vdio-musetalk) — never touches other instances."""
+    ids = instance_ids(label="vdio-musetalk")
+    if STATE.exists():
+        ids.add(json.loads(STATE.read_text())["id"])
+    if not ids:
+        STATE.unlink(missing_ok=True)
+        print("No instances on the account.")
+    for i in ids:
+        destroy(i)
 
 
 def create_instance() -> tuple[int, dict]:
@@ -118,23 +133,49 @@ def create_instance() -> tuple[int, dict]:
     return instance_id, offer
 
 
-def wait_ssh(instance_id: int) -> dict:
+def _endpoints(info: dict) -> list[tuple[str, str]]:
+    """SSH (host, port) candidates: direct public IP first (faster), then vast's ssh proxy."""
+    eps = []
+    direct = ((info.get("ports") or {}).get("22/tcp") or [{}])[0].get("HostPort")
+    if info.get("public_ipaddr") and direct:
+        eps.append((info["public_ipaddr"].strip(), str(direct)))
+    if info.get("ssh_host") and info.get("ssh_port"):
+        eps.append((info["ssh_host"], str(info["ssh_port"])))
+    return eps
+
+
+def wait_ssh(instance_id: int, timeout: int = BOOT_TIMEOUT_SEC) -> dict:
     t0 = time.time()
     print("Waiting for instance to boot ...")
-    while time.time() - t0 < BOOT_TIMEOUT_SEC:
+    last_status, last_err = None, ""
+    while time.time() - t0 < timeout:
         info = vast("show", "instance", str(instance_id))
-        if isinstance(info, dict) and info.get("actual_status") == "running" and info.get("ssh_host"):
-            c = {"dest": f"root@{info['ssh_host']}", "port": str(info["ssh_port"]),
-                 "key": os.getenv("VAST_SSH_KEY"), "dir": MUSETALK_DIR, "python": "python"}
-            try:
-                ssh(c, "echo ok", timeout=30)
-                print(f"SSH ready after {time.time() - t0:.0f}s")
-                return c
-            except Exception:
-                pass  # sshd not up yet / key not propagated
+        if isinstance(info, dict) and "instances" in info:  # some CLI versions wrap it
+            info = info["instances"]
+        if isinstance(info, list):
+            info = info[0] if info else {}
+        if not isinstance(info, dict):
+            raise RuntimeError(f"Unexpected 'vastai show instance' output: {str(info)[:300]}")
+        status = f"{info.get('actual_status')} / {info.get('status_msg') or ''}".strip()
+        if status != last_status:
+            print(f"  [{time.time() - t0:4.0f}s] {status[:160]}")
+            last_status = status
+        if info.get("actual_status") == "running":
+            for host, port in _endpoints(info):
+                c = {"dest": f"root@{host}", "port": port, "key": os.getenv("VAST_SSH_KEY"),
+                     "dir": MUSETALK_DIR, "python": "python"}
+                try:
+                    ssh(c, "echo ok", timeout=30)
+                    print(f"SSH ready after {time.time() - t0:.0f}s via {host}:{port}")
+                    return c
+                except Exception as e:  # sshd not up yet / key not propagated
+                    err = str(e).strip().splitlines()[-1][:200]
+                    if err != last_err:
+                        print(f"  ssh {host}:{port} not ready: {err}")
+                        last_err = err
         time.sleep(15)
-    raise TimeoutError(f"Instance {instance_id} not reachable over SSH after {BOOT_TIMEOUT_SEC}s "
-                       "(is your SSH public key in vast.ai → Account → SSH Keys?)")
+    raise TimeoutError(f"Instance {instance_id} not reachable over SSH after {timeout}s "
+                       f"(last status: {last_status}; last ssh error: {last_err or 'none'})")
 
 
 # ---------- ssh / scp ----------

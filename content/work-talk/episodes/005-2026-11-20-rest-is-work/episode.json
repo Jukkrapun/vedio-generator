@@ -1,5 +1,5 @@
 {
-  "mode": "image",
+  "mode": "video",
   "title": "การพักก็เป็นส่วนหนึ่งของการทำงาน",
   "tags": [
     "burnout",
@@ -18,6 +18,11 @@
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
   "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
+  "host": {
+    "character": "baitoey",
+    "look": "velvet-evening",
+    "lipsync": "musetalk"
+  },
   "segments": [
     {
       "id": "hook",
