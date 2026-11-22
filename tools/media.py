@@ -1,8 +1,29 @@
 """Shared constants and ffmpeg helpers for the reel pipeline."""
+import os
+import shutil
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def _ensure_ffmpeg_on_path() -> None:
+    """ffmpeg (winget Gyan.FFmpeg) is on PowerShell's PATH but not on Git Bash's / some IDE shells'.
+    If ffmpeg/ffprobe aren't found, add the winget install dir (or FFMPEG_DIR) to PATH for this process
+    and its subprocesses, so every tool works from any shell (2026-11-22: catalog showed '?' durations)."""
+    if shutil.which("ffmpeg") and shutil.which("ffprobe"):
+        return
+    candidates = [Path(os.environ["FFMPEG_DIR"])] if os.environ.get("FFMPEG_DIR") else []
+    winget = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "WinGet" / "Packages"
+    candidates += sorted(winget.glob("Gyan.FFmpeg*/ffmpeg-*/bin"), reverse=True)  # newest version first
+    for d in candidates:
+        if (d / "ffprobe.exe").exists() or (d / "ffprobe").exists():
+            os.environ["PATH"] = f"{d}{os.pathsep}{os.environ.get('PATH', '')}"
+            return
+    raise RuntimeError("ffmpeg/ffprobe not found: install with `winget install Gyan.FFmpeg` or set FFMPEG_DIR")
+
+
+_ensure_ffmpeg_on_path()
 WIDTH, HEIGHT, FPS = 1080, 1920, 30
 MAX_DURATION_SEC = 90
 FFMPEG_TIMEOUT_SEC = 300
