@@ -1,0 +1,49 @@
+{
+  "total": 17.36,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman from behind on a balcony at night holding a warm mug, distant city lights",
+      "text": "[softly] บางคืนก็แอบคิด... ถ้าเราเจอกันตอนนี้ จะเป็นยังไงนะ",
+      "cards": [
+        "บางคืนก็แอบคิด",
+        "ถ้าเราเจอกันตอนนี้ จะเป็นยังไงนะ"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.94,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "two separate lit windows in an apartment building at night, one person in each, far apart",
+      "text": "ตอนนี้เราโตขึ้น ใจเย็นขึ้น... แต่เขาก็มีชีวิตของเขาไปแล้ว",
+      "cards": [
+        "ตอนนี้เราโตขึ้น ใจเย็นขึ้น",
+        "แต่เขาก็มีชีวิตของเขาไปแล้ว"
+      ],
+      "audio": "01-body.mp3",
+      "start": 5.39,
+      "end": 10.75,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "an old train platform at night, a train leaving with light trails, empty bench",
+      "text": "[warmly] บางเรื่องมีไว้ให้จำ... ไม่ได้มีไว้ให้ย้อนกลับไป",
+      "cards": [
+        "บางเรื่องมีไว้ให้จำ",
+        "ไม่ได้มีไว้ให้ย้อนกลับไป"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 11.2,
+      "end": 16.16,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

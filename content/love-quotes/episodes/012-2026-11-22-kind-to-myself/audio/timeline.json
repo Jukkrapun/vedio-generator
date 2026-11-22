@@ -1,0 +1,49 @@
+{
+  "total": 16.72,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman from behind wrapped in a blanket on a sofa, only a small warm lamp on, 2 a.m. mood",
+      "text": "[softly] ตีสองแล้ว... เรายังโทษตัวเองอยู่หรือเปล่า",
+      "cards": [
+        "ตีสองแล้ว",
+        "เรายังโทษตัวเองอยู่หรือเปล่า"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.66,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a hand writing in a notebook under lamplight, a pen and tea mug, dark room",
+      "text": "คำที่เราพูดกับตัวเองในหัว... ถ้าเพื่อนเราได้ยิน เขาคงร้องไห้",
+      "cards": [
+        "คำที่เราพูดกับตัวเองในหัว",
+        "ถ้าเพื่อนเราได้ยิน เขาคงร้องไห้"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.11,
+      "end": 9.39,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a hand gently placed on a fogged window, faint city bokeh outside, quiet night",
+      "text": "[warmly] คืนนี้ลองพูดกับตัวเองดี ๆ สักประโยคนะ... เราผ่านมาได้ไกลแล้ว",
+      "cards": [
+        "คืนนี้ลองพูดกับตัวเองดี ๆ สักประโยคนะ",
+        "เราผ่านมาได้ไกลแล้ว"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 9.84,
+      "end": 15.52,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

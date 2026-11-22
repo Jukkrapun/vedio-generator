@@ -5,7 +5,6 @@ Format: `- slug — ไอเดีย (tags)`
 
 - first-love — รักแรกที่ไม่ได้แปลว่ารักสุดท้าย (missing, timing)
 - mixed-signals — ถ้าเขาทำให้งง นั่นคือคำตอบแล้ว (relationship-red-flags, self-worth)
-- loved-quietly — รักใครเงียบ ๆ โดยไม่ให้เขารู้ (unrequited)
 - choose-peace — เลือกความสงบ มากกว่าคนที่ทำให้ใจวุ่น (letting-go, self-love)
 - long-distance — ระยะทางไม่ได้ทำให้รักหาย ความเงียบต่างหาก (partnership)
 - healing-slowly — ไม่ต้องรีบหาย ค่อย ๆ ดีขึ้นก็พอ (moving-on, self-love)

@@ -1,0 +1,55 @@
+{
+  "mode": "image",
+  "title": "มูฟออนแบบเงียบ ๆ",
+  "tags": [
+    "moving-on",
+    "self-love"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field, night, dim light",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman seen from behind sitting on the edge of her bed at night, city lights through a window, dim lamp",
+      "text": "[softly] การมูฟออนจริง ๆ... ไม่ได้มีวันที่ตื่นมาแล้วหายเลย",
+      "cards": [
+        "การมูฟออนจริง ๆ",
+        "ไม่ได้มีวันที่ตื่นมาแล้วหายเลย"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a phone face-up on a nightstand showing a blurred photo, a hand resting beside it, soft lamp glow",
+      "text": "มันคือวันที่เราเห็นรูปเขา... แล้วใจไม่สั่นเหมือนเดิม",
+      "cards": [
+        "มันคือวันที่เราเห็นรูปเขา",
+        "แล้วใจไม่สั่นเหมือนเดิม"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "first light of dawn through sheer curtains, an empty cup on a windowsill, calm atmosphere",
+      "text": "[warmly] ถ้าวันนี้เจ็บน้อยลงนิดนึง... แปลว่าเรากำลังไปถูกทางแล้วนะ",
+      "cards": [
+        "ถ้าวันนี้เจ็บน้อยลงนิดนึง",
+        "แปลว่าเรากำลังไปถูกทางแล้วนะ"
+      ]
+    }
+  ]
+}

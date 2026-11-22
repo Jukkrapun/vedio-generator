@@ -1,0 +1,49 @@
+{
+  "total": 16.8,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "two silhouettes at a bus stop at night, one looking at the other, the other looking at a phone",
+      "text": "[softly] เคยรักใครที่ไม่เคยรู้เลยว่าเรารักไหม",
+      "cards": [
+        "เคยรักใครที่ไม่เคยรู้เลยว่าเรารักไหม"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.66,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a cafe table at night with two cups, one untouched, rain on the window",
+      "text": "เราจำได้ทุกอย่างที่เขาชอบ... ส่วนเขา จำชื่อเล่นเราไม่ได้ด้วยซ้ำ",
+      "cards": [
+        "เราจำได้ทุกอย่างที่เขาชอบ",
+        "ส่วนเขา จำชื่อเล่นเราไม่ได้ด้วยซ้ำ"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.11,
+      "end": 9.87,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a lone figure from behind walking under streetlights on a wet empty road",
+      "text": "[sighs] ไม่เป็นไรนะ... ความรู้สึกเราไม่ได้ผิด แค่มันไม่ได้มีไว้ให้เขา",
+      "cards": [
+        "ไม่เป็นไรนะ",
+        "ความรู้สึกเราไม่ได้ผิด",
+        "แค่มันไม่ได้มีไว้ให้เขา"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 10.32,
+      "end": 15.6,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

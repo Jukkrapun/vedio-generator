@@ -1,0 +1,54 @@
+{
+  "mode": "image",
+  "title": "รักอยู่คนเดียว",
+  "tags": [
+    "unrequited"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field, night, dim light",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "two silhouettes at a bus stop at night, one looking at the other, the other looking at a phone",
+      "text": "[softly] เคยรักใครที่ไม่เคยรู้เลยว่าเรารักไหม",
+      "cards": [
+        "เคยรักใครที่ไม่เคยรู้เลยว่าเรารักไหม"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a cafe table at night with two cups, one untouched, rain on the window",
+      "text": "เราจำได้ทุกอย่างที่เขาชอบ... ส่วนเขา จำชื่อเล่นเราไม่ได้ด้วยซ้ำ",
+      "cards": [
+        "เราจำได้ทุกอย่างที่เขาชอบ",
+        "ส่วนเขา จำชื่อเล่นเราไม่ได้ด้วยซ้ำ"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a lone figure from behind walking under streetlights on a wet empty road",
+      "text": "[sighs] ไม่เป็นไรนะ... ความรู้สึกเราไม่ได้ผิด แค่มันไม่ได้มีไว้ให้เขา",
+      "cards": [
+        "ไม่เป็นไรนะ",
+        "ความรู้สึกเราไม่ได้ผิด",
+        "แค่มันไม่ได้มีไว้ให้เขา"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "total": 14.72,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman seen from behind sitting on the edge of her bed at night, city lights through a window, dim lamp",
+      "text": "[softly] การมูฟออนจริง ๆ... ไม่ได้มีวันที่ตื่นมาแล้วหายเลย",
+      "cards": [
+        "การมูฟออนจริง ๆ",
+        "ไม่ได้มีวันที่ตื่นมาแล้วหายเลย"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.38,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a phone face-up on a nightstand showing a blurred photo, a hand resting beside it, soft lamp glow",
+      "text": "มันคือวันที่เราเห็นรูปเขา... แล้วใจไม่สั่นเหมือนเดิม",
+      "cards": [
+        "มันคือวันที่เราเห็นรูปเขา",
+        "แล้วใจไม่สั่นเหมือนเดิม"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.83,
+      "end": 8.83,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "first light of dawn through sheer curtains, an empty cup on a windowsill, calm atmosphere",
+      "text": "[warmly] ถ้าวันนี้เจ็บน้อยลงนิดนึง... แปลว่าเรากำลังไปถูกทางแล้วนะ",
+      "cards": [
+        "ถ้าวันนี้เจ็บน้อยลงนิดนึง",
+        "แปลว่าเรากำลังไปถูกทางแล้วนะ"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 9.28,
+      "end": 13.52,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

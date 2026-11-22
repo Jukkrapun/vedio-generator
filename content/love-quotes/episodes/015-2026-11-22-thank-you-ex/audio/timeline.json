@@ -1,0 +1,49 @@
+{
+  "total": 15.52,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand closing an old shoebox of letters and polaroids on a wooden floor, warm lamp light",
+      "text": "[softly] ฉันไม่ได้เกลียดเธอนะ... ฉันแค่ไม่ได้รักแล้ว",
+      "cards": [
+        "ฉันไม่ได้เกลียดเธอนะ",
+        "ฉันแค่ไม่ได้รักแล้ว"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.82,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a pressed dried flower inside an open book, soft night lamp, shallow focus",
+      "text": "ขอบคุณที่สอนให้รู้ว่าฉันชอบความรักแบบไหน... และไม่เอาแบบไหน",
+      "cards": [
+        "ขอบคุณที่สอนให้รู้ว่าฉันชอบความรักแบบไหน",
+        "และไม่เอาแบบไหน"
+      ],
+      "audio": "01-body.mp3",
+      "start": 4.27,
+      "end": 9.63,
+      "align": "01-body.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman from behind opening a door to a soft early morning light, hallway in shadow",
+      "text": "[warmly] ขอให้เธอเจอคนที่ใช่นะ... ฉันก็กำลังจะไปเจอเหมือนกัน",
+      "cards": [
+        "ขอให้เธอเจอคนที่ใช่นะ",
+        "ฉันก็กำลังจะไปเจอเหมือนกัน"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 10.08,
+      "end": 14.32,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

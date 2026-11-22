@@ -1,0 +1,55 @@
+{
+  "mode": "image",
+  "title": "ถ้าเราเจอกันตอนนี้",
+  "tags": [
+    "timing",
+    "missing"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field, night, dim light",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman from behind on a balcony at night holding a warm mug, distant city lights",
+      "text": "[softly] บางคืนก็แอบคิด... ถ้าเราเจอกันตอนนี้ จะเป็นยังไงนะ",
+      "cards": [
+        "บางคืนก็แอบคิด",
+        "ถ้าเราเจอกันตอนนี้ จะเป็นยังไงนะ"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "two separate lit windows in an apartment building at night, one person in each, far apart",
+      "text": "ตอนนี้เราโตขึ้น ใจเย็นขึ้น... แต่เขาก็มีชีวิตของเขาไปแล้ว",
+      "cards": [
+        "ตอนนี้เราโตขึ้น ใจเย็นขึ้น",
+        "แต่เขาก็มีชีวิตของเขาไปแล้ว"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "an old train platform at night, a train leaving with light trails, empty bench",
+      "text": "[warmly] บางเรื่องมีไว้ให้จำ... ไม่ได้มีไว้ให้ย้อนกลับไป",
+      "cards": [
+        "บางเรื่องมีไว้ให้จำ",
+        "ไม่ได้มีไว้ให้ย้อนกลับไป"
+      ]
+    }
+  ]
+}

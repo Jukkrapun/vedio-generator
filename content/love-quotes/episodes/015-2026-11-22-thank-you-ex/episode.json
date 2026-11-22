@@ -1,0 +1,55 @@
+{
+  "mode": "image",
+  "title": "ขอบคุณคนที่เคยรัก",
+  "tags": [
+    "letting-go",
+    "gratitude"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field, night, dim light",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a hand closing an old shoebox of letters and polaroids on a wooden floor, warm lamp light",
+      "text": "[softly] ฉันไม่ได้เกลียดเธอนะ... ฉันแค่ไม่ได้รักแล้ว",
+      "cards": [
+        "ฉันไม่ได้เกลียดเธอนะ",
+        "ฉันแค่ไม่ได้รักแล้ว"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a pressed dried flower inside an open book, soft night lamp, shallow focus",
+      "text": "ขอบคุณที่สอนให้รู้ว่าฉันชอบความรักแบบไหน... และไม่เอาแบบไหน",
+      "cards": [
+        "ขอบคุณที่สอนให้รู้ว่าฉันชอบความรักแบบไหน",
+        "และไม่เอาแบบไหน"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a woman from behind opening a door to a soft early morning light, hallway in shadow",
+      "text": "[warmly] ขอให้เธอเจอคนที่ใช่นะ... ฉันก็กำลังจะไปเจอเหมือนกัน",
+      "cards": [
+        "ขอให้เธอเจอคนที่ใช่นะ",
+        "ฉันก็กำลังจะไปเจอเหมือนกัน"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "mode": "image",
+  "title": "ใจดีกับตัวเองตอนตีสอง",
+  "tags": [
+    "self-love"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field, night, dim light",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a woman from behind wrapped in a blanket on a sofa, only a small warm lamp on, 2 a.m. mood",
+      "text": "[softly] ตีสองแล้ว... เรายังโทษตัวเองอยู่หรือเปล่า",
+      "cards": [
+        "ตีสองแล้ว",
+        "เรายังโทษตัวเองอยู่หรือเปล่า"
+      ]
+    },
+    {
+      "id": "body",
+      "image": "images/02-body.png",
+      "image_prompt": "a hand writing in a notebook under lamplight, a pen and tea mug, dark room",
+      "text": "คำที่เราพูดกับตัวเองในหัว... ถ้าเพื่อนเราได้ยิน เขาคงร้องไห้",
+      "cards": [
+        "คำที่เราพูดกับตัวเองในหัว",
+        "ถ้าเพื่อนเราได้ยิน เขาคงร้องไห้"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "a hand gently placed on a fogged window, faint city bokeh outside, quiet night",
+      "text": "[warmly] คืนนี้ลองพูดกับตัวเองดี ๆ สักประโยคนะ... เราผ่านมาได้ไกลแล้ว",
+      "cards": [
+        "คืนนี้ลองพูดกับตัวเองดี ๆ สักประโยคนะ",
+        "เราผ่านมาได้ไกลแล้ว"
+      ]
+    }
+  ]
+}
