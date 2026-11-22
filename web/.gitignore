@@ -3,4 +3,3 @@
 /next-env.d.ts
 /*.tsbuildinfo
 /.npm-cache
-!/public/demo/*.mp4

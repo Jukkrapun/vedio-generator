@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { duration } from "@/lib/time";
 import type { Job, Mode } from "@/lib/types";
 import { Empty, episodeHref, JobBadge, jobLabels, seriesNames } from "./common";
-import { useOps } from "./ops-provider";
+import { useJob, useOps } from "./ops-provider";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Confirm } from "./ui/dialog";
@@ -23,10 +23,10 @@ export function JobsScreen({ series }: { series: string[] }) {
     <header className="page-heading"><div><h1>สร้างตอนและงานผลิต</h1><p className="muted">เปิดตอนใหม่และติดตามคิวการผลิตคลิป</p></div></header>
     <div className="jobs-grid">
       <Card className="section-card"><div className="subheading-icon"><Plus size={20} /><h2>สร้างตอนใหม่</h2></div>
-        <form className="stack" onSubmit={event => {
+        <form className="stack" onSubmit={async event => {
           event.preventDefault();
           const form = new FormData(event.currentTarget);
-          const id = newEpisode(String(form.get("series")), String(form.get("slug")), form.get("mode") as Mode);
+          const id = await newEpisode(String(form.get("series")), String(form.get("slug")), form.get("mode") as Mode);
           toast.success("เพิ่มงานสร้างตอนแล้ว");
           router.push("/jobs/" + id);
         }}>
@@ -53,9 +53,9 @@ function JobLog({ lines }: { lines: string[] }) {
 }
 
 export function JobScreen({ id, initial }: { id: string; initial: Job | null }) {
-  const { jobs, episodes, cancelJob } = useOps();
+  const { episodes, cancelJob } = useOps();
   const [cancel, setCancel] = useState(false);
-  const job = jobs.find(item => item.id === id) ?? initial;
+  const job = useJob(id, initial);
   const episode = episodes.find(item => item.id === job?.episodeId);
   return <>
     <Link className="back-link" href="/jobs"><ArrowLeft size={16} /> คิวงาน</Link>
@@ -67,8 +67,8 @@ export function JobScreen({ id, initial }: { id: string; initial: Job | null }) 
       <Card className="section-card"><div className="section-heading"><div className="subheading-icon"><Terminal size={21} /><h2>บันทึกการทำงาน</h2></div><span className="muted small">{duration(job.started_at, job.finished_at)}</span></div>
         <JobLog lines={job.log} />
       </Card>
-      {cancel && <Confirm open title="ยกเลิกงานนี้?" description="งานตัวอย่างที่กำลังทำอยู่จะหยุดลง" confirmLabel="ยืนยันยกเลิก" destructive close={() => setCancel(false)}
-        action={() => { cancelJob(id); toast.success("ยกเลิกงานแล้ว"); }} />}
+      {cancel && <Confirm open title="ยกเลิกงานนี้?" description="งานที่กำลังทำอยู่จะถูกหยุด (ไฟล์ที่ทำเสร็จแล้วยังอยู่ใน cache)" confirmLabel="ยืนยันยกเลิก" destructive close={() => setCancel(false)}
+        action={async () => { await cancelJob(id); toast.success("ส่งคำสั่งยกเลิกแล้ว"); }} />}
     </>}
   </>;
 }

@@ -41,7 +41,7 @@ export function CopyButton({ value, label = "คัดลอก" }: { value: str
   return <Button variant="outline" onClick={() => void copyText(value)}><Copy size={15} />{label}</Button>;
 }
 export function Poster({ episode, linked = false }: { episode: Episode; linked?: boolean }) {
-  const image = episode.posterUrl ? <img src={episode.posterUrl} alt="" /> : <Clapperboard size={19} />;
+  const image = episode.posterUrl ? <img src={episode.posterUrl} alt="" loading="lazy" onError={event => { event.currentTarget.style.display = "none"; }} /> : <Clapperboard size={19} />;
   return linked ? <Link className="poster" href={episodeHref(episode)} aria-label={"ดูคลิป " + episode.title}>{image}<span className="poster-play"><Play size={14} fill="currentColor" /></span></Link> : <span className="poster">{image}</span>;
 }
 export function VideoPlayer({ episode }: { episode: Episode }) {

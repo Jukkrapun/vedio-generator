@@ -19,15 +19,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 type Action = { kind: "add" } | { kind: "edit" | "delete"; index: number; post: Post };
 
 export function EpisodeScreen({ id, initial, date, fields }: { id: string; initial: EpisodeDetail | null; date: string; fields: Record<Platform, PublishField[]> }) {
-  const { episodes, created, updatePosts, enqueue, schedule } = useOps();
+  const { episodes, created, addPost, removePost, updateStats, enqueue, schedule } = useOps();
   const router = useRouter();
   const [action, setAction] = useState<Action | null>(null);
   const details = initial ?? created[id];
   const episode = episodes.find(item => item.id === id);
   if (!details || !episode) return <><Button asChild variant="ghost"><Link href="/episodes"><ArrowLeft size={16} /> กลับไปที่คลิป</Link></Button><Empty>ไม่พบคลิปนี้</Empty></>;
   const close = () => setAction(null);
-  function queue(type: "produce" | "catalog") {
-    const job = enqueue(type, type === "produce" ? { episode: "content/" + episode!.series + "/episodes/" + episode!.slug } : { series: episode!.series }, type === "produce" ? id : undefined);
+  async function queue(type: "produce" | "catalog") {
+    const job = await enqueue(type, type === "produce" ? { episode: id } : { series: episode!.series });
     toast.success("เพิ่มงานเข้าคิวแล้ว");
     router.push("/jobs/" + job);
   }
@@ -65,14 +65,14 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
         </TabsContent>
       </Tabs></Card>
     </div>
-    {action?.kind === "add" && <PostForm date={date} time={schedule.main_slot} close={close} save={post => {
-      updatePosts(id, posts => [...posts, post]); close(); toast.success("บันทึกแล้ว");
+    {action?.kind === "add" && <PostForm date={date} time={schedule.main_slot} close={close} save={async post => {
+      await addPost(id, post); close(); toast.success("บันทึกแล้ว");
     }} />}
-    {action?.kind === "edit" && <Modal open close={close} title="แก้ไขสถิติโพสต์"><form className="stack" onSubmit={event => {
+    {action?.kind === "edit" && <Modal open close={close} title="แก้ไขสถิติโพสต์"><form className="stack" onSubmit={async event => {
       event.preventDefault();
       const form = new FormData(event.currentTarget);
       const stats = { views: Number(form.get("views")), likes: Number(form.get("likes")), saves: Number(form.get("saves")) };
-      updatePosts(id, posts => posts.map((post, index) => index === action.index ? { ...post, ...stats } : post));
+      await updateStats(id, action.index, stats);
       close(); toast.success("บันทึกสถิติแล้ว");
     }}>
       <label>ยอดดู<input required name="views" type="number" min="0" defaultValue={action.post.views} /></label>
@@ -80,8 +80,8 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
       <label>บันทึก<input required name="saves" type="number" min="0" defaultValue={action.post.saves} /></label>
       <div className="modal-actions"><Button type="button" variant="outline" onClick={close}>ยกเลิก</Button><Button type="submit">บันทึก</Button></div>
     </form></Modal>}
-    {action?.kind === "delete" && <Confirm open close={close} destructive title="ลบบันทึกการลงโพสต์?" description="รายการนี้จะถูกนำออกจากประวัติของคลิป" confirmLabel="ลบรายการ" action={() => {
-      updatePosts(id, posts => posts.filter((_, index) => index !== action.index)); toast.success("ลบบันทึกแล้ว");
+    {action?.kind === "delete" && <Confirm open close={close} destructive title="ลบบันทึกการลงโพสต์?" description="รายการนี้จะถูกนำออกจากประวัติของคลิป" confirmLabel="ลบรายการ" action={async () => {
+      await removePost(id, action.index); toast.success("ลบบันทึกแล้ว");
     }} />}
   </>;
 }

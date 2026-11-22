@@ -1,70 +1,111 @@
 "use client";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule } from "@/lib/types";
 
-function useOpsState(initialEpisodes: Episode[], initialJobs: Job[], initialSchedule: Schedule) {
+async function api<T>(url: string, init?: RequestInit & { json?: unknown }): Promise<T> {
+  const response = await fetch(url, {
+    ...init,
+    headers: init?.json !== undefined ? { "Content-Type": "application/json" } : undefined,
+    body: init?.json !== undefined ? JSON.stringify(init.json) : init?.body,
+  });
+  if (response.status === 401) { window.location.href = "/login"; throw new Error("unauthorized"); }
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error ?? "request failed");
+  return data as T;
+}
+const fail = (error: unknown) => { toast.error("ไม่สำเร็จ: " + (error instanceof Error ? error.message : String(error))); throw error; };
+
+function useOpsState(initialEpisodes: Episode[], initialJobs: Job[], initialSchedule: Schedule, initialPicks: Record<string, string>, date: string) {
+  const router = useRouter();
   const [episodes, setEpisodes] = useState(initialEpisodes);
-  const [created, setCreated] = useState<Record<string, EpisodeDetail>>({});
+  const [created] = useState<Record<string, EpisodeDetail>>({});
   const [jobs, setJobs] = useState(initialJobs);
-  const [schedule, setSchedule] = useState(initialSchedule);
-  const [picks, setPicks] = useState<Record<string, string>>({});
+  const [schedule, setScheduleState] = useState(initialSchedule);
+  const [picks, setPicksState] = useState(initialPicks);
+  const activeJobs = useRef(new Set<string>());
 
-  function updatePosts(id: string, update: (posts: Post[]) => Post[]) {
-    setEpisodes(current => current.map(episode => {
-      if (episode.id !== id) return episode;
-      const posts = update(episode.posts);
-      return { ...episode, posts, status: posts.length ? "posted" : episode.videoUrl ? "rendered" : "draft" };
-    }));
+  const refreshEpisodes = useCallback(async () => {
+    setEpisodes(await api<Episode[]>("/api/episodes"));
+    router.refresh();
+  }, [router]);
+
+  function setPosts(id: string, posts: Post[]) {
+    setEpisodes(current => current.map(e => e.id !== id ? e : { ...e, posts, status: posts.length ? "posted" : e.videoUrl ? "rendered" : "draft" }));
+  }
+  async function postOp(id: string, body: unknown) {
+    const { posts } = await api<{ posts: Post[] }>("/api/episodes/" + id + "/posts", { method: "POST", json: body }).catch(fail);
+    setPosts(id, posts);
+    return posts;
+  }
+  /** Returns the new post's index so it can be undone. */
+  async function addPost(id: string, post: Post) { return (await postOp(id, { op: "add", post })).length - 1; }
+  async function removePost(id: string, index: number) { await postOp(id, { op: "remove", index }); }
+  async function updateStats(id: string, index: number, stats: Pick<Post, "views" | "likes" | "saves">) { await postOp(id, { op: "update", index, stats }); }
+
+  async function setPick(platform: string, time: string, episode: string | null) {
+    await api("/api/picks", { method: "PUT", json: { date, platform, time, episode } }).catch(fail);
+    setPicksState(current => {
+      const next = { ...current };
+      if (episode) next[platform + "@" + time] = episode; else delete next[platform + "@" + time];
+      return next;
+    });
+  }
+  async function setSchedule(next: Schedule) {
+    setScheduleState(await api<Schedule>("/api/schedule", { method: "PUT", json: next }).catch(fail));
   }
 
-  function enqueue(type: JobType, args: Job["args"], episodeId?: string) {
-    const id = crypto.randomUUID?.() ?? Math.random().toString(36).slice(2);
-    setJobs(current => [{ id, type, args, episodeId, status: "queued", created_at: new Date().toISOString(), started_at: null, finished_at: null, exit_code: null, log: ["เพิ่มงานเข้าคิวแล้ว"] }, ...current]);
-    return id;
+  async function enqueue(type: JobType, args: Job["args"]) {
+    const job = await api<Job>("/api/jobs", { method: "POST", json: { type, args } }).catch(fail);
+    setJobs(current => [job, ...current]);
+    return job.id;
   }
+  async function newEpisode(series: string, slug: string, mode: Mode) { return enqueue("new_episode", { series, slug, mode }); }
+  async function cancelJob(id: string) { await api("/api/jobs/" + id, { method: "DELETE" }).catch(fail); }
 
-  function newEpisode(series: string, name: string, mode: Mode) {
-    const max = Math.max(0, ...episodes.filter(episode => episode.series === series).map(episode => Number(episode.slug.split("-")[0])));
-    const date = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Bangkok", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-    const slug = String(max + 1).padStart(3, "0") + "-" + date + "-" + name;
-    const id = series + "/" + slug;
-    const episode: EpisodeDetail = { id, series, slug, mode, title: name, tags: [], status: "draft", videoUrl: null, posterUrl: null, posts: [], segments: [], script: "", publish: "" };
-    setCreated(current => ({ ...current, [id]: episode }));
-    setEpisodes(current => [episode, ...current]);
-    return enqueue("new_episode", { series, slug: name, mode }, id);
-  }
-
-  function cancelJob(id: string) {
-    setJobs(current => current.map(job => job.id === id && job.status === "running" ? { ...job, status: "failed", finished_at: new Date().toISOString(), exit_code: 130, log: [...job.log, "ผู้ใช้ยกเลิกงาน"] } : job));
-  }
-
+  // Poll the job list; when a job finishes, reload episodes (new render, new post, new folder).
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setJobs(current => {
-        const running = current.find(job => job.status === "running");
-        const target = running ?? [...current].reverse().find(job => job.status === "queued");
-        if (!target) return current;
-        const now = new Date().toISOString();
-        const done = running && target.log.length >= 3;
-        const log = done ? "งานตัวอย่างเสร็จแล้ว" : running ? "กำลังประมวลผลงานตัวอย่าง" : "เริ่มงานตัวอย่าง";
-        return current.map(job => job.id === target.id ? {
-          ...job, log: [...job.log, log], status: done ? "done" : "running",
-          started_at: job.started_at ?? now, finished_at: done ? now : null, exit_code: done ? 0 : null,
-        } : job);
-      });
-    }, 5200);
-    return () => window.clearInterval(timer);
-  }, []);
+    let stopped = false;
+    const tick = async () => {
+      try {
+        const list = await api<Job[]>("/api/jobs");
+        if (stopped) return;
+        setJobs(current => list.map(job => ({ ...job, log: current.find(c => c.id === job.id)?.log ?? [] })));
+        const running = new Set(list.filter(j => j.status === "queued" || j.status === "running").map(j => j.id));
+        const finished = [...activeJobs.current].filter(id => !running.has(id));
+        activeJobs.current = running;
+        if (finished.some(id => list.find(j => j.id === id)?.type !== "poster")) await refreshEpisodes();
+      } catch { /* offline: try again next tick */ }
+    };
+    void tick();
+    const timer = window.setInterval(tick, 4000);
+    return () => { stopped = true; window.clearInterval(timer); };
+  }, [refreshEpisodes]);
 
-  return { episodes, created, jobs, schedule, setSchedule, picks, setPicks, updatePosts, enqueue, newEpisode, cancelJob };
+  return { episodes, created, jobs, schedule, setSchedule, picks, setPick, addPost, removePost, updateStats, enqueue, newEpisode, cancelJob, refreshEpisodes };
 }
 
 const OpsContext = createContext<ReturnType<typeof useOpsState> | null>(null);
-export function OpsProvider({ children, initialEpisodes, initialJobs, initialSchedule }: { children: ReactNode; initialEpisodes: Episode[]; initialJobs: Job[]; initialSchedule: Schedule }) {
-  return <OpsContext.Provider value={useOpsState(initialEpisodes, initialJobs, initialSchedule)}>{children}</OpsContext.Provider>;
+export function OpsProvider({ children, initialEpisodes, initialJobs, initialSchedule, initialPicks, date }: { children: ReactNode; initialEpisodes: Episode[]; initialJobs: Job[]; initialSchedule: Schedule; initialPicks: Record<string, string>; date: string }) {
+  return <OpsContext.Provider value={useOpsState(initialEpisodes, initialJobs, initialSchedule, initialPicks, date)}>{children}</OpsContext.Provider>;
 }
 export function useOps() {
   const context = useContext(OpsContext);
   if (!context) throw new Error("OpsProvider is required");
   return context;
+}
+
+/** Live job (with log) for the job detail page. */
+export function useJob(id: string, initial: Job | null) {
+  const [job, setJob] = useState(initial);
+  useEffect(() => {
+    let stopped = false;
+    const tick = async () => {
+      try { const next = await api<Job>("/api/jobs/" + id); if (!stopped) setJob(next); } catch { /* ignore */ }
+    };
+    const timer = window.setInterval(tick, 1500);
+    return () => { stopped = true; window.clearInterval(timer); };
+  }, [id]);
+  return job;
 }

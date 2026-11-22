@@ -17,14 +17,14 @@ export function Modal({ open, close, title, description, children, sheet }: { op
   </Dialog.Root>;
 }
 
-export function Confirm({ open, close, title, description, action, confirmLabel, children, destructive }: { open: boolean; close: () => void; title: string; description: string; action: () => void; confirmLabel: string; children?: ReactNode; destructive?: boolean }) {
+export function Confirm({ open, close, title, description, action, confirmLabel, children, destructive }: { open: boolean; close: () => void; title: string; description: string; action: () => void | Promise<void>; confirmLabel: string; children?: ReactNode; destructive?: boolean }) {
   return <Alert.Root open={open} onOpenChange={next => { if (!next) close(); }}>
     <Alert.Portal><Alert.Overlay className="overlay" />
       <Alert.Content className="modal">
         <Alert.Title>{title}</Alert.Title><Alert.Description className="muted">{description}</Alert.Description>
         {children}
         <footer className="modal-actions"><Alert.Cancel asChild><Button variant="outline">ยกเลิก</Button></Alert.Cancel>
-          <Alert.Action asChild><Button variant={destructive ? "danger" : "default"} onClick={action}>{confirmLabel}</Button></Alert.Action></footer>
+          <Alert.Action asChild><Button variant={destructive ? "danger" : "default"} onClick={() => void action()}>{confirmLabel}</Button></Alert.Action></footer>
       </Alert.Content>
     </Alert.Portal>
   </Alert.Root>;

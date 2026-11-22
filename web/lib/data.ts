@@ -1,22 +1,25 @@
-import { mockDate, mockEpisodes, mockJobs, mockSchedule, mockSeries, mockTime } from "./mock";
-import type { Episode } from "./types";
+import "server-only";
+import * as repo from "./repo";
 import { planToday } from "./planner";
 import { parsePublish } from "./publish";
+import { bangkokNow } from "./time";
 
-export async function getEpisodes(): Promise<Episode[]> {
-  return mockEpisodes.map(({ id, series, slug, title, tags, mode, status, videoUrl, posterUrl, posts }) =>
-    ({ id, series, slug, title, tags, mode, status, videoUrl, posterUrl, posts }));
-}
+export async function getEpisodes() { return repo.listEpisodes(); }
 export async function getEpisode(id: string) {
-  return mockEpisodes.find(episode => episode.id === id) ?? null;
+  const [series, slug] = id.split("/");
+  return repo.getEpisodeDetail(series, slug);
 }
 export async function getToday() {
-  return planToday(await getEpisodes(), mockSchedule, {}, mockDate, mockTime);
+  const { date, time } = bangkokNow();
+  const [episodes, schedule, picks] = await Promise.all([repo.listEpisodes(), repo.getSchedule(), repo.getPicks(date)]);
+  return { ...planToday(episodes, schedule, picks, date, time), picks };
 }
-export async function getSchedule() { return mockSchedule; }
-export async function getJobs() { return mockJobs; }
-export async function getJob(id: string) { return mockJobs.find(job => job.id === id) ?? null; }
-export async function getSeries() { return mockSeries; }
+export async function getSchedule() { return repo.getSchedule(); }
+export async function getJobs() { return repo.listJobs(); }
+export async function getJob(id: string) { return repo.getJob(id); }
+export async function getSeries() { return repo.listSeries(); }
 export async function getPublishFields() {
-  return Object.fromEntries(mockEpisodes.map(episode => [episode.id, parsePublish(episode.publish)]));
+  const episodes = await repo.listEpisodes();
+  const details = await Promise.all(episodes.filter(e => e.videoUrl).map(e => repo.getEpisodeDetail(e.series, e.slug)));
+  return Object.fromEntries(details.filter(d => !!d).map(d => [d!.id, parsePublish(d!.publish)]));
 }

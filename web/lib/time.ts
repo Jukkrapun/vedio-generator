@@ -1,4 +1,9 @@
 const timezone = "Asia/Bangkok";
+/** Current Thai date (YYYY-MM-DD) and time (HH:MM). */
+export function bangkokNow(at = new Date()) {
+  const parts = new Intl.DateTimeFormat("sv-SE", { timeZone: timezone, dateStyle: "short", timeStyle: "short" }).format(at).split(" ");
+  return { date: parts[0], time: parts[1].slice(0, 5) };
+}
 export function thaiDate(date: string) {
   const value = new Date(date + "T12:00:00+07:00");
   const format = (options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("th-TH", { timeZone: timezone, ...options }).format(value);

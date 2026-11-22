@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeftRight, ArrowUpRight, CalendarClock, Check, Clock3, Film, Star } from "lucide-react";
 import { toast } from "sonner";
 import { candidates, planToday } from "@/lib/planner";
 import type { PublishField } from "@/lib/publish";
-import { thaiDate } from "@/lib/time";
+import { bangkokNow, thaiDate } from "@/lib/time";
 import { platforms, type Platform, type Slot, type Today } from "@/lib/types";
 import { useOps } from "./ops-provider";
 import { CopyButton, Empty, PlatformBadge, Poster, SeriesChip, SlotBadge, episodeHref, platformNames } from "./common";
@@ -15,13 +15,14 @@ import { Card } from "./ui/card";
 import { Confirm, Modal } from "./ui/dialog";
 
 type Active = { kind: "post" | "pick" | "facebook"; slot: Slot };
-const slotKey = (slot: Slot) => slot.platform + "@" + slot.time;
 
 export function TodayScreen({ initial, fields }: { initial: Today; fields: Record<string, Record<Platform, PublishField[]>> }) {
-  const { episodes, schedule, picks, setPicks, updatePosts, enqueue } = useOps();
+  const { episodes, schedule, picks, setPick, addPost, removePost, enqueue } = useOps();
   const [active, setActive] = useState<Active | null>(null);
   const [dryRun, setDryRun] = useState(true);
-  const today = planToday(episodes, schedule, picks, initial.date, initial.time);
+  const [now, setNow] = useState(initial.time);
+  useEffect(() => { const timer = window.setInterval(() => setNow(bangkokNow().time), 30_000); return () => window.clearInterval(timer); }, []);
+  const today = planToday(episodes, schedule, picks, initial.date, now);
   const posted = today.slots.filter(slot => slot.state === "posted").length;
   const times = [...new Set(today.slots.map(slot => slot.time))].sort();
   const close = () => setActive(null);
@@ -52,18 +53,18 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
       </div> : <Empty>ยังไม่มีเวลาลงคลิปในตาราง</Empty>}
     </section>
 
-    {active?.kind === "post" && activeEpisode && <PostForm close={close} date={today.date} time={active.slot.time} platform={active.slot.platform} save={post => {
+    {active?.kind === "post" && activeEpisode && <PostForm close={close} date={today.date} time={active.slot.time} platform={active.slot.platform} save={async post => {
       const id = activeEpisode.id;
-      updatePosts(id, items => [...items, post]);
+      const index = await addPost(id, post);
       close();
-      toast.success("บันทึกแล้ว", { action: { label: "เลิกทำ", onClick: () => updatePosts(id, items => items.filter(item => item !== post)) } });
+      toast.success("บันทึกแล้ว", { action: { label: "เลิกทำ", onClick: () => void removePost(id, index) } });
     }} />}
     {active?.kind === "pick" && <Modal open close={close} sheet title="เปลี่ยนคลิป" description={platformNames[active.slot.platform] + " · " + active.slot.time}>
       <div className="candidate-list">{(() => {
         const reserved = new Set(today.slots.filter(slot => slot.platform === active.slot.platform && slot.time !== active.slot.time).map(slot => slot.episode?.id));
         const remaining = candidates(episodes, active.slot.platform).filter(episode => !reserved.has(episode.id));
-        return remaining.length ? remaining.map(episode => <button key={episode.id} className="candidate" onClick={() => {
-          setPicks(current => ({ ...current, [slotKey(active.slot)]: episode.id }));
+        return remaining.length ? remaining.map(episode => <button key={episode.id} className="candidate" onClick={async () => {
+          await setPick(active.slot.platform, active.slot.time, episode.id);
           close();
           toast.success("เปลี่ยนคลิปแล้ว");
         }}><Poster episode={episode} /><span><strong>{episode.title}</strong><SeriesChip series={episode.series} /></span>{episode.id === activeEpisode?.id && <Check size={18} />}</button>) : <Empty>ไม่มีคลิปที่เลือกได้</Empty>;
@@ -71,10 +72,10 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
     </Modal>}
     {active?.kind === "facebook" && activeEpisode && <Confirm open close={close}
       title="โพสต์จริงไปที่ Facebook Page — ยืนยัน?"
-      description="อย่าลืมติดป้าย AI info ใน Meta Business Suite · การยืนยันในโหมดตัวอย่างจะเพิ่มงานจำลองเท่านั้น"
-      confirmLabel="ยืนยันตั้งเวลา" action={() => {
-        enqueue("publish_fb", { episode: "content/" + activeEpisode.series + "/episodes/" + activeEpisode.slug, when: today.date + " " + active.slot.time, dry_run: dryRun }, activeEpisode.id);
-        toast.success("เพิ่มงานตั้งเวลาแล้ว");
+      description="อัปโหลด Reel และตั้งเวลาโพสต์จริง (ถ้าไม่ติ๊ก dry-run) · อย่าลืมติดป้าย AI info ใน Meta Business Suite"
+      confirmLabel="ยืนยันตั้งเวลา" action={async () => {
+        await enqueue("publish_fb", { episode: activeEpisode.id, when: today.date + " " + active.slot.time, dry_run: dryRun });
+        toast.success("เพิ่มงานตั้งเวลาแล้ว ดูผลที่หน้างาน");
       }}>
       <label className="checkbox"><input type="checkbox" checked={dryRun} onChange={event => setDryRun(event.target.checked)} />ทดสอบคำสั่ง (dry-run)</label>
     </Confirm>}
@@ -83,7 +84,8 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
 
 function SlotCard({ slot, main, fields, onAction }: { slot: Slot; main: boolean; fields?: PublishField[]; onAction: (kind: Active["kind"]) => void }) {
   const { episode, platform, state } = slot;
-  const caption = platform === "youtube" ? fields?.find(field => field.label === "คำอธิบาย")?.value : fields?.find(field => field.label === "แคปชัน")?.value;
+  const find = (...labels: string[]) => fields?.find(field => labels.includes(field.label.toLowerCase()))?.value;
+  const caption = platform === "youtube" ? find("description", "คำอธิบาย") : find("caption", "แคปชัน");
   return <Card className={"slot-card slot-" + state}>
     <div className="slot-top"><PlatformBadge platform={platform} compact /><span className="slot-time">{slot.time}</span><SlotBadge state={state} /></div>
     {episode ? <>

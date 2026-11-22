@@ -19,7 +19,7 @@ function Nav({ className }: { className: string }) {
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   return <div className="shell">
-    <aside className="sidebar"><Link href="/" aria-label="ตอนตีสอง"><Brand /></Link><Nav className="side-nav" /><div className="sidebar-bottom"><span className="online-dot" />โหมดตัวอย่าง</div></aside>
+    <aside className="sidebar"><Link href="/" aria-label="ตอนตีสอง"><Brand /></Link><Nav className="side-nav" /><div className="sidebar-bottom"><span className="online-dot" />เชื่อมต่อแล้ว</div></aside>
     <div className="workspace">
       <header className="topbar"><Link className="mobile-brand" href="/"><Brand /></Link><span className="desktop-context"><span className="online-dot" />จัดการช่อง</span>
         <div className="top-actions"><ThemeToggle /><Button asChild variant="ghost" size="icon"><Link href="/settings" aria-label="ตั้งค่า" aria-current={pathname === "/settings" ? "page" : undefined} title="ตั้งค่า"><Settings2 size={20} /></Link></Button></div>

@@ -44,11 +44,11 @@ export function SettingsScreen() {
         </section>)}
         <div className="settings-footer"><label>รอบหลัก<select value={draft.main_slot} onChange={event => setDraft({ ...draft, main_slot: event.target.value })} disabled={!times.length}>
           {!times.length && <option value="">ยังไม่มีเวลา</option>}{times.map(time => <option key={time} value={time}>{time}</option>)}
-        </select></label><Button onClick={() => { setSchedule(draft); toast.success("บันทึกตารางแล้ว"); }}><Save size={16} /> บันทึกตาราง</Button></div>
+        </select></label><Button onClick={async () => { await setSchedule(draft); toast.success("บันทึกตารางแล้ว"); }}><Save size={16} /> บันทึกตาราง</Button></div>
       </Card>
       <div className="stack">
         <Card className="section-card"><h2>ช่วงทดลองตาราง</h2><p className="muted">ถึง {thaiDate(draft.test_until)}</p></Card>
-        <Card className="section-card"><h2>บัญชี</h2><Button variant="outline" onClick={() => router.push("/login")}><LogOut size={16} /> ออกจากระบบ</Button></Card>
+        <Card className="section-card"><h2>บัญชี</h2><Button variant="outline" onClick={async () => { await fetch("/api/auth/logout", { method: "POST" }); router.push("/login"); }}><LogOut size={16} /> ออกจากระบบ</Button></Card>
       </div>
     </div>
   </>;

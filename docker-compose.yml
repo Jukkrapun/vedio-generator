@@ -1,0 +1,32 @@
+# Ops dashboard: http://localhost:3000 (phone: http://<pc-lan-ip>:3000)
+# All data stays on the host via bind mounts; containers hold no state.
+#   docker compose up -d --build
+# .env needs OPS_PASSWORD and OPS_SESSION_SECRET (32+ chars) in addition to the existing keys.
+services:
+  web:
+    build: { context: ./web, dockerfile: ../docker/web.Dockerfile }
+    ports: ["3000:3000"]
+    env_file: .env
+    environment:
+      REPO_ROOT: /repo
+      TZ: Asia/Bangkok
+    volumes:
+      - ./content:/repo/content
+      - ./output:/repo/output:ro
+      - ./.ops:/repo/.ops
+    restart: unless-stopped
+
+  worker:
+    build: { context: ., dockerfile: docker/worker.Dockerfile }
+    env_file: .env
+    environment:
+      TZ: Asia/Bangkok
+    volumes:
+      - ./content:/repo/content
+      - ./output:/repo/output
+      - ./shared:/repo/shared:ro
+      - ./tools:/repo/tools:ro
+      - ./ops:/repo/ops:ro
+      - ./.ops:/repo/.ops
+      - ./.env:/repo/.env:ro
+    restart: unless-stopped

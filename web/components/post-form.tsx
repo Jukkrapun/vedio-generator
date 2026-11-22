@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { platformNames } from "./common";
 import { platforms, type Platform, type Post } from "@/lib/types";
 
-export function PostForm({ close, save, date, time, platform }: { close: () => void; save: (post: Post) => void; date: string; time: string; platform?: Platform }) {
+export function PostForm({ close, save, date, time, platform }: { close: () => void; save: (post: Post) => void | Promise<void>; date: string; time: string; platform?: Platform }) {
   const [error, setError] = useState("");
   return <Modal open close={close} title={platform ? "บันทึกว่าลงแล้ว" : "เพิ่มบันทึกการลงโพสต์"} description={platform ? platformNames[platform] : undefined}>
     <form className="stack" onSubmit={event => {
@@ -13,7 +13,7 @@ export function PostForm({ close, save, date, time, platform }: { close: () => v
       const data = new FormData(event.currentTarget);
       const url = String(data.get("url")).trim();
       if (url && !/^https?:\/\//i.test(url)) { setError("ลิงก์ต้องขึ้นต้นด้วย https:// หรือ http://"); return; }
-      save({ platform: platform ?? data.get("platform") as Platform, date: String(platform ? date : data.get("date")), time: String(data.get("time")), url, views: 0, likes: 0, saves: 0, source: "web" });
+      void save({ platform: platform ?? data.get("platform") as Platform, date: String(platform ? date : data.get("date")), time: String(data.get("time")), url, views: 0, likes: 0, saves: 0, source: "web" });
     }}>
       {!platform && <label>แพลตฟอร์ม<select name="platform">{platforms.map(key => <option key={key} value={key}>{platformNames[key]}</option>)}</select></label>}
       <div className="form-grid">{!platform && <label>วันที่<input name="date" type="date" defaultValue={date} required /></label>}
