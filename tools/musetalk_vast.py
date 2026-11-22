@@ -30,7 +30,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from media import ROOT
-from timing import step
+from timing import fmt, step
 
 REMOTE_ROOT = "/tmp/vdio-musetalk"
 JOB_TIMEOUT_SEC = 1800
@@ -42,22 +42,51 @@ DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_d
 BOOT_TIMEOUT_SEC = 1800  # image pull alone took ~12 min on a slow host (2026-11-22)
 SETUP_TIMEOUT_SEC = 2400
 MUSETALK_DIR = "/workspace/MuseTalk"
-SETUP_SCRIPT = f"""set -e
+# Weights: NOT MuseTalk's download_weights.sh — it upgrades huggingface_hub to 1.x (no more
+# `huggingface-cli`, breaks the pinned deps) and uses the China mirror hf-mirror.com (2026-11-22).
+WEIGHTS_PY = r'''
+from huggingface_hub import hf_hub_download as get
+M = "models"
+for repo, files, sub in [
+    ("TMElyralab/MuseTalk", ["musetalkV15/musetalk.json", "musetalkV15/unet.pth",
+                             "musetalk/musetalk.json", "musetalk/pytorch_model.bin"], ""),
+    ("stabilityai/sd-vae-ft-mse", ["config.json", "diffusion_pytorch_model.bin"], "/sd-vae"),
+    ("openai/whisper-tiny", ["config.json", "pytorch_model.bin", "preprocessor_config.json"], "/whisper"),
+    ("yzd-v/DWPose", ["dw-ll_ucoco_384.pth"], "/dwpose"),
+    ("ByteDance/LatentSync", ["latentsync_syncnet.pt"], "/syncnet"),
+]:
+    for f in files:
+        print("weights:", repo, f, flush=True)
+        get(repo, f, local_dir=M + sub)
+'''
+SETUP_SCRIPT = f"""set -eo pipefail
 if [ -f {MUSETALK_DIR}/.ready ]; then echo ready; exit 0; fi
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq && apt-get install -y -qq git ffmpeg wget libgl1 libglib2.0-0 > /dev/null
+export DEBIAN_FRONTEND=noninteractive HF_HUB_ENABLE_HF_TRANSFER=0
+stage() {{ echo "=== $1 $(date +%s)"; }}
+stage apt
+apt-get update -qq && apt-get install -y -qq git ffmpeg wget curl libgl1 libglib2.0-0 > /dev/null
 mkdir -p /workspace && cd /workspace
+stage clone
 [ -d MuseTalk ] || git clone -q https://github.com/TMElyralab/MuseTalk.git
 cd MuseTalk
-pip install -q -r requirements.txt
-pip install -q -U openmim
+stage pip-requirements
+pip install -q --root-user-action=ignore -r requirements.txt
+stage mmlab
+pip install -q --root-user-action=ignore -U openmim
 mim install -q mmengine
 mim install -q "mmcv==2.0.1"
 mim install -q "mmdet==3.1.0"
 mim install -q "mmpose==1.1.0"
-pip install -q huggingface_hub gdown
-sh ./download_weights.sh > /tmp/weights.log 2>&1 || (tail -n 30 /tmp/weights.log; exit 1)
-test -f models/musetalkV15/unet.pth
+pip install -q --root-user-action=ignore gdown "huggingface_hub<1.0"
+stage weights-hf
+mkdir -p models/face-parse-bisent
+python - <<'PY'
+{WEIGHTS_PY}
+PY
+stage weights-face-parse
+gdown -q 154JgKpzCPW82qINcVieuPH3fZ2e0P812 -O models/face-parse-bisent/79999_iter.pth
+curl -sSL https://download.pytorch.org/models/resnet18-5c106cde.pth -o models/face-parse-bisent/resnet18-5c106cde.pth
+test -s models/musetalkV15/unet.pth && test -s models/face-parse-bisent/79999_iter.pth
 touch .ready && echo ready
 """
 
@@ -194,8 +223,25 @@ def ssh(c: dict, command: str, timeout: int = 120) -> str:
     r = subprocess.run(["ssh", *_opts(c, "-p"), c["dest"], command], capture_output=True, text=True,
                        encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, timeout=timeout)
     if r.returncode != 0:
-        raise RuntimeError(f"ssh failed ({r.returncode}): {command[:80]}...\n{(r.stderr + r.stdout)[-3000:]}")
+        noise = ("Running pip as the 'root' user", "debconf: delaying")
+        lines = [l for l in (r.stdout + "\n" + r.stderr).splitlines() if l.strip() and not any(n in l for n in noise)]
+        raise RuntimeError(f"ssh failed ({r.returncode}): {command[:80]}...\n" + "\n".join(lines[-40:]))
     return r.stdout
+
+
+def setup(c: dict) -> None:
+    """Install MuseTalk; on failure report the stage that broke + the end of its log."""
+    log = "/tmp/musetalk-setup.log"
+    ssh(c, f"cat > /tmp/musetalk-setup.sh <<'SETUP'\n{SETUP_SCRIPT}\nSETUP")
+    try:
+        ssh(c, f"bash /tmp/musetalk-setup.sh > {log} 2>&1", timeout=SETUP_TIMEOUT_SEC)
+    except RuntimeError:
+        stage = ssh(c, f"grep '^===' {log} | tail -n 1").strip() or "=== (before first stage)"
+        tail = ssh(c, f"grep -v -e \"Running pip as the 'root'\" -e 'debconf:' {log} | tail -n 40")
+        raise RuntimeError(f"MuseTalk setup failed at stage {stage[4:]}:\n{tail}") from None
+    marks = [l.split() for l in ssh(c, f"grep '^===' {log}; echo \"=== end $(date +%s)\"").splitlines()]
+    for (_, name, t), (_, _, t_next) in zip(marks, marks[1:]):  # "=== <stage> <epoch>"
+        print(f"    setup {name:<20} {fmt(int(t_next) - int(t))}")
 
 
 def scp(c: dict, src: str, dst: str, timeout: int = 600) -> None:
@@ -259,7 +305,7 @@ def musetalk_session():
         with step("boot + SSH ready (image pull)"):
             c = wait_ssh(instance_id)
         with step("install MuseTalk 1.5 + weights"):
-            ssh(c, f"bash -c {shlex.quote(SETUP_SCRIPT)}", timeout=SETUP_TIMEOUT_SEC)
+            setup(c)
         yield c
     finally:
         with step("destroy instance"):
