@@ -37,7 +37,7 @@ JOB_TIMEOUT_SEC = 1800
 STATE = ROOT / ".vast-instance.json"
 IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTalk 1.5 expects
 DISK_GB = 40
-DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_down>300 disk_space>=50 "
+DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_down>800 disk_space>=50 "
                  "cuda_vers>=11.8 rentable=true verified=true")
 BOOT_TIMEOUT_SEC = 1800  # image pull alone took ~12 min on a slow host (2026-11-22)
 SETUP_TIMEOUT_SEC = 2400
@@ -48,8 +48,7 @@ WEIGHTS_PY = r'''
 from huggingface_hub import hf_hub_download as get
 M = "models"
 for repo, files, sub in [
-    ("TMElyralab/MuseTalk", ["musetalkV15/musetalk.json", "musetalkV15/unet.pth",
-                             "musetalk/musetalk.json", "musetalk/pytorch_model.bin"], ""),
+    ("TMElyralab/MuseTalk", ["musetalkV15/musetalk.json", "musetalkV15/unet.pth"], ""),  # v1 weights unused
     ("stabilityai/sd-vae-ft-mse", ["config.json", "diffusion_pytorch_model.bin"], "/sd-vae"),
     ("openai/whisper-tiny", ["config.json", "pytorch_model.bin", "preprocessor_config.json"], "/whisper"),
     ("yzd-v/DWPose", ["dw-ll_ucoco_384.pth"], "/dwpose"),
@@ -79,7 +78,7 @@ mim install -q mmengine
 mim install -q "mmcv==2.0.1"
 mim install -q "mmdet==3.1.0"
 mim install -q "mmpose==1.1.0"
-pip install -q --root-user-action=ignore gdown "huggingface_hub<1.0"
+pip install -q --root-user-action=ignore gdown "huggingface_hub>=0.30,<1.0" hf_xet  # hf_xet: much faster HF downloads
 stage weights-hf
 mkdir -p models/face-parse-bisent
 python - <<'PY'
