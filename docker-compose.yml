@@ -1,11 +1,11 @@
-# Ops dashboard: http://localhost:3000 (phone: http://<pc-lan-ip>:3000)
+# Ops dashboard: http://localhost:3800 (phone: http://<pc-lan-ip>:3800)
 # All data stays on the host via bind mounts; containers hold no state.
 #   docker compose up -d --build
 # .env needs OPS_PASSWORD and OPS_SESSION_SECRET (32+ chars) in addition to the existing keys.
 services:
   web:
     build: { context: ./web, dockerfile: ../docker/web.Dockerfile }
-    ports: ["3000:3000"]
+    ports: ["3800:3000"]
     env_file: .env
     environment:
       REPO_ROOT: /repo

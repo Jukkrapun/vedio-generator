@@ -215,7 +215,7 @@ docker/worker.Dockerfile   python:3.13-slim + ffmpeg + fonts-thai-tlwg, pip inst
 services:
   web:
     build: { context: ., dockerfile: docker/web.Dockerfile }
-    ports: ["0.0.0.0:3000:3000"]        # reachable from phone on LAN / Tailscale
+    ports: ["0.0.0.0:3800:3800"]        # reachable from phone on LAN / Tailscale
     env_file: .env                       # OPS_PASSWORD, OPS_SESSION_SECRET
     environment: { REPO_ROOT: /repo, TZ: Asia/Bangkok }
     volumes:
@@ -241,7 +241,7 @@ services:
 
 New `.env` keys: `OPS_PASSWORD`, `OPS_SESSION_SECRET` (32+ random chars). Add `.ops/` and `web/node_modules/`, `web/.next/` to `.gitignore`.
 
-Phone access: LAN `http://<pc-ip>:3000` or Tailscale. Windows firewall must allow port 3000.
+Phone access: LAN `http://<pc-ip>:3800` or Tailscale. Windows firewall must allow port 3800.
 
 ---
 
