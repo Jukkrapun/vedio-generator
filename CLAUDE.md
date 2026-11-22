@@ -27,7 +27,13 @@ output/<series>/            rendered videos (git-ignored)
 - Page name: **ตอนตีสอง** (handle idea `@ton.tee.song` — availability not checked yet). Chosen 2026-11-20.
 - Concept: thoughts you have at 2 a.m. when you can't sleep — the channel covers many topics (love, work, horoscope, friends, trends), each as its own series. Host ใบเตย across all series.
 - Tone for every series: quiet, late-night, honest; night/dim-light visuals fit the brand.
-- Posting schedule (user's decision 2026-11-20): one clip **every day at 22:00** (Thai time), scheduled on each platform. Whenever giving posting info, remind the user to schedule it for 22:00 and suggest which clip is next.
+- Posting schedule (user's decision 2026-11-22, replaces 1 clip/day at 22:00; 2-week test until ~2026-12-06), Thai time, same clips reused across platforms (2–3 new clips/day):
+  - TikTok: 2–3/day at **12:00 · 19:00 · 22:00**
+  - YouTube Shorts: 2/day at **12:00 · 20:00**
+  - Facebook Reels: 1–2/day at **20:00 · 22:00** (`publish_fb.py --at` takes any time)
+  - 22:00 = main "ตอนตีสอง" clip (strongest); daytime slots test new hooks/topics. Remake winners (part 2 / same hook).
+  - After 2 weeks compare slots by completion rate and shares/saves; drop slots that underperform.
+  - Whenever giving posting info, give the slot times above and suggest which clip goes in which slot. Image mode only for volume (video mode is POC in another session).
 - TikTok (decided 2026-11-20): test the same clips as YouTube/Facebook first for 1–2 weeks, unchanged. Judge by completion rate (<~30% = format not working) and shares/saves, not views. If weak, options discussed: hook text on frame 1 (`-tiktok.mp4` renders), Baitoey video mode, a horoscope series, comment-reply clips.
 
 ## Current series
