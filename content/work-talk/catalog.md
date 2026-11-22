@@ -7,8 +7,8 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 | # | Title | Tags | Mode | Status | Length | Results |
 |---|---|---|---|---|---|---|
-| 001-2026-11-20-sunday-night-dread | คืนวันอาทิตย์ที่ใจหวิว | monday, anxiety | image | rendered | 20.9s | - |
-| 002-2026-11-20-tired-not-lazy | ไม่ได้ขี้เกียจ แค่เหนื่อยมานาน | burnout, rest | image | rendered | 19.3s | - |
+| 001-2026-11-20-sunday-night-dread | คืนวันอาทิตย์ที่ใจหวิว | monday, anxiety | image | posted | 20.9s | 0 views / 0 likes / 0 saves |
+| 002-2026-11-20-tired-not-lazy | ไม่ได้ขี้เกียจ แค่เหนื่อยมานาน | burnout, rest | image | posted | 19.3s | 0 views / 0 likes / 0 saves |
 | 003-2026-11-20-boss-line-at-night | หัวหน้าทักไลน์ตอนห้าทุ่ม | boundaries, boss | image | posted | 20.4s | 0 views / 0 likes / 0 saves |
 | 004-2026-11-20-comparing-careers | เพื่อนไปไกลแล้ว แต่เรายังอยู่ที่เดิม | career-doubt, comparison | image | rendered | 18.4s | - |
 | 005-2026-11-20-rest-is-work | การพักก็เป็นส่วนหนึ่งของการทำงาน | burnout, rest | video | rendered | 20.0s | - |
@@ -26,7 +26,9 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 ## Best performing (by views)
 
-1. 003-2026-11-20-boss-line-at-night - 0 views / 0 likes / 0 saves
+1. 001-2026-11-20-sunday-night-dread - 0 views / 0 likes / 0 saves
+2. 002-2026-11-20-tired-not-lazy - 0 views / 0 likes / 0 saves
+3. 003-2026-11-20-boss-line-at-night - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

@@ -5,7 +5,35 @@
     "burnout",
     "rest"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "youtube",
+      "date": "2026-11-22",
+      "time": "20:00",
+      "url": "https://youtube.com/shorts/05MvGZ9d770",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    },
+    {
+      "platform": "tiktok",
+      "date": "2026-11-22",
+      "time": "19:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7710967887342619956",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    },
+    {
+      "platform": "facebook",
+      "date": "2026-11-22",
+      "time": "20:00",
+      "post_id": "1432771096589498_122098732311559522",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",
