@@ -1,5 +1,5 @@
 import "server-only";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule } from "./types";
@@ -41,8 +41,20 @@ export async function listSeries(): Promise<string[]> {
   return entries.filter(e => e.isDirectory() && existsSync(path.join(ROOT, "content", e.name, "series.md"))).map(e => e.name).sort();
 }
 export function episodeDir(series: string, slug: string) { return path.join(ROOT, "content", series, "episodes", slug); }
-export function videoFile(series: string, slug: string) { return path.join(ROOT, "output", series, slug + ".mp4"); }
-export function posterFile(series: string, slug: string) { return path.join(OPS, "posters", series, slug + ".jpg"); }
+/** Episode's current "mode" (image|video), as tools/media.py output_path() uses it. */
+export function episodeMode(series: string, slug: string): Mode {
+  try {
+    const mode = JSON.parse(readFileSync(path.join(episodeDir(series, slug), "episode.json"), "utf-8")).mode;
+    return mode === "video" ? "video" : "image";
+  } catch { return "image"; }
+}
+/** Rendered video: output/<series>/<slug>-<mode>.mp4 (current mode), falling back to the old <slug>.mp4 name. */
+export function videoFile(series: string, slug: string) {
+  const current = path.join(ROOT, "output", series, `${slug}-${episodeMode(series, slug)}.mp4`);
+  const legacy = path.join(ROOT, "output", series, slug + ".mp4");
+  return existsSync(current) || !existsSync(legacy) ? current : legacy;
+}
+export function posterFile(series: string, slug: string) { return path.join(OPS, "posters", series, `${slug}-${episodeMode(series, slug)}.jpg`); }
 
 /** Validates series/slug against the real folders (no path traversal). */
 export async function resolveEpisode(series: string, slug: string) {

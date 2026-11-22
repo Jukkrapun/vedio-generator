@@ -66,9 +66,13 @@ def command(job: dict) -> list[str]:
         return cmd + (["--dry-run"] if a.get("dry_run") else [])
     if t == "poster":
         series, slug = a["episode"].split("/")
-        out = POSTERS / series / f"{slug}.jpg"
+        mode = (read(ROOT / episode_path(a["episode"]) / "episode.json") or {}).get("mode", "image")
+        video = ROOT / "output" / series / f"{slug}-{mode}.mp4"  # same rule as tools/media.output_path()
+        if not video.exists():
+            video = video.with_name(f"{slug}.mp4")  # pre-2026-11-22 name
+        out = POSTERS / series / f"{slug}-{mode}.jpg"
         out.parent.mkdir(parents=True, exist_ok=True)
-        return ["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.5", "-i", f"output/{series}/{slug}.mp4",
+        return ["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.5", "-i", str(video),
                 "-frames:v", "1", "-vf", "scale=270:-2", str(out)]
     raise ValueError(f"unknown job type {t!r}")
 
