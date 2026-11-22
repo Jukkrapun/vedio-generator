@@ -38,7 +38,7 @@ IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTal
 DISK_GB = 40
 DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_down>300 disk_space>=50 "
                  "cuda_vers>=11.8 rentable=true verified=true")
-BOOT_TIMEOUT_SEC = 900
+BOOT_TIMEOUT_SEC = 1800  # image pull alone took ~12 min on a slow host (2026-11-22)
 SETUP_TIMEOUT_SEC = 2400
 MUSETALK_DIR = "/workspace/MuseTalk"
 SETUP_SCRIPT = f"""set -e
@@ -130,6 +130,9 @@ def create_instance() -> tuple[int, dict]:
                "--ssh", "--direct", "--label", "vdio-musetalk")
     instance_id = res["new_contract"]
     STATE.write_text(json.dumps({"id": instance_id, "created": time.time()}))
+    key = os.getenv("VAST_SSH_KEY")
+    if key and Path(key + ".pub").exists():  # attach our key, so account SSH keys don't matter
+        vast("attach", "ssh", str(instance_id), Path(key + ".pub").read_text().strip())
     return instance_id, offer
 
 
