@@ -35,7 +35,9 @@ from timing import fmt, step
 REMOTE_ROOT = "/tmp/vdio-musetalk"
 JOB_TIMEOUT_SEC = 1800
 STATE = ROOT / ".vast-instance.json"
-IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTalk 1.5 expects
+BASE_IMAGE = "pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime"  # torch version MuseTalk 1.5 expects
+# VAST_IMAGE = our prebuilt image (docker/musetalk/): MuseTalk + weights baked in, setup is skipped.
+# Without it we fall back to BASE_IMAGE + installing everything on the instance (~7 min).
 DISK_GB = 40
 DEFAULT_QUERY = ("num_gpus=1 geolocation!=CN gpu_ram>=16 reliability>0.98 inet_down>800 disk_space>=50 "
                  "cuda_vers>=11.8 rentable=true verified=true")
@@ -157,7 +159,7 @@ def cleanup() -> None:
 def create_instance() -> tuple[int, dict]:
     offer = find_offers(1)[0]
     print(f"Renting {offer.get('gpu_name')} ({offer.get('gpu_ram', 0) / 1024:.0f}GB) at ${offer['dph_total']:.3f}/h, offer {offer['id']}")
-    res = vast("create", "instance", str(offer["id"]), "--image", IMAGE, "--disk", str(DISK_GB),
+    res = vast("create", "instance", str(offer["id"]), "--image", os.getenv("VAST_IMAGE", BASE_IMAGE), "--disk", str(DISK_GB),
                "--ssh", "--direct", "--label", "vdio-musetalk")
     instance_id = res["new_contract"]
     STATE.write_text(json.dumps({"id": instance_id, "created": time.time()}))
