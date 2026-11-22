@@ -113,9 +113,10 @@ def render_host_cut(video: Path, start: float, duration: float, out: Path, zoom:
          "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", str(out)])
 
 
-def render_backgrounds(episode: dict, episode_dir: Path, kept: list[dict], work: Path) -> list[Path]:
+def render_backgrounds(episode: dict, episode_dir: Path, kept: list[dict], work: Path,
+                       host_video: Path | None = None) -> list[Path]:
     default = default_visual(episode)
-    host_video = episode_dir / HOST_VIDEO
+    host_video = host_video or episode_dir / HOST_VIDEO
     use_video = is_video_mode(episode) and host_video.exists()
     if is_video_mode(episode) and not host_video.exists():
         print(f"WARNING: {host_video} not found -> PREVIEW with still host scene (no lip-sync)", file=sys.stderr)
@@ -159,7 +160,8 @@ def check_inputs(episode: dict, episode_dir: Path) -> None:
         raise FileNotFoundError(f"Missing host scene: {host_look(episode['host'])['scene']}")
 
 
-def render(episode_dir: Path) -> Path:
+def render(episode_dir: Path, host_video: Path | None = None, out: Path | None = None) -> Path:
+    """host_video/out override video/host.mp4 and the output path (used for engine comparisons)."""
     episode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8"))
     check_inputs(episode, episode_dir)
     timeline, voice_total = build_voice(episode_dir)
@@ -174,12 +176,12 @@ def render(episode_dir: Path) -> Path:
     subs = build_subtitles(kept, position, font_family(font_file), episode_dir / "audio")
     (work / "subs.ass").write_text(subs, encoding="utf-8")
 
-    clips = render_backgrounds(episode, episode_dir, kept, work)
+    clips = render_backgrounds(episode, episode_dir, kept, work, host_video)
     (work / "clips.txt").write_text("".join(f"file '{c.name}'\n" for c in clips), encoding="utf-8")
     music = ROOT / episode["music"] if episode.get("music") else None
     mux_audio(episode_dir / "audio" / "voice.mp3", kept, total, music, work / "audio.m4a")
 
-    out = output_path(episode_dir, episode.get("mode", "image"))
+    out = out or output_path(episode_dir, episode.get("mode", "image"))
     out.parent.mkdir(parents=True, exist_ok=True)
     # Run in the build dir so the subtitle filter gets plain relative paths (avoids Windows escaping issues)
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "clips.txt", "-i", "audio.m4a",
