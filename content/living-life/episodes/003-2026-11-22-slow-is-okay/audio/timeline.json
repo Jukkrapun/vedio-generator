@@ -1,0 +1,63 @@
+{
+  "total": 18.69,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person lying in bed at night, face lit only by a phone screen, out of focus",
+      "text": "[sighs] เลื่อนดูชีวิตคนอื่นแล้ว... รู้สึกว่าตัวเองช้าไปหมด",
+      "cards": [
+        "เลื่อนดูชีวิตคนอื่นแล้ว",
+        "รู้สึกว่าตัวเองช้าไปหมด"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 5.18,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a phone on a nightstand showing a blurred feed of bright photos, dark room",
+      "text": "แต่ทุกคน... โชว์แค่ตอนที่ดีที่สุดของตัวเอง",
+      "cards": [
+        "แต่ทุกคน",
+        "โชว์แค่ตอนที่ดีที่สุด\nของตัวเอง"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 5.63,
+      "end": 9.23,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a small potted plant on a windowsill at night with a new leaf, moonlight",
+      "text": "เทียบกับตัวเองเมื่อปีที่แล้วพอ... ไม่ต้องเทียบกับใคร",
+      "cards": [
+        "เทียบกับตัวเองเมื่อปีที่แล้วพอ",
+        "ไม่ต้องเทียบกับใคร"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 9.68,
+      "end": 13.44,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a lone person seen from behind walking on an empty night street, warm streetlights",
+      "text": "[warmly] เราไม่ได้ช้า... เราแค่เดินทางของเราเอง",
+      "cards": [
+        "เราไม่ได้ช้า",
+        "เราแค่เดินทางของเราเอง"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 13.89,
+      "end": 17.49,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

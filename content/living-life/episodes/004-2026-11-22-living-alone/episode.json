@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "อยู่คนเดียวไม่ได้แปลว่าเหงา",
+  "tags": [
+    "living-alone",
+    "loneliness"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a small dark studio apartment kitchen at night, fridge light glowing",
+      "text": "[softly] อยู่คนเดียวครั้งแรก... เงียบจนได้ยินเสียงตู้เย็น",
+      "cards": [
+        "อยู่คนเดียวครั้งแรก",
+        "เงียบจนได้ยินเสียงตู้เย็น"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind cooking instant noodles in a tiny kitchen, warm light",
+      "text": "แต่พอผ่านไปสักพัก... ความเงียบนั้นเริ่มกลายเป็นของเรา",
+      "cards": [
+        "แต่พอผ่านไปสักพัก",
+        "ความเงียบนั้น\nเริ่มกลายเป็นของเรา"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a cozy reading corner with a lamp, blanket and a book, rain on the window",
+      "text": "ลองทำห้องให้น่าอยู่สำหรับตัวเอง... สักมุมนึง",
+      "cards": [
+        "ลองทำห้องให้น่าอยู่\nสำหรับตัวเอง",
+        "สักมุมนึง"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person wrapped in a blanket on a sofa watching rain, seen from behind, soft lamp",
+      "text": "[warmly] อยู่กับตัวเองให้เป็น... แล้วจะไม่กลัวความเงียบอีก",
+      "cards": [
+        "อยู่กับตัวเองให้เป็น",
+        "แล้วจะไม่กลัวความเงียบอีก"
+      ]
+    }
+  ]
+}

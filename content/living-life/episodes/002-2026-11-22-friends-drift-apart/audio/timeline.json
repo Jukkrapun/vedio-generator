@@ -1,0 +1,63 @@
+{
+  "total": 19.17,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an old instant photo of friends lying on a desk, faces out of focus, lamp light",
+      "text": "[softly] เพื่อนบางคน... ไม่ได้ทะเลาะกัน แค่ค่อย ๆ หายไป",
+      "cards": [
+        "เพื่อนบางคน",
+        "ไม่ได้ทะเลาะกัน\nแค่ค่อย ๆ หายไป"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.94,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "two empty paths splitting under streetlights at night, light mist",
+      "text": "เพราะชีวิตเราแยกทางกันเดิน... ไม่มีใครผิดเลย",
+      "cards": [
+        "เพราะชีวิตเราแยกทางกันเดิน",
+        "ไม่มีใครผิดเลย"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 5.39,
+      "end": 10.03,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a person seen from behind looking at a box of old keepsakes on the floor, warm lamp",
+      "text": "ขอบคุณที่เคยอยู่ด้วยกันในช่วงนั้น... ก็พอ",
+      "cards": [
+        "ขอบคุณที่เคยอยู่ด้วยกัน\nในช่วงนั้น",
+        "ก็พอ"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 10.48,
+      "end": 14.08,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a quiet night bus stop with one warm light, empty bench",
+      "text": "[warmly] คนที่ใช่... เดี๋ยวก็วนกลับมาเจอกันเอง",
+      "cards": [
+        "คนที่ใช่",
+        "เดี๋ยวก็วนกลับมาเจอกันเอง"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 14.53,
+      "end": 17.97,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

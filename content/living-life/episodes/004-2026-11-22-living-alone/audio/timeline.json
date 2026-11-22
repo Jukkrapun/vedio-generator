@@ -1,0 +1,63 @@
+{
+  "total": 20.77,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a small dark studio apartment kitchen at night, fridge light glowing",
+      "text": "[softly] อยู่คนเดียวครั้งแรก... เงียบจนได้ยินเสียงตู้เย็น",
+      "cards": [
+        "อยู่คนเดียวครั้งแรก",
+        "เงียบจนได้ยินเสียงตู้เย็น"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 6.3,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind cooking instant noodles in a tiny kitchen, warm light",
+      "text": "แต่พอผ่านไปสักพัก... ความเงียบนั้นเริ่มกลายเป็นของเรา",
+      "cards": [
+        "แต่พอผ่านไปสักพัก",
+        "ความเงียบนั้น\nเริ่มกลายเป็นของเรา"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 6.75,
+      "end": 10.83,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a cozy reading corner with a lamp, blanket and a book, rain on the window",
+      "text": "ลองทำห้องให้น่าอยู่สำหรับตัวเอง... สักมุมนึง",
+      "cards": [
+        "ลองทำห้องให้น่าอยู่\nสำหรับตัวเอง",
+        "สักมุมนึง"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 11.28,
+      "end": 15.28,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person wrapped in a blanket on a sofa watching rain, seen from behind, soft lamp",
+      "text": "[warmly] อยู่กับตัวเองให้เป็น... แล้วจะไม่กลัวความเงียบอีก",
+      "cards": [
+        "อยู่กับตัวเองให้เป็น",
+        "แล้วจะไม่กลัวความเงียบอีก"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 15.73,
+      "end": 19.57,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

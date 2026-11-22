@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "คิดมากตอนตีสอง",
+  "tags": [
+    "overthinking",
+    "sleep"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a softly glowing alarm clock on a nightstand in a dark bedroom, digits blurred",
+      "text": "[softly] ตีสองแล้ว... ทำไมเรื่องเล็ก ๆ มันดูใหญ่ขึ้นทุกที",
+      "cards": [
+        "ตีสองแล้ว",
+        "ทำไมเรื่องเล็ก ๆ\nมันดูใหญ่ขึ้นทุกที"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind sitting on the edge of a bed, head in hands, moonlight",
+      "text": "เพราะตอนเหนื่อย... สมองชอบขยายเรื่องให้น่ากลัวกว่าความจริง",
+      "cards": [
+        "เพราะตอนเหนื่อย",
+        "สมองชอบขยายเรื่อง\nให้น่ากลัวกว่าความจริง"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a notebook and pen on a bedside table under a dim lamp, handwriting blurred",
+      "text": "จดมันไว้ในกระดาษ... แล้วบอกตัวเองว่าพรุ่งนี้ค่อยคิด",
+      "cards": [
+        "จดมันไว้ในกระดาษ",
+        "แล้วบอกตัวเองว่า\nพรุ่งนี้ค่อยคิด"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "soft blue dawn light through curtains over an empty bed",
+      "text": "[warmly] เรื่องส่วนใหญ่... ดูเบาลงเยอะตอนเช้า",
+      "cards": [
+        "เรื่องส่วนใหญ่",
+        "ดูเบาลงเยอะตอนเช้า"
+      ]
+    }
+  ]
+}

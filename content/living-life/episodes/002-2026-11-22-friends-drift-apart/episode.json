@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "เพื่อนที่ค่อย ๆ ห่างกันไป",
+  "tags": [
+    "friendship",
+    "growing-up"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "an old instant photo of friends lying on a desk, faces out of focus, lamp light",
+      "text": "[softly] เพื่อนบางคน... ไม่ได้ทะเลาะกัน แค่ค่อย ๆ หายไป",
+      "cards": [
+        "เพื่อนบางคน",
+        "ไม่ได้ทะเลาะกัน\nแค่ค่อย ๆ หายไป"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "two empty paths splitting under streetlights at night, light mist",
+      "text": "เพราะชีวิตเราแยกทางกันเดิน... ไม่มีใครผิดเลย",
+      "cards": [
+        "เพราะชีวิตเราแยกทางกันเดิน",
+        "ไม่มีใครผิดเลย"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a person seen from behind looking at a box of old keepsakes on the floor, warm lamp",
+      "text": "ขอบคุณที่เคยอยู่ด้วยกันในช่วงนั้น... ก็พอ",
+      "cards": [
+        "ขอบคุณที่เคยอยู่ด้วยกัน\nในช่วงนั้น",
+        "ก็พอ"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a quiet night bus stop with one warm light, empty bench",
+      "text": "[warmly] คนที่ใช่... เดี๋ยวก็วนกลับมาเจอกันเอง",
+      "cards": [
+        "คนที่ใช่",
+        "เดี๋ยวก็วนกลับมาเจอกันเอง"
+      ]
+    }
+  ]
+}

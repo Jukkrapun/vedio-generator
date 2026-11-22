@@ -1,0 +1,63 @@
+{
+  "total": 18.85,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a softly glowing alarm clock on a nightstand in a dark bedroom, digits blurred",
+      "text": "[softly] ตีสองแล้ว... ทำไมเรื่องเล็ก ๆ มันดูใหญ่ขึ้นทุกที",
+      "cards": [
+        "ตีสองแล้ว",
+        "ทำไมเรื่องเล็ก ๆ\nมันดูใหญ่ขึ้นทุกที"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.46,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a person seen from behind sitting on the edge of a bed, head in hands, moonlight",
+      "text": "เพราะตอนเหนื่อย... สมองชอบขยายเรื่องให้น่ากลัวกว่าความจริง",
+      "cards": [
+        "เพราะตอนเหนื่อย",
+        "สมองชอบขยายเรื่อง\nให้น่ากลัวกว่าความจริง"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 4.91,
+      "end": 9.55,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a notebook and pen on a bedside table under a dim lamp, handwriting blurred",
+      "text": "จดมันไว้ในกระดาษ... แล้วบอกตัวเองว่าพรุ่งนี้ค่อยคิด",
+      "cards": [
+        "จดมันไว้ในกระดาษ",
+        "แล้วบอกตัวเองว่า\nพรุ่งนี้ค่อยคิด"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 10.0,
+      "end": 14.24,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "soft blue dawn light through curtains over an empty bed",
+      "text": "[warmly] เรื่องส่วนใหญ่... ดูเบาลงเยอะตอนเช้า",
+      "cards": [
+        "เรื่องส่วนใหญ่",
+        "ดูเบาลงเยอะตอนเช้า"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 14.69,
+      "end": 17.65,
+      "align": "03-closing.align.json"
+    }
+  ]
+}

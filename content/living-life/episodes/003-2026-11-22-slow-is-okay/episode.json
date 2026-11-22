@@ -1,0 +1,65 @@
+{
+  "mode": "image",
+  "title": "ช้ากว่าคนอื่นไม่ได้แปลว่าแพ้",
+  "tags": [
+    "comparison",
+    "self-worth"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person lying in bed at night, face lit only by a phone screen, out of focus",
+      "text": "[sighs] เลื่อนดูชีวิตคนอื่นแล้ว... รู้สึกว่าตัวเองช้าไปหมด",
+      "cards": [
+        "เลื่อนดูชีวิตคนอื่นแล้ว",
+        "รู้สึกว่าตัวเองช้าไปหมด"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a phone on a nightstand showing a blurred feed of bright photos, dark room",
+      "text": "แต่ทุกคน... โชว์แค่ตอนที่ดีที่สุดของตัวเอง",
+      "cards": [
+        "แต่ทุกคน",
+        "โชว์แค่ตอนที่ดีที่สุด\nของตัวเอง"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a small potted plant on a windowsill at night with a new leaf, moonlight",
+      "text": "เทียบกับตัวเองเมื่อปีที่แล้วพอ... ไม่ต้องเทียบกับใคร",
+      "cards": [
+        "เทียบกับตัวเองเมื่อปีที่แล้วพอ",
+        "ไม่ต้องเทียบกับใคร"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a lone person seen from behind walking on an empty night street, warm streetlights",
+      "text": "[warmly] เราไม่ได้ช้า... เราแค่เดินทางของเราเอง",
+      "cards": [
+        "เราไม่ได้ช้า",
+        "เราแค่เดินทางของเราเอง"
+      ]
+    }
+  ]
+}
