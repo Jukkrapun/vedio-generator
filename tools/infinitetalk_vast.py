@@ -70,7 +70,7 @@ print(f"weights total {total / 1e9:.1f} GB")
 
 SETUP_SCRIPT = f"""set -eo pipefail
 {STAGE_FN}
-export DEBIAN_FRONTEND=noninteractive PIP_ROOT_USER_ACTION=ignore PIP_NO_CACHE_DIR=1 HF_HUB_DISABLE_TELEMETRY=1
+export DEBIAN_FRONTEND=noninteractive PIP_ROOT_USER_ACTION=ignore PIP_NO_CACHE_DIR=1 HF_HUB_DISABLE_TELEMETRY=1 HF_HUB_DISABLE_XET=1
 stage apt
 apt-get update -qq && apt-get install -y -qq git ffmpeg libgl1 libglib2.0-0 build-essential ninja-build > /dev/null
 which c++ nvcc ninja
@@ -101,16 +101,24 @@ optimum-quanto==0.2.6
 numpy<2
 huggingface_hub<1.0
 PINS
-pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "misaki[en]" "huggingface_hub[hf_xet]>=0.30"
+pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "misaki[en]" "huggingface_hub>=0.30"
 python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto, diffusers, transformers, xfuser; print('imports ok', torch.__version__, diffusers.__version__, transformers.__version__, torch.cuda.is_available())"
 python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; import generate_infinitetalk; print('wan + generate_infinitetalk imports ok')"
 stage quanto-build
 # Pre-compile optimum-quanto's CUDA kernels (fp8 Marlin) now, not mid-generation (few minutes, once per instance)
 python -c "from optimum.quanto.library.extensions.cuda import ext; ext.lib; print('quanto cuda ext built')"
 stage weights
-python - <<'PY'
+# hf_xet stalled at 0 Mbps mid-file for 20+ min (2026-11-22): plain HTTP (HF_HUB_DISABLE_XET), each attempt
+# capped at 15 min, up to 4 attempts — downloads resume where they stopped.
+cat > /tmp/weights.py <<'PY'
 {WEIGHTS_PY}
 PY
+for i in 1 2 3 4; do
+  if timeout 900 python /tmp/weights.py; then break; fi
+  echo "weights attempt $i failed or timed out — retrying (resumes)"
+  [ "$i" = 4 ] && exit 1
+done
+test -s weights/InfiniteTalk/quant_models/infinitetalk_single_fp8.safetensors
 """
 
 
