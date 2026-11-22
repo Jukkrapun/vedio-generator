@@ -75,6 +75,8 @@ mkdir -p /workspace && cd /workspace
 stage clone
 [ -d InfiniteTalk ] || git clone -q https://github.com/MeiGen-AI/InfiniteTalk.git
 cd InfiniteTalk && git checkout -q {COMMIT}
+# repo targets Python 3.10; the torch 2.4.1 image has 3.11, where inspect.ArgSpec was removed (2026-11-22)
+sed -i 's/^from inspect import ArgSpec$/from inspect import FullArgSpec as ArgSpec/' wan/multitalk.py
 stage pip
 python -c "import torch, sys; print('torch', torch.__version__, 'cuda', torch.version.cuda, 'py', sys.version.split()[0])"
 PYV=$(python -c 'import sys; print(f"cp{{sys.version_info[0]}}{{sys.version_info[1]}}")')
@@ -87,7 +89,7 @@ cat > /tmp/constraints.txt <<'PINS'
 torch==2.4.1
 torchvision==0.19.1
 torchaudio==2.4.1
-diffusers==0.31.0
+diffusers==0.33.1
 transformers==4.49.0
 tokenizers==0.21.0
 accelerate==1.1.1
@@ -96,9 +98,9 @@ optimum-quanto==0.2.6
 numpy<2
 huggingface_hub<1.0
 PINS
-pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "huggingface_hub[hf_xet]>=0.30"
+pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "misaki[en]" "huggingface_hub[hf_xet]>=0.30"
 python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto, diffusers, transformers, xfuser; print('imports ok', torch.__version__, diffusers.__version__, transformers.__version__, torch.cuda.is_available())"
-python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; print('wan imports ok')"
+python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; import generate_infinitetalk; print('wan + generate_infinitetalk imports ok')"
 stage weights
 python - <<'PY'
 {WEIGHTS_PY}
