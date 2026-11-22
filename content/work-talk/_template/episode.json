@@ -13,9 +13,8 @@
   "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
   "host": {
     "character": "baitoey",
-    "scene": "shared/characters/baitoey/scenes/01-leather-sofa.png",
-    "base_video": "shared/characters/baitoey/base/01-leather-sofa.mp4",
-    "lipsync": "sync-2"
+    "look": "talk-show-leather",
+    "lipsync": "musetalk"
   },
   "segments": [
     {

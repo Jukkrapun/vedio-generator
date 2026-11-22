@@ -20,7 +20,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from fontTools.ttLib import TTFont
 
-from media import FPS, HEIGHT, ROOT, WIDTH, run
+from media import FPS, HEIGHT, ROOT, WIDTH, host_look, run
 from subtitles import build_subtitles
 from tts import build_voice
 
@@ -129,7 +129,7 @@ def render_backgrounds(episode: dict, episode_dir: Path, kept: list[dict], work:
             zoom = float(key.split("@")[1]) if "@" in key else 1.0
             render_host_cut(host_video, start, dur, clip, zoom)
         else:
-            render_still(ROOT / episode["host"]["scene"], dur, clip, zoom_in=True)
+            render_still(host_look(episode["host"])["scene"], dur, clip, zoom_in=True)
         clips.append(clip)
     return clips
 
@@ -155,8 +155,8 @@ def check_inputs(episode: dict, episode_dir: Path) -> None:
     for seg, key in zip(episode["segments"], keys):
         if key != "host" and not (episode_dir / key).exists():
             raise FileNotFoundError(f"Missing image: {episode_dir / key} (run tools/images.py or produce.py)")
-    if "host" in keys and not (ROOT / episode["host"]["scene"]).exists():
-        raise FileNotFoundError(f"Missing host scene: {ROOT / episode['host']['scene']}")
+    if "host" in keys and not host_look(episode["host"])["scene"].exists():
+        raise FileNotFoundError(f"Missing host scene: {host_look(episode['host'])['scene']}")
 
 
 def render(episode_dir: Path) -> Path:

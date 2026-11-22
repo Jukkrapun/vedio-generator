@@ -17,6 +17,11 @@ Style inspired by general traits only (hair/makeup/vibe) — no real-person phot
 - Outfit: tailored blazer (black / camel / slate-blue) over a simple top
 - Mic: small black lavalier clipped on the lapel — no big mic in frame
 
+## Looks (`looks/`) — used by new episodes
+Outfit + background chosen per episode to match its content; see `looks/README.md`.
+Current: `talk-show-leather` (default, has base.mp4), `velvet-evening` (sad/deep), `boucle-cozy` (gentle/self-love).
+`scenes/` + `base/` below are kept for older episodes.
+
 ## Scenes (`scenes/`, 1080x1920 ready for lip-sync upload; 1024x1536 sources in `scenes/original/`)
 
 | File | Mood | Use for |

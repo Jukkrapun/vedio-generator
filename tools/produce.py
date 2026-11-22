@@ -6,7 +6,7 @@ Usage:
 Modes:
   "image" (default) - Codex images per segment (+ slow zoom) + voice + word-by-word subtitles.
                       Cheapest: ElevenLabs voice credits + Codex quota, no lip-sync cost.
-  "video"           - host base video lip-synced to the voice (Sync on fal, $1-1.70/clip)
+  "video"           - host look lip-synced to the voice (MuseTalk on vast.ai, or Sync on fal)
                       + voice + subtitles. Segments may still cut to images ("visual": "image").
 Every step is cached/skipped when its inputs are unchanged, so re-running is cheap.
 """

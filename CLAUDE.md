@@ -47,7 +47,9 @@ output/<series>/            rendered videos (git-ignored)
 ## Production modes (`"mode"` in episode.json)
 
 - `"image"` (default, start here): Codex image per segment (`image` + `image_prompt`, shared `image_style`) + slow zoom + voice + subtitles (centered). Cost: voice credits + Codex quota only.
-- `"video"`: host base video lip-synced (Sync on fal) + voice + subtitles (lower third, punch-in). Segments may still cut to images with `"visual": "image"`.
+- `"video"`: host lip-synced + voice + subtitles (lower third, punch-in). Segments may still cut to images with `"visual": "image"`.
+  - **Look per episode (1 episode = 1 look):** `"host": {"character": "baitoey", "look": "<name>", "lipsync": "musetalk"}`. Looks live in `shared/characters/baitoey/looks/<name>/` (`scene.png`, `look.md` with mood/fits, optional `base.mp4`). Pick the look whose "Fits" matches the content; reuse when it fits, otherwise create a new look (outfit + background) — see `looks/README.md`. Old `scene`/`base_video` keys still work and override the look.
+  - **Lip-sync engine `musetalk` (default since 2026-11-22, POC):** MuseTalk 1.5 on the user's running vast.ai instance, driven over SSH/SCP by `tools/musetalk_vast.py` (`--check` tests the connection). Input = look's `base.mp4` if present, else the still `scene.png` (POC: only the mouth moves). `.env`: `VAST_SSH_HOST`, `VAST_SSH_PORT`, optional `VAST_SSH_USER` (root), `VAST_SSH_KEY`, `MUSETALK_DIR` (/workspace/MuseTalk), `MUSETALK_PYTHON`. fal engines remain (need `base.mp4`).
 
 ```powershell
 python tools/produce.py content/<series>/episodes/<episode>   # does everything for the episode's mode
