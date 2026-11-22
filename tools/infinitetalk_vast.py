@@ -31,7 +31,9 @@ from timing import report, step
 from vast import STAGE_FN, find_offers, print_offers, scp, session, ssh
 
 COMMIT = "50aa0a94184315407a991ae804d9b58d6d311ba8"  # MeiGen-AI/InfiniteTalk main, 2026-11-22
-IMAGE = "pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime"  # torch 2.4.1 + cu121 = what InfiniteTalk pins
+# -devel (has nvcc): optimum-quanto JIT-compiles its fp8 Marlin kernel on first use; -runtime has no
+# compiler -> "which c++" failed mid-generation (2026-11-22).
+IMAGE = "pytorch/pytorch:2.4.1-cuda12.1-cudnn9-devel"  # torch 2.4.1 + cu121 = what InfiniteTalk pins
 DISK_GB = 120
 # compute_cap 800-999: flash-attn 2/bf16 need Ampere+ (Quadro RTX 8000 = Turing); torch 2.4.1+cu121 stops at
 # Hopper (no Blackwell). amd64: GB10 (DGX Spark) is ARM. CMP 170HX = mining card.
@@ -70,7 +72,8 @@ SETUP_SCRIPT = f"""set -eo pipefail
 {STAGE_FN}
 export DEBIAN_FRONTEND=noninteractive PIP_ROOT_USER_ACTION=ignore PIP_NO_CACHE_DIR=1 HF_HUB_DISABLE_TELEMETRY=1
 stage apt
-apt-get update -qq && apt-get install -y -qq git ffmpeg libgl1 libglib2.0-0 > /dev/null
+apt-get update -qq && apt-get install -y -qq git ffmpeg libgl1 libglib2.0-0 build-essential ninja-build > /dev/null
+which c++ nvcc ninja
 mkdir -p /workspace && cd /workspace
 stage clone
 [ -d InfiniteTalk ] || git clone -q https://github.com/MeiGen-AI/InfiniteTalk.git
@@ -101,6 +104,9 @@ PINS
 pip install -q -r /tmp/req.txt -c /tmp/constraints.txt librosa einops "misaki[en]" "huggingface_hub[hf_xet]>=0.30"
 python -c "import torch, flash_attn, xformers, librosa, decord, optimum.quanto, diffusers, transformers, xfuser; print('imports ok', torch.__version__, diffusers.__version__, transformers.__version__, torch.cuda.is_available())"
 python -c "import sys; sys.argv=['x']; import wan; from wan.utils.multitalk_utils import save_video_ffmpeg; import generate_infinitetalk; print('wan + generate_infinitetalk imports ok')"
+stage quanto-build
+# Pre-compile optimum-quanto's CUDA kernels (fp8 Marlin) now, not mid-generation (few minutes, once per instance)
+python -c "from optimum.quanto.library.extensions.cuda import ext; ext.lib; print('quanto cuda ext built')"
 stage weights
 python - <<'PY'
 {WEIGHTS_PY}
