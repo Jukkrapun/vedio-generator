@@ -1,0 +1,13 @@
+export const platforms = ["tiktok", "youtube", "facebook"] as const;
+export type Platform = typeof platforms[number];
+export type Mode = "image" | "video";
+export type EpisodeStatus = "draft" | "rendered" | "posted";
+export type Post = { platform: Platform; date: string; time: string; url: string; views: number; likes: number; saves: number; video_id?: string; source?: "web" | "publish_fb" };
+export type Episode = { id: string; series: string; slug: string; title: string; tags: string[]; mode: Mode; status: EpisodeStatus; videoUrl: string | null; posterUrl: string | null; posts: Post[] };
+export type EpisodeDetail = Episode & { segments: { id: string; text: string }[]; script: string; publish: string };
+export type Schedule = { timezone: "Asia/Bangkok"; slots: Record<Platform, string[]>; main_slot: string; test_until: string };
+export type Slot = { platform: Platform; time: string; state: "posted" | "due" | "upcoming" | "empty"; episode: Episode | null; post?: Post };
+export type Summary = { platform: Platform; posted: number; total: number; left: number; days: number };
+export type Today = { date: string; time: string; slots: Slot[]; summary: Summary[] };
+export type JobType = "new_episode" | "produce" | "catalog" | "publish_fb" | "poster";
+export type Job = { id: string; type: JobType; args: Record<string, string | boolean>; status: "queued" | "running" | "done" | "failed"; created_at: string; started_at: string | null; finished_at: string | null; exit_code: number | null; episodeId?: string; log: string[] };

@@ -65,6 +65,8 @@ export DEBIAN_FRONTEND=noninteractive HF_HUB_ENABLE_HF_TRANSFER=0
 stage() {{ echo "=== $1 $(date +%s)"; }}
 stage apt
 apt-get update -qq && apt-get install -y -qq git ffmpeg wget curl libgl1 libglib2.0-0 > /dev/null
+/usr/bin/ffmpeg -hide_banner -encoders | grep -q libx264 && echo "ffmpeg libx264 ok"
+which -a ffmpeg
 mkdir -p /workspace && cd /workspace
 stage clone
 [ -d MuseTalk ] || git clone -q https://github.com/TMElyralab/MuseTalk.git
@@ -272,13 +274,22 @@ def infer(c: dict, image_or_video: Path, audio: Path, out: Path, bbox_shift: int
     config = (f"task_0:\n  video_path: \"{job}/{src_name}\"\n  audio_path: \"{job}/voice{audio.suffix}\"\n"
               f"  bbox_shift: {bbox_shift}\n")
     ssh(c, f"cat > {job}/task.yaml <<'YAML'\n{config}YAML")
-    cmd = (f"cd {shlex.quote(c['dir'])} && {c['python']} -m scripts.inference"
+    # PATH: apt's /usr/bin/ffmpeg (has libx264) before the image's conda ffmpeg, which rejected -crf
+    cmd = (f"cd {shlex.quote(c['dir'])} && PATH=/usr/bin:$PATH {c['python']} -m scripts.inference"
            f" --inference_config {job}/task.yaml --result_dir {job}/results"
            f" --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json"
            f" --version v15 --fps {fps}")
     with step("MuseTalk inference"):
         log = ssh(c, f"bash -c {shlex.quote(cmd + ' 2>&1 | tail -n 40; exit ${PIPESTATUS[0]}')}", timeout=JOB_TIMEOUT_SEC)
         remote = ssh(c, f"ls -t {job}/results/v15/*.mp4 2>/dev/null | head -n 1").strip()
+        frames = f"{job}/results/v15/face_voice"
+        if not remote and ssh(c, f"ls {frames} 2>/dev/null | head -n 1").strip():
+            # MuseTalk's own ffmpeg step failed but the lip-synced frames exist: assemble them ourselves
+            print("MuseTalk's ffmpeg step failed — assembling frames with /usr/bin/ffmpeg")
+            remote = f"{job}/results/v15/face_voice.mp4"
+            ssh(c, f"/usr/bin/ffmpeg -y -v error -r {fps} -f image2 -i {frames}/%08d.png "
+                   f"-i {job}/voice{audio.suffix} -c:v libx264 -pix_fmt yuv420p -crf 18 -c:a aac -shortest {remote}",
+                timeout=600)
         if not remote:
             raise RuntimeError(f"MuseTalk produced no mp4. Last log lines:\n{log}")
     with step("download result"):
