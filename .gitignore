@@ -18,3 +18,8 @@ shared/characters/_inspiration/
 
 # live vast.ai instance id (musetalk_vast.py)
 .vast-instance.json
+
+# ops dashboard
+.ops/
+web/node_modules/
+web/.next/
