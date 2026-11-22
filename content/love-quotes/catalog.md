@@ -14,7 +14,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | 006-2026-11-20-small-things | ความรักอยู่ในเรื่องเล็ก ๆ | true-love, small-gestures | image | rendered | 19.5s | - |
 | 007-2026-11-20-right-person-wrong-time | คนที่ใช่ในเวลาที่ไม่ใช่ | timing, letting-go | image | rendered | 14.6s | - |
 | 008-2026-11-20-love-yourself-first | รักตัวเองให้เป็นก่อน | self-love | image | rendered | 19.3s | - |
-| 009-2026-11-20-stop-waiting | เลิกรอคนที่ไม่กลับมา | letting-go, self-worth | image | rendered | 15.7s | - |
+| 009-2026-11-20-stop-waiting | เลิกรอคนที่ไม่กลับมา | letting-go, self-worth | image | posted | 15.7s | 0 views / 0 likes / 0 saves |
 | 010-2026-11-20-ordinary-days | อยากมีคนอยู่ด้วยในวันธรรมดา | true-love, partnership | image | rendered | 15.3s | - |
 
 ## Tags
@@ -33,6 +33,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 ## Best performing (by views)
 
 1. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
+2. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

@@ -5,7 +5,18 @@
     "letting-go",
     "self-worth"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "facebook",
+      "date": "2026-11-23",
+      "time": "22:00",
+      "url": "https://www.facebook.com/reel/30131861583065195",
+      "video_id": "30131861583065195",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",
