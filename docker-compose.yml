@@ -12,7 +12,7 @@ services:
       TZ: Asia/Bangkok
     volumes:
       - ./content:/repo/content
-      - ./output:/repo/output:ro
+      - ./output:/repo/output
       - ./.ops:/repo/.ops
     restart: unless-stopped
 

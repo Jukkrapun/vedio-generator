@@ -279,3 +279,14 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
 }
 .badge.mode-image { color: var(--muted); }
 .badge.mode-video { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--gold-text); }
+.badge.version { color: var(--foreground); }
+.take-list { display: grid; gap: 10px; }
+.take { display: grid; grid-template-columns: 54px 1fr; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
+.take.selected { border-color: var(--accent); }
+.take.previewing { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.take-thumb { width: 54px; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--surface); padding: 0; border: 0; cursor: pointer; }
+.take-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.take-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.take-changes { margin: 6px 0 0; padding-left: 16px; font-size: .8rem; }
+.take-changes li { color: var(--muted); }
+.take-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }

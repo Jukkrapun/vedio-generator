@@ -1,5 +1,5 @@
 import { handle } from "@/lib/api";
-import { changePosts, createJob, type PostOp } from "@/lib/repo";
+import { changePosts, createJob, selectedVersionOf, VERSION_RE, type PostOp } from "@/lib/repo";
 import { platforms, type Post } from "@/lib/types";
 
 type Params = { params: Promise<{ series: string; slug: string }> };
@@ -19,7 +19,12 @@ export const POST = (request: Request, { params }: Params) => handle(async () =>
   const { series, slug } = await params;
   const body = await request.json();
   let op: PostOp;
-  if (body.op === "add") op = { op: "add", post: cleanPost(body.post ?? {}) };
+  if (body.op === "add") {
+    const post = cleanPost(body.post ?? {});
+    // record which take was posted: the one sent by the client, else the currently chosen one
+    const version = VERSION_RE.test(String(body.post?.version ?? "")) ? String(body.post.version) : await selectedVersionOf(series, slug);
+    op = { op: "add", post: version ? { ...post, version } : post };
+  }
   else if (body.op === "remove") op = { op: "remove", index: Number(body.index) };
   else if (body.op === "update") {
     const s = body.stats ?? {};

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { candidates } from "@/lib/planner";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type Episode, type EpisodeStatus, type Platform } from "@/lib/types";
-import { Empty, EpisodeStatusBadge, ModeBadge, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
+import { Empty, EpisodeStatusBadge, ModeBadge, VersionBadge, takeMode, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
 import { useOps } from "./ops-provider";
 import { Card } from "./ui/card";
 
@@ -26,7 +26,7 @@ export function EpisodesScreen({ series }: { series: string[] }) {
   const [search, setSearch] = useState("");
   const [mode, setMode] = useState("");
   const results = episodes.filter(episode =>
-    (!selectedSeries || episode.series === selectedSeries) && (!status || episode.status === status) && (!mode || episode.mode === mode) &&
+    (!selectedSeries || episode.series === selectedSeries) && (!status || episode.status === status) && (!mode || episode.versions.some(v => v.mode === mode) || (!episode.versions.length && episode.mode === mode)) &&
     (!platform || Boolean(episode.videoUrl) && !episode.posts.some(post => post.platform === platform)) &&
     episode.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
   );
@@ -47,10 +47,10 @@ export function EpisodesScreen({ series }: { series: string[] }) {
       <p className="small muted result-count">พบ {results.length} คลิป</p>
       {!results.length ? <Empty>ไม่พบคลิปที่ตรงกับตัวกรอง</Empty> : <>
         <div className="desktop-clips card"><table><thead><tr><th scope="col">#</th><th scope="col">ชื่อคลิป</th><th scope="col">ซีรีส์</th><th scope="col">รูปแบบ</th><th scope="col">สถานะ</th>{platforms.map(key => <th key={key} scope="col"><PlatformBadge platform={key} compact /></th>)}<th scope="col">ยอดดูรวม</th></tr></thead><tbody>{results.map(episode => <tr key={episode.id}>
-          <td className="muted">{episode.slug.split("-")[0]}</td><td><Link href={episodeHref(episode)}>{episode.title}</Link></td><td><SeriesChip series={episode.series} /></td><td><ModeBadge mode={episode.mode} /></td><td><EpisodeStatusBadge status={episode.status} /></td>{platforms.map(key => <td key={key}><PostCell episode={episode} platform={key} /></td>)}<td>{views(episode)}</td>
+          <td className="muted">{episode.slug.split("-")[0]}</td><td><Link href={episodeHref(episode)}>{episode.title}</Link></td><td><SeriesChip series={episode.series} /></td><td><ModeBadge mode={takeMode(episode)} /><VersionBadge episode={episode} /></td><td><EpisodeStatusBadge status={episode.status} /></td>{platforms.map(key => <td key={key}><PostCell episode={episode} platform={key} /></td>)}<td>{views(episode)}</td>
         </tr>)}</tbody></table></div>
         <div className="mobile-clips">{results.map(episode => <Card key={episode.id} className="clip-card">
-          <div className="slot-episode"><Poster episode={episode} linked /><div className="slot-text"><Link href={episodeHref(episode)}>{episode.title}</Link><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} /><EpisodeStatusBadge status={episode.status} /></div><p className="small muted">ยอดดูรวม {views(episode)}</p></div></div>
+          <div className="slot-episode"><Poster episode={episode} linked /><div className="slot-text"><Link href={episodeHref(episode)}>{episode.title}</Link><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={takeMode(episode)} /><VersionBadge episode={episode} /><EpisodeStatusBadge status={episode.status} /></div><p className="small muted">ยอดดูรวม {views(episode)}</p></div></div>
           <div className="clip-platforms">{platforms.map(key => <div key={key}><PlatformBadge platform={key} compact /><PostCell episode={episode} platform={key} /></div>)}</div>
         </Card>)}</div>
       </>}

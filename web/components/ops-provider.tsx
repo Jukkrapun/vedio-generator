@@ -56,6 +56,15 @@ function useOpsState(initialEpisodes: Episode[], initialJobs: Job[], initialSche
     setScheduleState(await api<Schedule>("/api/schedule", { method: "PUT", json: next }).catch(fail));
   }
 
+  async function selectVersion(id: string, version: string | null) {
+    await api("/api/episodes/" + id + "/version", { method: "PUT", json: { version } }).catch(fail);
+    await refreshEpisodes();
+  }
+  async function deleteVersion(id: string, version: string) {
+    await api("/api/episodes/" + id + "/version?v=" + version, { method: "DELETE" }).catch(fail);
+    await refreshEpisodes();
+  }
+
   async function enqueue(type: JobType, args: Job["args"]) {
     const job = await api<Job>("/api/jobs", { method: "POST", json: { type, args } }).catch(fail);
     setJobs(current => [job, ...current]);
@@ -83,7 +92,7 @@ function useOpsState(initialEpisodes: Episode[], initialJobs: Job[], initialSche
     return () => { stopped = true; window.clearInterval(timer); };
   }, [refreshEpisodes]);
 
-  return { episodes, created, jobs, schedule, setSchedule, picks, setPick, addPost, removePost, updateStats, enqueue, newEpisode, cancelJob, refreshEpisodes };
+  return { episodes, created, jobs, schedule, setSchedule, picks, setPick, addPost, removePost, updateStats, enqueue, newEpisode, cancelJob, refreshEpisodes, selectVersion, deleteVersion };
 }
 
 const OpsContext = createContext<ReturnType<typeof useOpsState> | null>(null);

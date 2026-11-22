@@ -102,11 +102,13 @@ def main() -> None:
     group.add_argument("--now", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--mode", choices=["image", "video"], help="which render to post (default: episode's mode)")
+    parser.add_argument("--video", type=Path, help="exact mp4 to post, e.g. a render kept in output/<series>/history/ "
+                                                   "(overrides --mode; used by the ops dashboard)")
     args = parser.parse_args()
 
     episode_dir = args.episode_dir.resolve()
     series = episode_dir.parent.parent.name
-    video = output_path(episode_dir, args.mode)
+    video = args.video.resolve() if args.video else output_path(episode_dir, args.mode)
     if not video.is_file():
         sys.exit(f"Rendered video not found: {video}")
     episode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8"))

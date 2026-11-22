@@ -56,3 +56,15 @@ export function ModeBadge({ mode }: { mode: Mode }) {
   const Icon = mode === "video" ? UserRound : ImageIcon;
   return <Badge className={"mode-" + mode}><Icon size={13} aria-hidden />{modeLabels[mode]}</Badge>;
 }
+/** "รอบ 3/4" badge for the take chosen for posting. */
+export function VersionBadge({ episode }: { episode: Episode }) {
+  const take = episode.versions.find(v => v.id === episode.selectedVersion);
+  if (!take) return null;
+  return <Badge className="version" title={"render " + take.rendered_at}>รอบ {take.number}/{episode.versions.length}</Badge>;
+}
+export function takeTime(iso: string) {
+  if (!iso) return "—";
+  return new Intl.DateTimeFormat("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+}
+/** Mode of the take that will be posted (falls back to episode.json "mode"). */
+export const takeMode = (episode: Episode) => episode.versions.find(v => v.id === episode.selectedVersion)?.mode ?? episode.mode;

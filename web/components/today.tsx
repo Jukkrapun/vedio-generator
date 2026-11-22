@@ -8,7 +8,7 @@ import type { PublishField } from "@/lib/publish";
 import { bangkokNow, thaiDate } from "@/lib/time";
 import { platforms, type Platform, type Slot, type Today } from "@/lib/types";
 import { useOps } from "./ops-provider";
-import { CopyButton, Empty, ModeBadge, PlatformBadge, Poster, SeriesChip, SlotBadge, episodeHref, platformNames } from "./common";
+import { CopyButton, Empty, ModeBadge, VersionBadge, takeMode, PlatformBadge, Poster, SeriesChip, SlotBadge, episodeHref, platformNames } from "./common";
 import { PostForm } from "./post-form";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
@@ -67,7 +67,7 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
           await setPick(active.slot.platform, active.slot.time, episode.id);
           close();
           toast.success("เปลี่ยนคลิปแล้ว");
-        }}><Poster episode={episode} /><span><strong>{episode.title}</strong><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} /></span>{episode.id === activeEpisode?.id && <Check size={18} />}</button>) : <Empty>ไม่มีคลิปที่เลือกได้</Empty>;
+        }}><Poster episode={episode} /><span><strong>{episode.title}</strong><SeriesChip series={episode.series} /><ModeBadge mode={takeMode(episode)} /><VersionBadge episode={episode} /></span>{episode.id === activeEpisode?.id && <Check size={18} />}</button>) : <Empty>ไม่มีคลิปที่เลือกได้</Empty>;
       })()}</div>
     </Modal>}
     {active?.kind === "facebook" && activeEpisode && <Confirm open close={close}
@@ -89,7 +89,7 @@ function SlotCard({ slot, main, fields, onAction }: { slot: Slot; main: boolean;
   return <Card className={"slot-card slot-" + state}>
     <div className="slot-top"><PlatformBadge platform={platform} compact /><span className="slot-time">{slot.time}</span><SlotBadge state={state} /></div>
     {episode ? <>
-      <div className="slot-episode"><Poster episode={episode} linked /><div className="slot-text"><Link href={episodeHref(episode)}>{episode.title}</Link><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} />{main && <span className="main-slot"><Star size={12} fill="currentColor" /> รอบหลัก</span>}</div></div></div>
+      <div className="slot-episode"><Poster episode={episode} linked /><div className="slot-text"><Link href={episodeHref(episode)}>{episode.title}</Link><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={takeMode(episode)} /><VersionBadge episode={episode} />{main && <span className="main-slot"><Star size={12} fill="currentColor" /> รอบหลัก</span>}</div></div></div>
       <div className="slot-actions">
         {caption && <CopyButton value={caption} label="คัดลอกแคปชัน" />}
         <Button variant="outline" asChild><Link href={episodeHref(episode)}><Film size={15} /> ดูคลิป</Link></Button>

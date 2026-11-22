@@ -2,7 +2,7 @@ import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule } from "./types";
+import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule, Version } from "./types";
 
 export const ROOT = path.resolve(process.env.REPO_ROOT ?? path.join(process.cwd(), ".."));
 const OPS = path.join(ROOT, ".ops");
@@ -54,7 +54,38 @@ export function videoFile(series: string, slug: string) {
   const legacy = path.join(ROOT, "output", series, slug + ".mp4");
   return existsSync(current) || !existsSync(legacy) ? current : legacy;
 }
-export function posterFile(series: string, slug: string) { return path.join(OPS, "posters", series, `${slug}-${episodeMode(series, slug)}.jpg`); }
+
+// ---- render history (archived by ops/worker.py) ---------------------------
+export const VERSION_RE = /^\d{8}-\d{6}-(image|video)$/;
+const historyDir = (series: string, slug: string) => path.join(ROOT, "output", series, "history", slug);
+export function historyFile(series: string, slug: string, version: string) {
+  if (!VERSION_RE.test(version)) throw new Error("bad version");
+  return path.join(historyDir(series, slug), version + ".mp4");
+}
+export function posterFile(series: string, slug: string, version?: string) {
+  return path.join(OPS, "posters", series, slug, (version ?? "current-" + episodeMode(series, slug)) + ".jpg");
+}
+
+async function listVersions(series: string, slug: string): Promise<Version[]> {
+  const dir = historyDir(series, slug);
+  if (!existsSync(dir)) return [];
+  const ids = (await fs.readdir(dir)).filter(f => f.endsWith(".json")).map(f => f.slice(0, -5))
+    .filter(v => VERSION_RE.test(v) && existsSync(path.join(dir, v + ".mp4"))).sort();
+  const id = series + "/" + slug;
+  return Promise.all(ids.map(async (v, i) => {
+    const meta = await readJson<Partial<Version>>(path.join(dir, v + ".json"), {});
+    return {
+      id: v, number: i + 1, mode: v.endsWith("-video") ? "video" : "image",
+      rendered_at: meta.rendered_at ?? "", duration: meta.duration ?? null, lines: meta.lines ?? [],
+      videoUrl: `/api/video/${id}?v=${v}`, posterUrl: `/api/poster/${id}?v=${v}`,
+    } satisfies Version;
+  }));
+}
+
+/** Chosen take: episode.json "publish_version" if it still exists, else the newest take of the current mode, else the newest. */
+function pickVersion(versions: Version[], wanted: string | undefined, mode: Mode) {
+  return versions.find(v => v.id === wanted) ?? [...versions].reverse().find(v => v.mode === mode) ?? versions.at(-1) ?? null;
+}
 
 /** Validates series/slug against the real folders (no path traversal). */
 export async function resolveEpisode(series: string, slug: string) {
@@ -63,24 +94,58 @@ export async function resolveEpisode(series: string, slug: string) {
   return existsSync(path.join(dir, "episode.json")) ? dir : null;
 }
 
-type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; segments?: { id?: string; text?: string; skip?: boolean }[] };
+type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; segments?: { id?: string; text?: string; skip?: boolean }[] };
 
 async function loadEpisode(series: string, slug: string): Promise<{ episode: Episode; raw: RawEpisode } | null> {
   const raw = await readJson<RawEpisode | null>(path.join(episodeDir(series, slug), "episode.json"), null);
   if (!raw) return null;
-  const hasVideo = existsSync(videoFile(series, slug));
+  const mode = raw.mode ?? "image";
+  const versions = await listVersions(series, slug);
+  const selected = pickVersion(versions, raw.publish_version, mode);
+  const hasCurrent = existsSync(videoFile(series, slug));
   const posts = (raw.posts ?? []).map(p => ({ ...p, url: p.url ?? "", views: Number(p.views ?? 0), likes: Number(p.likes ?? 0), saves: Number(p.saves ?? 0), time: p.time ?? "" }));
   const id = series + "/" + slug;
   return {
     raw,
     episode: {
-      id, series, slug, title: raw.title || slug, tags: raw.tags ?? [], mode: raw.mode ?? "image",
-      status: posts.length ? "posted" : hasVideo ? "rendered" : "draft",
-      videoUrl: hasVideo ? "/api/video/" + id : null,
-      posterUrl: hasVideo ? "/api/poster/" + id : null,
-      posts,
+      id, series, slug, title: raw.title || slug, tags: raw.tags ?? [], mode,
+      status: posts.length ? "posted" : selected || hasCurrent ? "rendered" : "draft",
+      // before the worker has archived anything, fall back to the current render file
+      videoUrl: selected?.videoUrl ?? (hasCurrent ? "/api/video/" + id : null),
+      posterUrl: selected?.posterUrl ?? (hasCurrent ? "/api/poster/" + id : null),
+      posts, versions, selectedVersion: selected?.id ?? null,
+      pinnedVersion: raw.publish_version && selected?.id === raw.publish_version ? selected.id : null,
     },
   };
+}
+
+/** Pin a take for posting (null = back to "newest take of the current mode"). */
+export async function selectVersion(series: string, slug: string, version: string | null) {
+  const dir = await resolveEpisode(series, slug);
+  if (!dir) throw new Error("episode not found");
+  if (version && !existsSync(historyFile(series, slug, version))) throw new Error("version not found");
+  const file = path.join(dir, "episode.json");
+  await withLock(file, async () => {
+    const data = await readJson<Record<string, unknown>>(file, {});
+    if (version) data.publish_version = version; else delete data.publish_version;
+    await writeJson(file, data);
+  });
+}
+
+/** Delete an unused take (not the chosen one, not one that was posted). */
+export async function deleteVersion(series: string, slug: string, version: string) {
+  const loaded = await loadEpisode(series, slug);
+  if (!loaded) throw new Error("episode not found");
+  if (loaded.episode.selectedVersion === version) throw new Error("ลบรอบที่เลือกไว้ลงไม่ได้");
+  if (loaded.episode.posts.some(p => p.version === version)) throw new Error("ลบรอบที่ลงไปแล้วไม่ได้");
+  const mp4 = historyFile(series, slug, version);
+  await fs.rm(mp4, { force: true });
+  await fs.rm(mp4.replace(/\.mp4$/, ".json"), { force: true });
+  await fs.rm(posterFile(series, slug, version), { force: true });
+}
+
+export async function selectedVersionOf(series: string, slug: string) {
+  return (await loadEpisode(series, slug))?.episode.selectedVersion ?? null;
 }
 
 export async function listEpisodes(): Promise<Episode[]> {
@@ -191,6 +256,8 @@ export async function createJob(type: JobType, args: Record<string, string | boo
     if (!(await resolveEpisode(series, slug))) throw new Error("episode not found");
     episodeId = series + "/" + slug;
     if (type === "publish_fb" && !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(String(args.when))) throw new Error("bad time");
+    if (type === "publish_fb") args = { ...args, version: (await selectedVersionOf(series, slug)) ?? "" };
+    if (type === "poster" && args.version && !VERSION_RE.test(String(args.version))) throw new Error("bad version");
   }
   const now = new Date();
   const stamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Bangkok", dateStyle: "short", timeStyle: "medium" }).format(now).replace(/[-: ]/g, "");
