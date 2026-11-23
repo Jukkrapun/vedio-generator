@@ -1,6 +1,6 @@
 export const platforms = ["tiktok", "youtube", "facebook"] as const;
 export type Platform = typeof platforms[number];
-export type Mode = "image" | "video";
+export type Mode = "image" | "video" | "story";
 export type EpisodeStatus = "draft" | "rendered" | "posted";
 export type Post = { platform: Platform; date: string; time: string; url: string; views: number; likes: number; saves: number; video_id?: string; source?: "web" | "publish_fb"; version?: string };
 export type Version = { id: string; number: number; mode: Mode; variant: string; rendered_at: string; duration: number | null; lines: string[]; videoUrl: string; posterUrl: string };

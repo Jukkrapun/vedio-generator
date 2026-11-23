@@ -56,7 +56,7 @@ export function videoFile(series: string, slug: string) {
 }
 
 // ---- render history (archived by ops/worker.py) ---------------------------
-export const VERSION_RE = /^\d{8}-\d{6}-(image|video)(-[a-z0-9-]+)?$/;
+export const VERSION_RE = /^\d{8}-\d{6}-(image|video|story)(-[a-z0-9-]+)?$/;
 const historyDir = (series: string, slug: string) => path.join(ROOT, "output", series, "history", slug);
 export function historyFile(series: string, slug: string, version: string) {
   if (!VERSION_RE.test(version)) throw new Error("bad version");
@@ -76,7 +76,7 @@ async function listVersions(series: string, slug: string): Promise<Version[]> {
     const meta = await readJson<Partial<Version>>(path.join(dir, v + ".json"), {});
     return {
       id: v, number: i + 1, mode: VERSION_RE.exec(v)![1] as Mode, variant: (VERSION_RE.exec(v)![2] ?? "").slice(1),
-      rendered_at: meta.rendered_at ?? "", duration: meta.duration ?? null, lines: meta.lines ?? [],
+      rendered_at: meta.rendered_at ?? "", duration: meta.duration ?? null, lines: (meta.lines ?? []).map(line => textOf(line, (VERSION_RE.exec(v)![2] ?? "").slice(1))),
       videoUrl: `/api/video/${id}?v=${v}`, posterUrl: `/api/poster/${id}?v=${v}`,
     } satisfies Version;
   }));
@@ -96,7 +96,16 @@ export async function resolveEpisode(series: string, slug: string) {
   return existsSync(path.join(dir, "episode.json")) ? dir : null;
 }
 
-type RawSegment = { id?: string; text?: string; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string };
+/** Story mode keeps text per language ({th, en}); shorts use a plain string. */
+export function textOf(text: unknown, lang?: string): string {
+  if (typeof text === "string") return text;
+  if (text && typeof text === "object") {
+    const byLang = text as Record<string, string>;
+    return (lang && byLang[lang]) || Object.entries(byLang).map(([k, v]) => k + ": " + v).join("\n");
+  }
+  return "";
+}
+type RawSegment = { id?: string; text?: string | Record<string, string>; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string };
 type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; review?: Review; segments?: RawSegment[] };
 
 async function loadEpisode(series: string, slug: string): Promise<{ episode: Episode; raw: RawEpisode } | null> {
@@ -174,7 +183,7 @@ export async function getEpisodeDetail(series: string, slug: string): Promise<Ep
     segments: (loaded.raw.segments ?? []).map((s, i) => {
       const id = s.id ?? String(i + 1);
       const audio = `audio/${String(i).padStart(2, "0")}-${id}.mp3`;
-      return { id, text: s.text ?? "", cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", skip: !!s.skip,
+      return { id, text: textOf(s.text), cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", skip: !!s.skip,
         audio: existsSync(path.join(dir, audio)) ? audio : null };
     }),
     script: await readText(path.join(dir, "script.md")),

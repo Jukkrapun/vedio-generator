@@ -45,15 +45,15 @@ export function Poster({ episode, linked = false }: { episode: Episode; linked?:
   return linked ? <Link className="poster" href={episodeHref(episode)} aria-label={"ดูคลิป " + episode.title}>{image}<span className="poster-play"><Play size={14} fill="currentColor" /></span></Link> : <span className="poster">{image}</span>;
 }
 export function VideoPlayer({ episode }: { episode: Episode }) {
-  return episode.videoUrl ? <video className="player" controls playsInline preload="metadata" poster={episode.posterUrl ?? undefined} src={episode.videoUrl} aria-label={"วิดีโอตัวอย่าง " + episode.title} />
-    : <div className="player player-empty"><Clapperboard size={30} /><p>ยังไม่ได้เรนเดอร์</p></div>;
+  return episode.videoUrl ? <video className={"player" + (episode.mode === "story" ? " wide" : "")} controls playsInline preload="metadata" poster={episode.posterUrl ?? undefined} src={episode.videoUrl} aria-label={"วิดีโอตัวอย่าง " + episode.title} />
+    : <div className={"player player-empty" + (episode.mode === "story" ? " wide" : "")}><Clapperboard size={30} /><p>ยังไม่ได้เรนเดอร์</p></div>;
 }
 export function PostLink({ url, children }: { url: string; children: React.ReactNode }) {
   return /^https?:\/\//i.test(url) ? <a href={url} target="_blank" rel="noreferrer">{children}</a> : <span>{children}</span>;
 }
-export const modeLabels: Record<Mode, string> = { image: "ภาพนิ่ง", video: "วิดีโอพิธีกร" };
+export const modeLabels: Record<Mode, string> = { image: "ภาพนิ่ง", video: "วิดีโอพิธีกร", story: "เรื่องยาว 16:9" };
 export function ModeBadge({ mode }: { mode: Mode }) {
-  const Icon = mode === "video" ? UserRound : ImageIcon;
+  const Icon = mode === "video" ? UserRound : mode === "story" ? Clapperboard : ImageIcon;
   return <Badge className={"mode-" + mode}><Icon size={13} aria-hidden />{modeLabels[mode]}</Badge>;
 }
 /** "รอบ 3/4" badge for the take chosen for posting. */

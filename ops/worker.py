@@ -177,9 +177,10 @@ def after_claude(job: dict, before: set[str]) -> None:
 # Every render of output/<series>/<slug>-<mode>.mp4 is copied to
 # output/<series>/history/<slug>/<YYYYMMDD-HHMMSS>-<mode>.mp4 (+ .json with mode, time, duration,
 # spoken lines) so older takes survive re-renders and one can be picked for posting.
-VERSION_RE = re.compile(r"^\d{8}-\d{6}-(image|video)(-[a-z0-9-]+)?$")
-# <slug>-<mode>.mp4, or an experiment <slug>-<mode>-<variant>.mp4 (e.g. -video-infinitetalk-L.mp4)
-OUTPUT_RE = re.compile(r"^(\d{3}-\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(image|video)(?:-([A-Za-z0-9-]+))?\.mp4$")
+VERSION_RE = re.compile(r"^\d{8}-\d{6}-(image|video|story)(-[a-z0-9-]+)?$")
+# <slug>-<mode>.mp4, an experiment <slug>-<mode>-<variant>.mp4 (e.g. -video-infinitetalk-L.mp4),
+# or a long-form story per language <slug>-story-<lang>.mp4 (variant = th / en)
+OUTPUT_RE = re.compile(r"^(\d{3}-\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(image|video|story)(?:-([A-Za-z0-9-]+))?\.mp4$")
 THAI = dt.timezone(dt.timedelta(hours=7))
 SETTLE_SEC = 15  # skip files still being written
 
@@ -223,7 +224,9 @@ def archive_renders() -> int:
         target = folder / f"{version}.mp4"
         shutil.copy2(video, target)
         episode = read(ROOT / "content" / series / "episodes" / slug / "episode.json") or {}
-        lines = [s.get("text", "") for s in episode.get("segments", []) if not s.get("skip")]
+        # story mode keeps text per language ({"th": ..., "en": ...}); the take's variant is the language
+        lines = [s["text"].get(variant) or next(iter(s["text"].values()), "") if isinstance(s.get("text"), dict) else s.get("text", "")
+                 for s in episode.get("segments", []) if not s.get("skip")]
         write(folder / f"{version}.json", {
             "id": version, "mode": mode, "variant": variant, "source": video.name, "rendered_at": dt.datetime.fromtimestamp(stat.st_mtime, THAI).isoformat(),
             "archived_at": now(), "size": stat.st_size, "source_mtime": int(stat.st_mtime),
