@@ -17,7 +17,7 @@ made from the same images. Plan: `docs/long-form/PLAN.md`.
 ## Voice
 
 - **TH (user's pick 2026-11-23):** ElevenLabs **Mind** `gbZNaSxK771GgOTJIKRB`, `eleven_v4`, default settings
-  (voice test: `content/mockup/004`). Fallback edge `th-TH-PremwadeeNeural` -10%.
+  (voice test: `content/poc/004`). Fallback edge `th-TH-PremwadeeNeural` -10%.
 - EN: edge-tts `en-US-AvaNeural` rate -8% for now. An ElevenLabs English voice is not chosen yet.
 - A 10 min episode is about 5k chars (TH) / 7k chars (EN).
 

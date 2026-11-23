@@ -41,7 +41,7 @@ output/<series>/            rendered videos (git-ignored)
 - `content/love-quotes/` — Thai love-quote podcast clips, 9:16, max 90s. See its `series.md`.
 - `content/work-talk/` — Thai work-life clips (burnout, boss, quitting, career doubt), late-night look, 20–30s. See its `series.md`.
 - `content/living-life/` — Thai adult-life clips (loneliness, friends, comparison, living alone, overthinking), image mode, ~20s. See its `series.md`.
-- `content/mockup/` — drafts/tests only, never posted (`review.stage` = `render` keeps them out of the queue). 001–005 = voice test of ElevenLabs Mind (2026-11-23).
+- `content/poc/` — proofs of concept / drafts, never posted (`review.stage` = `render` keeps them out of the queue). Episodes 001–005 = Thai voice test of ElevenLabs Mind (picked: 004 = `eleven_v4` default), 006–010 = English voice test (story mode) (2026-11-23). Other subfolders (e.g. `parallax/`) are standalone experiments. Formerly `content/mockup/`.
 - `content/night-stories/` — long-form YouTube stories (16:9, 8–15 min), **mode `story`**, one Thai + one English video per episode from the same images, separate playlists. Plan/status: `docs/long-form/PLAN.md`. POC 001 rendered 2026-11-23.
 
 ## Workflows
