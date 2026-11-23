@@ -16,9 +16,10 @@ made from the same images. Plan: `docs/long-form/PLAN.md`.
 
 ## Voice
 
-- POC: edge-tts (free). TH `th-TH-PremwadeeNeural` rate -10%, EN `en-US-AvaNeural` rate -8%.
-- Production: ElevenLabs if credits allow (`"language": "en"` for English). A 10 min episode is about
-  6–8k chars per language.
+- **TH (user's pick 2026-11-23):** ElevenLabs **Mind** `gbZNaSxK771GgOTJIKRB`, `eleven_v4`, default settings
+  (voice test: `content/mockup/004`). Fallback edge `th-TH-PremwadeeNeural` -10%.
+- EN: edge-tts `en-US-AvaNeural` rate -8% for now. An ElevenLabs English voice is not chosen yet.
+- A 10 min episode is about 5k chars (TH) / 7k chars (EN).
 
 ## Writing
 

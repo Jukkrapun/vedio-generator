@@ -4,8 +4,24 @@
   "tags": [],
   "posts": [],
   "languages": {
-    "th": {"title": "ชื่อเรื่อง", "tts": "edge", "voice": "th-TH-PremwadeeNeural", "rate": "-10%"},
-    "en": {"title": "Story title", "tts": "edge", "voice": "en-US-AvaNeural", "rate": "-8%"}
+    "th": {
+      "title": "ชื่อเรื่อง",
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
+    },
+    "en": {
+      "title": "Story title",
+      "tts": "edge",
+      "voice": "en-US-AvaNeural",
+      "rate": "-8%"
+    }
   },
   "pause_sec": 0.8,
   "music": null,
@@ -14,10 +30,16 @@
   "segments": [
     {
       "id": "s01",
-      "chapter": {"th": "ตอนที่ 1", "en": "Part 1"},
+      "chapter": {
+        "th": "ตอนที่ 1",
+        "en": "Part 1"
+      },
       "image": "images/01-opening.png",
       "image_prompt": "opening scene",
-      "text": {"th": "ประโยคเปิดเรื่อง", "en": "Opening line."}
+      "text": {
+        "th": "ประโยคเปิดเรื่อง",
+        "en": "Opening line."
+      }
     }
   ]
 }

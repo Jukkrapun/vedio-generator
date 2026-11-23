@@ -11,9 +11,15 @@
   "languages": {
     "th": {
       "title": "รถเมล์เที่ยวตีสอง",
-      "tts": "edge",
-      "voice": "th-TH-PremwadeeNeural",
-      "rate": "-10%"
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
     },
     "en": {
       "title": "The Last Bus",
