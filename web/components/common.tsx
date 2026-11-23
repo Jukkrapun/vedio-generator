@@ -9,7 +9,11 @@ import { Badge } from "./ui/card";
 export const platformNames: Record<Platform, string> = { tiktok: "TikTok", youtube: "YouTube Shorts", facebook: "Facebook Reels" };
 export const platformShort: Record<Platform, string> = { tiktok: "TT", youtube: "YT", facebook: "FB" };
 const icons = { tiktok: AudioLines, youtube: Youtube, facebook: Facebook };
-export const seriesNames: Record<string, string> = { "love-quotes": "เรื่องความรัก", "work-talk": "เรื่องงาน" };
+export const seriesNames: Record<string, string> = { "love-quotes": "เรื่องความรัก", "work-talk": "เรื่องงาน", "living-life": "เรื่องชีวิต", "night-stories": "เรื่องเล่ายามดึก", poc: "ทดสอบ (POC)" };
+/** Series used for experiments: shown under the "ทดสอบ" menu, kept out of the clips list and posting queue. */
+export const TEST_SERIES = ["poc"];
+export const isTestSeries = (series: string) => TEST_SERIES.includes(series);
+export const listHref = (series: string) => isTestSeries(series) ? "/poc" : "/episodes";
 export const episodeHref = (episode: Pick<Episode, "id">) => "/episodes/" + episode.id;
 export const statusLabels: Record<EpisodeStatus, string> = { draft: "ฉบับร่าง", rendered: "พร้อมลง", posted: "ลงแล้ว" };
 export const jobLabels: Record<Job["type"], string> = { new_episode: "สร้างตอนใหม่", produce: "ผลิตที่เหลือทั้งหมด", catalog: "สร้างแค็ตตาล็อก", publish_fb: "ตั้งเวลา Facebook", poster: "สร้างภาพปก", claude: "Claude เขียนบท", revise: "Claude แก้บท", images: "สร้างภาพ", regen_image: "สร้างภาพใหม่", voice: "ทำเสียง", regen_voice: "อัดเสียงใหม่", render: "เรนเดอร์" };

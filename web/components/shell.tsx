@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, Clapperboard, Settings2, Workflow } from "lucide-react";
+import { CalendarDays, Clapperboard, FlaskConical, Settings2, Workflow } from "lucide-react";
 import { Brand } from "./common";
 import { ThemeToggle } from "./theme";
 import { Button } from "./ui/button";
 
-const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "งาน", icon: Workflow }];
+const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "งาน", icon: Workflow }, { href: "/poc", text: "ทดสอบ", icon: FlaskConical }];
 
 function Nav({ className }: { className: string }) {
   const pathname = usePathname();
   return <nav className={className} aria-label="เมนูหลัก">{links.map(({ href, text, icon: Icon }) => {
-    const active = pathname === href || (href !== "/" && pathname.startsWith(href + "/")) || (href === "/jobs" && (pathname.startsWith("/orders/") || pathname.startsWith("/review/")));
+    const poc = pathname.startsWith("/episodes/poc/") || pathname.startsWith("/review/poc/");
+    const active = href === "/poc" ? pathname === "/poc" || poc
+      : !poc && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")) || (href === "/jobs" && (pathname.startsWith("/orders/") || pathname.startsWith("/review/"))));
     return <Link key={href} href={href} aria-current={active ? "page" : undefined}><Icon size={20} />{text}</Link>;
   })}</nav>;
 }

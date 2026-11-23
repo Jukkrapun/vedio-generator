@@ -5,7 +5,7 @@ import { useState } from "react";
 import { candidates } from "@/lib/planner";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type Episode, type EpisodeStatus, type Platform } from "@/lib/types";
-import { Empty, EpisodeStatusBadge, ModeBadge, VersionBadge, takeMode, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
+import { Empty, isTestSeries, EpisodeStatusBadge, ModeBadge, VersionBadge, takeMode, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
 import { useOps } from "./ops-provider";
 import { Card } from "./ui/card";
 
@@ -18,8 +18,10 @@ function PostCell({ episode, platform }: { episode: Episode; platform: Platform 
   return post ? <PostLink url={post.url}><span className="post-date"><Check size={14} />{thaiShortDate(post.date)}</span></PostLink> : <span className="muted">—</span>;
 }
 
-export function EpisodesScreen({ series }: { series: string[] }) {
-  const { episodes } = useOps();
+export function EpisodesScreen({ series: allSeries, test = false }: { series: string[]; test?: boolean }) {
+  const { episodes: everything } = useOps();
+  const episodes = everything.filter(episode => isTestSeries(episode.series) === test);
+  const series = allSeries.filter(key => isTestSeries(key) === test);
   const [selectedSeries, setSeries] = useState("");
   const [status, setStatus] = useState("");
   const [platform, setPlatform] = useState("");
@@ -31,7 +33,7 @@ export function EpisodesScreen({ series }: { series: string[] }) {
     episode.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
   );
   return <>
-    <header className="page-heading"><div><h1>คลิปทั้งหมด</h1><p className="muted">ค้นหาคลิปและดูประวัติการลงแต่ละแพลตฟอร์ม</p></div></header>
+    <header className="page-heading"><div><h1>{test ? "ทดสอบ (POC)" : "คลิปทั้งหมด"}</h1><p className="muted">{test ? "งานทดลองจาก content/poc ไม่เข้าคิวลงคลิป" : "ค้นหาคลิปและดูประวัติการลงแต่ละแพลตฟอร์ม"}</p></div></header>
     <section className="stats-grid clip-stats" aria-label="สรุปจำนวนคลิป">
       <Card className="stat-card"><span className="muted">คลิปทั้งหมด</span><div className="stat-count"><strong>{episodes.length}</strong><span>คลิป</span></div><p className="small muted">เรนเดอร์แล้ว {episodes.filter(episode => episode.videoUrl).length} คลิป</p></Card>
       {platforms.map(key => <Card key={key} className="stat-card"><PlatformBadge platform={key} /><div className="stat-count"><strong>{candidates(episodes, key).length}</strong><span>คลิปที่ยังไม่ลง</span></div></Card>)}
