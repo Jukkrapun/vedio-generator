@@ -23,10 +23,11 @@ from images import generate_images
 from lipsync import lipsync_many
 from media import ROOT
 from render_reel import render
+from render_story import render_story
 from timing import report, step
 from tts import build_voice
 
-MODES = ("image", "video")
+MODES = ("image", "video", "story")
 
 
 def load(episode_dir: Path) -> dict:
@@ -43,6 +44,8 @@ def produce_many(episode_dirs: list[Path]) -> list[Path]:
             print(f"== {d.name} [{ep.get('mode', 'image')} mode]")
             with step(f"images {d.name[:3]}"):
                 generate_images(d)  # image mode: all segments; video mode: B-roll segments only
+            if ep.get("mode") == "story":
+                continue  # story mode builds its voice per language inside render_story
             with step(f"voice {d.name[:3]}"):
                 build_voice(d)
         video_dirs = [d for d, ep in episodes.items() if ep.get("mode") == "video"]
@@ -52,7 +55,10 @@ def produce_many(episode_dirs: list[Path]) -> list[Path]:
         videos = []
         for d in episode_dirs:
             with step(f"render {d.name[:3]}"):
-                videos.append(render(d))
+                if episodes[d].get("mode") == "story":
+                    videos.extend(render_story(d))  # long-form 16:9, one file per language
+                else:
+                    videos.append(render(d))
         for series in dict.fromkeys(d.parent.parent.name for d in episode_dirs):  # content/<series>/episodes/<ep>
             build_catalog(series)
         return videos

@@ -1,0 +1,139 @@
+{
+  "total": 117.192,
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "คืนที่นอนไม่หลับ",
+        "en": "A sleepless night"
+      },
+      "image": "images/01-street.png",
+      "image_prompt": "an empty narrow city street at 2 a.m., wet asphalt, a single glowing 24-hour convenience store at the end of the street, a lone woman seen from far behind walking toward it",
+      "text": "That night was another night I couldn't sleep.\nThe clock said exactly two a.m.",
+      "audio": "00-s01.mp3",
+      "start": 0.3,
+      "end": 5.604
+    },
+    {
+      "id": "s02",
+      "image": "images/01-street.png",
+      "text": "I wasn't hungry.\nI just wanted to be somewhere with light, light that wasn't my phone screen.",
+      "audio": "01-s02.mp3",
+      "start": 6.404,
+      "end": 12.596
+    },
+    {
+      "id": "s03",
+      "image": "images/02-aisle.png",
+      "image_prompt": "inside an empty convenience store late at night, bright fluorescent aisles of snacks and drinks, soft reflections on the floor, nobody around, calm",
+      "text": "The convenience store at the end of my street never closes.\nThe door chimed… and then everything went quiet again.",
+      "audio": "02-s03.mp3",
+      "start": 13.396,
+      "end": 21.604
+    },
+    {
+      "id": "s04",
+      "image": "images/03-counter.png",
+      "image_prompt": "a convenience store counter at night, a young male cashier seen out of focus behind the counter, warm small radio, hot water dispenser, sleepy atmosphere",
+      "text": "The night cashier was a sleepy-looking young man.\nHe nodded at me like he always did, as if he knew people who come in at this hour aren't really here to shop.",
+      "audio": "03-s04.mp3",
+      "start": 22.404,
+      "end": 32.532
+    },
+    {
+      "id": "s05",
+      "chapter": {
+        "th": "ชายแก่กับบะหมี่สองถ้วย",
+        "en": "The old man"
+      },
+      "image": "images/04-old-man.png",
+      "image_prompt": "an elderly man seen from behind sitting at the window bar of a convenience store at night, two steaming cups of instant noodles in front of him, an empty stool beside him, city lights outside the window",
+      "text": "There was one other customer that night.\nAn old man with grey hair, sitting at the counter by the window.",
+      "audio": "04-s05.mp3",
+      "start": 33.332,
+      "end": 40.196
+    },
+    {
+      "id": "s06",
+      "image": "images/04-old-man.png",
+      "text": "In front of him were two cups of instant noodles.\nOne he was eating… the other sat in front of the empty stool beside him.",
+      "audio": "05-s06.mp3",
+      "start": 40.996,
+      "end": 49.564
+    },
+    {
+      "id": "s07",
+      "image": "images/04-old-man.png",
+      "text": "Its lid was still closed.\nSteam rose from it slowly, and then disappeared.",
+      "audio": "06-s07.mp3",
+      "start": 50.364,
+      "end": 56.196
+    },
+    {
+      "id": "s08",
+      "image": "images/03-counter.png",
+      "text": "When I paid, I couldn't help asking.\nThe cashier smiled a little, and said quietly…",
+      "audio": "07-s08.mp3",
+      "start": 56.996,
+      "end": 63.572
+    },
+    {
+      "id": "s09",
+      "chapter": {
+        "th": "ที่นั่งที่ยังเว้นไว้",
+        "en": "The empty seat"
+      },
+      "image": "images/05-window.png",
+      "image_prompt": "close view of a convenience store window at night with rain drops, two cups of instant noodles on the window bar, one open one closed, blurry city lights outside, melancholic and warm",
+      "text": "\"He used to come here with his wife every night, ever since I started working here.\nThe two of them ate noodles and talked until almost morning.\"",
+      "audio": "08-s09.mp3",
+      "start": 64.372,
+      "end": 73.516
+    },
+    {
+      "id": "s10",
+      "image": "images/05-window.png",
+      "text": "\"She passed away last year…\nBut he still buys two cups. Every night.\"",
+      "audio": "09-s10.mp3",
+      "start": 74.316,
+      "end": 79.836
+    },
+    {
+      "id": "s11",
+      "image": "images/04-old-man.png",
+      "text": "I bought a carton of milk and sat two seats away from him.\nWe didn't talk, but it didn't feel like we were alone, either.",
+      "audio": "10-s11.mp3",
+      "start": 80.636,
+      "end": 88.292
+    },
+    {
+      "id": "s12",
+      "image": "images/05-window.png",
+      "text": "Before he left, he turned to me and said just one thing.\n\"She liked sitting by the window… watching the cars go by.\"",
+      "audio": "11-s12.mp3",
+      "start": 89.092,
+      "end": 97.54
+    },
+    {
+      "id": "s13",
+      "chapter": {
+        "th": "ทางกลับบ้าน",
+        "en": "Walking home"
+      },
+      "image": "images/06-dawn.png",
+      "image_prompt": "a quiet residential street at blue hour just before dawn, a woman seen from far behind walking home holding a small paper bag, soft first light in the sky, streetlights still on",
+      "text": "I walked home as the sky began to change colour,\nand thought… some people never forget someone. They just learn to keep a seat for them.",
+      "audio": "12-s13.mp3",
+      "start": 98.34,
+      "end": 107.46
+    },
+    {
+      "id": "s14",
+      "image": "images/06-dawn.png",
+      "text": "If you still can't sleep tonight…\nis there someone you're keeping a seat for? You can tell me, if you'd like.",
+      "audio": "13-s14.mp3",
+      "start": 108.26,
+      "end": 114.692
+    }
+  ]
+}

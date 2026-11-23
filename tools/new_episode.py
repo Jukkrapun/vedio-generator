@@ -51,6 +51,6 @@ if __name__ == "__main__":
     argv = sys.argv[1:]
     mode = argv[argv.index("--mode") + 1] if "--mode" in argv else None
     positional = [a for a in argv if not a.startswith("--") and a != mode]
-    if len(positional) != 2 or mode not in (None, "image", "video"):
+    if len(positional) != 2 or mode not in (None, "image", "video", "story"):
         sys.exit(__doc__)
     new_episode(positional[0], positional[1], mode)

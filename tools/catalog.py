@@ -24,13 +24,17 @@ AUDIO_TAG_RE = re.compile(r"\[[^\]]*\]\s*")
 METRICS = ("views", "likes", "saves")
 
 
-def spoken(text: str) -> str:
+def spoken(text: str | dict) -> str:
+    if isinstance(text, dict):  # story mode: {"th": ..., "en": ...}
+        text = text.get("th") or next(iter(text.values()), "")
     return AUDIO_TAG_RE.sub("", text).strip()
 
 
 def load_episode(folder: Path, output_dir: Path) -> dict:
     data = json.loads((folder / "episode.json").read_text(encoding="utf-8"))
-    video = output_dir / f"{folder.name}-{data.get('mode', 'image')}.mp4"  # current mode's render
+    mode = data.get("mode", "image")
+    suffix = "story-th" if mode == "story" else mode  # story mode renders one file per language
+    video = output_dir / f"{folder.name}-{suffix}.mp4"  # current mode's render
     posts = data.get("posts") or []
     status = "posted" if posts else "rendered" if video.exists() else "draft"
     try:

@@ -47,7 +47,8 @@ def synthesize(cfg: dict, text: str, out_path: Path) -> bool:
         synthesize_edge(strip_audio_tags(text), cfg["voice"], cfg.get("rate", "+0%"), out_path)
         return True
     try:
-        synthesize_elevenlabs(text, cfg["voice"], cfg.get("model", ELEVENLABS_MODEL), out_path)
+        synthesize_elevenlabs(text, cfg["voice"], cfg.get("model", ELEVENLABS_MODEL), out_path,
+                              cfg.get("language", "th"))
         return True
     except PaidPlanRequired as e:
         fallback = cfg.get("fallback")
@@ -58,12 +59,12 @@ def synthesize(cfg: dict, text: str, out_path: Path) -> bool:
         return False
 
 
-def synthesize_elevenlabs(text: str, voice_id: str, model: str, out_path: Path) -> None:
+def synthesize_elevenlabs(text: str, voice_id: str, model: str, out_path: Path, language: str = "th") -> None:
     """Thai needs eleven_v3. Library voices need a paid plan (402 otherwise)."""
     key = os.environ.get("ELEVENLABS_API_KEY")
     if not key:
         raise RuntimeError("ELEVENLABS_API_KEY not set (put it in .env at repo root)")
-    body = json.dumps({"text": text, "model_id": model, "language_code": "th"}).encode()
+    body = json.dumps({"text": text, "model_id": model, "language_code": language}).encode()
     req = urllib.request.Request(
         f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128",
         data=body, headers={"xi-api-key": key, "Content-Type": "application/json"},

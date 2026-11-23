@@ -1,0 +1,138 @@
+{
+  "mode": "story",
+  "title": "บะหมี่สองถ้วย",
+  "tags": ["convenience-store", "loss", "strangers"],
+  "posts": [],
+  "languages": {
+    "th": {"title": "บะหมี่สองถ้วย", "tts": "edge", "voice": "th-TH-PremwadeeNeural", "rate": "-10%"},
+    "en": {"title": "Two Cups of Noodles", "tts": "edge", "voice": "en-US-AvaNeural", "rate": "-8%"}
+  },
+  "pause_sec": 0.8,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, dim warm lamp and cold fluorescent light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet lonely but comforting mood",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {"th": "คืนที่นอนไม่หลับ", "en": "A sleepless night"},
+      "image": "images/01-street.png",
+      "image_prompt": "an empty narrow city street at 2 a.m., wet asphalt, a single glowing 24-hour convenience store at the end of the street, a lone woman seen from far behind walking toward it",
+      "text": {
+        "th": "คืนนั้น… เป็นอีกคืนที่ฉันนอนไม่หลับ\nนาฬิกาบอกเวลาตีสองพอดี",
+        "en": "That night was another night I couldn't sleep.\nThe clock said exactly two a.m."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-street.png",
+      "text": {
+        "th": "ฉันไม่ได้หิวอะไรหรอก\nแค่อยากออกไปเจอแสงไฟสักที่ ที่ไม่ใช่จอโทรศัพท์",
+        "en": "I wasn't hungry.\nI just wanted to be somewhere with light, light that wasn't my phone screen."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/02-aisle.png",
+      "image_prompt": "inside an empty convenience store late at night, bright fluorescent aisles of snacks and drinks, soft reflections on the floor, nobody around, calm",
+      "text": {
+        "th": "ร้านสะดวกซื้อหน้าซอยเปิดทั้งคืน\nเสียงประตูดังติ๊งต่อง… แล้วทุกอย่างก็เงียบลงอีกครั้ง",
+        "en": "The convenience store at the end of my street never closes.\nThe door chimed… and then everything went quiet again."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/03-counter.png",
+      "image_prompt": "a convenience store counter at night, a young male cashier seen out of focus behind the counter, warm small radio, hot water dispenser, sleepy atmosphere",
+      "text": {
+        "th": "พนักงานกะดึกเป็นผู้ชายหน้าง่วง ๆ\nเขาพยักหน้าให้ฉันเหมือนทุกครั้ง เหมือนรู้ว่าคนที่มาตอนนี้ ไม่ได้มาซื้อของจริง ๆ",
+        "en": "The night cashier was a sleepy-looking young man.\nHe nodded at me like he always did, as if he knew people who come in at this hour aren't really here to shop."
+      }
+    },
+    {
+      "id": "s05",
+      "chapter": {"th": "ชายแก่กับบะหมี่สองถ้วย", "en": "The old man"},
+      "image": "images/04-old-man.png",
+      "image_prompt": "an elderly man seen from behind sitting at the window bar of a convenience store at night, two steaming cups of instant noodles in front of him, an empty stool beside him, city lights outside the window",
+      "text": {
+        "th": "คืนนั้นมีลูกค้าอีกคนหนึ่ง\nคุณลุงผมสีเทา นั่งอยู่ที่โต๊ะริมกระจก",
+        "en": "There was one other customer that night.\nAn old man with grey hair, sitting at the counter by the window."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/04-old-man.png",
+      "text": {
+        "th": "ตรงหน้าเขามีบะหมี่ถ้วยสองถ้วย\nถ้วยหนึ่งเขากินอยู่… อีกถ้วยหนึ่ง วางไว้หน้าเก้าอี้ว่าง ๆ ข้าง ๆ",
+        "en": "In front of him were two cups of instant noodles.\nOne he was eating… the other sat in front of the empty stool beside him."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/04-old-man.png",
+      "text": {
+        "th": "ฝาถ้วยยังปิดอยู่\nไอร้อนค่อย ๆ ลอยขึ้นมา แล้วก็หายไป",
+        "en": "Its lid was still closed.\nSteam rose from it slowly, and then disappeared."
+      }
+    },
+    {
+      "id": "s08",
+      "image": "images/03-counter.png",
+      "text": {
+        "th": "ตอนจ่ายเงิน ฉันอดถามไม่ได้\nพนักงานยิ้มนิดหนึ่ง แล้วพูดเสียงเบา ๆ ว่า…",
+        "en": "When I paid, I couldn't help asking.\nThe cashier smiled a little, and said quietly…"
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": {"th": "ที่นั่งที่ยังเว้นไว้", "en": "The empty seat"},
+      "image": "images/05-window.png",
+      "image_prompt": "close view of a convenience store window at night with rain drops, two cups of instant noodles on the window bar, one open one closed, blurry city lights outside, melancholic and warm",
+      "text": {
+        "th": "\"ลุงเขามากับภรรยาทุกคืนครับ ตั้งแต่ผมเริ่มทำงานที่นี่\nสองคนนั่งกินบะหมี่ คุยกันจนเกือบเช้า\"",
+        "en": "\"He used to come here with his wife every night, ever since I started working here.\nThe two of them ate noodles and talked until almost morning.\""
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/05-window.png",
+      "text": {
+        "th": "\"ป้าเขาไม่อยู่แล้วตั้งแต่ปีที่แล้ว…\nแต่ลุงยังซื้อสองถ้วยทุกคืนเลยครับ\"",
+        "en": "\"She passed away last year…\nBut he still buys two cups. Every night.\""
+      }
+    },
+    {
+      "id": "s11",
+      "image": "images/04-old-man.png",
+      "text": {
+        "th": "ฉันซื้อนมกล่องหนึ่ง แล้วไปนั่งห่างจากคุณลุงสองที่\nเราไม่ได้คุยกัน แต่ก็ไม่รู้สึกว่าต่างคนต่างอยู่",
+        "en": "I bought a carton of milk and sat two seats away from him.\nWe didn't talk, but it didn't feel like we were alone, either."
+      }
+    },
+    {
+      "id": "s12",
+      "image": "images/05-window.png",
+      "text": {
+        "th": "ก่อนลุกไป คุณลุงหันมาพูดกับฉันประโยคเดียว\n\"เขาชอบนั่งริมกระจก… ดูไฟรถวิ่งผ่าน\"",
+        "en": "Before he left, he turned to me and said just one thing.\n\"She liked sitting by the window… watching the cars go by.\""
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": {"th": "ทางกลับบ้าน", "en": "Walking home"},
+      "image": "images/06-dawn.png",
+      "image_prompt": "a quiet residential street at blue hour just before dawn, a woman seen from far behind walking home holding a small paper bag, soft first light in the sky, streetlights still on",
+      "text": {
+        "th": "ฉันเดินกลับบ้านตอนฟ้าเริ่มเปลี่ยนสี\nแล้วคิดว่า… บางคนก็ไม่ได้ลืมใคร เขาแค่เรียนรู้ที่จะเว้นที่นั่งไว้ให้",
+        "en": "I walked home as the sky began to change colour,\nand thought… some people never forget someone. They just learn to keep a seat for them."
+      }
+    },
+    {
+      "id": "s14",
+      "image": "images/06-dawn.png",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nเธอเว้นที่นั่งไว้ให้ใครอยู่หรือเปล่า เล่าให้ฟังหน่อยได้ไหม",
+        "en": "If you still can't sleep tonight…\nis there someone you're keeping a seat for? You can tell me, if you'd like."
+      }
+    }
+  ]
+}

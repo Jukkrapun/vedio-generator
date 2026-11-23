@@ -29,12 +29,12 @@ MAX_DURATION_SEC = 90
 FFMPEG_TIMEOUT_SEC = 300
 
 
-def run(cmd: list[str], cwd: Path | None = None) -> str:
+def run(cmd: list[str], cwd: Path | None = None, timeout: int = FFMPEG_TIMEOUT_SEC) -> str:
     if cmd[0] == "ffmpeg":
         cmd = [cmd[0], "-nostdin", *cmd[1:]]  # never wait on inherited stdin (caused hangs)
     result = subprocess.run(
         cmd, cwd=cwd, capture_output=True, text=True, encoding="utf-8",
-        stdin=subprocess.DEVNULL, timeout=FFMPEG_TIMEOUT_SEC,
+        stdin=subprocess.DEVNULL, timeout=timeout,
     )
     if result.returncode != 0:
         raise RuntimeError(f"Command failed: {' '.join(cmd[:3])}...\n{result.stderr[-2000:]}")
