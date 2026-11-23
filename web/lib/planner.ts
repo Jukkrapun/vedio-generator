@@ -1,7 +1,7 @@
 import { platforms, type Episode, type Platform, type Schedule, type Slot, type Today } from "./types";
 
 export function candidates(episodes: Episode[], platform: Platform) {
-  return episodes.filter(episode => episode.videoUrl && episode.mode !== "story" && episode.series !== "poc" && (!episode.review || episode.review.stage === "done") && !episode.posts.some(post => post.platform === platform));
+  return episodes.filter(episode => episode.videoUrl && episode.mode !== "story" && !episode.series.startsWith("poc") && (!episode.review || episode.review.stage === "done") && !episode.posts.some(post => post.platform === platform));
 }
 export function planToday(episodes: Episode[], schedule: Schedule, picks: Record<string, string>, date: string, now: string): Today {
   const slots = platforms.flatMap(platform => {

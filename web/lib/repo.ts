@@ -8,6 +8,10 @@ export const ROOT = path.resolve(process.env.REPO_ROOT ?? path.join(process.cwd(
 const OPS = path.join(ROOT, ".ops");
 const SLUG_RE = /^\d{3}-\d{4}-\d{2}-\d{2}-[a-z0-9]+(-[a-z0-9]+)*$/;
 const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+// series key: "love-quotes", or nested "poc.sound" = content/poc/sound (one URL segment)
+const SERIES_RE = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)?$/;
+/** Folder of a series under content/ and output/: "poc.sound" -> "poc/sound". */
+export const seriesPath = (series: string) => series.replace(".", "/");
 
 export const defaultSchedule: Schedule = {
   timezone: "Asia/Bangkok",
@@ -37,10 +41,20 @@ async function readText(file: string) { try { return await fs.readFile(file, "ut
 
 // ---- episodes -----------------------------------------------------------
 export async function listSeries(): Promise<string[]> {
-  const entries = await fs.readdir(path.join(ROOT, "content"), { withFileTypes: true });
-  return entries.filter(e => e.isDirectory() && existsSync(path.join(ROOT, "content", e.name, "series.md"))).map(e => e.name).sort();
+  const content = path.join(ROOT, "content");
+  const out: string[] = [];
+  for (const top of await fs.readdir(content, { withFileTypes: true })) {
+    if (!top.isDirectory() || top.name.startsWith("_")) continue;
+    if (existsSync(path.join(content, top.name, "series.md"))) out.push(top.name);
+    // nested series (e.g. content/poc/sound/series.md)
+    for (const sub of await fs.readdir(path.join(content, top.name), { withFileTypes: true })) {
+      if (sub.isDirectory() && !sub.name.startsWith("_") && sub.name !== "episodes" && existsSync(path.join(content, top.name, sub.name, "series.md")))
+        out.push(top.name + "." + sub.name);
+    }
+  }
+  return out.filter(name => SERIES_RE.test(name)).sort();
 }
-export function episodeDir(series: string, slug: string) { return path.join(ROOT, "content", series, "episodes", slug); }
+export function episodeDir(series: string, slug: string) { return path.join(ROOT, "content", seriesPath(series), "episodes", slug); }
 /** Episode's current "mode" (image|video), as tools/media.py output_path() uses it. */
 export function episodeMode(series: string, slug: string): Mode {
   try {
@@ -50,14 +64,14 @@ export function episodeMode(series: string, slug: string): Mode {
 }
 /** Rendered video: output/<series>/<slug>-<mode>.mp4 (current mode), falling back to the old <slug>.mp4 name. */
 export function videoFile(series: string, slug: string) {
-  const current = path.join(ROOT, "output", series, `${slug}-${episodeMode(series, slug)}.mp4`);
-  const legacy = path.join(ROOT, "output", series, slug + ".mp4");
+  const current = path.join(ROOT, "output", seriesPath(series), `${slug}-${episodeMode(series, slug)}.mp4`);
+  const legacy = path.join(ROOT, "output", seriesPath(series), slug + ".mp4");
   return existsSync(current) || !existsSync(legacy) ? current : legacy;
 }
 
 // ---- render history (archived by ops/worker.py) ---------------------------
 export const VERSION_RE = /^\d{8}-\d{6}-(image|video|story)(-[a-z0-9-]+)?$/;
-const historyDir = (series: string, slug: string) => path.join(ROOT, "output", series, "history", slug);
+const historyDir = (series: string, slug: string) => path.join(ROOT, "output", seriesPath(series), "history", slug);
 export function historyFile(series: string, slug: string, version: string) {
   if (!VERSION_RE.test(version)) throw new Error("bad version");
   return path.join(historyDir(series, slug), version + ".mp4");
@@ -94,7 +108,7 @@ function pickVersion(versions: Version[], wanted: string | undefined, mode: Mode
 
 /** Validates series/slug against the real folders (no path traversal). */
 export async function resolveEpisode(series: string, slug: string) {
-  if (!NAME_RE.test(series) || !SLUG_RE.test(slug)) return null;
+  if (!SERIES_RE.test(series) || !SLUG_RE.test(slug)) return null;
   const dir = episodeDir(series, slug);
   return existsSync(path.join(dir, "episode.json")) ? dir : null;
 }
@@ -166,7 +180,7 @@ export async function selectedVersionOf(series: string, slug: string) {
 export async function listEpisodes(): Promise<Episode[]> {
   const out: Episode[] = [];
   for (const series of await listSeries()) {
-    const dir = path.join(ROOT, "content", series, "episodes");
+    const dir = path.join(ROOT, "content", seriesPath(series), "episodes");
     const slugs = existsSync(dir) ? (await fs.readdir(dir)).filter(s => SLUG_RE.test(s)).sort() : [];
     for (const slug of slugs) {
       const loaded = await loadEpisode(series, slug);

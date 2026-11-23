@@ -51,19 +51,24 @@ def update(path: Path, **fields) -> dict:
     return job
 
 
+def series_path(series: str) -> str:
+    """Web series key -> folder under content/ and output/: "poc.sound" -> "poc/sound" (nested series)."""
+    return series.replace(".", "/")
+
+
 def episode_path(episode_id: str) -> str:
     series, slug = episode_id.split("/")
-    return f"content/{series}/episodes/{slug}"
+    return f"content/{series_path(series)}/episodes/{slug}"
 
 
 def command(job: dict) -> list[str]:
     t, a = job["type"], job.get("args", {})
     if t == "new_episode":
-        return [PY, "tools/new_episode.py", a["series"], a["slug"], "--mode", a.get("mode", "image")]
+        return [PY, "tools/new_episode.py", series_path(a["series"]), a["slug"], "--mode", a.get("mode", "image")]
     if t == "produce":
         return [PY, "tools/produce.py", episode_path(a["episode"])]
     if t == "catalog":
-        return [PY, "tools/catalog.py", a["series"]]
+        return [PY, "tools/catalog.py", series_path(a["series"])]
     if t == "publish_fb":
         cmd = [PY, "tools/publish_fb.py", episode_path(a["episode"]), "--at", a["when"]]
         if a.get("version"):
@@ -75,7 +80,7 @@ def command(job: dict) -> list[str]:
             video, name = history_file(a["episode"], a["version"]), a["version"]
         else:
             mode = (read(ROOT / episode_path(a["episode"]) / "episode.json") or {}).get("mode", "image")
-            video, name = ROOT / "output" / series / f"{slug}-{mode}.mp4", f"current-{mode}"
+            video, name = ROOT / "output" / series_path(series) / f"{slug}-{mode}.mp4", f"current-{mode}"
         out = POSTERS / series / slug / f"{name}.jpg"
         out.parent.mkdir(parents=True, exist_ok=True)
         return ["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.5", "-i", str(video),
@@ -123,7 +128,13 @@ def claude_command(prompt: str) -> list[str]:
 
 
 def episode_dirs() -> set[str]:
-    return {f"{p.parent.parent.name}/{p.name}" for p in (ROOT / "content").glob("*/episodes/*") if (p / "episode.json").exists()}
+    found = set()
+    for pattern in ("*/episodes/*", "*/*/episodes/*"):  # top-level and nested series
+        for p in (ROOT / "content").glob(pattern):
+            if (p / "episode.json").exists():
+                series = p.parent.parent.relative_to(ROOT / "content").as_posix().replace("/", ".")
+                found.add(f"{series}/{p.name}")
+    return found
 
 
 def prepare(job: dict, log) -> None:
@@ -189,7 +200,7 @@ def history_file(episode_id: str, version: str) -> Path:
     if not VERSION_RE.match(version):
         raise ValueError(f"bad version {version!r}")
     series, slug = episode_id.split("/")
-    return ROOT / "output" / series / "history" / slug / f"{version}.mp4"
+    return ROOT / "output" / series_path(series) / "history" / slug / f"{version}.mp4"
 
 
 def duration(path: Path) -> float | None:
@@ -204,10 +215,12 @@ def duration(path: Path) -> float | None:
 def archive_renders() -> int:
     """Copy new/changed renders into history. Returns how many were archived."""
     count = 0
-    for video in (ROOT / "output").glob("*/*.mp4"):
+    videos = [*(ROOT / "output").glob("*/*.mp4"), *(ROOT / "output").glob("*/*/*.mp4")]  # + nested series
+    for video in videos:
         match = OUTPUT_RE.match(video.name)
-        series = video.parent.name
-        if not match or not (ROOT / "content" / series / "episodes" / match[1] / "episode.json").exists():
+        series_dir = video.parent.relative_to(ROOT / "output").as_posix()
+        series = series_dir.replace("/", ".")
+        if "history" in series_dir.split("/") or not match or not (ROOT / "content" / series_dir / "episodes" / match[1] / "episode.json").exists():
             continue
         slug, mode = match[1], match[2]
         variant = re.sub(r"[^a-z0-9-]", "", (match[3] or "").lower()).strip("-")
@@ -223,7 +236,7 @@ def archive_renders() -> int:
         folder.mkdir(parents=True, exist_ok=True)
         target = folder / f"{version}.mp4"
         shutil.copy2(video, target)
-        episode = read(ROOT / "content" / series / "episodes" / slug / "episode.json") or {}
+        episode = read(ROOT / "content" / series_dir / "episodes" / slug / "episode.json") or {}
         # story mode keeps text per language ({"th": ..., "en": ...}); the take's variant is the language
         lines = [s["text"].get(variant) or next(iter(s["text"].values()), "") if isinstance(s.get("text"), dict) else s.get("text", "")
                  for s in episode.get("segments", []) if not s.get("skip")]

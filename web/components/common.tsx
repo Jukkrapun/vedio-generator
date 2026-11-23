@@ -9,10 +9,10 @@ import { Badge } from "./ui/card";
 export const platformNames: Record<Platform, string> = { tiktok: "TikTok", youtube: "YouTube Shorts", facebook: "Facebook Reels" };
 export const platformShort: Record<Platform, string> = { tiktok: "TT", youtube: "YT", facebook: "FB" };
 const icons = { tiktok: AudioLines, youtube: Youtube, facebook: Facebook };
-export const seriesNames: Record<string, string> = { "love-quotes": "เรื่องความรัก", "work-talk": "เรื่องงาน", "living-life": "เรื่องชีวิต", "night-stories": "เรื่องเล่ายามดึก", poc: "ทดสอบ (POC)" };
+export const seriesNames: Record<string, string> = { "love-quotes": "เรื่องความรัก", "work-talk": "เรื่องงาน", "living-life": "เรื่องชีวิต", "night-stories": "เรื่องเล่ายามดึก", poc: "ทดสอบ (POC)", "poc.sound": "ทดสอบเสียง" };
 /** Series used for experiments: shown under the "ทดสอบ" menu, kept out of the clips list and posting queue. */
 export const TEST_SERIES = ["poc"];
-export const isTestSeries = (series: string) => TEST_SERIES.includes(series);
+export const isTestSeries = (series: string) => TEST_SERIES.includes(series.split(".")[0]);
 export const listHref = (series: string) => isTestSeries(series) ? "/poc" : "/episodes";
 export const episodeHref = (episode: Pick<Episode, "id">) => "/episodes/" + episode.id;
 export const statusLabels: Record<EpisodeStatus, string> = { draft: "ฉบับร่าง", rendered: "พร้อมลง", posted: "ลงแล้ว" };
