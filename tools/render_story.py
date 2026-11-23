@@ -22,7 +22,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from media import ROOT, run
+from media import ROOT, run, series_path
 from render_reel import font_family
 from subtitles import ass_time
 from tts import mix_voice_track, strip_audio_tags, synthesize_segments
@@ -204,7 +204,7 @@ def render_lang(episode_dir: Path, episode: dict, lang: str) -> Path:
                    f"[1:a][bg]amix=inputs=2:duration=first:normalize=0[a]")
         amap = ["-filter_complex", afilter, "-map", "[a]"]
 
-    out = ROOT / "output" / episode_dir.parent.parent.name / f"{episode_dir.name}-story-{lang}.mp4"
+    out = ROOT / "output" / series_path(episode_dir) / f"{episode_dir.name}-story-{lang}.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "clips.txt", *inputs,
          "-vf", ",".join(filters), "-map", "0:v", *amap,

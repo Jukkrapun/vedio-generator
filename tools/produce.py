@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 from catalog import build_catalog
 from images import generate_images
 from lipsync import lipsync_many
-from media import ROOT
+from media import ROOT, series_path
 from render_reel import render
 from render_story import render_story
 from timing import report, step
@@ -59,7 +59,7 @@ def produce_many(episode_dirs: list[Path]) -> list[Path]:
                     videos.extend(render_story(d))  # long-form 16:9, one file per language
                 else:
                     videos.append(render(d))
-        for series in dict.fromkeys(d.parent.parent.name for d in episode_dirs):  # content/<series>/episodes/<ep>
+        for series in dict.fromkeys(series_path(d) for d in episode_dirs):  # content/<series>/episodes/<ep>
             build_catalog(series)
         return videos
     finally:

@@ -77,4 +77,14 @@ def output_path(episode_dir: Path, mode: str | None = None) -> Path:
     if mode is None:
         import json
         mode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8")).get("mode", "image")
-    return ROOT / "output" / episode_dir.parent.parent.name / f"{episode_dir.name}-{mode}.mp4"
+    return ROOT / "output" / series_path(episode_dir) / f"{episode_dir.name}-{mode}.mp4"
+
+
+def series_path(episode_dir: Path) -> str:
+    """Series of an episode as a path under content/: "love-quotes", or nested "poc/sound"
+    (content/poc/sound/episodes/<ep>). Output mirrors it: output/<series_path>/."""
+    series_dir = episode_dir.resolve().parent.parent
+    try:
+        return series_dir.relative_to(ROOT / "content").as_posix()
+    except ValueError:
+        return series_dir.name
