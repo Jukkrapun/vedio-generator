@@ -1,0 +1,70 @@
+{
+  "mode": "image",
+  "title": "ทดสอบเสียง Mind: v3 + [softly] + stability 1.0",
+  "tags": [
+    "voice-test"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "gbZNaSxK771GgOTJIKRB",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person seen from behind sitting alone on a bed in a dark apartment, city lights through the window",
+      "text": "[softly] ยิ่งโต... ยิ่งเหงาง่ายขึ้นไหม",
+      "cards": [
+        "ยิ่งโต",
+        "ยิ่งเหงาง่ายขึ้นไหม"
+      ]
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a phone lying face-up on a bedsheet, screen glowing softly, chat app blurred and unreadable",
+      "text": "[softly] ไม่ใช่เพราะไม่มีใคร... แต่เพราะเราเลิกเล่าเรื่องตัวเองให้ใครฟัง",
+      "cards": [
+        "ไม่ใช่เพราะไม่มีใคร",
+        "แต่เพราะเราเลิกเล่าเรื่องตัวเอง\nให้ใครฟัง"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a hand holding a phone near a window at night, warm lamp bokeh behind",
+      "text": "[softly] คืนนี้ลองทักเพื่อนสักคน... ไม่ต้องมีเหตุผลก็ได้",
+      "cards": [
+        "คืนนี้ลองทักเพื่อนสักคน",
+        "ไม่ต้องมีเหตุผลก็ได้"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "two cups of tea on a small balcony table at night, one steaming, soft city glow",
+      "text": "[softly] บางทีเขาก็รอให้เราทักอยู่เหมือนกัน",
+      "cards": [
+        "บางทีเขาก็รอให้เราทัก\nอยู่เหมือนกัน"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "render",
+    "order": "voice-test-2026-11-23"
+  },
+  "voice_settings": {
+    "stability": 1.0
+  }
+}

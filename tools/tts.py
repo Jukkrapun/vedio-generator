@@ -48,7 +48,7 @@ def synthesize(cfg: dict, text: str, out_path: Path) -> bool:
         return True
     try:
         synthesize_elevenlabs(text, cfg["voice"], cfg.get("model", ELEVENLABS_MODEL), out_path,
-                              cfg.get("language", "th"))
+                              cfg.get("language", "th"), cfg.get("voice_settings"))
         return True
     except PaidPlanRequired as e:
         fallback = cfg.get("fallback")
@@ -59,12 +59,17 @@ def synthesize(cfg: dict, text: str, out_path: Path) -> bool:
         return False
 
 
-def synthesize_elevenlabs(text: str, voice_id: str, model: str, out_path: Path, language: str = "th") -> None:
-    """Thai needs eleven_v3. Library voices need a paid plan (402 otherwise)."""
+def synthesize_elevenlabs(text: str, voice_id: str, model: str, out_path: Path, language: str = "th",
+                          voice_settings: dict | None = None) -> None:
+    """Thai: eleven_v3 or eleven_v4. Library voices need a paid plan (402 otherwise).
+    voice_settings (optional): {"stability", "similarity_boost", "style", "speed"}."""
     key = os.environ.get("ELEVENLABS_API_KEY")
     if not key:
         raise RuntimeError("ELEVENLABS_API_KEY not set (put it in .env at repo root)")
-    body = json.dumps({"text": text, "model_id": model, "language_code": language}).encode()
+    payload = {"text": text, "model_id": model, "language_code": language}
+    if voice_settings:
+        payload["voice_settings"] = voice_settings
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(
         f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128",
         data=body, headers={"xi-api-key": key, "Content-Type": "application/json"},
@@ -94,6 +99,8 @@ def synthesize_edge(text: str, voice: str, rate: str, out_path: Path) -> None:
 
 def cache_key(episode: dict, text: str) -> str:
     cfg = {k: episode.get(k) for k in TTS_KEYS}
+    if episode.get("voice_settings"):  # only when set, so existing caches keep their keys
+        cfg["voice_settings"] = episode["voice_settings"]
     return hashlib.sha1(json.dumps([cfg, text], ensure_ascii=False).encode()).hexdigest()
 
 

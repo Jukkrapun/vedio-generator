@@ -41,6 +41,7 @@ output/<series>/            rendered videos (git-ignored)
 - `content/love-quotes/` — Thai love-quote podcast clips, 9:16, max 90s. See its `series.md`.
 - `content/work-talk/` — Thai work-life clips (burnout, boss, quitting, career doubt), late-night look, 20–30s. See its `series.md`.
 - `content/living-life/` — Thai adult-life clips (loneliness, friends, comparison, living alone, overthinking), image mode, ~20s. See its `series.md`.
+- `content/mockup/` — drafts/tests only, never posted (`review.stage` = `render` keeps them out of the queue). 001–005 = voice test of ElevenLabs Mind (2026-11-23).
 - `content/night-stories/` — long-form YouTube stories (16:9, 8–15 min), **mode `story`**, one Thai + one English video per episode from the same images, separate playlists. Plan/status: `docs/long-form/PLAN.md`. POC 001 rendered 2026-11-23.
 
 ## Workflows
@@ -93,9 +94,10 @@ python tools/render_reel.py content/<series>/episodes/<episode>  # full render (
 - TTS engine is chosen per episode with `"tts"` in `episode.json`:
   - `"edge"` (default, free): `voice` = `th-TH-PremwadeeNeural` (female) / `th-TH-NiwatNeural` (male). Intermittently returns no audio — the script retries.
   - `"elevenlabs"`: `voice` = ElevenLabs voice_id, optional `model` (default `eleven_v3`). Key is `ELEVENLABS_API_KEY` in `.env` (git-ignored, never print it).
-    - Account is on the **Starter plan** (38,950 chars/month; upgraded 2026-11-19). Library voices work via API. Video/lip-sync is done by the user in the ElevenLabs web app (Lip sync → Avatar + Speech), not via API (needs Pro).
+    - Account is on the **Creator plan, annual billing** (checked 2026-11-23: limit 130,799 chars/month, credits reset monthly, next reset 2026-12-23 15:21 Thai time; annual renewal ~2027-11-23, $235.40). Earlier it was on Starter (38,950 chars/month, from 2026-11-19). Check usage with `GET /v1/user/subscription`. Library voices work via API. Video/lip-sync is done by the user in the ElevenLabs web app (Lip sync → Avatar + Speech), not via API (needs Pro).
     - Some library voices are unusable even when paid: API returns 400 "not fine-tuned" (owner's training failed) — e.g. Mali `7XW5JhaNn90bnFojQ5DA`.
-    - Thai only works with `eleven_v3`; `eleven_multilingual_v2` rejects `language_code: th`.
+    - Thai works with `eleven_v3` and `eleven_v4` (v4 tested 2026-11-23 with voice Mind `gbZNaSxK771GgOTJIKRB`); `eleven_multilingual_v2` rejects `language_code: th`.
+    - Optional `"voice_settings": {"stability", "similarity_boost", "style", "speed"}` in episode.json is passed to ElevenLabs (it is part of the cache key only when set).
   - Optional `"fallback": {"tts": "edge", "voice": ...}` is used when ElevenLabs returns 402 (warning printed). v3 audio tags like `[softly]` are stripped automatically for edge-tts.
 - Each series' default voice is in its `series.md` and `_template/episode.json`.
 - Ready-made user prompts live in `PROMPTS.md`.

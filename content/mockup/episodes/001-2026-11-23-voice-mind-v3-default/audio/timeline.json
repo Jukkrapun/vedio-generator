@@ -1,0 +1,62 @@
+{
+  "total": 15.65,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a person seen from behind sitting alone on a bed in a dark apartment, city lights through the window",
+      "text": "[softly] ยิ่งโต... ยิ่งเหงาง่ายขึ้นไหม",
+      "cards": [
+        "ยิ่งโต",
+        "ยิ่งเหงาง่ายขึ้นไหม"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 2.78,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "insight",
+      "image": "images/02-insight.png",
+      "image_prompt": "a phone lying face-up on a bedsheet, screen glowing softly, chat app blurred and unreadable",
+      "text": "ไม่ใช่เพราะไม่มีใคร... แต่เพราะเราเลิกเล่าเรื่องตัวเองให้ใครฟัง",
+      "cards": [
+        "ไม่ใช่เพราะไม่มีใคร",
+        "แต่เพราะเราเลิกเล่าเรื่องตัวเอง\nให้ใครฟัง"
+      ],
+      "audio": "01-insight.mp3",
+      "start": 3.23,
+      "end": 7.55,
+      "align": "01-insight.align.json"
+    },
+    {
+      "id": "takeaway",
+      "image": "images/03-takeaway.png",
+      "image_prompt": "a hand holding a phone near a window at night, warm lamp bokeh behind",
+      "text": "คืนนี้ลองทักเพื่อนสักคน... ไม่ต้องมีเหตุผลก็ได้",
+      "cards": [
+        "คืนนี้ลองทักเพื่อนสักคน",
+        "ไม่ต้องมีเหตุผลก็ได้"
+      ],
+      "audio": "02-takeaway.mp3",
+      "start": 8.0,
+      "end": 11.6,
+      "align": "02-takeaway.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "two cups of tea on a small balcony table at night, one steaming, soft city glow",
+      "text": "[warmly] บางทีเขาก็รอให้เราทักอยู่เหมือนกัน",
+      "cards": [
+        "บางทีเขาก็รอให้เราทัก\nอยู่เหมือนกัน"
+      ],
+      "audio": "03-closing.mp3",
+      "start": 12.05,
+      "end": 14.45,
+      "align": "03-closing.align.json"
+    }
+  ]
+}
