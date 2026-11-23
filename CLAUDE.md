@@ -44,6 +44,7 @@ output/<series>/            rendered videos (git-ignored)
 - `content/poc/` — proofs of concept, never posted. One subfolder per experiment:
   - `poc/sound/` = nested series (`content/poc/sound/episodes/`, output `output/poc/sound/`, `catalog.py poc/sound`): 001–005 Thai voice test of ElevenLabs Mind (picked: 004 = `eleven_v4` default), 006–010 English voice test (story mode), 2026-11-23. Formerly `content/mockup/`. `media.series_path()` supports nested series for tools (produce/render/catalog/new_episode), and the ops dashboard shows them too: the web/worker series key for a nested series is `poc.sound` (dot = one URL segment, mapped back to `content/poc/sound`), and everything under `poc*` is listed in the web's "ทดสอบ" menu and kept out of the clips list and posting queue.
   - `poc/parallax/` = standalone experiment (own README, not in git).
+  - `poc/cat-2am/` = nested series "แมวตีสอง" (2026-11-24): episodic cartoon story narrated by the cat ส้มฉุน (`shared/characters/somchun/`), season plan + rules in its `series.md` (story-hook-framework B. Serial Reversal). Uses the episode keys `image_rules` (replaces the photorealistic default, here 2D cartoon) and `image_refs` (character sheet attached to the Codex run) added to `tools/images.py`. Episodes 001–003 written.
 - `content/night-stories/` — long-form YouTube stories (16:9, 8–15 min), **mode `story`**, one Thai + one English video per episode from the same images, separate playlists. Plan/status: `docs/long-form/PLAN.md`. POC 001 rendered 2026-11-23.
 
 ## Workflows

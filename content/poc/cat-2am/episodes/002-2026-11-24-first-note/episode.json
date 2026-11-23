@@ -1,0 +1,119 @@
+{
+  "mode": "image",
+  "title": "แมวตีสอง ตอน 2: โน้ตใบแรก",
+  "tags": [
+    "cat-2am",
+    "s1",
+    "note"
+  ],
+  "posts": [],
+  "review": {
+    "stage": "render"
+  },
+  "tts": "elevenlabs",
+  "voice": "gbZNaSxK771GgOTJIKRB",
+  "model": "eleven_v4",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.35,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_refs": [
+    "shared/characters/somchun/reference/sheet.png"
+  ],
+  "image_rules": "original 2D cartoon illustration (NOT photorealistic), vertical portrait 1024x1536, no text, no letters, no numbers on paper, no logos, no watermarks, humans never show their faces (only hands, backs, silhouettes or feet), calm empty area in the middle for subtitles",
+  "image_style": "soft hand-painted 2D animated film look, painterly backgrounds, warm amber lamp light against deep night blues, gentle grain, cozy quiet late-night mood. The cat is always Somchun from the reference sheet: chubby orange tabby, sleepy amber eyes, dark-green collar with brass bell",
+  "segments": [
+    {
+      "id": "hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of a young woman's hand (no face) gripping a small unfolded paper note, knuckles tense, warm lamp light",
+      "text": "มนุษย์ของฉันโกรธ… เพราะกระดาษแผ่นเดียว",
+      "cards": [
+        "มนุษย์ของฉันโกรธ",
+        "เพราะกระดาษแผ่นเดียว"
+      ]
+    },
+    {
+      "id": "back",
+      "image": "images/02-back.png",
+      "image_prompt": "wide: a young woman seen from behind standing by the window holding a note, Somchun the chubby orange tabby cat sitting on the bed watching her, cozy room with fairy lights, early morning",
+      "text": "เมื่อคืน ฉันกลับบ้านพร้อมโน้ตที่ปลอกคอ",
+      "cards": [
+        "เมื่อคืน ฉันกลับบ้าน",
+        "พร้อมโน้ตที่ปลอกคอ"
+      ]
+    },
+    {
+      "id": "read",
+      "image": "images/03-read.png",
+      "image_prompt": "over-the-shoulder close-up of a folded note being opened, handwriting shapes blurred and unreadable",
+      "text": "มันเขียนว่า… แมวคุณอ้วนเกินไปแล้ว",
+      "cards": [
+        "“แมวคุณอ้วน",
+        "เกินไปแล้ว”"
+      ]
+    },
+    {
+      "id": "deadpan",
+      "image": "images/04-deadpan.png",
+      "image_prompt": "front close-up of Somchun the chubby orange tabby cat sitting perfectly still with a deadpan unimpressed face, round belly very visible",
+      "text": "ซึ่ง… ก็ไม่ผิด",
+      "cards": [
+        "ซึ่ง… ก็ไม่ผิด"
+      ]
+    },
+    {
+      "id": "write",
+      "image": "images/05-write.png",
+      "image_prompt": "a young woman's hand (no face) writing hard with a pen on a small note at a desk under a warm lamp at night, crumpled drafts around",
+      "text": "มิ้นท์เขียนตอบทันที ตัวอักษรใหญ่มาก",
+      "cards": [
+        "มิ้นท์เขียนตอบทันที",
+        "ตัวอักษรใหญ่มาก"
+      ]
+    },
+    {
+      "id": "courier",
+      "image": "images/06-courier.png",
+      "image_prompt": "Somchun the chubby orange tabby cat walking carefully along a narrow building ledge at 2 a.m. with a folded note on its collar, city lights far below",
+      "text": "ตีสอง… ฉันเลยกลายเป็นบุรุษไปรษณีย์",
+      "cards": [
+        "ตีสอง",
+        "ฉันเลยกลายเป็นบุรุษไปรษณีย์"
+      ]
+    },
+    {
+      "id": "laugh",
+      "image": "images/07-laugh.png",
+      "image_prompt": "messy dim room with boxes, a man seen from behind sitting on the floor reading a note and shaking with laughter, Somchun the chubby orange tabby cat beside him",
+      "text": "ภูอ่านแล้วหัวเราะ… ครั้งแรกที่ฉันเคยได้ยิน",
+      "cards": [
+        "ภูอ่านแล้วหัวเราะ",
+        "ครั้งแรกที่ฉันเคยได้ยิน"
+      ]
+    },
+    {
+      "id": "reply",
+      "image": "images/08-reply.png",
+      "image_prompt": "close-up of a man's hand tying a new folded note to Somchun the chubby orange tabby cat's collar, desk lamp light",
+      "text": "แล้วเขาก็เขียนกลับมา",
+      "cards": [
+        "แล้วเขาก็เขียนกลับมา"
+      ]
+    },
+    {
+      "id": "cliff",
+      "image": "images/09-cliff.png",
+      "image_prompt": "a young woman seen from behind in a dark room frozen while reading a note, her bedroom lamp the only light on in the whole building reflected in the window",
+      "text": "ผมรู้ว่าคุณนอนไม่หลับ… ไฟห้องคุณเปิดทุกคืน",
+      "cards": [
+        "“ผมรู้ว่าคุณนอนไม่หลับ",
+        "ไฟห้องคุณเปิดทุกคืน”"
+      ]
+    }
+  ]
+}

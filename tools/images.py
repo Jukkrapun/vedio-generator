@@ -6,6 +6,9 @@ Usage:
 For every segment with "image_prompt" whose "image" file does not exist yet, asks Codex for one
 vertical image (all missing images in a single Codex run) and copies the results into place.
 Optional episode-level "image_style" is appended to every prompt so the clip looks consistent.
+Optional "image_rules" replaces the default photorealistic rules (e.g. for a cartoon series) and
+"image_refs" (paths from the repo root, e.g. a character sheet) are attached to the Codex run so a
+recurring character keeps the same look.
 Existing images are never regenerated — delete a file to redo it.
 """
 import json
@@ -32,10 +35,12 @@ def missing_images(episode: dict, episode_dir: Path) -> list[dict]:
             if s.get("image_prompt") and s.get("image") and not (episode_dir / s["image"]).exists()]
 
 
-def codex_prompt(segments: list[dict], style: str, rules: str = BASE_RULES) -> str:
+def codex_prompt(segments: list[dict], style: str, rules: str = BASE_RULES, refs: bool = False) -> str:
+    ref = (" The attached image(s) are the character reference sheet: whenever that character appears, keep "
+           "exactly the same design, colours, markings and proportions." if refs else "")
     items = "\n".join(f"Image {i}: {s['image_prompt']}" for i, s in enumerate(segments, start=1))
     return (f"Use your image generation tool to create {len(segments)} separate images, in this exact order. "
-            f"Every image: {rules}. Shared style for all: {style or 'soft warm cinematic film look'}.\n"
+            f"Every image: {rules}. Shared style for all: {style or 'soft warm cinematic film look'}.{ref}\n"
             f"{items}\nGenerate them one by one and report the saved file paths in order.")
 
 
@@ -45,7 +50,11 @@ def generate_images(episode_dir: Path) -> list[Path]:
     # Story mode: several segments may share one image -> ask for each file once
     seen: set[str] = set()
     todo = [s for s in todo if not (s["image"] in seen or seen.add(s["image"]))]
-    rules = STORY_RULES if episode.get("mode") == "story" else BASE_RULES
+    rules = episode.get("image_rules") or (STORY_RULES if episode.get("mode") == "story" else BASE_RULES)
+    refs = [str(ROOT / r) for r in episode.get("image_refs", [])]
+    missing_refs = [r for r in refs if not Path(r).exists()]
+    if missing_refs:
+        raise FileNotFoundError(f"image_refs not found: {missing_refs}")
     if not todo:
         print("Images: all present")
         return []
@@ -57,8 +66,9 @@ def generate_images(episode_dir: Path) -> list[Path]:
     # Prompt goes through stdin ("-"): on Windows codex is a .cmd shim and cmd.exe cuts
     # command-line arguments at the first newline.
     result = subprocess.run(
-        [codex, "exec", "--skip-git-repo-check", "-"],
-        input=codex_prompt(todo, episode.get("image_style", ""), rules),
+        # --image takes several values: it must come AFTER "-" or it swallows the prompt argument.
+        [codex, "exec", "--skip-git-repo-check", "-"] + (["--image", *refs] if refs else []),
+        input=codex_prompt(todo, episode.get("image_style", ""), rules, bool(refs)),
         capture_output=True, text=True, encoding="utf-8", timeout=CODEX_TIMEOUT_SEC,
     )
     if result.returncode != 0:

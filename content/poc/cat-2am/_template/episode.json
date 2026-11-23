@@ -1,0 +1,37 @@
+{
+  "mode": "image",
+  "title": "แมวตีสอง ตอน N: ชื่อตอน",
+  "tags": [],
+  "posts": [],
+  "review": {
+    "stage": "render"
+  },
+  "tts": "elevenlabs",
+  "voice": "gbZNaSxK771GgOTJIKRB",
+  "model": "eleven_v4",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.35,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_refs": [
+    "shared/characters/somchun/reference/sheet.png"
+  ],
+  "image_rules": "original 2D cartoon illustration (NOT photorealistic), vertical portrait 1024x1536, no text, no letters, no numbers on paper, no logos, no watermarks, humans never show their faces (only hands, backs, silhouettes or feet), calm empty area in the middle for subtitles",
+  "image_style": "soft hand-painted 2D animated film look, painterly backgrounds, warm amber lamp light against deep night blues, gentle grain, cozy quiet late-night mood. The cat is always Somchun from the reference sheet: chubby orange tabby, sleepy amber eyes, dark-green collar with brass bell",
+  "segments": [
+    {
+      "id": "hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of Somchun the chubby orange tabby cat's sleepy amber eyes glowing in a dark room, reflecting city lights",
+      "text": "ฉันมีสองชื่อ… และมนุษย์ไม่มีใครรู้",
+      "cards": [
+        "ฉันมีสองชื่อ",
+        "และมนุษย์ไม่มีใครรู้"
+      ]
+    }
+  ]
+}

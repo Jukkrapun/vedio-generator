@@ -1,0 +1,115 @@
+{
+  "total": 34.51,
+  "segments": [
+    {
+      "id": "hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of Somchun the chubby orange tabby cat's sleepy amber eyes glowing in a dark room, reflecting city lights",
+      "text": "ฉันมีสองชื่อ… และมนุษย์ไม่มีใครรู้",
+      "cards": [
+        "ฉันมีสองชื่อ",
+        "และมนุษย์ไม่มีใครรู้"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.14,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "loop",
+      "image": "images/02-loop.png",
+      "image_prompt": "wide shot: Somchun the chubby orange tabby cat sitting on a windowsill at night seen from behind, looking at the building across the street with one lit window",
+      "text": "คืนนี้… ฉันจะเล่าให้ฟังว่าทำไม",
+      "cards": [
+        "คืนนี้ ฉันจะเล่าให้ฟัง",
+        "ว่าทำไม"
+      ],
+      "audio": "01-loop.mp3",
+      "start": 4.49,
+      "end": 7.77,
+      "align": "01-loop.align.json"
+    },
+    {
+      "id": "day",
+      "image": "images/03-day.png",
+      "image_prompt": "warm afternoon in a cozy small apartment with plants and fairy lights, a young woman's hand (no face) gently scratching Somchun the chubby orange tabby cat's head on a sofa",
+      "text": "กลางวัน ฉันชื่อส้มฉุน เป็นแมวของมิ้นท์ ห้องห้าหนึ่งสอง",
+      "cards": [
+        "กลางวัน ฉันชื่อส้มฉุน",
+        "แมวของมิ้นท์ ห้อง 512"
+      ],
+      "audio": "02-day.mp3",
+      "start": 8.12,
+      "end": 13.56,
+      "align": "02-day.align.json"
+    },
+    {
+      "id": "clock",
+      "image": "images/04-clock.png",
+      "image_prompt": "close-up of a small bedside digital clock glowing 2:00 in the dark, Somchun the chubby orange tabby cat's ear and whiskers in the foreground",
+      "text": "แต่พอตีสอง…",
+      "cards": [
+        "แต่พอตีสอง…"
+      ],
+      "audio": "03-clock.mp3",
+      "start": 13.91,
+      "end": 15.51,
+      "align": "03-clock.align.json"
+    },
+    {
+      "id": "jump",
+      "image": "images/05-jump.png",
+      "image_prompt": "Somchun the chubby orange tabby cat mid-jump between two balconies of neighbouring apartment buildings at night, seen from below, moon behind",
+      "text": "ฉันมีอีกบ้านหนึ่ง",
+      "cards": [
+        "ฉันมีอีกบ้านหนึ่ง"
+      ],
+      "audio": "04-jump.mp3",
+      "start": 15.86,
+      "end": 17.38,
+      "align": "04-jump.align.json"
+    },
+    {
+      "id": "night-home",
+      "image": "images/06-night-home.png",
+      "image_prompt": "messy dim small room with moving boxes and a single desk lamp, a man's hand (no face) setting down a bowl of grilled fish for Somchun the chubby orange tabby cat",
+      "text": "ที่นี่ ฉันชื่อนายพล เป็นแมวของภู ห้องสามศูนย์เจ็ด",
+      "cards": [
+        "ที่นี่ ฉันชื่อนายพล",
+        "แมวของภู ห้อง 307"
+      ],
+      "audio": "05-night-home.mp3",
+      "start": 17.73,
+      "end": 22.69,
+      "align": "05-night-home.align.json"
+    },
+    {
+      "id": "two-lights",
+      "image": "images/07-two-lights.png",
+      "image_prompt": "wide night view of two apartment buildings facing each other, all windows dark except one warm window on each building, a tiny orange cat silhouette on a ledge between them",
+      "text": "สองคนนี้นอนไม่หลับเหมือนกัน… แต่ไม่เคยรู้จักกัน",
+      "cards": [
+        "สองคนนี้นอนไม่หลับเหมือนกัน",
+        "แต่ไม่เคยรู้จักกัน"
+      ],
+      "audio": "06-two-lights.mp3",
+      "start": 23.04,
+      "end": 27.28,
+      "align": "06-two-lights.align.json"
+    },
+    {
+      "id": "note",
+      "image": "images/08-note.png",
+      "image_prompt": "close-up of a man's hands tying a small folded paper note to Somchun the chubby orange tabby cat's dark-green collar under a desk lamp, the cat looking up suspiciously",
+      "text": "จนกระทั่งคืนนี้… เขาผูกกระดาษไว้ที่คอฉัน ถึงเจ้าของแมว",
+      "cards": [
+        "จนกระทั่งคืนนี้…",
+        "“ถึงเจ้าของแมว”"
+      ],
+      "audio": "07-note.mp3",
+      "start": 27.63,
+      "end": 33.31,
+      "align": "07-note.align.json"
+    }
+  ]
+}

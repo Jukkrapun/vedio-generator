@@ -1,0 +1,109 @@
+{
+  "mode": "image",
+  "title": "แมวตีสอง ตอน 1: สองชื่อ",
+  "tags": [
+    "cat-2am",
+    "s1",
+    "secret"
+  ],
+  "posts": [],
+  "review": {
+    "stage": "render"
+  },
+  "tts": "elevenlabs",
+  "voice": "gbZNaSxK771GgOTJIKRB",
+  "model": "eleven_v4",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.35,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_refs": [
+    "shared/characters/somchun/reference/sheet.png"
+  ],
+  "image_rules": "original 2D cartoon illustration (NOT photorealistic), vertical portrait 1024x1536, no text, no letters, no numbers on paper, no logos, no watermarks, humans never show their faces (only hands, backs, silhouettes or feet), calm empty area in the middle for subtitles",
+  "image_style": "soft hand-painted 2D animated film look, painterly backgrounds, warm amber lamp light against deep night blues, gentle grain, cozy quiet late-night mood. The cat is always Somchun from the reference sheet: chubby orange tabby, sleepy amber eyes, dark-green collar with brass bell",
+  "segments": [
+    {
+      "id": "hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of Somchun the chubby orange tabby cat's sleepy amber eyes glowing in a dark room, reflecting city lights",
+      "text": "ฉันมีสองชื่อ… และมนุษย์ไม่มีใครรู้",
+      "cards": [
+        "ฉันมีสองชื่อ",
+        "และมนุษย์ไม่มีใครรู้"
+      ]
+    },
+    {
+      "id": "loop",
+      "image": "images/02-loop.png",
+      "image_prompt": "wide shot: Somchun the chubby orange tabby cat sitting on a windowsill at night seen from behind, looking at the building across the street with one lit window",
+      "text": "คืนนี้… ฉันจะเล่าให้ฟังว่าทำไม",
+      "cards": [
+        "คืนนี้ ฉันจะเล่าให้ฟัง",
+        "ว่าทำไม"
+      ]
+    },
+    {
+      "id": "day",
+      "image": "images/03-day.png",
+      "image_prompt": "warm afternoon in a cozy small apartment with plants and fairy lights, a young woman's hand (no face) gently scratching Somchun the chubby orange tabby cat's head on a sofa",
+      "text": "กลางวัน ฉันชื่อส้มฉุน เป็นแมวของมิ้นท์ ห้องห้าหนึ่งสอง",
+      "cards": [
+        "กลางวัน ฉันชื่อส้มฉุน",
+        "แมวของมิ้นท์ ห้อง 512"
+      ]
+    },
+    {
+      "id": "clock",
+      "image": "images/04-clock.png",
+      "image_prompt": "close-up of a small bedside digital clock glowing 2:00 in the dark, Somchun the chubby orange tabby cat's ear and whiskers in the foreground",
+      "text": "แต่พอตีสอง…",
+      "cards": [
+        "แต่พอตีสอง…"
+      ]
+    },
+    {
+      "id": "jump",
+      "image": "images/05-jump.png",
+      "image_prompt": "Somchun the chubby orange tabby cat mid-jump between two balconies of neighbouring apartment buildings at night, seen from below, moon behind",
+      "text": "ฉันมีอีกบ้านหนึ่ง",
+      "cards": [
+        "ฉันมีอีกบ้านหนึ่ง"
+      ]
+    },
+    {
+      "id": "night-home",
+      "image": "images/06-night-home.png",
+      "image_prompt": "messy dim small room with moving boxes and a single desk lamp, a man's hand (no face) setting down a bowl of grilled fish for Somchun the chubby orange tabby cat",
+      "text": "ที่นี่ ฉันชื่อนายพล เป็นแมวของภู ห้องสามศูนย์เจ็ด",
+      "cards": [
+        "ที่นี่ ฉันชื่อนายพล",
+        "แมวของภู ห้อง 307"
+      ]
+    },
+    {
+      "id": "two-lights",
+      "image": "images/07-two-lights.png",
+      "image_prompt": "wide night view of two apartment buildings facing each other, all windows dark except one warm window on each building, a tiny orange cat silhouette on a ledge between them",
+      "text": "สองคนนี้นอนไม่หลับเหมือนกัน… แต่ไม่เคยรู้จักกัน",
+      "cards": [
+        "สองคนนี้นอนไม่หลับเหมือนกัน",
+        "แต่ไม่เคยรู้จักกัน"
+      ]
+    },
+    {
+      "id": "note",
+      "image": "images/08-note.png",
+      "image_prompt": "close-up of a man's hands tying a small folded paper note to Somchun the chubby orange tabby cat's dark-green collar under a desk lamp, the cat looking up suspiciously",
+      "text": "จนกระทั่งคืนนี้… เขาผูกกระดาษไว้ที่คอฉัน ถึงเจ้าของแมว",
+      "cards": [
+        "จนกระทั่งคืนนี้…",
+        "“ถึงเจ้าของแมว”"
+      ]
+    }
+  ]
+}

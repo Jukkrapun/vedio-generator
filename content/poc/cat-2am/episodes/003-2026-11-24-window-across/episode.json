@@ -1,0 +1,121 @@
+{
+  "mode": "image",
+  "title": "แมวตีสอง ตอน 3: ไฟห้องตรงข้าม",
+  "tags": [
+    "cat-2am",
+    "s1",
+    "letters"
+  ],
+  "posts": [],
+  "review": {
+    "stage": "render"
+  },
+  "tts": "elevenlabs",
+  "voice": "gbZNaSxK771GgOTJIKRB",
+  "model": "eleven_v4",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.35,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_refs": [
+    "shared/characters/somchun/reference/sheet.png"
+  ],
+  "image_rules": "original 2D cartoon illustration (NOT photorealistic), vertical portrait 1024x1536, no text, no letters, no numbers on paper, no logos, no watermarks, humans never show their faces (only hands, backs, silhouettes or feet), calm empty area in the middle for subtitles",
+  "image_style": "soft hand-painted 2D animated film look, painterly backgrounds, warm amber lamp light against deep night blues, gentle grain, cozy quiet late-night mood. The cat is always Somchun from the reference sheet: chubby orange tabby, sleepy amber eyes, dark-green collar with brass bell",
+  "segments": [
+    {
+      "id": "hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "view through a dark window at night: the building across the street with exactly one lit window staring back, a young woman's silhouette in the foreground",
+      "text": "เขามองห้องเรามาตลอด",
+      "cards": [
+        "เขามองห้องเรา",
+        "มาตลอด"
+      ]
+    },
+    {
+      "id": "curtain",
+      "image": "images/02-curtain.png",
+      "image_prompt": "close-up of a young woman's hand pulling a curtain shut quickly at night",
+      "text": "คืนนั้น มิ้นท์ปิดม่านเป็นครั้งแรก",
+      "cards": [
+        "คืนนั้น",
+        "มิ้นท์ปิดม่านเป็นครั้งแรก"
+      ]
+    },
+    {
+      "id": "sulk",
+      "image": "images/03-sulk.png",
+      "image_prompt": "Somchun the chubby orange tabby cat sitting in front of a closed curtain, ears down, sulking, tail wrapped around its body",
+      "text": "ฉันไม่ชอบเลย… ม่านบังบ้านหลังที่สองของฉัน",
+      "cards": [
+        "ฉันไม่ชอบเลย",
+        "ม่านบังบ้านหลังที่สองของฉัน"
+      ]
+    },
+    {
+      "id": "next-note",
+      "image": "images/04-next-note.png",
+      "image_prompt": "close-up of Somchun the chubby orange tabby cat's collar with a new carefully folded note, gentle morning light",
+      "text": "แต่โน้ตใบต่อมา… ไม่ได้น่ากลัวอย่างที่คิด",
+      "cards": [
+        "แต่โน้ตใบต่อมา",
+        "ไม่ได้น่ากลัวอย่างที่คิด"
+      ]
+    },
+    {
+      "id": "phu-alone",
+      "image": "images/05-phu-alone.png",
+      "image_prompt": "a man seen from behind sitting alone at a small desk in a dim messy room at 2 a.m., one desk lamp, job ads crumpled on the desk",
+      "text": "เขาบอกว่า ช่วงนี้ไม่มีงานทำ… เลยไม่รู้จะคุยกับใคร",
+      "cards": [
+        "ช่วงนี้ไม่มีงานทำ",
+        "เลยไม่รู้จะคุยกับใคร"
+      ]
+    },
+    {
+      "id": "long-reply",
+      "image": "images/06-long-reply.png",
+      "image_prompt": "a young woman seen from behind sitting on the floor writing a long letter by fairy-light glow, Somchun the chubby orange tabby cat curled up beside her",
+      "text": "มิ้นท์ตอบยาวที่สุดเท่าที่เคยเขียน… เรื่องที่ไม่เคยบอกใคร",
+      "cards": [
+        "มิ้นท์ตอบยาวที่สุด",
+        "เรื่องที่ไม่เคยบอกใคร"
+      ]
+    },
+    {
+      "id": "box",
+      "image": "images/07-box.png",
+      "image_prompt": "top-down close-up of a small wooden box filling up with many folded paper notes, warm lamp light",
+      "text": "หนึ่งสัปดาห์… ฉันส่งจดหมายไปเจ็ดฉบับ",
+      "cards": [
+        "หนึ่งสัปดาห์",
+        "ฉันส่งจดหมายไปเจ็ดฉบับ"
+      ]
+    },
+    {
+      "id": "waiting",
+      "image": "images/08-waiting.png",
+      "image_prompt": "a young woman seen from behind sitting by the open window at night waiting, Somchun the chubby orange tabby cat beside her, both looking at the lit window across",
+      "text": "มนุษย์ของฉันเริ่มรอตีสอง… เหมือนฉัน",
+      "cards": [
+        "มนุษย์ของฉันเริ่มรอตีสอง",
+        "เหมือนฉัน"
+      ]
+    },
+    {
+      "id": "cliff",
+      "image": "images/09-cliff.png",
+      "image_prompt": "extreme close-up of a young woman's hand frozen holding an open note, the paper trembling slightly, dark room",
+      "text": "แล้วโน้ตคืนนี้ก็เขียนว่า… สัปดาห์หน้า ผมจะย้ายออก",
+      "cards": [
+        "“สัปดาห์หน้า",
+        "ผมจะย้ายออก”"
+      ]
+    }
+  ]
+}
