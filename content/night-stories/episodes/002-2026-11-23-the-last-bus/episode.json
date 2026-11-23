@@ -23,9 +23,15 @@
     },
     "en": {
       "title": "The Last Bus",
-      "tts": "edge",
-      "voice": "en-US-AvaNeural",
-      "rate": "-8%"
+      "tts": "elevenlabs",
+      "voice": "Z3R5wn05IrDiVCyEkUrK",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
     }
   },
   "pause_sec": 0.8,
