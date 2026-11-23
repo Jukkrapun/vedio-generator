@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule } from "@/lib/types";
 
-async function api<T>(url: string, init?: RequestInit & { json?: unknown }): Promise<T> {
+export async function api<T>(url: string, init?: RequestInit & { json?: unknown }): Promise<T> {
   const response = await fetch(url, {
     ...init,
     headers: init?.json !== undefined ? { "Content-Type": "application/json" } : undefined,
@@ -15,7 +15,7 @@ async function api<T>(url: string, init?: RequestInit & { json?: unknown }): Pro
   if (!response.ok) throw new Error(data.error ?? "request failed");
   return data as T;
 }
-const fail = (error: unknown) => { toast.error("ไม่สำเร็จ: " + (error instanceof Error ? error.message : String(error))); throw error; };
+export const fail = (error: unknown) => { toast.error("ไม่สำเร็จ: " + (error instanceof Error ? error.message : String(error))); throw error; };
 
 function useOpsState(initialEpisodes: Episode[], initialJobs: Job[], initialSchedule: Schedule, initialPicks: Record<string, string>, date: string) {
   const router = useRouter();

@@ -2,7 +2,7 @@ import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { Episode, EpisodeDetail, Job, JobType, Mode, Post, Schedule, Version } from "./types";
+import type { Episode, EpisodeDetail, Job, JobType, Mode, Order, Post, Review, Schedule, Stage, Version, WorkerInfo } from "./types";
 
 export const ROOT = path.resolve(process.env.REPO_ROOT ?? path.join(process.cwd(), ".."));
 const OPS = path.join(ROOT, ".ops");
@@ -96,7 +96,8 @@ export async function resolveEpisode(series: string, slug: string) {
   return existsSync(path.join(dir, "episode.json")) ? dir : null;
 }
 
-type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; segments?: { id?: string; text?: string; skip?: boolean }[] };
+type RawSegment = { id?: string; text?: string; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string };
+type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; review?: Review; segments?: RawSegment[] };
 
 async function loadEpisode(series: string, slug: string): Promise<{ episode: Episode; raw: RawEpisode } | null> {
   const raw = await readJson<RawEpisode | null>(path.join(episodeDir(series, slug), "episode.json"), null);
@@ -110,7 +111,7 @@ async function loadEpisode(series: string, slug: string): Promise<{ episode: Epi
   return {
     raw,
     episode: {
-      id, series, slug, title: raw.title || slug, tags: raw.tags ?? [], mode,
+      review: raw.review ?? null, id, series, slug, title: raw.title || slug, tags: raw.tags ?? [], mode,
       status: posts.length ? "posted" : selected || hasCurrent ? "rendered" : "draft",
       // before the worker has archived anything, fall back to the current render file
       videoUrl: selected?.videoUrl ?? (hasCurrent ? "/api/video/" + id : null),
@@ -170,7 +171,12 @@ export async function getEpisodeDetail(series: string, slug: string): Promise<Ep
   const dir = episodeDir(series, slug);
   return {
     ...loaded.episode,
-    segments: (loaded.raw.segments ?? []).filter(s => !s.skip).map((s, i) => ({ id: s.id ?? String(i + 1), text: s.text ?? "" })),
+    segments: (loaded.raw.segments ?? []).map((s, i) => {
+      const id = s.id ?? String(i + 1);
+      const audio = `audio/${String(i).padStart(2, "0")}-${id}.mp3`;
+      return { id, text: s.text ?? "", cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", skip: !!s.skip,
+        audio: existsSync(path.join(dir, audio)) ? audio : null };
+    }),
     script: await readText(path.join(dir, "script.md")),
     publish: await readText(path.join(dir, "publish.md")),
   };
@@ -243,7 +249,7 @@ export async function getJob(id: string, tail = 400): Promise<Job | null> {
   return { ...job, log: log.slice(-tail) };
 }
 
-const JOB_TYPES: JobType[] = ["new_episode", "produce", "catalog", "publish_fb", "poster"];
+const JOB_TYPES: JobType[] = ["new_episode", "produce", "catalog", "publish_fb", "poster", "claude", "revise", "images", "regen_image", "voice", "regen_voice", "render"];
 export async function createJob(type: JobType, args: Record<string, string | boolean>): Promise<Job> {
   if (!JOB_TYPES.includes(type)) throw new Error("unknown job type");
   let episodeId: string | undefined;
@@ -251,6 +257,8 @@ export async function createJob(type: JobType, args: Record<string, string | boo
     if (!(await listSeries()).includes(String(args.series))) throw new Error("unknown series");
     if (!NAME_RE.test(String(args.slug))) throw new Error("slug must be kebab-case");
     if (!["image", "video"].includes(String(args.mode))) throw new Error("bad mode");
+  } else if (type === "claude") {
+    if (!String(args.prompt ?? "").trim()) throw new Error("empty prompt");
   } else if (type === "catalog") {
     if (!(await listSeries()).includes(String(args.series))) throw new Error("unknown series");
   } else {
@@ -260,6 +268,11 @@ export async function createJob(type: JobType, args: Record<string, string | boo
     if (type === "publish_fb" && !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(String(args.when))) throw new Error("bad time");
     if (type === "publish_fb") args = { ...args, version: (await selectedVersionOf(series, slug)) ?? "" };
     if (type === "poster" && args.version && !VERSION_RE.test(String(args.version))) throw new Error("bad version");
+    if (type === "revise" && !String(args.note ?? "").trim()) throw new Error("empty note");
+    if (type === "regen_image" || type === "regen_voice") {
+      const raw = await readJson<RawEpisode>(path.join(episodeDir(series, slug), "episode.json"), {});
+      if (!raw.segments?.some(seg => seg.id === args.segment)) throw new Error("segment not found");
+    }
   }
   const now = new Date();
   const stamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Bangkok", dateStyle: "short", timeStyle: "medium" }).format(now).replace(/[-: ]/g, "");
@@ -276,4 +289,107 @@ export async function cancelJob(id: string) {
     if (job.status === "queued") await writeJson(file, { ...job, status: "failed", exit_code: 130, finished_at: new Date().toISOString() });
     else if (job.status === "running") await writeJson(file, { ...job, cancel_requested: true });
   });
+}
+
+// ---- worker status ------------------------------------------------------------
+export async function workerInfo(): Promise<WorkerInfo> {
+  const w = await readJson<{ kind?: "host" | "docker"; ts?: number; claude?: boolean; codex?: boolean } | null>(path.join(OPS, "worker.json"), null);
+  if (!w?.kind) return null;
+  return { kind: w.kind, claude: !!w.claude, codex: !!w.codex, online: Date.now() / 1000 - (w.ts ?? 0) < 30 };
+}
+
+// ---- orders (one card per request; docs/ops-dashboard/PIPELINE.md) ---------------
+const ORDERS = path.join(OPS, "orders");
+export async function listOrders(): Promise<Order[]> {
+  if (!existsSync(ORDERS)) return [];
+  const files = (await fs.readdir(ORDERS)).filter(f => f.endsWith(".json")).sort().reverse();
+  return (await Promise.all(files.map(f => readJson<Order | null>(path.join(ORDERS, f), null)))).filter((o): o is Order => !!o);
+}
+export async function getOrder(id: string) {
+  if (!/^[0-9a-z-]+$/.test(id)) return null;
+  return readJson<Order | null>(path.join(ORDERS, id + ".json"), null);
+}
+export async function createOrder(input: { template: string; title: string; series: string; prompt: string }): Promise<Order> {
+  const job = await createJob("claude", { prompt: input.prompt, order: "" });
+  const order: Order = { id: job.id, template: input.template, title: input.title.slice(0, 120), series: input.series, prompt: input.prompt, created_at: job.created_at, job_id: job.id, episodes: [] };
+  await writeJson(path.join(ORDERS, order.id + ".json"), order);
+  // the job was queued before the order existed: point it at the order (same id)
+  const jobFile = path.join(JOBS, job.id + ".json");
+  await withLock(jobFile, async () => {
+    const stored = await readJson<Record<string, unknown>>(jobFile, {});
+    if (stored.status === "queued") await writeJson(jobFile, { ...stored, args: { ...(stored.args as object), order: order.id } });
+  });
+  return order;
+}
+
+// ---- stage transitions ----------------------------------------------------------
+const NEXT: Record<string, { stage: Stage; job?: JobType }> = {
+  script: { stage: "images", job: "images" },
+  images: { stage: "voice", job: "voice" },
+  voice: { stage: "render", job: "render" },
+  render: { stage: "done" },
+};
+async function setReview(series: string, slug: string, change: (review: Review) => Review) {
+  const dir = await resolveEpisode(series, slug);
+  if (!dir) throw new Error("episode not found");
+  const file = path.join(dir, "episode.json");
+  return withLock(file, async () => {
+    const data = await readJson<Record<string, unknown>>(file, {});
+    const review = change((data.review as Review) ?? { stage: "done" });
+    await writeJson(file, { ...data, review });
+    return review;
+  });
+}
+export type StageAction = "approve" | "all" | "drop" | "restore" | "back";
+/** approve: stage OK -> next stage (+ its job). all: run every remaining stage (produce.py), then review the render. */
+export async function stageAction(series: string, slug: string, action: StageAction, target?: Stage) {
+  const id = series + "/" + slug;
+  let job: JobType | undefined;
+  const review = await setReview(series, slug, current => {
+    if (action === "drop") return { ...current, stage: "dropped" };
+    if (action === "restore") return { ...current, stage: "script" };
+    if (action === "back") {
+      if (!target || !["script", "images", "voice", "render"].includes(target)) throw new Error("bad stage");
+      return { ...current, stage: target };
+    }
+    if (action === "all") {
+      if (current.stage === "done" || current.stage === "dropped") throw new Error("nothing left to approve");
+      job = "produce";
+      return { ...current, stage: "render" };
+    }
+    const next = NEXT[current.stage];
+    if (!next) throw new Error("nothing to approve");
+    job = next.job;
+    return { ...current, stage: next.stage };
+  });
+  if (job) await createJob(job, { episode: id });
+  return review;
+}
+
+/** Inline script edits from the review page. */
+export async function updateScript(series: string, slug: string, body: { segments?: { id: string; text?: string; cards?: string[]; image_prompt?: string }[]; publish?: string; title?: string }) {
+  const dir = await resolveEpisode(series, slug);
+  if (!dir) throw new Error("episode not found");
+  const file = path.join(dir, "episode.json");
+  await withLock(file, async () => {
+    const data = await readJson<RawEpisode & Record<string, unknown>>(file, {});
+    for (const edit of body.segments ?? []) {
+      const seg = data.segments?.find(s => s.id === edit.id);
+      if (!seg) throw new Error("segment not found");
+      if (typeof edit.text === "string") seg.text = edit.text;
+      if (Array.isArray(edit.cards)) seg.cards = edit.cards.map(String).filter(Boolean);
+      if (typeof edit.image_prompt === "string") seg.image_prompt = edit.image_prompt;
+    }
+    if (typeof body.title === "string" && body.title.trim()) data.title = body.title.trim();
+    await writeJson(file, data);
+  });
+  if (typeof body.publish === "string") await fs.writeFile(path.join(dir, "publish.md"), body.publish, "utf-8");
+}
+
+/** Episode files the review page may show (images, audio). */
+export async function episodeAsset(series: string, slug: string, rel: string) {
+  const dir = await resolveEpisode(series, slug);
+  if (!dir || !/^(images|audio)\/[A-Za-z0-9._-]+\.(png|jpg|jpeg|webp|mp3)$/.test(rel)) return null;
+  const file = path.join(dir, rel);
+  return existsSync(file) ? file : null;
 }

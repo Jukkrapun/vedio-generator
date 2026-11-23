@@ -6,12 +6,12 @@ import { Brand } from "./common";
 import { ThemeToggle } from "./theme";
 import { Button } from "./ui/button";
 
-const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "สร้าง/งาน", icon: Workflow }];
+const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "งาน", icon: Workflow }];
 
 function Nav({ className }: { className: string }) {
   const pathname = usePathname();
   return <nav className={className} aria-label="เมนูหลัก">{links.map(({ href, text, icon: Icon }) => {
-    const active = pathname === href || (href !== "/" && pathname.startsWith(href + "/"));
+    const active = pathname === href || (href !== "/" && pathname.startsWith(href + "/")) || (href === "/jobs" && (pathname.startsWith("/orders/") || pathname.startsWith("/review/")));
     return <Link key={href} href={href} aria-current={active ? "page" : undefined}><Icon size={20} />{text}</Link>;
   })}</nav>;
 }

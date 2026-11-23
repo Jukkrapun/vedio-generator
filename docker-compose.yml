@@ -14,8 +14,11 @@ services:
       - ./content:/repo/content
       - ./output:/repo/output
       - ./.ops:/repo/.ops
+      - ./PROMPTS.md:/repo/PROMPTS.md:ro   # order templates (web/lib/templates.ts)
     restart: unless-stopped
 
+  # Jobs runner. Scripts (claude) and images (codex) need the host logins: run ops/start-worker.ps1 on the
+  # host instead; only one worker is active at a time (.ops/worker.json heartbeat).
   worker:
     build: { context: ., dockerfile: docker/worker.Dockerfile }
     env_file: .env
