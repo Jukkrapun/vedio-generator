@@ -84,7 +84,9 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
     frames = int(duration * FPS) + 1
     step = ZOOM_RANGE / max(frames, 1)
     zoom = f"1+{step:.8f}*on" if zoom_in else f"{1 + ZOOM_RANGE}-{step:.8f}*on"
-    w2, h2 = int(WIDTH * 1.5), int(HEIGHT * 1.5)
+    # zoompan rounds its crop to whole source pixels -> visible shake on slow zooms. A 4x source
+    # makes each step 1/4 output pixel, which looks smooth (1.5x shook: user feedback 2026-11-23).
+    w2, h2 = WIDTH * 4, HEIGHT * 4
     vf = (f"scale={w2}:{h2}:force_original_aspect_ratio=increase,crop={w2}:{h2},"
           f"zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s={WIDTH}x{HEIGHT}:fps={FPS},"
           f"eq=brightness=-0.06:saturation=0.9,"
