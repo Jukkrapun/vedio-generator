@@ -22,6 +22,7 @@ from catalog import build_catalog
 from images import generate_images
 from lipsync import lipsync_many
 from media import ROOT, series_path
+from parallax import ensure_depth, episode_images
 from render_reel import render
 from render_story import render_story
 from timing import report, step
@@ -44,6 +45,13 @@ def produce_many(episode_dirs: list[Path]) -> list[Path]:
             print(f"== {d.name} [{ep.get('mode', 'image')} mode]")
             with step(f"images {d.name[:3]}"):
                 generate_images(d)  # image mode: all segments; video mode: B-roll segments only
+            if ep.get("mode") != "story" and ep.get("motion", "parallax") == "parallax":
+                with step(f"depth {d.name[:3]}"):
+                    try:
+                        for img in episode_images(d):
+                            ensure_depth(img)
+                    except ImportError as e:  # no torch/transformers here -> render falls back to zoom
+                        print(f"WARNING: depth maps skipped ({e})", file=sys.stderr)
             if ep.get("mode") == "story":
                 continue  # story mode builds its voice per language inside render_story
             with step(f"voice {d.name[:3]}"):

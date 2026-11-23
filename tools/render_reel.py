@@ -9,7 +9,8 @@ Steps: voice track (tools/tts.py, cached) -> backgrounds per span -> ASS subtitl
 Visuals per segment ("visual" in episode.json):
   "host"  - podcast host talking. Uses <episode>/video/host.mp4 (lip-sync video made from
             audio/voice.mp3). If missing, renders a PREVIEW from the still host["scene"] image.
-  "image" - still image (segment "image") with slow Ken Burns zoom.
+  "image" - still image (segment "image") with a slow 2.5D parallax move (tools/parallax.py,
+            depth maps cached in images/.depth/). "motion": "zoom" in episode.json = flat Ken Burns.
 Default is "host" when the episode has a "host" block, otherwise "image".
 """
 import json
@@ -101,6 +102,20 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
          "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)])
 
 
+def render_image(image: Path, duration: float, out: Path, i: int, motion: str) -> None:
+    """Image segment: "parallax" (default, 2.5D depth move) or "zoom" (flat Ken Burns).
+    Falls back to zoom when opencv/depth are unavailable (e.g. Docker worker without torch)."""
+    if motion == "parallax":
+        try:
+            import parallax
+            grade = f"eq=brightness=-0.08:saturation=0.9,fade=t=in:st=0:d=0.4,fade=t=out:st={max(duration - 0.4, 0):.2f}:d=0.4"
+            parallax.render_parallax(image, duration, out, WIDTH, HEIGHT, FPS, variant=i, post_vf=grade)
+            return
+        except Exception as e:  # noqa: BLE001
+            print(f"WARNING: parallax failed for {image.name} ({e}) -> zoom", file=sys.stderr)
+    render_still(image, duration, out, zoom_in=i % 2 == 0)
+
+
 def render_host_cut(video: Path, start: float, duration: float, out: Path, zoom: float = 1.0) -> None:
     """Cut [start, start+duration] from the lip-sync video; hold last frame if it is too short.
     zoom > 1 crops in around the face (punch-in) and scales back to full frame."""
@@ -125,7 +140,7 @@ def render_backgrounds(episode: dict, episode_dir: Path, kept: list[dict], work:
     for i, (key, start, dur) in enumerate(group_spans(kept, default, punch_in)):
         clip = work / f"bg{i:02d}.mp4"
         if not key.startswith("host"):
-            render_still(episode_dir / key, dur, clip, zoom_in=i % 2 == 0)
+            render_image(episode_dir / key, dur, clip, i, episode.get("motion", "parallax"))
         elif use_video:
             zoom = float(key.split("@")[1]) if "@" in key else 1.0
             render_host_cut(host_video, start, dur, clip, zoom)

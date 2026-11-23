@@ -6,3 +6,7 @@ fonttools
 fal-client
 pythainlp
 vastai
+numpy
+opencv-python-headless
+# depth maps for parallax (tools/parallax.py). CPU torch: pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers
