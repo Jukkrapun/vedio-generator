@@ -1,0 +1,700 @@
+{
+  "total": 560.176,
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "งานที่ไม่เคยเลิกตรงเวลา",
+        "en": "Overtime"
+      },
+      "image": "images/01-office.png",
+      "image_prompt": "a woman seen from far behind leaving a tall office building late at night, most windows dark, wet pavement, one streetlight",
+      "text": "There was a time in my life… when I got home at two a.m. almost every night.",
+      "audio": "00-s01.mp3",
+      "start": 0.3,
+      "end": 5.268
+    },
+    {
+      "id": "s02",
+      "image": "images/01-office.png",
+      "text": "The work wasn't hard.\nIt just never ended.",
+      "audio": "01-s02.mp3",
+      "start": 6.068,
+      "end": 9.668
+    },
+    {
+      "id": "s03",
+      "image": "images/01-office.png",
+      "text": "The lights in the building went out floor by floor,\nuntil it was just my desk and an air conditioner nobody was listening to.",
+      "audio": "02-s03.mp3",
+      "start": 10.468,
+      "end": 18.316
+    },
+    {
+      "id": "s04",
+      "image": "images/01-office.png",
+      "text": "I didn't have a car,\nand taxis at that hour cost more than a new graduate's salary could handle.",
+      "audio": "03-s04.mp3",
+      "start": 19.116,
+      "end": 25.596
+    },
+    {
+      "id": "s05",
+      "image": "images/02-stop.png",
+      "image_prompt": "an empty city bus stop at 2 a.m. under a single streetlight, light rain, shelter bench, empty road",
+      "text": "The only way home was the number eight bus.\nTwo-ten a.m. The last one of the night.",
+      "audio": "04-s05.mp3",
+      "start": 26.396,
+      "end": 32.18
+    },
+    {
+      "id": "s06",
+      "image": "images/02-stop.png",
+      "text": "The bus stop outside my building was so quiet\nI could hear the streetlight humming.",
+      "audio": "05-s06.mp3",
+      "start": 32.98,
+      "end": 38.86
+    },
+    {
+      "id": "s07",
+      "image": "images/02-stop.png",
+      "text": "Some nights it rained. Some nights the wind was cold.\nBut every night… I stood there counting the minutes.",
+      "audio": "06-s07.mp3",
+      "start": 39.66,
+      "end": 47.388
+    },
+    {
+      "id": "s08",
+      "image": "images/02-stop.png",
+      "text": "Some nights my mum would call and ask if I'd eaten.\nI'd lie and say yes, with half a bread roll still in my bag.",
+      "audio": "07-s08.mp3",
+      "start": 48.188,
+      "end": 55.844
+    },
+    {
+      "id": "s09",
+      "image": "images/02-stop.png",
+      "text": "It wasn't that I didn't want to tell her.\nI just didn't want anyone else losing sleep over me.",
+      "audio": "08-s09.mp3",
+      "start": 56.644,
+      "end": 62.38
+    },
+    {
+      "id": "s10",
+      "image": "images/02-stop.png",
+      "text": "Back then, I thought tiredness was something you carried alone.\nQuietly. Without anyone knowing.",
+      "audio": "09-s10.mp3",
+      "start": 63.18,
+      "end": 70.164
+    },
+    {
+      "id": "s11",
+      "image": "images/03-headlights.png",
+      "image_prompt": "an old city bus approaching through light rain at night, warm headlights glowing, reflections on wet asphalt",
+      "text": "And then the headlights would appear around the corner,\nwarm and yellow, like someone carrying a lantern to bring me home.",
+      "audio": "10-s11.mp3",
+      "start": 70.964,
+      "end": 79.412
+    },
+    {
+      "id": "s12",
+      "chapter": {
+        "th": "คนขับที่รอเสมอ",
+        "en": "The driver who waited"
+      },
+      "image": "images/04-interior.png",
+      "image_prompt": "inside an almost empty night bus, rows of worn seats, warm yellow ceiling lights, rain-streaked windows, calm",
+      "text": "The driver was an older man,\nhis hair almost completely white, an old wristwatch on his arm.",
+      "audio": "11-s12.mp3",
+      "start": 80.212,
+      "end": 87.748
+    },
+    {
+      "id": "s13",
+      "image": "images/05-driver.png",
+      "image_prompt": "a bus driver seen from behind, older man, hands on a large steering wheel, a small wristwatch, dashboard lights, rainy windshield",
+      "text": "For a long time I didn't know his name.\nI only knew that every time I got on, he'd give me a single nod.",
+      "audio": "12-s13.mp3",
+      "start": 88.548,
+      "end": 95.916
+    },
+    {
+      "id": "s14",
+      "image": "images/05-driver.png",
+      "text": "No smile, no greeting.\nBut it never felt cold.",
+      "audio": "13-s14.mp3",
+      "start": 96.716,
+      "end": 101.204
+    },
+    {
+      "id": "s15",
+      "image": "images/04-interior.png",
+      "text": "There were never many passengers on the two a.m. bus,\nand most of them were the same faces.",
+      "audio": "14-s15.mp3",
+      "start": 102.004,
+      "end": 108.148
+    },
+    {
+      "id": "s16",
+      "image": "images/06-nurse.png",
+      "image_prompt": "a tired young nurse in scrubs dozing against a bus window at night, seen from the side and out of focus, city lights outside",
+      "text": "There was a nurse, just off her shift.\nShe fell asleep against the window every night, but she never missed her stop.",
+      "audio": "15-s16.mp3",
+      "start": 108.948,
+      "end": 116.988
+    },
+    {
+      "id": "s17",
+      "image": "images/06-nurse.png",
+      "text": "There was a university student who worked late shifts at a restaurant.\nThe smell of the fryer always came with him.",
+      "audio": "16-s17.mp3",
+      "start": 117.788,
+      "end": 125.18
+    },
+    {
+      "id": "s18",
+      "image": "images/04-interior.png",
+      "text": "And there was me.\nThe woman with a laptop and a face that still looked like it was at work.",
+      "audio": "17-s18.mp3",
+      "start": 125.98,
+      "end": 132.004
+    },
+    {
+      "id": "s19",
+      "image": "images/04-interior.png",
+      "text": "We never talked.\nBut if one of us was missing, the others would look at that seat a little longer than usual.",
+      "audio": "18-s19.mp3",
+      "start": 132.804,
+      "end": 139.716
+    },
+    {
+      "id": "s20",
+      "image": "images/06-nurse.png",
+      "text": "One night, the nurse handed me a sweet\nwithout a word. She just pointed at my face and pulled a tired one back.",
+      "audio": "19-s20.mp3",
+      "start": 140.516,
+      "end": 149.06
+    },
+    {
+      "id": "s21",
+      "image": "images/06-nurse.png",
+      "text": "I laughed, for the first time in days,\nwith someone whose name I didn't even know.",
+      "audio": "20-s21.mp3",
+      "start": 149.86,
+      "end": 155.572
+    },
+    {
+      "id": "s22",
+      "image": "images/04-interior.png",
+      "text": "Some nights the student fell asleep past his stop.\nThe driver would brake gently and call to him through the mirror.",
+      "audio": "21-s22.mp3",
+      "start": 156.372,
+      "end": 163.932
+    },
+    {
+      "id": "s23",
+      "image": "images/04-interior.png",
+      "text": "\"You're home.\"\nLike a father waking his son in the morning.",
+      "audio": "22-s23.mp3",
+      "start": 164.732,
+      "end": 168.812
+    },
+    {
+      "id": "s24",
+      "image": "images/04-interior.png",
+      "text": "That bus was nothing special.\nTorn seats, an air conditioner that barely worked.",
+      "audio": "23-s24.mp3",
+      "start": 169.612,
+      "end": 176.26
+    },
+    {
+      "id": "s25",
+      "image": "images/04-interior.png",
+      "text": "But it was the only place in my whole day\nwhere I didn't have to be good at anything, or rush, or be anyone at all.",
+      "audio": "24-s25.mp3",
+      "start": 177.06,
+      "end": 184.812
+    },
+    {
+      "id": "s26",
+      "image": "images/07-waiting.png",
+      "image_prompt": "a night bus stopped at an empty bus stop with its door open, warm light spilling onto the wet pavement, nobody there",
+      "text": "It took me months to notice something.",
+      "audio": "25-s26.mp3",
+      "start": 185.612,
+      "end": 188.18
+    },
+    {
+      "id": "s27",
+      "image": "images/07-waiting.png",
+      "text": "At the stop in front of an old school by the canal,\nhe stopped. Every night.",
+      "audio": "26-s27.mp3",
+      "start": 188.98,
+      "end": 194.956
+    },
+    {
+      "id": "s28",
+      "image": "images/07-waiting.png",
+      "text": "Even when no one was waiting there.\nEven when no one had rung the bell.",
+      "audio": "27-s28.mp3",
+      "start": 195.756,
+      "end": 200.484
+    },
+    {
+      "id": "s29",
+      "image": "images/05-driver.png",
+      "text": "He'd open the door and look at his watch,\nand just sit there, still. For exactly one minute.",
+      "audio": "28-s29.mp3",
+      "start": 201.284,
+      "end": 208.556
+    },
+    {
+      "id": "s30",
+      "image": "images/07-waiting.png",
+      "text": "Then he'd close the door and drive on,\nas if nothing had happened.",
+      "audio": "29-s30.mp3",
+      "start": 209.356,
+      "end": 214.42
+    },
+    {
+      "id": "s31",
+      "image": "images/08-rain-window.png",
+      "image_prompt": "close view of a bus window with rain streaks, blurry red and amber city lights outside, a hand resting on a seat rail",
+      "text": "The first few nights, it annoyed me a little.\nIt's two in the morning. Who wants to wait one more minute?",
+      "audio": "30-s31.mp3",
+      "start": 215.22,
+      "end": 221.748
+    },
+    {
+      "id": "s32",
+      "image": "images/08-rain-window.png",
+      "text": "But after a while, that one minute became my favourite part of the ride.",
+      "audio": "31-s32.mp3",
+      "start": 222.548,
+      "end": 227.588
+    },
+    {
+      "id": "s33",
+      "image": "images/08-rain-window.png",
+      "text": "The bus would go completely quiet.\nJust the engine, and the soft sound of rain.",
+      "audio": "32-s33.mp3",
+      "start": 228.388,
+      "end": 234.196
+    },
+    {
+      "id": "s34",
+      "image": "images/08-rain-window.png",
+      "text": "As if the whole city was holding its breath with us.\nFor one minute.",
+      "audio": "33-s34.mp3",
+      "start": 234.996,
+      "end": 239.94
+    },
+    {
+      "id": "s35",
+      "chapter": {
+        "th": "ความลับของหนึ่งนาที",
+        "en": "The secret of one minute"
+      },
+      "image": "images/09-photo.png",
+      "image_prompt": "a faded old photograph tucked into the corner of a bus dashboard, blurred unrecognizable figures, warm dashboard glow",
+      "text": "One night, it was pouring.\nEveryone else had got off. It was just me.",
+      "audio": "34-s35.mp3",
+      "start": 240.74,
+      "end": 246.404
+    },
+    {
+      "id": "s36",
+      "image": "images/09-photo.png",
+      "text": "The bus stopped in front of the school, like always,\nand before I could stop myself, I asked.",
+      "audio": "35-s36.mp3",
+      "start": 247.204,
+      "end": 253.996
+    },
+    {
+      "id": "s37",
+      "image": "images/09-photo.png",
+      "text": "\"Who are you waiting for?\"",
+      "audio": "36-s37.mp3",
+      "start": 254.796,
+      "end": 256.668
+    },
+    {
+      "id": "s38",
+      "image": "images/05-driver.png",
+      "text": "He was quiet for a long time.\nSo long I thought he wasn't going to answer.",
+      "audio": "37-s38.mp3",
+      "start": 257.468,
+      "end": 262.604
+    },
+    {
+      "id": "s39",
+      "image": "images/09-photo.png",
+      "text": "Then he pointed at an old photograph,\ntucked into the corner of the dashboard.",
+      "audio": "38-s39.mp3",
+      "start": 263.404,
+      "end": 269.164
+    },
+    {
+      "id": "s40",
+      "image": "images/10-girl.png",
+      "image_prompt": "a little girl in a school uniform seen from behind waiting alone at a bus stop at night in the rain, holding a small umbrella, nostalgic film look",
+      "text": "\"My daughter.\nMore than twenty years ago, she had evening classes that ran late.\"",
+      "audio": "39-s40.mp3",
+      "start": 269.964,
+      "end": 275.7
+    },
+    {
+      "id": "s41",
+      "image": "images/10-girl.png",
+      "text": "\"One night, she ran for the last bus and didn't make it.\nThe driver saw her. He just didn't wait.\"",
+      "audio": "40-s41.mp3",
+      "start": 276.5,
+      "end": 283.868
+    },
+    {
+      "id": "s42",
+      "image": "images/10-girl.png",
+      "text": "\"She stood at this stop alone all night,\nin rain just like this.\"",
+      "audio": "41-s42.mp3",
+      "start": 284.668,
+      "end": 289.492
+    },
+    {
+      "id": "s43",
+      "image": "images/10-girl.png",
+      "text": "\"I was driving a taxi on the other side of the city.\nBy the time I found out, by the time I got here, it was almost morning.\"",
+      "audio": "42-s43.mp3",
+      "start": 290.292,
+      "end": 298.668
+    },
+    {
+      "id": "s44",
+      "image": "images/09-photo.png",
+      "text": "\"She was alright.\nBut I've never forgotten her face that night.\"",
+      "audio": "43-s44.mp3",
+      "start": 299.468,
+      "end": 304.028
+    },
+    {
+      "id": "s45",
+      "image": "images/05-driver.png",
+      "text": "\"After that, I started driving buses,\nand I promised myself I would always wait.\"",
+      "audio": "44-s45.mp3",
+      "start": 304.828,
+      "end": 311.116
+    },
+    {
+      "id": "s46",
+      "image": "images/05-driver.png",
+      "text": "\"It's only one minute.\nIn case someone is running for it.\"",
+      "audio": "45-s46.mp3",
+      "start": 311.916,
+      "end": 316.092
+    },
+    {
+      "id": "s47",
+      "image": "images/09-photo.png",
+      "text": "I asked quietly where his daughter was now.",
+      "audio": "46-s47.mp3",
+      "start": 316.892,
+      "end": 320.084
+    },
+    {
+      "id": "s48",
+      "image": "images/09-photo.png",
+      "text": "He smiled, for the first time.\n\"She's a teacher. At this very school.\"",
+      "audio": "47-s48.mp3",
+      "start": 320.884,
+      "end": 326.836
+    },
+    {
+      "id": "s49",
+      "image": "images/09-photo.png",
+      "text": "\"She says she wants the kids to have one grown-up\nwho will always wait for them.\"",
+      "audio": "48-s49.mp3",
+      "start": 327.636,
+      "end": 332.796
+    },
+    {
+      "id": "s50",
+      "image": "images/08-rain-window.png",
+      "text": "I didn't say anything after that.\nI just sat there listening to the rain, my throat tight.",
+      "audio": "49-s50.mp3",
+      "start": 333.596,
+      "end": 339.572
+    },
+    {
+      "id": "s51",
+      "image": "images/08-rain-window.png",
+      "text": "The minute I used to resent\nwas a minute someone was giving, on purpose, to a stranger he'd never met.",
+      "audio": "50-s51.mp3",
+      "start": 340.372,
+      "end": 347.884
+    },
+    {
+      "id": "s52",
+      "chapter": {
+        "th": "คืนที่ฉันวิ่ง",
+        "en": "The night I ran"
+      },
+      "image": "images/11-running.png",
+      "image_prompt": "a woman seen from behind running toward a bus at night, the bus door is open and waiting, motion blur, rain",
+      "text": "Months later, there was a night when I finished even later than usual.\nI looked at the clock. Two-twelve.",
+      "audio": "51-s52.mp3",
+      "start": 348.684,
+      "end": 355.932
+    },
+    {
+      "id": "s53",
+      "image": "images/11-running.png",
+      "text": "I grabbed my bag and ran down the stairs,\nout into the rain, even though I knew it was too late.",
+      "audio": "52-s53.mp3",
+      "start": 356.732,
+      "end": 363.716
+    },
+    {
+      "id": "s54",
+      "image": "images/11-running.png",
+      "text": "But when I turned the corner,\nI saw that yellow light.",
+      "audio": "53-s54.mp3",
+      "start": 364.516,
+      "end": 368.284
+    },
+    {
+      "id": "s55",
+      "image": "images/07-waiting.png",
+      "text": "The number eight bus was sitting at the stop,\nits door wide open.",
+      "audio": "54-s55.mp3",
+      "start": 369.084,
+      "end": 374.172
+    },
+    {
+      "id": "s56",
+      "image": "images/05-driver.png",
+      "text": "He wasn't looking at his watch.\nHe was looking at me.",
+      "audio": "55-s56.mp3",
+      "start": 374.972,
+      "end": 378.812
+    },
+    {
+      "id": "s57",
+      "image": "images/04-interior.png",
+      "text": "I climbed on, soaking wet,\ntoo out of breath to speak.",
+      "audio": "56-s57.mp3",
+      "start": 379.612,
+      "end": 383.836
+    },
+    {
+      "id": "s58",
+      "image": "images/04-interior.png",
+      "text": "He gave me his single nod, like every night,\nand said, \"Just in time.\"",
+      "audio": "57-s58.mp3",
+      "start": 384.636,
+      "end": 390.924
+    },
+    {
+      "id": "s59",
+      "image": "images/08-rain-window.png",
+      "text": "I don't know how long he waited for me that night.\nI never dared to ask.",
+      "audio": "58-s59.mp3",
+      "start": 391.724,
+      "end": 396.428
+    },
+    {
+      "id": "s60",
+      "image": "images/08-rain-window.png",
+      "text": "That night I cried quietly at the back of the bus.\nNot because I was sad. Because someone had waited.",
+      "audio": "59-s60.mp3",
+      "start": 397.228,
+      "end": 404.572
+    },
+    {
+      "id": "s61",
+      "image": "images/01-office.png",
+      "text": "The next day, for the first time in months,\nI shut my laptop at six p.m.",
+      "audio": "60-s61.mp3",
+      "start": 405.372,
+      "end": 411.036
+    },
+    {
+      "id": "s62",
+      "image": "images/01-office.png",
+      "text": "The work wasn't finished. It never was.\nBut I'd only just realised I was allowed to make it home in time, too.",
+      "audio": "61-s62.mp3",
+      "start": 411.836,
+      "end": 419.876
+    },
+    {
+      "id": "s63",
+      "chapter": {
+        "th": "เที่ยวสุดท้ายของลุง",
+        "en": "His last ride"
+      },
+      "image": "images/12-depot.png",
+      "image_prompt": "a bus depot at dawn, rows of parked city buses, soft blue morning light, a few lights still on",
+      "text": "At the end of that year, the nurse told all of us on the bus\nthat he was retiring at the end of the month.",
+      "audio": "62-s63.mp3",
+      "start": 420.676,
+      "end": 427.996
+    },
+    {
+      "id": "s64",
+      "image": "images/12-depot.png",
+      "text": "On his last night, the people who had never once spoken to each other\nall turned up for that ride, without ever arranging it.",
+      "audio": "63-s64.mp3",
+      "start": 428.796,
+      "end": 437.076
+    },
+    {
+      "id": "s65",
+      "image": "images/04-interior.png",
+      "text": "The student brought a bag of bread rolls.\nThe nurse brought flowers. I only had a small card.",
+      "audio": "64-s65.mp3",
+      "start": 437.876,
+      "end": 444.908
+    },
+    {
+      "id": "s66",
+      "image": "images/07-waiting.png",
+      "text": "At the school stop, the bus pulled over like always,\nand this time… we all watched the clock with him.",
+      "audio": "65-s66.mp3",
+      "start": 445.708,
+      "end": 453.364
+    },
+    {
+      "id": "s67",
+      "image": "images/08-rain-window.png",
+      "text": "It was the quietest minute I've ever heard.\nNo one spoke, but everyone knew who we were waiting for.",
+      "audio": "66-s67.mp3",
+      "start": 454.164,
+      "end": 461.148
+    },
+    {
+      "id": "s68",
+      "image": "images/11-running.png",
+      "text": "And just before the minute ran out,\na woman came running out of the school gate.",
+      "audio": "67-s68.mp3",
+      "start": 461.948,
+      "end": 467.78
+    },
+    {
+      "id": "s69",
+      "image": "images/11-running.png",
+      "text": "She climbed on, out of breath, just like I had that night,\nand stood very still beside the driver's seat.",
+      "audio": "68-s69.mp3",
+      "start": 468.58,
+      "end": 475.948
+    },
+    {
+      "id": "s70",
+      "image": "images/05-driver.png",
+      "text": "\"Can I ride your last trip with you, Dad?\"",
+      "audio": "69-s70.mp3",
+      "start": 476.748,
+      "end": 479.292
+    },
+    {
+      "id": "s71",
+      "image": "images/05-driver.png",
+      "text": "He didn't answer.\nBut his hands trembled a little on the wheel.",
+      "audio": "70-s71.mp3",
+      "start": 480.092,
+      "end": 484.556
+    },
+    {
+      "id": "s72",
+      "image": "images/04-interior.png",
+      "text": "For the rest of the way, nobody said a word.\nThere was only the sound of the nurse sniffling softly at the back.",
+      "audio": "71-s72.mp3",
+      "start": 485.356,
+      "end": 492.58
+    },
+    {
+      "id": "s73",
+      "image": "images/13-farewell.png",
+      "image_prompt": "an older bus driver seen from behind stepping down from a bus at a depot at dawn, holding a small bag, gentle light",
+      "text": "When we reached the depot, the sky was getting light.\nHe stepped down slowly, then turned and bowed to us.",
+      "audio": "72-s73.mp3",
+      "start": 493.38,
+      "end": 501.132
+    },
+    {
+      "id": "s74",
+      "image": "images/13-farewell.png",
+      "text": "\"Thank you for riding with me.\"\nThat was all. Then he walked away.",
+      "audio": "73-s74.mp3",
+      "start": 501.932,
+      "end": 506.804
+    },
+    {
+      "id": "s75",
+      "chapter": {
+        "th": "หนึ่งนาทีของฉัน",
+        "en": "My one minute"
+      },
+      "image": "images/14-elevator.png",
+      "image_prompt": "a woman seen from behind holding an elevator door open in a quiet office corridor at night, warm light",
+      "text": "Not long after, I changed jobs.\nI haven't come home at two a.m. in a long time.",
+      "audio": "74-s75.mp3",
+      "start": 507.604,
+      "end": 513.076
+    },
+    {
+      "id": "s76",
+      "image": "images/14-elevator.png",
+      "text": "But these days, if I see someone running for the elevator,\nI always hold the door.",
+      "audio": "75-s76.mp3",
+      "start": 513.876,
+      "end": 519.684
+    },
+    {
+      "id": "s77",
+      "image": "images/14-elevator.png",
+      "text": "If a friend is slow to reply,\nI wait a little longer before deciding they don't care.",
+      "audio": "76-s77.mp3",
+      "start": 520.484,
+      "end": 526.844
+    },
+    {
+      "id": "s78",
+      "image": "images/14-elevator.png",
+      "text": "If someone is trying to say something hard,\nI stay quiet and give them a little more time.",
+      "audio": "77-s78.mp3",
+      "start": 527.644,
+      "end": 533.908
+    },
+    {
+      "id": "s79",
+      "image": "images/15-dawn.png",
+      "image_prompt": "view of a sleeping city at dawn from a bus window, pale pink and blue sky, streetlights turning off",
+      "text": "It's such a small thing.\nSo small no one notices.",
+      "audio": "78-s79.mp3",
+      "start": 534.708,
+      "end": 539.004
+    },
+    {
+      "id": "s80",
+      "image": "images/15-dawn.png",
+      "text": "But I know that for the person running towards you,\nthat one minute might be their whole night.",
+      "audio": "79-s80.mp3",
+      "start": 539.804,
+      "end": 545.492
+    },
+    {
+      "id": "s81",
+      "image": "images/15-dawn.png",
+      "text": "If you still can't sleep tonight…\nhas anyone ever waited for you like that?",
+      "audio": "80-s81.mp3",
+      "start": 546.292,
+      "end": 550.876
+    },
+    {
+      "id": "s82",
+      "image": "images/15-dawn.png",
+      "text": "Or have you been the one who waited?\nTell me, if you'd like. I'll be here, waiting to read it.",
+      "audio": "81-s82.mp3",
+      "start": 551.676,
+      "end": 557.676
+    }
+  ]
+}

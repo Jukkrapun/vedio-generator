@@ -1,0 +1,726 @@
+{
+  "mode": "story",
+  "title": "รถเมล์เที่ยวตีสอง",
+  "tags": [
+    "night-bus",
+    "kindness",
+    "strangers",
+    "waiting"
+  ],
+  "posts": [],
+  "languages": {
+    "th": {
+      "title": "รถเมล์เที่ยวตีสอง",
+      "tts": "edge",
+      "voice": "th-TH-PremwadeeNeural",
+      "rate": "-10%"
+    },
+    "en": {
+      "title": "The Last Bus",
+      "tts": "edge",
+      "voice": "en-US-AvaNeural",
+      "rate": "-8%"
+    }
+  },
+  "pause_sec": 0.8,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, dim warm lamp and neon light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet lonely but comforting mood",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "งานที่ไม่เคยเลิกตรงเวลา",
+        "en": "Overtime"
+      },
+      "image": "images/01-office.png",
+      "image_prompt": "a woman seen from far behind leaving a tall office building late at night, most windows dark, wet pavement, one streetlight",
+      "text": {
+        "th": "ช่วงหนึ่งของชีวิต… ฉันกลับบ้านตีสองแทบทุกคืน",
+        "en": "There was a time in my life… when I got home at two a.m. almost every night."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "งานไม่ได้ยากหรอก\nแค่มันไม่เคยหมด",
+        "en": "The work wasn't hard.\nIt just never ended."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "ไฟในตึกดับไปทีละชั้น\nจนเหลือแค่โต๊ะฉัน กับเสียงแอร์ที่ไม่มีใครฟัง",
+        "en": "The lights in the building went out floor by floor,\nuntil it was just my desk and an air conditioner nobody was listening to."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "ฉันไม่มีรถ\nแท็กซี่ตอนนั้นก็แพงเกินกว่าเงินเดือนเด็กจบใหม่จะไหว",
+        "en": "I didn't have a car,\nand taxis at that hour cost more than a new graduate's salary could handle."
+      }
+    },
+    {
+      "id": "s05",
+      "image": "images/02-stop.png",
+      "image_prompt": "an empty city bus stop at 2 a.m. under a single streetlight, light rain, shelter bench, empty road",
+      "text": {
+        "th": "ทางเดียวที่ฉันมี คือรถเมล์สายแปด\nเที่ยวตีสองสิบนาที เที่ยวสุดท้ายของคืน",
+        "en": "The only way home was the number eight bus.\nTwo-ten a.m. The last one of the night."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ป้ายรถเมล์หน้าตึกเงียบมาก\nเงียบจนได้ยินเสียงไฟถนนดังหึ่ง ๆ",
+        "en": "The bus stop outside my building was so quiet\nI could hear the streetlight humming."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "บางคืนฝนตก บางคืนลมแรง\nแต่ทุกคืน… ฉันจะยืนนับเวลา",
+        "en": "Some nights it rained. Some nights the wind was cold.\nBut every night… I stood there counting the minutes."
+      }
+    },
+    {
+      "id": "s08",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "บางคืนแม่โทรมา ถามว่ากินข้าวหรือยัง\nฉันโกหกว่ากินแล้ว ทั้งที่ในกระเป๋ามีแค่ขนมปังครึ่งก้อน",
+        "en": "Some nights my mum would call and ask if I'd eaten.\nI'd lie and say yes, with half a bread roll still in my bag."
+      }
+    },
+    {
+      "id": "s09",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ไม่ใช่ว่าไม่อยากบอก\nแค่ไม่อยากให้ใครต้องนอนไม่หลับเพราะฉันอีกคน",
+        "en": "It wasn't that I didn't want to tell her.\nI just didn't want anyone else losing sleep over me."
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ตอนนั้นฉันคิดว่า ความเหนื่อยเป็นเรื่องที่ต้องแบกคนเดียว\nเงียบ ๆ ไม่ต้องให้ใครรู้",
+        "en": "Back then, I thought tiredness was something you carried alone.\nQuietly. Without anyone knowing."
+      }
+    },
+    {
+      "id": "s11",
+      "image": "images/03-headlights.png",
+      "image_prompt": "an old city bus approaching through light rain at night, warm headlights glowing, reflections on wet asphalt",
+      "text": {
+        "th": "แล้วไฟหน้ารถก็จะโผล่มาจากหัวโค้ง\nสีเหลือง ๆ อุ่น ๆ เหมือนใครถือตะเกียงมารับ",
+        "en": "And then the headlights would appear around the corner,\nwarm and yellow, like someone carrying a lantern to bring me home."
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": {
+        "th": "คนขับที่รอเสมอ",
+        "en": "The driver who waited"
+      },
+      "image": "images/04-interior.png",
+      "image_prompt": "inside an almost empty night bus, rows of worn seats, warm yellow ceiling lights, rain-streaked windows, calm",
+      "text": {
+        "th": "คนขับเป็นคุณลุงคนหนึ่ง\nผมขาวเกือบทั้งหัว ใส่นาฬิกาข้อมือเรือนเก่า ๆ",
+        "en": "The driver was an older man,\nhis hair almost completely white, an old wristwatch on his arm."
+      }
+    },
+    {
+      "id": "s13",
+      "image": "images/05-driver.png",
+      "image_prompt": "a bus driver seen from behind, older man, hands on a large steering wheel, a small wristwatch, dashboard lights, rainy windshield",
+      "text": {
+        "th": "ฉันไม่รู้ชื่อเขาอยู่นาน\nรู้แค่ว่าทุกครั้งที่ขึ้นรถ เขาจะพยักหน้าให้ครั้งเดียว",
+        "en": "For a long time I didn't know his name.\nI only knew that every time I got on, he'd give me a single nod."
+      }
+    },
+    {
+      "id": "s14",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "ไม่ยิ้ม ไม่ทัก\nแต่ก็ไม่ได้ดูเย็นชา",
+        "en": "No smile, no greeting.\nBut it never felt cold."
+      }
+    },
+    {
+      "id": "s15",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "รถเมล์เที่ยวตีสองมีผู้โดยสารไม่กี่คน\nและส่วนใหญ่ก็เป็นหน้าเดิม ๆ",
+        "en": "There were never many passengers on the two a.m. bus,\nand most of them were the same faces."
+      }
+    },
+    {
+      "id": "s16",
+      "image": "images/06-nurse.png",
+      "image_prompt": "a tired young nurse in scrubs dozing against a bus window at night, seen from the side and out of focus, city lights outside",
+      "text": {
+        "th": "มีพี่พยาบาลคนหนึ่ง เพิ่งออกเวร\nเธอหลับพิงกระจกทุกคืน แต่ไม่เคยเลยป้าย",
+        "en": "There was a nurse, just off her shift.\nShe fell asleep against the window every night, but she never missed her stop."
+      }
+    },
+    {
+      "id": "s17",
+      "image": "images/06-nurse.png",
+      "text": {
+        "th": "มีเด็กมหาลัยที่ทำงานร้านอาหารกะดึก\nกลิ่นน้ำมันทอดติดเสื้อมาด้วยทุกครั้ง",
+        "en": "There was a university student who worked late shifts at a restaurant.\nThe smell of the fryer always came with him."
+      }
+    },
+    {
+      "id": "s18",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "แล้วก็มีฉัน\nผู้หญิงที่ถือแล็ปท็อป กับหน้าตาที่เหมือนยังไม่ได้เลิกงาน",
+        "en": "And there was me.\nThe woman with a laptop and a face that still looked like it was at work."
+      }
+    },
+    {
+      "id": "s19",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "เราไม่เคยคุยกัน\nแต่ถ้าวันไหนใครหายไป คนที่เหลือจะมองไปที่ที่นั่งนั้นนานกว่าปกตินิดหนึ่ง",
+        "en": "We never talked.\nBut if one of us was missing, the others would look at that seat a little longer than usual."
+      }
+    },
+    {
+      "id": "s20",
+      "image": "images/06-nurse.png",
+      "text": {
+        "th": "คืนหนึ่ง พี่พยาบาลยื่นลูกอมให้ฉันเม็ดหนึ่ง\nโดยไม่พูดอะไร แค่ชี้ที่หน้าฉัน แล้วทำท่าเหนื่อย",
+        "en": "One night, the nurse handed me a sweet\nwithout a word. She just pointed at my face and pulled a tired one back."
+      }
+    },
+    {
+      "id": "s21",
+      "image": "images/06-nurse.png",
+      "text": {
+        "th": "ฉันหัวเราะออกมา เป็นครั้งแรกในรอบหลายวัน\nหัวเราะกับคนที่ไม่รู้แม้แต่ชื่อ",
+        "en": "I laughed, for the first time in days,\nwith someone whose name I didn't even know."
+      }
+    },
+    {
+      "id": "s22",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "บางคืนเด็กมหาลัยหลับจนเลยป้าย\nคุณลุงจะเหยียบเบรกเบา ๆ แล้วเรียกเขาผ่านกระจกมองหลัง",
+        "en": "Some nights the student fell asleep past his stop.\nThe driver would brake gently and call to him through the mirror."
+      }
+    },
+    {
+      "id": "s23",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "\"ถึงบ้านแล้วนะ\"\nเหมือนพ่อที่เรียกลูกตอนเช้า",
+        "en": "\"You're home.\"\nLike a father waking his son in the morning."
+      }
+    },
+    {
+      "id": "s24",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "รถเมล์คันนั้นไม่ได้หรูอะไร\nเบาะขาด แอร์ไม่ค่อยเย็น",
+        "en": "That bus was nothing special.\nTorn seats, an air conditioner that barely worked."
+      }
+    },
+    {
+      "id": "s25",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "แต่มันเป็นที่เดียวในวัน\nที่ฉันไม่ต้องเก่ง ไม่ต้องรีบ ไม่ต้องเป็นใครเลย",
+        "en": "But it was the only place in my whole day\nwhere I didn't have to be good at anything, or rush, or be anyone at all."
+      }
+    },
+    {
+      "id": "s26",
+      "image": "images/07-waiting.png",
+      "image_prompt": "a night bus stopped at an empty bus stop with its door open, warm light spilling onto the wet pavement, nobody there",
+      "text": {
+        "th": "ผ่านไปหลายเดือน ฉันถึงเริ่มสังเกตอะไรบางอย่าง",
+        "en": "It took me months to notice something."
+      }
+    },
+    {
+      "id": "s27",
+      "image": "images/07-waiting.png",
+      "text": {
+        "th": "ที่ป้ายหน้าโรงเรียนเก่า ริมคลอง\nคุณลุงจะจอดทุกคืน",
+        "en": "At the stop in front of an old school by the canal,\nhe stopped. Every night."
+      }
+    },
+    {
+      "id": "s28",
+      "image": "images/07-waiting.png",
+      "text": {
+        "th": "ทั้งที่ไม่มีใครยืนรอ\nทั้งที่ไม่มีใครกดกริ่ง",
+        "en": "Even when no one was waiting there.\nEven when no one had rung the bell."
+      }
+    },
+    {
+      "id": "s29",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "เขาจะเปิดประตู แล้วมองนาฬิกาข้อมือ\nนิ่ง ๆ อยู่อย่างนั้น หนึ่งนาทีพอดี",
+        "en": "He'd open the door and look at his watch,\nand just sit there, still. For exactly one minute."
+      }
+    },
+    {
+      "id": "s30",
+      "image": "images/07-waiting.png",
+      "text": {
+        "th": "แล้วค่อยปิดประตู ออกรถต่อ\nเหมือนไม่มีอะไรเกิดขึ้น",
+        "en": "Then he'd close the door and drive on,\nas if nothing had happened."
+      }
+    },
+    {
+      "id": "s31",
+      "image": "images/08-rain-window.png",
+      "image_prompt": "close view of a bus window with rain streaks, blurry red and amber city lights outside, a hand resting on a seat rail",
+      "text": {
+        "th": "คืนแรก ๆ ฉันหงุดหงิดนิดหน่อย\nตีสองแล้ว ใครจะอยากรอเพิ่มอีกนาทีล่ะ",
+        "en": "The first few nights, it annoyed me a little.\nIt's two in the morning. Who wants to wait one more minute?"
+      }
+    },
+    {
+      "id": "s32",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "แต่พอนานเข้า หนึ่งนาทีนั้นกลายเป็นช่วงที่ฉันชอบที่สุด",
+        "en": "But after a while, that one minute became my favourite part of the ride."
+      }
+    },
+    {
+      "id": "s33",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "ช่วงที่รถเงียบสนิท\nได้ยินแค่เสียงเครื่องยนต์ กับเสียงฝนเบา ๆ",
+        "en": "The bus would go completely quiet.\nJust the engine, and the soft sound of rain."
+      }
+    },
+    {
+      "id": "s34",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "เหมือนทั้งเมืองหยุดหายใจพร้อมกัน\nหนึ่งนาที",
+        "en": "As if the whole city was holding its breath with us.\nFor one minute."
+      }
+    },
+    {
+      "id": "s35",
+      "chapter": {
+        "th": "ความลับของหนึ่งนาที",
+        "en": "The secret of one minute"
+      },
+      "image": "images/09-photo.png",
+      "image_prompt": "a faded old photograph tucked into the corner of a bus dashboard, blurred unrecognizable figures, warm dashboard glow",
+      "text": {
+        "th": "คืนหนึ่ง ฝนตกหนักมาก\nผู้โดยสารคนอื่นลงไปหมดแล้ว เหลือแค่ฉัน",
+        "en": "One night, it was pouring.\nEveryone else had got off. It was just me."
+      }
+    },
+    {
+      "id": "s36",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "รถจอดที่ป้ายหน้าโรงเรียนเหมือนเดิม\nแล้วฉันก็ถามออกไป โดยไม่ทันคิด",
+        "en": "The bus stopped in front of the school, like always,\nand before I could stop myself, I asked."
+      }
+    },
+    {
+      "id": "s37",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "\"ลุงรอใครเหรอคะ\"",
+        "en": "\"Who are you waiting for?\""
+      }
+    },
+    {
+      "id": "s38",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "เขาเงียบไปนาน\nนานจนฉันคิดว่าเขาจะไม่ตอบ",
+        "en": "He was quiet for a long time.\nSo long I thought he wasn't going to answer."
+      }
+    },
+    {
+      "id": "s39",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "แล้วเขาก็ชี้ไปที่รูปเก่า ๆ ใบหนึ่ง\nเหน็บอยู่ตรงมุมหน้าปัด",
+        "en": "Then he pointed at an old photograph,\ntucked into the corner of the dashboard."
+      }
+    },
+    {
+      "id": "s40",
+      "image": "images/10-girl.png",
+      "image_prompt": "a little girl in a school uniform seen from behind waiting alone at a bus stop at night in the rain, holding a small umbrella, nostalgic film look",
+      "text": {
+        "th": "\"ลูกสาวผมครับ\nเมื่อยี่สิบกว่าปีก่อน เขาเรียนพิเศษเลิกดึก\"",
+        "en": "\"My daughter.\nMore than twenty years ago, she had evening classes that ran late.\""
+      }
+    },
+    {
+      "id": "s41",
+      "image": "images/10-girl.png",
+      "text": {
+        "th": "\"คืนหนึ่ง เขาวิ่งมาไม่ทันรถเที่ยวสุดท้าย\nคนขับเห็นนะ แต่ไม่รอ\"",
+        "en": "\"One night, she ran for the last bus and didn't make it.\nThe driver saw her. He just didn't wait.\""
+      }
+    },
+    {
+      "id": "s42",
+      "image": "images/10-girl.png",
+      "text": {
+        "th": "\"เขายืนอยู่ที่ป้ายนี้คนเดียวทั้งคืน\nฝนตกแบบนี้แหละ\"",
+        "en": "\"She stood at this stop alone all night,\nin rain just like this.\""
+      }
+    },
+    {
+      "id": "s43",
+      "image": "images/10-girl.png",
+      "text": {
+        "th": "\"ผมขับแท็กซี่อยู่อีกฝั่งเมือง\nกว่าจะรู้ กว่าจะมาถึง ก็เกือบเช้า\"",
+        "en": "\"I was driving a taxi on the other side of the city.\nBy the time I found out, by the time I got here, it was almost morning.\""
+      }
+    },
+    {
+      "id": "s44",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "\"เขาไม่เป็นอะไรหรอกครับ\nแต่ผมไม่เคยลืมหน้าเขาตอนนั้นเลย\"",
+        "en": "\"She was alright.\nBut I've never forgotten her face that night.\""
+      }
+    },
+    {
+      "id": "s45",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "\"ตั้งแต่วันนั้น ผมเลยมาขับรถเมล์\nแล้วสัญญากับตัวเองว่า จะรอ\"",
+        "en": "\"After that, I started driving buses,\nand I promised myself I would always wait.\""
+      }
+    },
+    {
+      "id": "s46",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "\"แค่หนึ่งนาทีเองครับ\nเผื่อมีใครกำลังวิ่งมา\"",
+        "en": "\"It's only one minute.\nIn case someone is running for it.\""
+      }
+    },
+    {
+      "id": "s47",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "ฉันถามเบา ๆ ว่า แล้วตอนนี้ลูกสาวลุงอยู่ไหน",
+        "en": "I asked quietly where his daughter was now."
+      }
+    },
+    {
+      "id": "s48",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "เขายิ้มเป็นครั้งแรก\n\"เป็นครูครับ สอนอยู่ที่โรงเรียนนี้แหละ\"",
+        "en": "He smiled, for the first time.\n\"She's a teacher. At this very school.\""
+      }
+    },
+    {
+      "id": "s49",
+      "image": "images/09-photo.png",
+      "text": {
+        "th": "\"เขาบอกว่าอยากให้เด็ก ๆ มีผู้ใหญ่สักคน\nที่รอพวกเขาเสมอ\"",
+        "en": "\"She says she wants the kids to have one grown-up\nwho will always wait for them.\""
+      }
+    },
+    {
+      "id": "s50",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "ฉันไม่ได้พูดอะไรต่อ\nแค่นั่งฟังเสียงฝน แล้วรู้สึกว่าคอมันตีบ ๆ",
+        "en": "I didn't say anything after that.\nI just sat there listening to the rain, my throat tight."
+      }
+    },
+    {
+      "id": "s51",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "หนึ่งนาทีที่ฉันเคยรำคาญ\nกลายเป็นหนึ่งนาทีที่มีคนตั้งใจมอบให้ใครสักคนที่เขาไม่รู้จัก",
+        "en": "The minute I used to resent\nwas a minute someone was giving, on purpose, to a stranger he'd never met."
+      }
+    },
+    {
+      "id": "s52",
+      "chapter": {
+        "th": "คืนที่ฉันวิ่ง",
+        "en": "The night I ran"
+      },
+      "image": "images/11-running.png",
+      "image_prompt": "a woman seen from behind running toward a bus at night, the bus door is open and waiting, motion blur, rain",
+      "text": {
+        "th": "หลายเดือนต่อมา มีคืนหนึ่งที่งานเสร็จช้ากว่าปกติ\nฉันมองนาฬิกา ตีสองสิบสอง",
+        "en": "Months later, there was a night when I finished even later than usual.\nI looked at the clock. Two-twelve."
+      }
+    },
+    {
+      "id": "s53",
+      "image": "images/11-running.png",
+      "text": {
+        "th": "ฉันคว้ากระเป๋า วิ่งลงบันได\nวิ่งออกไปกลางฝน ทั้งที่รู้ว่ามันสายไปแล้ว",
+        "en": "I grabbed my bag and ran down the stairs,\nout into the rain, even though I knew it was too late."
+      }
+    },
+    {
+      "id": "s54",
+      "image": "images/11-running.png",
+      "text": {
+        "th": "แต่พอเลี้ยวหัวมุม\nฉันก็เห็นไฟสีเหลือง ๆ นั้น",
+        "en": "But when I turned the corner,\nI saw that yellow light."
+      }
+    },
+    {
+      "id": "s55",
+      "image": "images/07-waiting.png",
+      "text": {
+        "th": "รถเมล์สายแปดจอดอยู่ที่ป้าย\nประตูเปิดค้างไว้",
+        "en": "The number eight bus was sitting at the stop,\nits door wide open."
+      }
+    },
+    {
+      "id": "s56",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "คุณลุงไม่ได้มองนาฬิกา\nเขามองมาทางฉัน",
+        "en": "He wasn't looking at his watch.\nHe was looking at me."
+      }
+    },
+    {
+      "id": "s57",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "ฉันขึ้นรถไปทั้งที่เปียกโชก\nหอบจนพูดไม่ออก",
+        "en": "I climbed on, soaking wet,\ntoo out of breath to speak."
+      }
+    },
+    {
+      "id": "s58",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "เขาพยักหน้าครั้งเดียว เหมือนทุกคืน\nแล้วพูดว่า \"ทันพอดีครับ\"",
+        "en": "He gave me his single nod, like every night,\nand said, \"Just in time.\""
+      }
+    },
+    {
+      "id": "s59",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "ฉันไม่รู้ว่าคืนนั้นเขารอฉันนานเท่าไหร่\nและไม่เคยกล้าถาม",
+        "en": "I don't know how long he waited for me that night.\nI never dared to ask."
+      }
+    },
+    {
+      "id": "s60",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "คืนนั้นฉันนั่งร้องไห้เงียบ ๆ อยู่หลังรถ\nไม่ใช่เพราะเสียใจ แต่เพราะมีคนรอ",
+        "en": "That night I cried quietly at the back of the bus.\nNot because I was sad. Because someone had waited."
+      }
+    },
+    {
+      "id": "s61",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "วันรุ่งขึ้น เป็นครั้งแรกในรอบหลายเดือน\nที่ฉันปิดคอมตอนหกโมงเย็น",
+        "en": "The next day, for the first time in months,\nI shut my laptop at six p.m."
+      }
+    },
+    {
+      "id": "s62",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "งานยังไม่หมดหรอก มันไม่เคยหมด\nแต่ฉันเพิ่งรู้ว่า ฉันก็มีสิทธิ์ที่จะกลับบ้านทันเหมือนกัน",
+        "en": "The work wasn't finished. It never was.\nBut I'd only just realised I was allowed to make it home in time, too."
+      }
+    },
+    {
+      "id": "s63",
+      "chapter": {
+        "th": "เที่ยวสุดท้ายของลุง",
+        "en": "His last ride"
+      },
+      "image": "images/12-depot.png",
+      "image_prompt": "a bus depot at dawn, rows of parked city buses, soft blue morning light, a few lights still on",
+      "text": {
+        "th": "ปลายปีนั้น พี่พยาบาลบอกพวกเราบนรถ\nว่าคุณลุงจะเกษียณสิ้นเดือน",
+        "en": "At the end of that year, the nurse told all of us on the bus\nthat he was retiring at the end of the month."
+      }
+    },
+    {
+      "id": "s64",
+      "image": "images/12-depot.png",
+      "text": {
+        "th": "คืนสุดท้าย พวกเราที่ไม่เคยคุยกันเลย\nนัดกันแบบไม่ได้นัด ขึ้นรถเที่ยวนั้นครบทุกคน",
+        "en": "On his last night, the people who had never once spoken to each other\nall turned up for that ride, without ever arranging it."
+      }
+    },
+    {
+      "id": "s65",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "เด็กมหาลัยถือขนมปังมาห่อหนึ่ง\nพี่พยาบาลถือดอกไม้ ส่วนฉันถือแค่การ์ดใบเล็ก ๆ",
+        "en": "The student brought a bag of bread rolls.\nThe nurse brought flowers. I only had a small card."
+      }
+    },
+    {
+      "id": "s66",
+      "image": "images/07-waiting.png",
+      "text": {
+        "th": "ที่ป้ายหน้าโรงเรียน รถจอดเหมือนเดิม\nแล้วคราวนี้… พวกเรามองนาฬิกาไปพร้อมกับเขา",
+        "en": "At the school stop, the bus pulled over like always,\nand this time… we all watched the clock with him."
+      }
+    },
+    {
+      "id": "s67",
+      "image": "images/08-rain-window.png",
+      "text": {
+        "th": "หนึ่งนาทีนั้นเงียบที่สุดที่ฉันเคยได้ยิน\nไม่มีใครพูด แต่ทุกคนรู้ว่ากำลังรอใคร",
+        "en": "It was the quietest minute I've ever heard.\nNo one spoke, but everyone knew who we were waiting for."
+      }
+    },
+    {
+      "id": "s68",
+      "image": "images/11-running.png",
+      "text": {
+        "th": "แล้วก่อนหนึ่งนาทีจะหมด\nก็มีผู้หญิงคนหนึ่งวิ่งออกมาจากประตูโรงเรียน",
+        "en": "And just before the minute ran out,\na woman came running out of the school gate."
+      }
+    },
+    {
+      "id": "s69",
+      "image": "images/11-running.png",
+      "text": {
+        "th": "เธอขึ้นรถมา หอบเหมือนฉันคืนนั้น\nแล้วยืนนิ่งอยู่ข้างที่นั่งคนขับ",
+        "en": "She climbed on, out of breath, just like I had that night,\nand stood very still beside the driver's seat."
+      }
+    },
+    {
+      "id": "s70",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "\"ขอนั่งเที่ยวสุดท้ายของพ่อด้วยคนนะ\"",
+        "en": "\"Can I ride your last trip with you, Dad?\""
+      }
+    },
+    {
+      "id": "s71",
+      "image": "images/05-driver.png",
+      "text": {
+        "th": "คุณลุงไม่ได้ตอบ\nแต่มือที่จับพวงมาลัยสั่นนิดหนึ่ง",
+        "en": "He didn't answer.\nBut his hands trembled a little on the wheel."
+      }
+    },
+    {
+      "id": "s72",
+      "image": "images/04-interior.png",
+      "text": {
+        "th": "ทั้งทางที่เหลือ ไม่มีใครพูดอะไรเลย\nมีแค่เสียงพี่พยาบาลสูดจมูกเบา ๆ อยู่แถวหลัง",
+        "en": "For the rest of the way, nobody said a word.\nThere was only the sound of the nurse sniffling softly at the back."
+      }
+    },
+    {
+      "id": "s73",
+      "image": "images/13-farewell.png",
+      "image_prompt": "an older bus driver seen from behind stepping down from a bus at a depot at dawn, holding a small bag, gentle light",
+      "text": {
+        "th": "ตอนถึงอู่ ฟ้าเริ่มสาง\nคุณลุงลงจากรถช้า ๆ แล้วหันกลับมาโค้งให้พวกเรา",
+        "en": "When we reached the depot, the sky was getting light.\nHe stepped down slowly, then turned and bowed to us."
+      }
+    },
+    {
+      "id": "s74",
+      "image": "images/13-farewell.png",
+      "text": {
+        "th": "\"ขอบคุณที่ขึ้นรถผมนะครับ\"\nแค่นั้นเอง แล้วเขาก็เดินหายไป",
+        "en": "\"Thank you for riding with me.\"\nThat was all. Then he walked away."
+      }
+    },
+    {
+      "id": "s75",
+      "chapter": {
+        "th": "หนึ่งนาทีของฉัน",
+        "en": "My one minute"
+      },
+      "image": "images/14-elevator.png",
+      "image_prompt": "a woman seen from behind holding an elevator door open in a quiet office corridor at night, warm light",
+      "text": {
+        "th": "หลังจากนั้น ฉันย้ายงาน\nเลิกกลับบ้านตีสองไปนานแล้ว",
+        "en": "Not long after, I changed jobs.\nI haven't come home at two a.m. in a long time."
+      }
+    },
+    {
+      "id": "s76",
+      "image": "images/14-elevator.png",
+      "text": {
+        "th": "แต่ทุกวันนี้ ถ้าฉันเห็นใครวิ่งมาที่ลิฟต์\nฉันจะกดค้างไว้เสมอ",
+        "en": "But these days, if I see someone running for the elevator,\nI always hold the door."
+      }
+    },
+    {
+      "id": "s77",
+      "image": "images/14-elevator.png",
+      "text": {
+        "th": "ถ้ามีเพื่อนที่ตอบข้อความช้า\nฉันจะรออีกหน่อย ก่อนจะคิดว่าเขาไม่สนใจ",
+        "en": "If a friend is slow to reply,\nI wait a little longer before deciding they don't care."
+      }
+    },
+    {
+      "id": "s78",
+      "image": "images/14-elevator.png",
+      "text": {
+        "th": "ถ้ามีใครกำลังพยายามพูดอะไรยาก ๆ\nฉันจะเงียบ แล้วให้เวลาเขาอีกนิด",
+        "en": "If someone is trying to say something hard,\nI stay quiet and give them a little more time."
+      }
+    },
+    {
+      "id": "s79",
+      "image": "images/15-dawn.png",
+      "image_prompt": "view of a sleeping city at dawn from a bus window, pale pink and blue sky, streetlights turning off",
+      "text": {
+        "th": "มันเป็นเรื่องเล็กมาก\nเล็กจนไม่มีใครสังเกต",
+        "en": "It's such a small thing.\nSo small no one notices."
+      }
+    },
+    {
+      "id": "s80",
+      "image": "images/15-dawn.png",
+      "text": {
+        "th": "แต่ฉันรู้ ว่าสำหรับคนที่กำลังวิ่งมา\nหนึ่งนาทีนั้นอาจเป็นทั้งคืนของเขา",
+        "en": "But I know that for the person running towards you,\nthat one minute might be their whole night."
+      }
+    },
+    {
+      "id": "s81",
+      "image": "images/15-dawn.png",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nเคยมีใครรอเธอแบบนั้นไหม",
+        "en": "If you still can't sleep tonight…\nhas anyone ever waited for you like that?"
+      }
+    },
+    {
+      "id": "s82",
+      "image": "images/15-dawn.png",
+      "text": {
+        "th": "หรือเธอเคยเป็นคนที่รอใครสักคนหรือเปล่า\nเล่าให้ฟังหน่อยได้ไหม ฉันจะรออ่านนะ",
+        "en": "Or have you been the one who waited?\nTell me, if you'd like. I'll be here, waiting to read it."
+      }
+    }
+  ]
+}
