@@ -289,9 +289,30 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
   const [redo, setRedo] = useState<{ seg: string; prompt: string } | null>(null);
   const seen = new Set<string>();
   const items = detail.segments.filter(s => s.image && !seen.has(s.image) && seen.add(s.image));
+  const [zoom, setZoom] = useState<number | null>(null);
+  useEffect(() => {
+    if (zoom === null) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setZoom(null);
+      if (event.key === "ArrowRight") setZoom(z => z === null ? z : (z + 1) % items.length);
+      if (event.key === "ArrowLeft") setZoom(z => z === null ? z : (z - 1 + items.length) % items.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoom, items.length]);
+  const zoomed = zoom === null ? null : items[zoom];
   return <>
-    <div className="image-grid">{items.map(seg => <Card key={seg.id} className="image-card">
-      <div className="image-frame"><img src={asset(seg.image)} alt={seg.image_prompt} onError={event => { event.currentTarget.style.visibility = "hidden"; }} /></div>
+    {zoomed && <div className="lightbox" role="dialog" aria-modal="true" aria-label={"ภาพ " + zoomed.id} onClick={() => setZoom(null)}>
+      <img src={asset(zoomed.image)} alt={zoomed.image_prompt} />
+      <div className="lightbox-bar" onClick={event => event.stopPropagation()}>
+        <span className="small"><code>{zoomed.id}</code> {zoom! + 1}/{items.length}</span>
+        {items.length > 1 && <><Button variant="ghost" aria-label="ภาพก่อนหน้า" onClick={() => setZoom((zoom! - 1 + items.length) % items.length)}><ArrowLeft size={18} /></Button>
+          <Button variant="ghost" aria-label="ภาพถัดไป" onClick={() => setZoom((zoom! + 1) % items.length)}><ArrowRight size={18} /></Button></>}
+        <Button variant="ghost" onClick={() => setZoom(null)}>ปิด</Button>
+      </div>
+    </div>}
+    <div className="image-grid">{items.map((seg, index) => <Card key={seg.id} className="image-card">
+      <button type="button" className="image-frame" aria-label={"ดูภาพ " + seg.id + " เต็มจอ"} onClick={() => setZoom(index)}><img src={asset(seg.image)} alt={seg.image_prompt} onError={event => { event.currentTarget.style.visibility = "hidden"; }} /></button>
       <p className="small"><code>{seg.id}</code> {seg.image_prompt}</p>
       <Button variant="outline" disabled={busy} onClick={() => setRedo({ seg: seg.id, prompt: seg.image_prompt })}><RefreshCw size={15} /> สร้างภาพนี้ใหม่</Button>
     </Card>)}</div>
