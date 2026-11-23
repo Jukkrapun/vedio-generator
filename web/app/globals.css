@@ -362,3 +362,13 @@ textarea::placeholder { color: var(--muted); }
 .player.wide { width: 100%; max-width: none; aspect-ratio: 16 / 9; max-height: none; }
 .detail-grid:has(.player.wide) { grid-template-columns: 1fr; }
 .badge.mode-story { color: var(--platform-tt); }
+.experiments { margin-top: 24px; display: grid; gap: 12px; }
+.experiments h2 { display: flex; align-items: center; gap: 6px; }
+.experiment-grid { display: grid; gap: 12px; grid-template-columns: minmax(0,1fr); }
+.experiment-grid.images { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.experiment-file { margin: 0; display: grid; gap: 6px; }
+.experiment-file video { width: 100%; border-radius: 10px; background: #0b0b11; }
+.experiment-file figcaption { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; overflow-wrap: anywhere; }
+.experiment-thumb { padding: 0; border: 0; border-radius: 8px; overflow: hidden; background: var(--surface); cursor: zoom-in; }
+.experiment-thumb img { width: 100%; display: block; }
+@media (min-width: 620px) { .experiment-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .experiment-grid.images { grid-template-columns: repeat(4, minmax(0,1fr)); } }
