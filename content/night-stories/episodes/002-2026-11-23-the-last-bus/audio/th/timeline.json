@@ -1,5 +1,5 @@
 {
-  "total": 585.856,
+  "total": 520.16,
   "segments": [
     {
       "id": "s01",
@@ -12,31 +12,31 @@
       "text": "ช่วงหนึ่งของชีวิต… ฉันกลับบ้านตีสองแทบทุกคืน",
       "audio": "00-s01.mp3",
       "start": 0.3,
-      "end": 4.644
+      "end": 4.7
     },
     {
       "id": "s02",
       "image": "images/01-office.png",
       "text": "งานไม่ได้ยากหรอก\nแค่มันไม่เคยหมด",
       "audio": "01-s02.mp3",
-      "start": 5.444,
-      "end": 9.98
+      "start": 5.5,
+      "end": 8.46
     },
     {
       "id": "s03",
       "image": "images/01-office.png",
       "text": "ไฟในตึกดับไปทีละชั้น\nจนเหลือแค่โต๊ะฉัน กับเสียงแอร์ที่ไม่มีใครฟัง",
       "audio": "02-s03.mp3",
-      "start": 10.78,
-      "end": 17.764
+      "start": 9.26,
+      "end": 15.5
     },
     {
       "id": "s04",
       "image": "images/01-office.png",
       "text": "ฉันไม่มีรถ\nแท็กซี่ตอนนั้นก็แพงเกินกว่าเงินเดือนเด็กจบใหม่จะไหว",
       "audio": "03-s04.mp3",
-      "start": 18.564,
-      "end": 25.14
+      "start": 16.3,
+      "end": 21.42
     },
     {
       "id": "s05",
@@ -44,48 +44,48 @@
       "image_prompt": "an empty city bus stop at 2 a.m. under a single streetlight, light rain, shelter bench, empty road",
       "text": "ทางเดียวที่ฉันมี คือรถเมล์สายแปด\nเที่ยวตีสองสิบนาที เที่ยวสุดท้ายของคืน",
       "audio": "04-s05.mp3",
-      "start": 25.94,
-      "end": 32.948
+      "start": 22.22,
+      "end": 29.1
     },
     {
       "id": "s06",
       "image": "images/02-stop.png",
       "text": "ป้ายรถเมล์หน้าตึกเงียบมาก\nเงียบจนได้ยินเสียงไฟถนนดังหึ่ง ๆ",
       "audio": "05-s06.mp3",
-      "start": 33.748,
-      "end": 40.324
+      "start": 29.9,
+      "end": 35.58
     },
     {
       "id": "s07",
       "image": "images/02-stop.png",
       "text": "บางคืนฝนตก บางคืนลมแรง\nแต่ทุกคืน… ฉันจะยืนนับเวลา",
       "audio": "06-s07.mp3",
-      "start": 41.124,
-      "end": 47.724
+      "start": 36.38,
+      "end": 43.1
     },
     {
       "id": "s08",
       "image": "images/02-stop.png",
       "text": "บางคืนแม่โทรมา ถามว่ากินข้าวหรือยัง\nฉันโกหกว่ากินแล้ว ทั้งที่ในกระเป๋ามีแค่ขนมปังครึ่งก้อน",
       "audio": "07-s08.mp3",
-      "start": 48.524,
-      "end": 57.212
+      "start": 43.9,
+      "end": 52.3
     },
     {
       "id": "s09",
       "image": "images/02-stop.png",
       "text": "ไม่ใช่ว่าไม่อยากบอก\nแค่ไม่อยากให้ใครต้องนอนไม่หลับเพราะฉันอีกคน",
       "audio": "08-s09.mp3",
-      "start": 58.012,
-      "end": 64.132
+      "start": 53.1,
+      "end": 58.06
     },
     {
       "id": "s10",
       "image": "images/02-stop.png",
       "text": "ตอนนั้นฉันคิดว่า ความเหนื่อยเป็นเรื่องที่ต้องแบกคนเดียว\nเงียบ ๆ ไม่ต้องให้ใครรู้",
       "audio": "09-s10.mp3",
-      "start": 64.932,
-      "end": 71.892
+      "start": 58.86,
+      "end": 65.98
     },
     {
       "id": "s11",
@@ -93,8 +93,8 @@
       "image_prompt": "an old city bus approaching through light rain at night, warm headlights glowing, reflections on wet asphalt",
       "text": "แล้วไฟหน้ารถก็จะโผล่มาจากหัวโค้ง\nสีเหลือง ๆ อุ่น ๆ เหมือนใครถือตะเกียงมารับ",
       "audio": "10-s11.mp3",
-      "start": 72.692,
-      "end": 80.108
+      "start": 66.78,
+      "end": 73.18
     },
     {
       "id": "s12",
@@ -106,8 +106,8 @@
       "image_prompt": "inside an almost empty night bus, rows of worn seats, warm yellow ceiling lights, rain-streaked windows, calm",
       "text": "คนขับเป็นคุณลุงคนหนึ่ง\nผมขาวเกือบทั้งหัว ใส่นาฬิกาข้อมือเรือนเก่า ๆ",
       "audio": "11-s12.mp3",
-      "start": 80.908,
-      "end": 88.036
+      "start": 73.98,
+      "end": 80.46
     },
     {
       "id": "s13",
@@ -115,24 +115,24 @@
       "image_prompt": "a bus driver seen from behind, older man, hands on a large steering wheel, a small wristwatch, dashboard lights, rainy windshield",
       "text": "ฉันไม่รู้ชื่อเขาอยู่นาน\nรู้แค่ว่าทุกครั้งที่ขึ้นรถ เขาจะพยักหน้าให้ครั้งเดียว",
       "audio": "12-s13.mp3",
-      "start": 88.836,
-      "end": 96.156
+      "start": 81.26,
+      "end": 88.14
     },
     {
       "id": "s14",
       "image": "images/05-driver.png",
       "text": "ไม่ยิ้ม ไม่ทัก\nแต่ก็ไม่ได้ดูเย็นชา",
       "audio": "13-s14.mp3",
-      "start": 96.956,
-      "end": 101.66
+      "start": 88.94,
+      "end": 92.62
     },
     {
       "id": "s15",
       "image": "images/04-interior.png",
       "text": "รถเมล์เที่ยวตีสองมีผู้โดยสารไม่กี่คน\nและส่วนใหญ่ก็เป็นหน้าเดิม ๆ",
       "audio": "14-s15.mp3",
-      "start": 102.46,
-      "end": 109.516
+      "start": 93.42,
+      "end": 98.86
     },
     {
       "id": "s16",
@@ -140,80 +140,80 @@
       "image_prompt": "a tired young nurse in scrubs dozing against a bus window at night, seen from the side and out of focus, city lights outside",
       "text": "มีพี่พยาบาลคนหนึ่ง เพิ่งออกเวร\nเธอหลับพิงกระจกทุกคืน แต่ไม่เคยเลยป้าย",
       "audio": "15-s16.mp3",
-      "start": 110.316,
-      "end": 117.468
+      "start": 99.66,
+      "end": 106.54
     },
     {
       "id": "s17",
       "image": "images/06-nurse.png",
       "text": "มีเด็กมหาลัยที่ทำงานร้านอาหารกะดึก\nกลิ่นน้ำมันทอดติดเสื้อมาด้วยทุกครั้ง",
       "audio": "16-s17.mp3",
-      "start": 118.268,
-      "end": 125.396
+      "start": 107.34,
+      "end": 113.26
     },
     {
       "id": "s18",
       "image": "images/04-interior.png",
       "text": "แล้วก็มีฉัน\nผู้หญิงที่ถือแล็ปท็อป กับหน้าตาที่เหมือนยังไม่ได้เลิกงาน",
       "audio": "17-s18.mp3",
-      "start": 126.196,
-      "end": 132.844
+      "start": 114.06,
+      "end": 119.66
     },
     {
       "id": "s19",
       "image": "images/04-interior.png",
       "text": "เราไม่เคยคุยกัน\nแต่ถ้าวันไหนใครหายไป คนที่เหลือจะมองไปที่ที่นั่งนั้นนานกว่าปกตินิดหนึ่ง",
       "audio": "18-s19.mp3",
-      "start": 133.644,
-      "end": 141.804
+      "start": 120.46,
+      "end": 128.46
     },
     {
       "id": "s20",
       "image": "images/06-nurse.png",
       "text": "คืนหนึ่ง พี่พยาบาลยื่นลูกอมให้ฉันเม็ดหนึ่ง\nโดยไม่พูดอะไร แค่ชี้ที่หน้าฉัน แล้วทำท่าเหนื่อย",
       "audio": "19-s20.mp3",
-      "start": 142.604,
-      "end": 150.476
+      "start": 129.26,
+      "end": 137.5
     },
     {
       "id": "s21",
       "image": "images/06-nurse.png",
       "text": "ฉันหัวเราะออกมา เป็นครั้งแรกในรอบหลายวัน\nหัวเราะกับคนที่ไม่รู้แม้แต่ชื่อ",
       "audio": "20-s21.mp3",
-      "start": 151.276,
-      "end": 158.476
+      "start": 138.3,
+      "end": 144.86
     },
     {
       "id": "s22",
       "image": "images/04-interior.png",
       "text": "บางคืนเด็กมหาลัยหลับจนเลยป้าย\nคุณลุงจะเหยียบเบรกเบา ๆ แล้วเรียกเขาผ่านกระจกมองหลัง",
       "audio": "21-s22.mp3",
-      "start": 159.276,
-      "end": 167.364
+      "start": 145.66,
+      "end": 153.34
     },
     {
       "id": "s23",
       "image": "images/04-interior.png",
       "text": "\"ถึงบ้านแล้วนะ\"\nเหมือนพ่อที่เรียกลูกตอนเช้า",
       "audio": "22-s23.mp3",
-      "start": 168.164,
-      "end": 173.228
+      "start": 154.14,
+      "end": 157.82
     },
     {
       "id": "s24",
       "image": "images/04-interior.png",
       "text": "รถเมล์คันนั้นไม่ได้หรูอะไร\nเบาะขาด แอร์ไม่ค่อยเย็น",
       "audio": "23-s24.mp3",
-      "start": 174.028,
-      "end": 179.884
+      "start": 158.62,
+      "end": 163.26
     },
     {
       "id": "s25",
       "image": "images/04-interior.png",
       "text": "แต่มันเป็นที่เดียวในวัน\nที่ฉันไม่ต้องเก่ง ไม่ต้องรีบ ไม่ต้องเป็นใครเลย",
       "audio": "24-s25.mp3",
-      "start": 180.684,
-      "end": 187.092
+      "start": 164.06,
+      "end": 170.38
     },
     {
       "id": "s26",
@@ -221,40 +221,40 @@
       "image_prompt": "a night bus stopped at an empty bus stop with its door open, warm light spilling onto the wet pavement, nobody there",
       "text": "ผ่านไปหลายเดือน ฉันถึงเริ่มสังเกตอะไรบางอย่าง",
       "audio": "25-s26.mp3",
-      "start": 187.892,
-      "end": 191.924
+      "start": 171.18,
+      "end": 175.1
     },
     {
       "id": "s27",
       "image": "images/07-waiting.png",
       "text": "ที่ป้ายหน้าโรงเรียนเก่า ริมคลอง\nคุณลุงจะจอดทุกคืน",
       "audio": "26-s27.mp3",
-      "start": 192.724,
-      "end": 198.58
+      "start": 175.9,
+      "end": 180.62
     },
     {
       "id": "s28",
       "image": "images/07-waiting.png",
       "text": "ทั้งที่ไม่มีใครยืนรอ\nทั้งที่ไม่มีใครกดกริ่ง",
       "audio": "27-s28.mp3",
-      "start": 199.38,
-      "end": 204.948
+      "start": 181.42,
+      "end": 185.5
     },
     {
       "id": "s29",
       "image": "images/05-driver.png",
       "text": "เขาจะเปิดประตู แล้วมองนาฬิกาข้อมือ\nนิ่ง ๆ อยู่อย่างนั้น หนึ่งนาทีพอดี",
       "audio": "28-s29.mp3",
-      "start": 205.748,
-      "end": 213.02
+      "start": 186.3,
+      "end": 193.02
     },
     {
       "id": "s30",
       "image": "images/07-waiting.png",
       "text": "แล้วค่อยปิดประตู ออกรถต่อ\nเหมือนไม่มีอะไรเกิดขึ้น",
       "audio": "29-s30.mp3",
-      "start": 213.82,
-      "end": 219.58
+      "start": 193.82,
+      "end": 198.22
     },
     {
       "id": "s31",
@@ -262,32 +262,32 @@
       "image_prompt": "close view of a bus window with rain streaks, blurry red and amber city lights outside, a hand resting on a seat rail",
       "text": "คืนแรก ๆ ฉันหงุดหงิดนิดหน่อย\nตีสองแล้ว ใครจะอยากรอเพิ่มอีกนาทีล่ะ",
       "audio": "30-s31.mp3",
-      "start": 220.38,
-      "end": 227.028
+      "start": 199.02,
+      "end": 205.02
     },
     {
       "id": "s32",
       "image": "images/08-rain-window.png",
       "text": "แต่พอนานเข้า หนึ่งนาทีนั้นกลายเป็นช่วงที่ฉันชอบที่สุด",
       "audio": "31-s32.mp3",
-      "start": 227.828,
-      "end": 232.46
+      "start": 205.82,
+      "end": 210.62
     },
     {
       "id": "s33",
       "image": "images/08-rain-window.png",
       "text": "ช่วงที่รถเงียบสนิท\nได้ยินแค่เสียงเครื่องยนต์ กับเสียงฝนเบา ๆ",
       "audio": "32-s33.mp3",
-      "start": 233.26,
-      "end": 239.38
+      "start": 211.42,
+      "end": 216.78
     },
     {
       "id": "s34",
       "image": "images/08-rain-window.png",
       "text": "เหมือนทั้งเมืองหยุดหายใจพร้อมกัน\nหนึ่งนาที",
       "audio": "33-s34.mp3",
-      "start": 240.18,
-      "end": 245.484
+      "start": 217.58,
+      "end": 221.5
     },
     {
       "id": "s35",
@@ -299,40 +299,40 @@
       "image_prompt": "a faded old photograph tucked into the corner of a bus dashboard, blurred unrecognizable figures, warm dashboard glow",
       "text": "คืนหนึ่ง ฝนตกหนักมาก\nผู้โดยสารคนอื่นลงไปหมดแล้ว เหลือแค่ฉัน",
       "audio": "34-s35.mp3",
-      "start": 246.284,
-      "end": 252.836
+      "start": 222.3,
+      "end": 228.22
     },
     {
       "id": "s36",
       "image": "images/09-photo.png",
       "text": "รถจอดที่ป้ายหน้าโรงเรียนเหมือนเดิม\nแล้วฉันก็ถามออกไป โดยไม่ทันคิด",
       "audio": "35-s36.mp3",
-      "start": 253.636,
-      "end": 260.092
+      "start": 229.02,
+      "end": 234.3
     },
     {
       "id": "s37",
       "image": "images/09-photo.png",
       "text": "\"ลุงรอใครเหรอคะ\"",
       "audio": "36-s37.mp3",
-      "start": 260.892,
-      "end": 263.364
+      "start": 235.1,
+      "end": 236.94
     },
     {
       "id": "s38",
       "image": "images/05-driver.png",
       "text": "เขาเงียบไปนาน\nนานจนฉันคิดว่าเขาจะไม่ตอบ",
       "audio": "37-s38.mp3",
-      "start": 264.164,
-      "end": 269.276
+      "start": 237.74,
+      "end": 241.9
     },
     {
       "id": "s39",
       "image": "images/09-photo.png",
       "text": "แล้วเขาก็ชี้ไปที่รูปเก่า ๆ ใบหนึ่ง\nเหน็บอยู่ตรงมุมหน้าปัด",
       "audio": "38-s39.mp3",
-      "start": 270.076,
-      "end": 276.028
+      "start": 242.7,
+      "end": 247.18
     },
     {
       "id": "s40",
@@ -340,96 +340,96 @@
       "image_prompt": "a little girl in a school uniform seen from behind waiting alone at a bus stop at night in the rain, holding a small umbrella, nostalgic film look",
       "text": "\"ลูกสาวผมครับ\nเมื่อยี่สิบกว่าปีก่อน เขาเรียนพิเศษเลิกดึก\"",
       "audio": "39-s40.mp3",
-      "start": 276.828,
-      "end": 282.588
+      "start": 247.98,
+      "end": 252.54
     },
     {
       "id": "s41",
       "image": "images/10-girl.png",
       "text": "\"คืนหนึ่ง เขาวิ่งมาไม่ทันรถเที่ยวสุดท้าย\nคนขับเห็นนะ แต่ไม่รอ\"",
       "audio": "40-s41.mp3",
-      "start": 283.388,
-      "end": 289.724
+      "start": 253.34,
+      "end": 259.1
     },
     {
       "id": "s42",
       "image": "images/10-girl.png",
       "text": "\"เขายืนอยู่ที่ป้ายนี้คนเดียวทั้งคืน\nฝนตกแบบนี้แหละ\"",
       "audio": "41-s42.mp3",
-      "start": 290.524,
-      "end": 296.164
+      "start": 259.9,
+      "end": 264.06
     },
     {
       "id": "s43",
       "image": "images/10-girl.png",
       "text": "\"ผมขับแท็กซี่อยู่อีกฝั่งเมือง\nกว่าจะรู้ กว่าจะมาถึง ก็เกือบเช้า\"",
       "audio": "42-s43.mp3",
-      "start": 296.964,
-      "end": 303.036
+      "start": 264.86,
+      "end": 270.54
     },
     {
       "id": "s44",
       "image": "images/09-photo.png",
       "text": "\"เขาไม่เป็นอะไรหรอกครับ\nแต่ผมไม่เคยลืมหน้าเขาตอนนั้นเลย\"",
       "audio": "43-s44.mp3",
-      "start": 303.836,
-      "end": 309.5
+      "start": 271.34,
+      "end": 275.5
     },
     {
       "id": "s45",
       "image": "images/05-driver.png",
       "text": "\"ตั้งแต่วันนั้น ผมเลยมาขับรถเมล์\nแล้วสัญญากับตัวเองว่า จะรอ\"",
       "audio": "44-s45.mp3",
-      "start": 310.3,
-      "end": 316.828
+      "start": 276.3,
+      "end": 282.06
     },
     {
       "id": "s46",
       "image": "images/05-driver.png",
       "text": "\"แค่หนึ่งนาทีเองครับ\nเผื่อมีใครกำลังวิ่งมา\"",
       "audio": "45-s46.mp3",
-      "start": 317.628,
-      "end": 322.98
+      "start": 282.86,
+      "end": 286.14
     },
     {
       "id": "s47",
       "image": "images/09-photo.png",
       "text": "ฉันถามเบา ๆ ว่า แล้วตอนนี้ลูกสาวลุงอยู่ไหน",
       "audio": "46-s47.mp3",
-      "start": 323.78,
-      "end": 327.812
+      "start": 286.94,
+      "end": 291.34
     },
     {
       "id": "s48",
       "image": "images/09-photo.png",
       "text": "เขายิ้มเป็นครั้งแรก\n\"เป็นครูครับ สอนอยู่ที่โรงเรียนนี้แหละ\"",
       "audio": "47-s48.mp3",
-      "start": 328.612,
-      "end": 334.396
+      "start": 292.14,
+      "end": 296.86
     },
     {
       "id": "s49",
       "image": "images/09-photo.png",
       "text": "\"เขาบอกว่าอยากให้เด็ก ๆ มีผู้ใหญ่สักคน\nที่รอพวกเขาเสมอ\"",
       "audio": "48-s49.mp3",
-      "start": 335.196,
-      "end": 341.484
+      "start": 297.66,
+      "end": 302.62
     },
     {
       "id": "s50",
       "image": "images/08-rain-window.png",
       "text": "ฉันไม่ได้พูดอะไรต่อ\nแค่นั่งฟังเสียงฝน แล้วรู้สึกว่าคอมันตีบ ๆ",
       "audio": "49-s50.mp3",
-      "start": 342.284,
-      "end": 348.788
+      "start": 303.42,
+      "end": 309.42
     },
     {
       "id": "s51",
       "image": "images/08-rain-window.png",
       "text": "หนึ่งนาทีที่ฉันเคยรำคาญ\nกลายเป็นหนึ่งนาทีที่มีคนตั้งใจมอบให้ใครสักคนที่เขาไม่รู้จัก",
       "audio": "50-s51.mp3",
-      "start": 349.588,
-      "end": 357.748
+      "start": 310.22,
+      "end": 317.9
     },
     {
       "id": "s52",
@@ -441,88 +441,88 @@
       "image_prompt": "a woman seen from behind running toward a bus at night, the bus door is open and waiting, motion blur, rain",
       "text": "หลายเดือนต่อมา มีคืนหนึ่งที่งานเสร็จช้ากว่าปกติ\nฉันมองนาฬิกา ตีสองสิบสอง",
       "audio": "51-s52.mp3",
-      "start": 358.548,
-      "end": 365.964
+      "start": 318.7,
+      "end": 326.38
     },
     {
       "id": "s53",
       "image": "images/11-running.png",
       "text": "ฉันคว้ากระเป๋า วิ่งลงบันได\nวิ่งออกไปกลางฝน ทั้งที่รู้ว่ามันสายไปแล้ว",
       "audio": "52-s53.mp3",
-      "start": 366.764,
-      "end": 373.676
+      "start": 327.18,
+      "end": 333.42
     },
     {
       "id": "s54",
       "image": "images/11-running.png",
       "text": "แต่พอเลี้ยวหัวมุม\nฉันก็เห็นไฟสีเหลือง ๆ นั้น",
       "audio": "53-s54.mp3",
-      "start": 374.476,
-      "end": 380.02
+      "start": 334.22,
+      "end": 338.06
     },
     {
       "id": "s55",
       "image": "images/07-waiting.png",
       "text": "รถเมล์สายแปดจอดอยู่ที่ป้าย\nประตูเปิดค้างไว้",
       "audio": "54-s55.mp3",
-      "start": 380.82,
-      "end": 386.676
+      "start": 338.86,
+      "end": 343.26
     },
     {
       "id": "s56",
       "image": "images/05-driver.png",
       "text": "คุณลุงไม่ได้มองนาฬิกา\nเขามองมาทางฉัน",
       "audio": "55-s56.mp3",
-      "start": 387.476,
-      "end": 392.9
+      "start": 344.06,
+      "end": 347.66
     },
     {
       "id": "s57",
       "image": "images/04-interior.png",
       "text": "ฉันขึ้นรถไปทั้งที่เปียกโชก\nหอบจนพูดไม่ออก",
       "audio": "56-s57.mp3",
-      "start": 393.7,
-      "end": 399.1
+      "start": 348.46,
+      "end": 352.86
     },
     {
       "id": "s58",
       "image": "images/04-interior.png",
       "text": "เขาพยักหน้าครั้งเดียว เหมือนทุกคืน\nแล้วพูดว่า \"ทันพอดีครับ\"",
       "audio": "57-s58.mp3",
-      "start": 399.9,
-      "end": 406.164
+      "start": 353.66,
+      "end": 359.34
     },
     {
       "id": "s59",
       "image": "images/08-rain-window.png",
       "text": "ฉันไม่รู้ว่าคืนนั้นเขารอฉันนานเท่าไหร่\nและไม่เคยกล้าถาม",
       "audio": "58-s59.mp3",
-      "start": 406.964,
-      "end": 413.396
+      "start": 360.14,
+      "end": 365.1
     },
     {
       "id": "s60",
       "image": "images/08-rain-window.png",
       "text": "คืนนั้นฉันนั่งร้องไห้เงียบ ๆ อยู่หลังรถ\nไม่ใช่เพราะเสียใจ แต่เพราะมีคนรอ",
       "audio": "59-s60.mp3",
-      "start": 414.196,
-      "end": 421.252
+      "start": 365.9,
+      "end": 372.78
     },
     {
       "id": "s61",
       "image": "images/01-office.png",
       "text": "วันรุ่งขึ้น เป็นครั้งแรกในรอบหลายเดือน\nที่ฉันปิดคอมตอนหกโมงเย็น",
       "audio": "60-s61.mp3",
-      "start": 422.052,
-      "end": 428.58
+      "start": 373.58,
+      "end": 379.42
     },
     {
       "id": "s62",
       "image": "images/01-office.png",
       "text": "งานยังไม่หมดหรอก มันไม่เคยหมด\nแต่ฉันเพิ่งรู้ว่า ฉันก็มีสิทธิ์ที่จะกลับบ้านทันเหมือนกัน",
       "audio": "61-s62.mp3",
-      "start": 429.38,
-      "end": 436.508
+      "start": 380.22,
+      "end": 387.5
     },
     {
       "id": "s63",
@@ -534,80 +534,80 @@
       "image_prompt": "a bus depot at dawn, rows of parked city buses, soft blue morning light, a few lights still on",
       "text": "ปลายปีนั้น พี่พยาบาลบอกพวกเราบนรถ\nว่าคุณลุงจะเกษียณสิ้นเดือน",
       "audio": "62-s63.mp3",
-      "start": 437.308,
-      "end": 443.836
+      "start": 388.3,
+      "end": 393.66
     },
     {
       "id": "s64",
       "image": "images/12-depot.png",
       "text": "คืนสุดท้าย พวกเราที่ไม่เคยคุยกันเลย\nนัดกันแบบไม่ได้นัด ขึ้นรถเที่ยวนั้นครบทุกคน",
       "audio": "63-s64.mp3",
-      "start": 444.636,
-      "end": 452.124
+      "start": 394.46,
+      "end": 402.06
     },
     {
       "id": "s65",
       "image": "images/04-interior.png",
       "text": "เด็กมหาลัยถือขนมปังมาห่อหนึ่ง\nพี่พยาบาลถือดอกไม้ ส่วนฉันถือแค่การ์ดใบเล็ก ๆ",
       "audio": "64-s65.mp3",
-      "start": 452.924,
-      "end": 460.796
+      "start": 402.86,
+      "end": 410.3
     },
     {
       "id": "s66",
       "image": "images/07-waiting.png",
       "text": "ที่ป้ายหน้าโรงเรียน รถจอดเหมือนเดิม\nแล้วคราวนี้… พวกเรามองนาฬิกาไปพร้อมกับเขา",
       "audio": "65-s66.mp3",
-      "start": 461.596,
-      "end": 469.204
+      "start": 411.1,
+      "end": 418.38
     },
     {
       "id": "s67",
       "image": "images/08-rain-window.png",
       "text": "หนึ่งนาทีนั้นเงียบที่สุดที่ฉันเคยได้ยิน\nไม่มีใครพูด แต่ทุกคนรู้ว่ากำลังรอใคร",
       "audio": "66-s67.mp3",
-      "start": 470.004,
-      "end": 477.732
+      "start": 419.18,
+      "end": 426.46
     },
     {
       "id": "s68",
       "image": "images/11-running.png",
       "text": "แล้วก่อนหนึ่งนาทีจะหมด\nก็มีผู้หญิงคนหนึ่งวิ่งออกมาจากประตูโรงเรียน",
       "audio": "67-s68.mp3",
-      "start": 478.532,
-      "end": 485.3
+      "start": 427.26,
+      "end": 432.06
     },
     {
       "id": "s69",
       "image": "images/11-running.png",
       "text": "เธอขึ้นรถมา หอบเหมือนฉันคืนนั้น\nแล้วยืนนิ่งอยู่ข้างที่นั่งคนขับ",
       "audio": "68-s69.mp3",
-      "start": 486.1,
-      "end": 492.172
+      "start": 432.86,
+      "end": 438.7
     },
     {
       "id": "s70",
       "image": "images/05-driver.png",
       "text": "\"ขอนั่งเที่ยวสุดท้ายของพ่อด้วยคนนะ\"",
       "audio": "69-s70.mp3",
-      "start": 492.972,
-      "end": 496.164
+      "start": 439.5,
+      "end": 442.14
     },
     {
       "id": "s71",
       "image": "images/05-driver.png",
       "text": "คุณลุงไม่ได้ตอบ\nแต่มือที่จับพวงมาลัยสั่นนิดหนึ่ง",
       "audio": "70-s71.mp3",
-      "start": 496.964,
-      "end": 502.34
+      "start": 442.94,
+      "end": 447.1
     },
     {
       "id": "s72",
       "image": "images/04-interior.png",
       "text": "ทั้งทางที่เหลือ ไม่มีใครพูดอะไรเลย\nมีแค่เสียงพี่พยาบาลสูดจมูกเบา ๆ อยู่แถวหลัง",
       "audio": "71-s72.mp3",
-      "start": 503.14,
-      "end": 511.012
+      "start": 447.9,
+      "end": 455.02
     },
     {
       "id": "s73",
@@ -615,16 +615,16 @@
       "image_prompt": "an older bus driver seen from behind stepping down from a bus at a depot at dawn, holding a small bag, gentle light",
       "text": "ตอนถึงอู่ ฟ้าเริ่มสาง\nคุณลุงลงจากรถช้า ๆ แล้วหันกลับมาโค้งให้พวกเรา",
       "audio": "72-s73.mp3",
-      "start": 511.812,
-      "end": 518.964
+      "start": 455.82,
+      "end": 462.86
     },
     {
       "id": "s74",
       "image": "images/13-farewell.png",
       "text": "\"ขอบคุณที่ขึ้นรถผมนะครับ\"\nแค่นั้นเอง แล้วเขาก็เดินหายไป",
       "audio": "73-s74.mp3",
-      "start": 519.764,
-      "end": 525.692
+      "start": 463.66,
+      "end": 468.54
     },
     {
       "id": "s75",
@@ -636,32 +636,32 @@
       "image_prompt": "a woman seen from behind holding an elevator door open in a quiet office corridor at night, warm light",
       "text": "หลังจากนั้น ฉันย้ายงาน\nเลิกกลับบ้านตีสองไปนานแล้ว",
       "audio": "74-s75.mp3",
-      "start": 526.492,
-      "end": 532.492
+      "start": 469.34,
+      "end": 473.98
     },
     {
       "id": "s76",
       "image": "images/14-elevator.png",
       "text": "แต่ทุกวันนี้ ถ้าฉันเห็นใครวิ่งมาที่ลิฟต์\nฉันจะกดค้างไว้เสมอ",
       "audio": "75-s76.mp3",
-      "start": 533.292,
-      "end": 539.58
+      "start": 474.78,
+      "end": 479.82
     },
     {
       "id": "s77",
       "image": "images/14-elevator.png",
       "text": "ถ้ามีเพื่อนที่ตอบข้อความช้า\nฉันจะรออีกหน่อย ก่อนจะคิดว่าเขาไม่สนใจ",
       "audio": "76-s77.mp3",
-      "start": 540.38,
-      "end": 547.268
+      "start": 480.62,
+      "end": 486.94
     },
     {
       "id": "s78",
       "image": "images/14-elevator.png",
       "text": "ถ้ามีใครกำลังพยายามพูดอะไรยาก ๆ\nฉันจะเงียบ แล้วให้เวลาเขาอีกนิด",
       "audio": "77-s78.mp3",
-      "start": 548.068,
-      "end": 554.86
+      "start": 487.74,
+      "end": 493.42
     },
     {
       "id": "s79",
@@ -669,32 +669,32 @@
       "image_prompt": "view of a sleeping city at dawn from a bus window, pale pink and blue sky, streetlights turning off",
       "text": "มันเป็นเรื่องเล็กมาก\nเล็กจนไม่มีใครสังเกต",
       "audio": "78-s79.mp3",
-      "start": 555.66,
-      "end": 560.868
+      "start": 494.22,
+      "end": 497.9
     },
     {
       "id": "s80",
       "image": "images/15-dawn.png",
       "text": "แต่ฉันรู้ ว่าสำหรับคนที่กำลังวิ่งมา\nหนึ่งนาทีนั้นอาจเป็นทั้งคืนของเขา",
       "audio": "79-s80.mp3",
-      "start": 561.668,
-      "end": 568.916
+      "start": 498.7,
+      "end": 505.26
     },
     {
       "id": "s81",
       "image": "images/15-dawn.png",
       "text": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nเคยมีใครรอเธอแบบนั้นไหม",
       "audio": "80-s81.mp3",
-      "start": 569.716,
-      "end": 575.476
+      "start": 506.06,
+      "end": 510.78
     },
     {
       "id": "s82",
       "image": "images/15-dawn.png",
       "text": "หรือเธอเคยเป็นคนที่รอใครสักคนหรือเปล่า\nเล่าให้ฟังหน่อยได้ไหม ฉันจะรออ่านนะ",
       "audio": "81-s82.mp3",
-      "start": 576.276,
-      "end": 583.356
+      "start": 511.58,
+      "end": 517.66
     }
   ]
 }
