@@ -86,7 +86,10 @@ async function listVersions(series: string, slug: string): Promise<Version[]> {
 function pickVersion(versions: Version[], wanted: string | undefined, mode: Mode) {
   // auto pick skips experiment takes (variant); pin one explicitly to post it
   const newest = [...versions].reverse();
-  return versions.find(v => v.id === wanted) ?? newest.find(v => v.mode === mode && !v.variant) ?? newest.find(v => !v.variant) ?? newest[0] ?? null;
+  // story takes are per language (variant th/en): default to the newest Thai one
+  return versions.find(v => v.id === wanted) ?? newest.find(v => v.mode === mode && !v.variant)
+    ?? (mode === "story" ? newest.find(v => v.mode === "story" && v.variant === "th") : undefined)
+    ?? newest.find(v => !v.variant) ?? newest[0] ?? null;
 }
 
 /** Validates series/slug against the real folders (no path traversal). */
