@@ -1,0 +1,118 @@
+{
+  "pause_sec": 0.8,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, dim warm lamp and neon light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet lonely but comforting mood",
+  "mode": "story",
+  "title": "EN voice test: Priyanka - Calm, late-night warmth (UK)",
+  "tags": [
+    "voice-test"
+  ],
+  "posts": [],
+  "review": {
+    "stage": "render",
+    "order": "voice-test-en-2026-11-23"
+  },
+  "languages": {
+    "en": {
+      "title": "The Last Bus",
+      "tts": "elevenlabs",
+      "voice": "BpjGufoPiobT79j2vtj4",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "งานที่ไม่เคยเลิกตรงเวลา",
+        "en": "Overtime"
+      },
+      "image": "images/01-office.png",
+      "image_prompt": "a woman seen from far behind leaving a tall office building late at night, most windows dark, wet pavement, one streetlight",
+      "text": {
+        "th": "ช่วงหนึ่งของชีวิต… ฉันกลับบ้านตีสองแทบทุกคืน",
+        "en": "There was a time in my life… when I got home at two a.m. almost every night."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "งานไม่ได้ยากหรอก\nแค่มันไม่เคยหมด",
+        "en": "The work wasn't hard.\nIt just never ended."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "ไฟในตึกดับไปทีละชั้น\nจนเหลือแค่โต๊ะฉัน กับเสียงแอร์ที่ไม่มีใครฟัง",
+        "en": "The lights in the building went out floor by floor,\nuntil it was just my desk and an air conditioner nobody was listening to."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/01-office.png",
+      "text": {
+        "th": "ฉันไม่มีรถ\nแท็กซี่ตอนนั้นก็แพงเกินกว่าเงินเดือนเด็กจบใหม่จะไหว",
+        "en": "I didn't have a car,\nand taxis at that hour cost more than a new graduate's salary could handle."
+      }
+    },
+    {
+      "id": "s05",
+      "image": "images/02-stop.png",
+      "image_prompt": "an empty city bus stop at 2 a.m. under a single streetlight, light rain, shelter bench, empty road",
+      "text": {
+        "th": "ทางเดียวที่ฉันมี คือรถเมล์สายแปด\nเที่ยวตีสองสิบนาที เที่ยวสุดท้ายของคืน",
+        "en": "The only way home was the number eight bus.\nTwo-ten a.m. The last one of the night."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ป้ายรถเมล์หน้าตึกเงียบมาก\nเงียบจนได้ยินเสียงไฟถนนดังหึ่ง ๆ",
+        "en": "The bus stop outside my building was so quiet\nI could hear the streetlight humming."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "บางคืนฝนตก บางคืนลมแรง\nแต่ทุกคืน… ฉันจะยืนนับเวลา",
+        "en": "Some nights it rained. Some nights the wind was cold.\nBut every night… I stood there counting the minutes."
+      }
+    },
+    {
+      "id": "s08",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "บางคืนแม่โทรมา ถามว่ากินข้าวหรือยัง\nฉันโกหกว่ากินแล้ว ทั้งที่ในกระเป๋ามีแค่ขนมปังครึ่งก้อน",
+        "en": "Some nights my mum would call and ask if I'd eaten.\nI'd lie and say yes, with half a bread roll still in my bag."
+      }
+    },
+    {
+      "id": "s09",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ไม่ใช่ว่าไม่อยากบอก\nแค่ไม่อยากให้ใครต้องนอนไม่หลับเพราะฉันอีกคน",
+        "en": "It wasn't that I didn't want to tell her.\nI just didn't want anyone else losing sleep over me."
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/02-stop.png",
+      "text": {
+        "th": "ตอนนั้นฉันคิดว่า ความเหนื่อยเป็นเรื่องที่ต้องแบกคนเดียว\nเงียบ ๆ ไม่ต้องให้ใครรู้",
+        "en": "Back then, I thought tiredness was something you carried alone.\nQuietly. Without anyone knowing."
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "total": 80.8,
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "งานที่ไม่เคยเลิกตรงเวลา",
+        "en": "Overtime"
+      },
+      "image": "images/01-office.png",
+      "image_prompt": "a woman seen from far behind leaving a tall office building late at night, most windows dark, wet pavement, one streetlight",
+      "text": "There was a time in my life… when I got home at two a.m. almost every night.",
+      "audio": "00-s01.mp3",
+      "start": 0.3,
+      "end": 6.06
+    },
+    {
+      "id": "s02",
+      "image": "images/01-office.png",
+      "text": "The work wasn't hard.\nIt just never ended.",
+      "audio": "01-s02.mp3",
+      "start": 6.86,
+      "end": 10.14
+    },
+    {
+      "id": "s03",
+      "image": "images/01-office.png",
+      "text": "The lights in the building went out floor by floor,\nuntil it was just my desk and an air conditioner nobody was listening to.",
+      "audio": "02-s03.mp3",
+      "start": 10.94,
+      "end": 19.34
+    },
+    {
+      "id": "s04",
+      "image": "images/01-office.png",
+      "text": "I didn't have a car,\nand taxis at that hour cost more than a new graduate's salary could handle.",
+      "audio": "03-s04.mp3",
+      "start": 20.14,
+      "end": 26.22
+    },
+    {
+      "id": "s05",
+      "image": "images/02-stop.png",
+      "image_prompt": "an empty city bus stop at 2 a.m. under a single streetlight, light rain, shelter bench, empty road",
+      "text": "The only way home was the number eight bus.\nTwo-ten a.m. The last one of the night.",
+      "audio": "04-s05.mp3",
+      "start": 27.02,
+      "end": 34.7
+    },
+    {
+      "id": "s06",
+      "image": "images/02-stop.png",
+      "text": "The bus stop outside my building was so quiet\nI could hear the streetlight humming.",
+      "audio": "05-s06.mp3",
+      "start": 35.5,
+      "end": 41.34
+    },
+    {
+      "id": "s07",
+      "image": "images/02-stop.png",
+      "text": "Some nights it rained. Some nights the wind was cold.\nBut every night… I stood there counting the minutes.",
+      "audio": "06-s07.mp3",
+      "start": 42.14,
+      "end": 53.18
+    },
+    {
+      "id": "s08",
+      "image": "images/02-stop.png",
+      "text": "Some nights my mum would call and ask if I'd eaten.\nI'd lie and say yes, with half a bread roll still in my bag.",
+      "audio": "07-s08.mp3",
+      "start": 53.98,
+      "end": 62.62
+    },
+    {
+      "id": "s09",
+      "image": "images/02-stop.png",
+      "text": "It wasn't that I didn't want to tell her.\nI just didn't want anyone else losing sleep over me.",
+      "audio": "08-s09.mp3",
+      "start": 63.42,
+      "end": 69.9
+    },
+    {
+      "id": "s10",
+      "image": "images/02-stop.png",
+      "text": "Back then, I thought tiredness was something you carried alone.\nQuietly. Without anyone knowing.",
+      "audio": "09-s10.mp3",
+      "start": 70.7,
+      "end": 78.3
+    }
+  ]
+}
