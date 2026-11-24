@@ -28,8 +28,19 @@ made from the same images. Plan: `docs/long-form/PLAN.md`.
   No real people, no horror gore, no medical/money advice.
 - Slow pace and short sentences. One segment = 1–3 sentences (~10–20 s). `"\n"` forces a subtitle break.
 - English is a natural **rewrite**, not a word-for-word translation. Names/places may be localized.
-- Structure: quiet opening scene → small mystery/person → reveal (gentle) → reflection → soft
-  closing line + invitation to comment ("ถ้าคืนนี้ยังนอนไม่หลับ…").
+- **Bedtime story format (user's decision 2026-11-24, from 004 night-train on):** the story should
+  lull people to sleep, not keep them guessing. Episodes 001–002 used the older "small mystery" style.
+  - Calm, safe, cozy settings (night trains, a grandmother's house in the rain, bakeries, lighthouses, libraries).
+  - Lots of sense detail: sounds, smells, warm light, blankets. A repeated sound motif works well (e.g. "กึก… กัก…").
+  - No shocks, no strong twist. The turn is a gentle reframe at about 70% of the story.
+  - Pace slows in the second half: shorter lines, `pause_sec` about 1.0.
+- Structure: calm hook (result first is fine: "คืนนั้นเป็นคืนแรกที่ฉันหลับสนิท") → journey/place with
+  small gentle people → soft reframe → morning/arrival → a closing part spoken to the listener that ends
+  in a lullaby ("…หลับฝันดีนะ"). **No comment question at the end of the video.** The invitation to
+  comment goes in the description.
+- Story-hook-framework for this series: hook and open loop still apply. The 3–5 s visual change does
+  NOT apply (1 image per 20–40 s, alternate framing instead). The climax is a soft Kishōtenketsu reframe,
+  never a cliffhanger.
 - `chapter` on the first segment of each part (the first is always at 0:00).
 
 ## Visuals

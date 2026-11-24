@@ -1,0 +1,558 @@
+{
+  "total": 436.92,
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "คืนที่ฉันหลับ",
+        "en": "The Night I Slept"
+      },
+      "image": "images/01-berth-sleeping.png",
+      "image_prompt": "a woman seen from behind lying asleep in a cozy upper sleeper berth of an old night train, curtain half open, small warm reading lamp, blanket, window with blurred passing lights",
+      "text": "คืนนั้น… เป็นคืนแรกในรอบหลายเดือน\nที่ฉันหลับสนิท",
+      "audio": "00-s01.mp3",
+      "start": 0.3,
+      "end": 5.42
+    },
+    {
+      "id": "s02",
+      "image": "images/01-berth-sleeping.png",
+      "text": "ไม่ใช่ที่ห้อง ไม่ใช่บนเตียงนุ่ม ๆ ของตัวเอง\nแต่บนรถไฟ ที่สั่นไปตลอดทาง",
+      "audio": "01-s02.mp3",
+      "start": 6.42,
+      "end": 13.54
+    },
+    {
+      "id": "s03",
+      "image": "images/01-berth-sleeping.png",
+      "text": "ถ้าคืนนี้เธอยังไม่ง่วง…\nมานั่งรถไฟขบวนนี้ไปกับฉันนะ",
+      "audio": "02-s03.mp3",
+      "start": 14.54,
+      "end": 19.26
+    },
+    {
+      "id": "s04",
+      "image": "images/02-station-hall.png",
+      "image_prompt": "wide establishing shot of a large old railway station hall at night, high arched ceiling, warm yellow lamps, a few travellers far away with bags, departure board blurred, calm",
+      "text": "สถานีตอนสามทุ่มครึ่ง เงียบกว่าที่ฉันคิด\nโคมไฟสีเหลืองห้อยลงมาจากเพดานสูง ๆ",
+      "audio": "03-s04.mp3",
+      "start": 20.26,
+      "end": 27.78
+    },
+    {
+      "id": "s05",
+      "image": "images/02-station-hall.png",
+      "text": "คนไม่กี่คนนั่งรอ\nบางคนกอดกระเป๋า บางคนหลับตาพิงเสา",
+      "audio": "04-s05.mp3",
+      "start": 28.78,
+      "end": 34.46
+    },
+    {
+      "id": "s06",
+      "image": "images/02-station-hall.png",
+      "text": "ฉันไม่ได้มีธุระอะไรที่ปลายทางหรอก\nแค่นอนไม่หลับมานานจนเหนื่อย",
+      "audio": "05-s06.mp3",
+      "start": 35.46,
+      "end": 40.26
+    },
+    {
+      "id": "s07",
+      "image": "images/02-station-hall.png",
+      "text": "เลยซื้อตั๋วรถไฟนอน ขึ้นเหนือ\nตั๋วเที่ยวเดียว เตียงชั้นบน",
+      "audio": "06-s07.mp3",
+      "start": 41.26,
+      "end": 46.54
+    },
+    {
+      "id": "s08",
+      "image": "images/03-platform-train.png",
+      "image_prompt": "a long old blue and cream night train waiting at a dim platform, warm light from the carriage windows, a lone traveller far away walking beside it, light haze",
+      "text": "รถไฟจอดรออยู่ที่ชานชาลา ยาวจนมองไม่เห็นหัวขบวน\nหน้าต่างแต่ละบานมีแสงส้มอุ่น ๆ",
+      "audio": "07-s08.mp3",
+      "start": 47.54,
+      "end": 55.46
+    },
+    {
+      "id": "s09",
+      "image": "images/03-platform-train.png",
+      "text": "อากาศเย็นนิด ๆ\nมีกลิ่นเหล็ก กลิ่นฝุ่น กับกลิ่นกาแฟจากรถเข็นปลายชานชาลา",
+      "audio": "08-s09.mp3",
+      "start": 56.46,
+      "end": 63.18
+    },
+    {
+      "id": "s10",
+      "image": "images/03-platform-train.png",
+      "text": "ฉันเดินหาตู้ของตัวเองช้า ๆ\nไม่รีบ เพราะคืนนี้… ไม่มีอะไรต้องรีบ",
+      "audio": "09-s10.mp3",
+      "start": 64.18,
+      "end": 70.74
+    },
+    {
+      "id": "s11",
+      "chapter": {
+        "th": "เตียงชั้นบน",
+        "en": "The Upper Berth"
+      },
+      "image": "images/04-attendant-beds.png",
+      "image_prompt": "a train attendant seen from behind folding seats into sleeper beds inside an old train carriage, white sheets and pillows, warm overhead light, calm hands",
+      "text": "ในตู้มีพนักงานคนหนึ่ง กำลังปูเตียงอยู่\nเขาพับเบาะลง แล้วดึงเตียงชั้นบนลงมาอย่างคล่องมือ",
+      "audio": "10-s11.mp3",
+      "start": 71.74,
+      "end": 79.74
+    },
+    {
+      "id": "s12",
+      "image": "images/04-attendant-beds.png",
+      "text": "ผ้าปูสีขาว หมอนหนึ่งใบ ผ้าห่มพับเป็นสี่เหลี่ยม\nเขาปูทีละเตียง ไม่เร็ว ไม่ช้า",
+      "audio": "11-s12.mp3",
+      "start": 80.74,
+      "end": 89.3
+    },
+    {
+      "id": "s13",
+      "image": "images/04-attendant-beds.png",
+      "text": "พอถึงเตียงของฉัน เขาตบหมอนเบา ๆ สองที\nแล้วพยักหน้าว่า… เรียบร้อยแล้วครับ",
+      "audio": "12-s13.mp3",
+      "start": 90.3,
+      "end": 97.1
+    },
+    {
+      "id": "s14",
+      "image": "images/05-upper-berth.png",
+      "image_prompt": "close view of an upper sleeper berth with a dark green curtain, a small warm lamp, folded white blanket, a small window beside it showing night darkness",
+      "text": "เตียงชั้นบนแคบกว่าที่คิด\nแต่มีม่านสีเขียวเข้ม กับไฟดวงเล็ก ๆ เป็นของตัวเอง",
+      "audio": "13-s14.mp3",
+      "start": 98.1,
+      "end": 104.5
+    },
+    {
+      "id": "s15",
+      "image": "images/05-upper-berth.png",
+      "text": "ฉันปีนขึ้นไป ดึงม่านปิด\nแล้วโลกทั้งใบก็เหลือแค่ขนาดเท่ากล่องหนึ่งใบ",
+      "audio": "14-s15.mp3",
+      "start": 105.5,
+      "end": 111.74
+    },
+    {
+      "id": "s16",
+      "image": "images/05-upper-berth.png",
+      "text": "แปลกดี…\nห้องที่บ้านฉันกว้างกว่านี้ตั้งหลายเท่า แต่ไม่เคยรู้สึกปลอดภัยเท่านี้เลย",
+      "audio": "15-s16.mp3",
+      "start": 112.74,
+      "end": 119.54
+    },
+    {
+      "id": "s17",
+      "image": "images/05-upper-berth.png",
+      "text": "แล้วรถไฟก็ขยับ\nช้า ๆ… เหมือนใครค่อย ๆ ไกวเปลให้",
+      "audio": "16-s17.mp3",
+      "start": 120.54,
+      "end": 126.46
+    },
+    {
+      "id": "s18",
+      "chapter": {
+        "th": "สถานีเล็ก ๆ",
+        "en": "Small Stations"
+      },
+      "image": "images/06-window-lights.png",
+      "image_prompt": "view through a night train window, soft rain drops on the glass, blurred warm lights of a small town sliding past, reflection of a dim lamp",
+      "text": "กึก… กัก… กึก… กัก…\nเสียงล้อรถไฟเริ่มเป็นจังหวะ",
+      "audio": "17-s18.mp3",
+      "start": 127.46,
+      "end": 132.26
+    },
+    {
+      "id": "s19",
+      "image": "images/06-window-lights.png",
+      "text": "ฉันเปิดม่านหน้าต่างไว้นิดหนึ่ง\nไฟของเมืองค่อย ๆ เลื่อนผ่านไป ทีละดวง",
+      "audio": "18-s19.mp3",
+      "start": 133.26,
+      "end": 139.34
+    },
+    {
+      "id": "s20",
+      "image": "images/06-window-lights.png",
+      "text": "ไฟจากหน้าต่างบ้านคนอื่น\nฉันชอบคิดว่าในห้องเหล่านั้น มีใครสักคนกำลังจะหลับ",
+      "audio": "19-s20.mp3",
+      "start": 140.34,
+      "end": 147.54
+    },
+    {
+      "id": "s21",
+      "image": "images/06-window-lights.png",
+      "text": "แล้วไฟก็ค่อย ๆ น้อยลง\nเมืองหายไป เหลือแต่ความมืดนุ่ม ๆ",
+      "audio": "20-s21.mp3",
+      "start": 148.54,
+      "end": 154.7
+    },
+    {
+      "id": "s22",
+      "image": "images/07-small-station.png",
+      "image_prompt": "a tiny rural railway station at night seen from a passing train, one old lamp post, a stationmaster far away holding a green lantern, wooden bench, moths around the light",
+      "text": "บางทีรถไฟก็ชะลอ จอดที่สถานีเล็ก ๆ\nสถานีที่มีเสาไฟแค่ต้นเดียว",
+      "audio": "21-s22.mp3",
+      "start": 155.7,
+      "end": 162.42
+    },
+    {
+      "id": "s23",
+      "image": "images/07-small-station.png",
+      "text": "นายสถานียืนถือตะเกียงสีเขียว\nแมลงตัวเล็ก ๆ บินวนรอบดวงไฟ",
+      "audio": "22-s23.mp3",
+      "start": 163.42,
+      "end": 169.34
+    },
+    {
+      "id": "s24",
+      "image": "images/07-small-station.png",
+      "text": "ไม่มีใครขึ้น ไม่มีใครลง\nเขาแค่ยกตะเกียงขึ้น… บอกว่าไปต่อได้",
+      "audio": "23-s24.mp3",
+      "start": 170.34,
+      "end": 177.22
+    },
+    {
+      "id": "s25",
+      "image": "images/07-small-station.png",
+      "text": "รถไฟก็ไปต่อ\nทิ้งสถานีเล็ก ๆ นั้นไว้ในความเงียบเหมือนเดิม",
+      "audio": "24-s25.mp3",
+      "start": 178.22,
+      "end": 183.42
+    },
+    {
+      "id": "s26",
+      "image": "images/08-rice-fields-moon.png",
+      "image_prompt": "wide night landscape of rice fields under a pale moon seen from a train window, distant dark trees, a single farmhouse light, soft mist low on the fields",
+      "text": "ข้างนอกเป็นทุ่งนา\nพระจันทร์ซีด ๆ ลอยอยู่เหนือหมอกบาง ๆ",
+      "audio": "25-s26.mp3",
+      "start": 184.42,
+      "end": 189.54
+    },
+    {
+      "id": "s27",
+      "image": "images/08-rice-fields-moon.png",
+      "text": "ไกลออกไปมีบ้านหลังหนึ่ง เปิดไฟไว้ดวงเดียว\nฉันมองมันจนลับตาไป",
+      "audio": "26-s27.mp3",
+      "start": 190.54,
+      "end": 196.86
+    },
+    {
+      "id": "s28",
+      "image": "images/08-rice-fields-moon.png",
+      "text": "กึก… กัก…\nฉันสังเกตว่าหายใจช้าลง ตามจังหวะล้อรถไฟโดยไม่รู้ตัว",
+      "audio": "27-s28.mp3",
+      "start": 197.86,
+      "end": 204.98
+    },
+    {
+      "id": "s29",
+      "image": "images/09-lower-berth-knitting.png",
+      "image_prompt": "an elderly woman seen from behind sitting in a lower sleeper berth knitting under a tiny lamp, ball of wool on the blanket, out of focus, warm and quiet",
+      "text": "เตียงชั้นล่างฝั่งตรงข้าม มีคุณยายคนหนึ่ง\nนั่งถักไหมพรมอยู่ใต้ไฟดวงเล็ก",
+      "audio": "28-s29.mp3",
+      "start": 205.98,
+      "end": 212.7
+    },
+    {
+      "id": "s30",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": "เข็มกระทบกันเบา ๆ ติ๊ก… ติ๊ก…\nปนไปกับเสียงรถไฟ",
+      "audio": "29-s30.mp3",
+      "start": 213.7,
+      "end": 218.66
+    },
+    {
+      "id": "s31",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": "เธอเงยหน้ามาเห็นฉัน แล้วยิ้ม\n\"นอนไม่หลับเหมือนกันเหรอหนู\"",
+      "audio": "30-s31.mp3",
+      "start": 219.66,
+      "end": 224.38
+    },
+    {
+      "id": "s32",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": "\"ยายนั่งรถไฟขบวนนี้ไปหาหลานทุกปี\nถักผ้าพันคอไปด้วย ถึงเชียงใหม่ก็เสร็จพอดี\"",
+      "audio": "31-s32.mp3",
+      "start": 225.38,
+      "end": 231.94
+    },
+    {
+      "id": "s33",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": "\"ไม่ต้องพยายามหลับหรอก\nเดี๋ยวรถไฟมันพาไปเอง\"",
+      "audio": "32-s33.mp3",
+      "start": 232.94,
+      "end": 236.46
+    },
+    {
+      "id": "s34",
+      "chapter": {
+        "th": "คนที่ไม่ได้นอน",
+        "en": "The One Who Stays Awake"
+      },
+      "image": "images/10-corridor-night.png",
+      "image_prompt": "the narrow corridor of a sleeper carriage at night, all curtains closed, dim blue night lights along the floor, a long calm perspective",
+      "text": "ดึกขึ้น ไฟในตู้ดับลงเกือบหมด\nเหลือแค่ไฟสีฟ้าดวงเล็ก ๆ เรียงตามทางเดิน",
+      "audio": "33-s34.mp3",
+      "start": 237.46,
+      "end": 244.26
+    },
+    {
+      "id": "s35",
+      "image": "images/10-corridor-night.png",
+      "text": "ม่านทุกบานปิดสนิท\nได้ยินเสียงคนหายใจช้า ๆ จากหลายเตียง",
+      "audio": "34-s35.mp3",
+      "start": 245.26,
+      "end": 250.46
+    },
+    {
+      "id": "s36",
+      "image": "images/10-corridor-night.png",
+      "text": "คนแปลกหน้าหลายสิบคน\nนอนหลับอยู่ด้วยกัน ในบ้านที่วิ่งได้หลังเดียว",
+      "audio": "35-s36.mp3",
+      "start": 251.46,
+      "end": 257.38
+    },
+    {
+      "id": "s37",
+      "image": "images/11-attendant-flashlight.png",
+      "image_prompt": "a train attendant seen from far behind at the end of a dark sleeper corridor, holding a small flashlight pointed down, standing quietly by the door window",
+      "text": "ฉันแง้มม่านออกไปดู\nที่ปลายทางเดิน มีคนหนึ่งยืนอยู่",
+      "audio": "36-s37.mp3",
+      "start": 258.38,
+      "end": 263.42
+    },
+    {
+      "id": "s38",
+      "image": "images/11-attendant-flashlight.png",
+      "text": "พนักงานคนเดิม\nเขาถือไฟฉายดวงเล็ก ส่องลงพื้น ไม่ให้แสงไปโดนใคร",
+      "audio": "37-s38.mp3",
+      "start": 264.42,
+      "end": 270.9
+    },
+    {
+      "id": "s39",
+      "image": "images/11-attendant-flashlight.png",
+      "text": "เขาเดินช้า ๆ ไปตามทาง\nดูว่าม่านปิดดีไหม ประตูล็อกหรือยัง",
+      "audio": "38-s39.mp3",
+      "start": 271.9,
+      "end": 277.42
+    },
+    {
+      "id": "s40",
+      "image": "images/11-attendant-flashlight.png",
+      "text": "แล้วก็กลับไปยืนที่เดิม\nมองออกไปนอกหน้าต่างประตู ในความมืด",
+      "audio": "39-s40.mp3",
+      "start": 278.42,
+      "end": 283.7
+    },
+    {
+      "id": "s41",
+      "image": "images/12-blanket-hand.png",
+      "image_prompt": "close-up of a hand gently pulling a blanket up over the edge of a sleeper berth, soft warm lamp light, the sleeper out of frame, deep night outside the window: pitch dark sky, no sunset, no dusk colours",
+      "text": "เตียงข้าง ๆ ฉัน ผ้าห่มของเด็กคนหนึ่งหลุดลงมา\nเขาเดินมา หยิบขึ้นไปห่มให้ใหม่ เงียบที่สุด",
+      "audio": "40-s41.mp3",
+      "start": 284.7,
+      "end": 293.02
+    },
+    {
+      "id": "s42",
+      "image": "images/12-blanket-hand.png",
+      "text": "เด็กคนนั้นไม่รู้ตัวเลย\nพรุ่งนี้ก็คงไม่มีใครจำได้ ว่าเขาทำ",
+      "audio": "41-s42.mp3",
+      "start": 294.02,
+      "end": 299.54
+    },
+    {
+      "id": "s43",
+      "image": "images/12-blanket-hand.png",
+      "text": "ฉันนอนมองเพดานแล้วคิด…",
+      "audio": "42-s43.mp3",
+      "start": 300.54,
+      "end": 302.54
+    },
+    {
+      "id": "s44",
+      "image": "images/12-blanket-hand.png",
+      "text": "ที่ฉันหลับที่ห้องไม่ได้\nอาจไม่ใช่เพราะมันเสียงดัง หรือเพราะฉันคิดมาก",
+      "audio": "43-s44.mp3",
+      "start": 303.54,
+      "end": 309.3
+    },
+    {
+      "id": "s45",
+      "image": "images/12-blanket-hand.png",
+      "text": "แต่เพราะที่นั่น…\nไม่มีใครตื่นอยู่แทนฉันเลย",
+      "audio": "44-s45.mp3",
+      "start": 310.3,
+      "end": 314.06
+    },
+    {
+      "id": "s46",
+      "image": "images/12-blanket-hand.png",
+      "text": "บนรถไฟคืนนี้ มีคนขับอยู่ข้างหน้า\nมีนายสถานีถือตะเกียง มีคนเดินดูผ้าห่มให้ทุกเตียง",
+      "audio": "45-s46.mp3",
+      "start": 315.06,
+      "end": 323.46
+    },
+    {
+      "id": "s47",
+      "image": "images/12-blanket-hand.png",
+      "text": "ฉันไม่ต้องเฝ้าอะไรเลย\nแค่นอนเฉย ๆ แล้วปล่อยให้ใครสักคนดูแลทางให้",
+      "audio": "46-s47.mp3",
+      "start": 324.46,
+      "end": 330.46
+    },
+    {
+      "id": "s48",
+      "image": "images/13-tunnel-glow.png",
+      "image_prompt": "inside a sleeper carriage passing through a mountain tunnel, the window dark, warm lamp glow on the curtains, motion blur of tunnel lights",
+      "text": "รถไฟเข้าอุโมงค์\nเสียงล้อดังก้องขึ้นนิดหนึ่ง แล้วก็นุ่มลง",
+      "audio": "47-s48.mp3",
+      "start": 331.46,
+      "end": 336.9
+    },
+    {
+      "id": "s49",
+      "image": "images/13-tunnel-glow.png",
+      "text": "ฉันปิดไฟดวงเล็ก\nกึก… กัก… กึก… กัก…",
+      "audio": "48-s49.mp3",
+      "start": 337.9,
+      "end": 341.9
+    },
+    {
+      "id": "s50",
+      "image": "images/13-tunnel-glow.png",
+      "text": "แล้วฉันก็จำอะไรไม่ได้อีกเลย",
+      "audio": "49-s50.mp3",
+      "start": 342.9,
+      "end": 345.3
+    },
+    {
+      "id": "s51",
+      "chapter": {
+        "th": "หมอกตอนเช้า",
+        "en": "Morning Mist"
+      },
+      "image": "images/14-mountain-mist.png",
+      "image_prompt": "dawn over misty forested mountains seen from a train window, soft pink and blue sky, fog in the valleys, train track curving ahead",
+      "text": "ฉันตื่นมาเพราะแสงสีชมพู\nลอดเข้ามาทางขอบม่าน",
+      "audio": "50-s51.mp3",
+      "start": 346.3,
+      "end": 350.7
+    },
+    {
+      "id": "s52",
+      "image": "images/14-mountain-mist.png",
+      "text": "ข้างนอกเป็นภูเขา\nหมอกขาว ๆ นอนอยู่ในหุบ เหมือนยังไม่อยากตื่น",
+      "audio": "51-s52.mp3",
+      "start": 351.7,
+      "end": 357.38
+    },
+    {
+      "id": "s53",
+      "image": "images/14-mountain-mist.png",
+      "text": "ฉันนอนนิ่ง ๆ อยู่พักใหญ่\nไม่ได้หยิบโทรศัพท์ ไม่ได้คิดอะไร",
+      "audio": "52-s53.mp3",
+      "start": 358.38,
+      "end": 363.34
+    },
+    {
+      "id": "s54",
+      "image": "images/15-coffee-window.png",
+      "image_prompt": "a paper cup of hot coffee on a small fold-out table by a train window, steam rising, misty morning hills outside, soft early light",
+      "text": "พนักงานคนเดิมเข็นรถกาแฟผ่านมา\nตาเขาแดงนิด ๆ แต่ยังยิ้ม",
+      "audio": "53-s54.mp3",
+      "start": 364.34,
+      "end": 369.94
+    },
+    {
+      "id": "s55",
+      "image": "images/15-coffee-window.png",
+      "text": "\"หลับสบายไหมครับ\"\nฉันพยักหน้า… แล้วรู้สึกอยากขอบคุณ มากกว่าที่จะพูดออกไปได้",
+      "audio": "54-s55.mp3",
+      "start": 370.94,
+      "end": 378.14
+    },
+    {
+      "id": "s56",
+      "image": "images/15-coffee-window.png",
+      "text": "คุณยายเตียงตรงข้าม ยกผ้าพันคอให้ฉันดู\nเสร็จพอดี อย่างที่บอกไว้",
+      "audio": "55-s56.mp3",
+      "start": 379.14,
+      "end": 385.14
+    },
+    {
+      "id": "s57",
+      "image": "images/16-arrival-station.png",
+      "image_prompt": "a small old northern railway station in the early morning mist, wooden roof, a few travellers far away with bags, soft cool light, calm",
+      "text": "รถไฟจอดที่สถานีปลายทาง\nอากาศเย็น มีกลิ่นดอกไม้กับควันไฟไกล ๆ",
+      "audio": "56-s57.mp3",
+      "start": 386.14,
+      "end": 393.1
+    },
+    {
+      "id": "s58",
+      "image": "images/16-arrival-station.png",
+      "text": "ฉันไม่ได้มีธุระอะไรที่นี่จริง ๆ\nแต่ฉันได้สิ่งที่ตามหามาแล้ว",
+      "audio": "57-s58.mp3",
+      "start": 394.1,
+      "end": 399.06
+    },
+    {
+      "id": "s59",
+      "image": "images/16-arrival-station.png",
+      "text": "ว่าบางคืน เราไม่ต้องเฝ้าทุกอย่างเอง\nโลกมีคนตื่นอยู่เสมอ… เพื่อให้คนอื่นได้หลับ",
+      "audio": "58-s59.mp3",
+      "start": 400.06,
+      "end": 407.42
+    },
+    {
+      "id": "s60",
+      "chapter": {
+        "th": "ก่อนหลับ",
+        "en": "Before You Sleep"
+      },
+      "image": "images/17-rain-window-sleep.png",
+      "image_prompt": "a night train window from inside, rain drops on the glass, darkness outside with one distant warm light, a soft blanket edge in the foreground, very calm sleepy mood",
+      "text": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nไม่ต้องพยายามนะ",
+      "audio": "59-s60.mp3",
+      "start": 408.42,
+      "end": 412.5
+    },
+    {
+      "id": "s61",
+      "image": "images/17-rain-window-sleep.png",
+      "text": "ปิดไฟ หลับตา\nนึกถึงเสียงล้อรถไฟ… กึก… กัก… กึก… กัก…",
+      "audio": "60-s61.mp3",
+      "start": 413.5,
+      "end": 420.14
+    },
+    {
+      "id": "s62",
+      "image": "images/17-rain-window-sleep.png",
+      "text": "มีคนขับอยู่ข้างหน้า มีคนเดินดูผ้าห่มให้\nคืนนี้ ให้คนอื่นตื่นแทนเธอบ้าง",
+      "audio": "61-s62.mp3",
+      "start": 421.14,
+      "end": 428.18
+    },
+    {
+      "id": "s63",
+      "image": "images/17-rain-window-sleep.png",
+      "text": "แล้วให้รถไฟ… พาเธอไปเอง",
+      "audio": "62-s63.mp3",
+      "start": 429.18,
+      "end": 432.06
+    },
+    {
+      "id": "s64",
+      "image": "images/17-rain-window-sleep.png",
+      "text": "หลับฝันดีนะ",
+      "audio": "63-s64.mp3",
+      "start": 433.06,
+      "end": 434.42
+    }
+  ]
+}

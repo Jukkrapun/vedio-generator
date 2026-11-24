@@ -6,3 +6,8 @@
 - ห้องข้าง ๆ: the neighbour who plays the same song at 2 a.m.
 - โทรศัพท์สาธารณะ: a phone booth that still gets calls
 - ร้านซักผ้า 24 ชม.: strangers waiting for their laundry to finish
+- รถไฟกลางคืน: sleeper train north, the people who stay awake so others sleep (004, bedtime format)
+- บ้านยายตอนฝนตก: rain on a tin roof, grandma talking until her voice fades (bedtime)
+- ร้านขนมปังตีสาม: a baker kneading alone until dawn (bedtime)
+- คนเฝ้าประภาคาร: a lighthouse keeper's nightly routine (bedtime)
+- ห้องสมุดหลังปิด: a librarian reshelving books, each with a tiny story (bedtime)

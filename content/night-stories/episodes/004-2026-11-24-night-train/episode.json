@@ -1,0 +1,600 @@
+{
+  "mode": "story",
+  "title": "รถไฟกลางคืน",
+  "tags": [
+    "night-train",
+    "insomnia",
+    "sleep-story",
+    "caretakers",
+    "journey"
+  ],
+  "posts": [],
+  "languages": {
+    "th": {
+      "title": "รถไฟกลางคืน",
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
+    },
+    "en": {
+      "title": "The Night Train",
+      "tts": "elevenlabs",
+      "voice": "Z3R5wn05IrDiVCyEkUrK",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
+    }
+  },
+  "pause_sec": 1,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, old sleeper train interior and Thai countryside, dim warm lamp light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, soft calm sleepy cozy mood, people only from behind or far away or out of focus, no readable text or logos",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "คืนที่ฉันหลับ",
+        "en": "The Night I Slept"
+      },
+      "image": "images/01-berth-sleeping.png",
+      "image_prompt": "a woman seen from behind lying asleep in a cozy upper sleeper berth of an old night train, curtain half open, small warm reading lamp, blanket, window with blurred passing lights",
+      "text": {
+        "th": "คืนนั้น… เป็นคืนแรกในรอบหลายเดือน\nที่ฉันหลับสนิท",
+        "en": "That night… was the first night in months\nthat I really slept."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-berth-sleeping.png",
+      "text": {
+        "th": "ไม่ใช่ที่ห้อง ไม่ใช่บนเตียงนุ่ม ๆ ของตัวเอง\nแต่บนรถไฟ ที่สั่นไปตลอดทาง",
+        "en": "Not in my room. Not in my own soft bed.\nBut on a train that rocked the whole way."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/01-berth-sleeping.png",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังไม่ง่วง…\nมานั่งรถไฟขบวนนี้ไปกับฉันนะ",
+        "en": "If you're not sleepy yet tonight…\ncome ride this train with me."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/02-station-hall.png",
+      "image_prompt": "wide establishing shot of a large old railway station hall at night, high arched ceiling, warm yellow lamps, a few travellers far away with bags, departure board blurred, calm",
+      "text": {
+        "th": "สถานีตอนสามทุ่มครึ่ง เงียบกว่าที่ฉันคิด\nโคมไฟสีเหลืองห้อยลงมาจากเพดานสูง ๆ",
+        "en": "The station at half past nine was quieter than I expected.\nYellow lamps hung down from the high ceiling."
+      }
+    },
+    {
+      "id": "s05",
+      "image": "images/02-station-hall.png",
+      "text": {
+        "th": "คนไม่กี่คนนั่งรอ\nบางคนกอดกระเป๋า บางคนหลับตาพิงเสา",
+        "en": "Only a few people were waiting.\nSome hugged their bags. Some leaned on a pillar with their eyes closed."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/02-station-hall.png",
+      "text": {
+        "th": "ฉันไม่ได้มีธุระอะไรที่ปลายทางหรอก\nแค่นอนไม่หลับมานานจนเหนื่อย",
+        "en": "I had no business at the other end.\nI'd just been awake for so long that I was tired of it."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/02-station-hall.png",
+      "text": {
+        "th": "เลยซื้อตั๋วรถไฟนอน ขึ้นเหนือ\nตั๋วเที่ยวเดียว เตียงชั้นบน",
+        "en": "So I bought a ticket on the sleeper train going north.\nOne way. Upper berth."
+      }
+    },
+    {
+      "id": "s08",
+      "image": "images/03-platform-train.png",
+      "image_prompt": "a long old blue and cream night train waiting at a dim platform, warm light from the carriage windows, a lone traveller far away walking beside it, light haze",
+      "text": {
+        "th": "รถไฟจอดรออยู่ที่ชานชาลา ยาวจนมองไม่เห็นหัวขบวน\nหน้าต่างแต่ละบานมีแสงส้มอุ่น ๆ",
+        "en": "The train was waiting at the platform, so long I couldn't see the front.\nEvery window glowed a warm orange."
+      }
+    },
+    {
+      "id": "s09",
+      "image": "images/03-platform-train.png",
+      "text": {
+        "th": "อากาศเย็นนิด ๆ\nมีกลิ่นเหล็ก กลิ่นฝุ่น กับกลิ่นกาแฟจากรถเข็นปลายชานชาลา",
+        "en": "The air was a little cool.\nIt smelled of iron, of dust, and of coffee from a cart at the end of the platform."
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/03-platform-train.png",
+      "text": {
+        "th": "ฉันเดินหาตู้ของตัวเองช้า ๆ\nไม่รีบ เพราะคืนนี้… ไม่มีอะไรต้องรีบ",
+        "en": "I walked slowly, looking for my carriage.\nNo hurry. Because tonight… there was nothing to hurry for."
+      }
+    },
+    {
+      "id": "s11",
+      "chapter": {
+        "th": "เตียงชั้นบน",
+        "en": "The Upper Berth"
+      },
+      "image": "images/04-attendant-beds.png",
+      "image_prompt": "a train attendant seen from behind folding seats into sleeper beds inside an old train carriage, white sheets and pillows, warm overhead light, calm hands",
+      "text": {
+        "th": "ในตู้มีพนักงานคนหนึ่ง กำลังปูเตียงอยู่\nเขาพับเบาะลง แล้วดึงเตียงชั้นบนลงมาอย่างคล่องมือ",
+        "en": "Inside, an attendant was making up the beds.\nHe folded the seats down and pulled the upper berths into place with easy hands."
+      }
+    },
+    {
+      "id": "s12",
+      "image": "images/04-attendant-beds.png",
+      "text": {
+        "th": "ผ้าปูสีขาว หมอนหนึ่งใบ ผ้าห่มพับเป็นสี่เหลี่ยม\nเขาปูทีละเตียง ไม่เร็ว ไม่ช้า",
+        "en": "A white sheet. One pillow. A blanket folded into a square.\nHe made them one by one. Not fast. Not slow."
+      }
+    },
+    {
+      "id": "s13",
+      "image": "images/04-attendant-beds.png",
+      "text": {
+        "th": "พอถึงเตียงของฉัน เขาตบหมอนเบา ๆ สองที\nแล้วพยักหน้าว่า… เรียบร้อยแล้วครับ",
+        "en": "When he got to mine, he patted the pillow twice, softly,\nand nodded. All set."
+      }
+    },
+    {
+      "id": "s14",
+      "image": "images/05-upper-berth.png",
+      "image_prompt": "close view of an upper sleeper berth with a dark green curtain, a small warm lamp, folded white blanket, a small window beside it showing night darkness",
+      "text": {
+        "th": "เตียงชั้นบนแคบกว่าที่คิด\nแต่มีม่านสีเขียวเข้ม กับไฟดวงเล็ก ๆ เป็นของตัวเอง",
+        "en": "The upper berth was narrower than I'd thought.\nBut it had its own dark green curtain, and a tiny lamp all its own."
+      }
+    },
+    {
+      "id": "s15",
+      "image": "images/05-upper-berth.png",
+      "text": {
+        "th": "ฉันปีนขึ้นไป ดึงม่านปิด\nแล้วโลกทั้งใบก็เหลือแค่ขนาดเท่ากล่องหนึ่งใบ",
+        "en": "I climbed up and drew the curtain.\nAnd the whole world became the size of one small box."
+      }
+    },
+    {
+      "id": "s16",
+      "image": "images/05-upper-berth.png",
+      "text": {
+        "th": "แปลกดี…\nห้องที่บ้านฉันกว้างกว่านี้ตั้งหลายเท่า แต่ไม่เคยรู้สึกปลอดภัยเท่านี้เลย",
+        "en": "Strange…\nMy room at home is many times bigger, but it never felt this safe."
+      }
+    },
+    {
+      "id": "s17",
+      "image": "images/05-upper-berth.png",
+      "text": {
+        "th": "แล้วรถไฟก็ขยับ\nช้า ๆ… เหมือนใครค่อย ๆ ไกวเปลให้",
+        "en": "Then the train moved.\nSlowly… like someone gently rocking a cradle."
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": {
+        "th": "สถานีเล็ก ๆ",
+        "en": "Small Stations"
+      },
+      "image": "images/06-window-lights.png",
+      "image_prompt": "view through a night train window, soft rain drops on the glass, blurred warm lights of a small town sliding past, reflection of a dim lamp",
+      "text": {
+        "th": "กึก… กัก… กึก… กัก…\nเสียงล้อรถไฟเริ่มเป็นจังหวะ",
+        "en": "Clack… clack… clack… clack…\nThe wheels found their rhythm."
+      }
+    },
+    {
+      "id": "s19",
+      "image": "images/06-window-lights.png",
+      "text": {
+        "th": "ฉันเปิดม่านหน้าต่างไว้นิดหนึ่ง\nไฟของเมืองค่อย ๆ เลื่อนผ่านไป ทีละดวง",
+        "en": "I left the window curtain open just a little.\nThe lights of the city slid past, one by one."
+      }
+    },
+    {
+      "id": "s20",
+      "image": "images/06-window-lights.png",
+      "text": {
+        "th": "ไฟจากหน้าต่างบ้านคนอื่น\nฉันชอบคิดว่าในห้องเหล่านั้น มีใครสักคนกำลังจะหลับ",
+        "en": "Lights from other people's windows.\nI liked to think that in each of those rooms, someone was falling asleep."
+      }
+    },
+    {
+      "id": "s21",
+      "image": "images/06-window-lights.png",
+      "text": {
+        "th": "แล้วไฟก็ค่อย ๆ น้อยลง\nเมืองหายไป เหลือแต่ความมืดนุ่ม ๆ",
+        "en": "Then the lights grew fewer.\nThe city slipped away, and only soft darkness was left."
+      }
+    },
+    {
+      "id": "s22",
+      "image": "images/07-small-station.png",
+      "image_prompt": "a tiny rural railway station at night seen from a passing train, one old lamp post, a stationmaster far away holding a green lantern, wooden bench, moths around the light",
+      "text": {
+        "th": "บางทีรถไฟก็ชะลอ จอดที่สถานีเล็ก ๆ\nสถานีที่มีเสาไฟแค่ต้นเดียว",
+        "en": "Sometimes the train slowed and stopped at a tiny station.\nA station with just one lamp post."
+      }
+    },
+    {
+      "id": "s23",
+      "image": "images/07-small-station.png",
+      "text": {
+        "th": "นายสถานียืนถือตะเกียงสีเขียว\nแมลงตัวเล็ก ๆ บินวนรอบดวงไฟ",
+        "en": "The stationmaster stood holding a green lantern.\nLittle moths circled the light."
+      }
+    },
+    {
+      "id": "s24",
+      "image": "images/07-small-station.png",
+      "text": {
+        "th": "ไม่มีใครขึ้น ไม่มีใครลง\nเขาแค่ยกตะเกียงขึ้น… บอกว่าไปต่อได้",
+        "en": "No one got on. No one got off.\nHe just raised the lantern… to say we could go on."
+      }
+    },
+    {
+      "id": "s25",
+      "image": "images/07-small-station.png",
+      "text": {
+        "th": "รถไฟก็ไปต่อ\nทิ้งสถานีเล็ก ๆ นั้นไว้ในความเงียบเหมือนเดิม",
+        "en": "And the train went on,\nleaving that little station to its silence again."
+      }
+    },
+    {
+      "id": "s26",
+      "image": "images/08-rice-fields-moon.png",
+      "image_prompt": "wide night landscape of rice fields under a pale moon seen from a train window, distant dark trees, a single farmhouse light, soft mist low on the fields",
+      "text": {
+        "th": "ข้างนอกเป็นทุ่งนา\nพระจันทร์ซีด ๆ ลอยอยู่เหนือหมอกบาง ๆ",
+        "en": "Outside were rice fields.\nA pale moon floated above a thin mist."
+      }
+    },
+    {
+      "id": "s27",
+      "image": "images/08-rice-fields-moon.png",
+      "text": {
+        "th": "ไกลออกไปมีบ้านหลังหนึ่ง เปิดไฟไว้ดวงเดียว\nฉันมองมันจนลับตาไป",
+        "en": "Far away was one house with a single light on.\nI watched it until it was gone."
+      }
+    },
+    {
+      "id": "s28",
+      "image": "images/08-rice-fields-moon.png",
+      "text": {
+        "th": "กึก… กัก…\nฉันสังเกตว่าหายใจช้าลง ตามจังหวะล้อรถไฟโดยไม่รู้ตัว",
+        "en": "Clack… clack…\nI noticed my breathing had slowed to the rhythm of the wheels, without my trying."
+      }
+    },
+    {
+      "id": "s29",
+      "image": "images/09-lower-berth-knitting.png",
+      "image_prompt": "an elderly woman seen from behind sitting in a lower sleeper berth knitting under a tiny lamp, ball of wool on the blanket, out of focus, warm and quiet",
+      "text": {
+        "th": "เตียงชั้นล่างฝั่งตรงข้าม มีคุณยายคนหนึ่ง\nนั่งถักไหมพรมอยู่ใต้ไฟดวงเล็ก",
+        "en": "In the lower berth across the aisle was an old woman,\nknitting under her tiny lamp."
+      }
+    },
+    {
+      "id": "s30",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": {
+        "th": "เข็มกระทบกันเบา ๆ ติ๊ก… ติ๊ก…\nปนไปกับเสียงรถไฟ",
+        "en": "Her needles tapped softly. Tick… tick…\nmixing with the sound of the train."
+      }
+    },
+    {
+      "id": "s31",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": {
+        "th": "เธอเงยหน้ามาเห็นฉัน แล้วยิ้ม\n\"นอนไม่หลับเหมือนกันเหรอหนู\"",
+        "en": "She looked up, saw me, and smiled.\n\"Can't sleep either, dear?\""
+      }
+    },
+    {
+      "id": "s32",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": {
+        "th": "\"ยายนั่งรถไฟขบวนนี้ไปหาหลานทุกปี\nถักผ้าพันคอไปด้วย ถึงเชียงใหม่ก็เสร็จพอดี\"",
+        "en": "\"I take this train to see my grandson every year.\nI knit a scarf on the way. It's always done by the time we arrive.\""
+      }
+    },
+    {
+      "id": "s33",
+      "image": "images/09-lower-berth-knitting.png",
+      "text": {
+        "th": "\"ไม่ต้องพยายามหลับหรอก\nเดี๋ยวรถไฟมันพาไปเอง\"",
+        "en": "\"Don't try to sleep.\nThe train will take you there by itself.\""
+      }
+    },
+    {
+      "id": "s34",
+      "chapter": {
+        "th": "คนที่ไม่ได้นอน",
+        "en": "The One Who Stays Awake"
+      },
+      "image": "images/10-corridor-night.png",
+      "image_prompt": "the narrow corridor of a sleeper carriage at night, all curtains closed, dim blue night lights along the floor, a long calm perspective",
+      "text": {
+        "th": "ดึกขึ้น ไฟในตู้ดับลงเกือบหมด\nเหลือแค่ไฟสีฟ้าดวงเล็ก ๆ เรียงตามทางเดิน",
+        "en": "Later, most of the lights in the carriage went out.\nOnly small blue lights were left, in a line along the floor."
+      }
+    },
+    {
+      "id": "s35",
+      "image": "images/10-corridor-night.png",
+      "text": {
+        "th": "ม่านทุกบานปิดสนิท\nได้ยินเสียงคนหายใจช้า ๆ จากหลายเตียง",
+        "en": "Every curtain was closed.\nI could hear slow breathing from many beds."
+      }
+    },
+    {
+      "id": "s36",
+      "image": "images/10-corridor-night.png",
+      "text": {
+        "th": "คนแปลกหน้าหลายสิบคน\nนอนหลับอยู่ด้วยกัน ในบ้านที่วิ่งได้หลังเดียว",
+        "en": "Dozens of strangers,\nall asleep together in one house that could move."
+      }
+    },
+    {
+      "id": "s37",
+      "image": "images/11-attendant-flashlight.png",
+      "image_prompt": "a train attendant seen from far behind at the end of a dark sleeper corridor, holding a small flashlight pointed down, standing quietly by the door window",
+      "text": {
+        "th": "ฉันแง้มม่านออกไปดู\nที่ปลายทางเดิน มีคนหนึ่งยืนอยู่",
+        "en": "I peeked out through the curtain.\nAt the end of the corridor, someone was standing."
+      }
+    },
+    {
+      "id": "s38",
+      "image": "images/11-attendant-flashlight.png",
+      "text": {
+        "th": "พนักงานคนเดิม\nเขาถือไฟฉายดวงเล็ก ส่องลงพื้น ไม่ให้แสงไปโดนใคร",
+        "en": "The same attendant.\nHe held a small flashlight pointed at the floor, so the light wouldn't touch anyone."
+      }
+    },
+    {
+      "id": "s39",
+      "image": "images/11-attendant-flashlight.png",
+      "text": {
+        "th": "เขาเดินช้า ๆ ไปตามทาง\nดูว่าม่านปิดดีไหม ประตูล็อกหรือยัง",
+        "en": "He walked slowly down the aisle,\nchecking that the curtains were closed, that the doors were locked."
+      }
+    },
+    {
+      "id": "s40",
+      "image": "images/11-attendant-flashlight.png",
+      "text": {
+        "th": "แล้วก็กลับไปยืนที่เดิม\nมองออกไปนอกหน้าต่างประตู ในความมืด",
+        "en": "Then he went back to where he'd been,\nlooking out of the door window into the dark."
+      }
+    },
+    {
+      "id": "s41",
+      "image": "images/12-blanket-hand.png",
+      "image_prompt": "close-up of a hand gently pulling a blanket up over the edge of a sleeper berth, soft warm lamp light, the sleeper out of frame, deep night outside the window: pitch dark sky, no sunset, no dusk colours",
+      "text": {
+        "th": "เตียงข้าง ๆ ฉัน ผ้าห่มของเด็กคนหนึ่งหลุดลงมา\nเขาเดินมา หยิบขึ้นไปห่มให้ใหม่ เงียบที่สุด",
+        "en": "In the berth next to mine, a child's blanket had slipped off.\nHe came over and pulled it back up, as quietly as anything."
+      }
+    },
+    {
+      "id": "s42",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "เด็กคนนั้นไม่รู้ตัวเลย\nพรุ่งนี้ก็คงไม่มีใครจำได้ ว่าเขาทำ",
+        "en": "The child never knew.\nAnd tomorrow, no one would remember he had done it."
+      }
+    },
+    {
+      "id": "s43",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "ฉันนอนมองเพดานแล้วคิด…",
+        "en": "I lay looking at the ceiling and thought…"
+      }
+    },
+    {
+      "id": "s44",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "ที่ฉันหลับที่ห้องไม่ได้\nอาจไม่ใช่เพราะมันเสียงดัง หรือเพราะฉันคิดมาก",
+        "en": "Maybe the reason I couldn't sleep at home\nwasn't the noise, or my thoughts."
+      }
+    },
+    {
+      "id": "s45",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "แต่เพราะที่นั่น…\nไม่มีใครตื่นอยู่แทนฉันเลย",
+        "en": "It was because there…\nno one was staying awake for me."
+      }
+    },
+    {
+      "id": "s46",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "บนรถไฟคืนนี้ มีคนขับอยู่ข้างหน้า\nมีนายสถานีถือตะเกียง มีคนเดินดูผ้าห่มให้ทุกเตียง",
+        "en": "On the train tonight, someone was driving up front.\nA stationmaster held a lantern. Someone walked by checking every blanket."
+      }
+    },
+    {
+      "id": "s47",
+      "image": "images/12-blanket-hand.png",
+      "text": {
+        "th": "ฉันไม่ต้องเฝ้าอะไรเลย\nแค่นอนเฉย ๆ แล้วปล่อยให้ใครสักคนดูแลทางให้",
+        "en": "I didn't have to watch over anything.\nJust lie still, and let someone else take care of the way."
+      }
+    },
+    {
+      "id": "s48",
+      "image": "images/13-tunnel-glow.png",
+      "image_prompt": "inside a sleeper carriage passing through a mountain tunnel, the window dark, warm lamp glow on the curtains, motion blur of tunnel lights",
+      "text": {
+        "th": "รถไฟเข้าอุโมงค์\nเสียงล้อดังก้องขึ้นนิดหนึ่ง แล้วก็นุ่มลง",
+        "en": "The train went into a tunnel.\nThe wheels echoed a little louder, then softened again."
+      }
+    },
+    {
+      "id": "s49",
+      "image": "images/13-tunnel-glow.png",
+      "text": {
+        "th": "ฉันปิดไฟดวงเล็ก\nกึก… กัก… กึก… กัก…",
+        "en": "I turned off my tiny lamp.\nClack… clack… clack… clack…"
+      }
+    },
+    {
+      "id": "s50",
+      "image": "images/13-tunnel-glow.png",
+      "text": {
+        "th": "แล้วฉันก็จำอะไรไม่ได้อีกเลย",
+        "en": "And after that, I don't remember anything at all."
+      }
+    },
+    {
+      "id": "s51",
+      "chapter": {
+        "th": "หมอกตอนเช้า",
+        "en": "Morning Mist"
+      },
+      "image": "images/14-mountain-mist.png",
+      "image_prompt": "dawn over misty forested mountains seen from a train window, soft pink and blue sky, fog in the valleys, train track curving ahead",
+      "text": {
+        "th": "ฉันตื่นมาเพราะแสงสีชมพู\nลอดเข้ามาทางขอบม่าน",
+        "en": "I woke up to a pink light\nslipping in at the edge of the curtain."
+      }
+    },
+    {
+      "id": "s52",
+      "image": "images/14-mountain-mist.png",
+      "text": {
+        "th": "ข้างนอกเป็นภูเขา\nหมอกขาว ๆ นอนอยู่ในหุบ เหมือนยังไม่อยากตื่น",
+        "en": "Outside were mountains.\nWhite mist lay in the valleys, as if it didn't want to wake up yet."
+      }
+    },
+    {
+      "id": "s53",
+      "image": "images/14-mountain-mist.png",
+      "text": {
+        "th": "ฉันนอนนิ่ง ๆ อยู่พักใหญ่\nไม่ได้หยิบโทรศัพท์ ไม่ได้คิดอะไร",
+        "en": "I lay still for a long while.\nI didn't reach for my phone. I didn't think about anything."
+      }
+    },
+    {
+      "id": "s54",
+      "image": "images/15-coffee-window.png",
+      "image_prompt": "a paper cup of hot coffee on a small fold-out table by a train window, steam rising, misty morning hills outside, soft early light",
+      "text": {
+        "th": "พนักงานคนเดิมเข็นรถกาแฟผ่านมา\nตาเขาแดงนิด ๆ แต่ยังยิ้ม",
+        "en": "The same attendant came by pushing the coffee cart.\nHis eyes were a little red, but he was still smiling."
+      }
+    },
+    {
+      "id": "s55",
+      "image": "images/15-coffee-window.png",
+      "text": {
+        "th": "\"หลับสบายไหมครับ\"\nฉันพยักหน้า… แล้วรู้สึกอยากขอบคุณ มากกว่าที่จะพูดออกไปได้",
+        "en": "\"Did you sleep well?\"\nI nodded… and felt more grateful than I knew how to say."
+      }
+    },
+    {
+      "id": "s56",
+      "image": "images/15-coffee-window.png",
+      "text": {
+        "th": "คุณยายเตียงตรงข้าม ยกผ้าพันคอให้ฉันดู\nเสร็จพอดี อย่างที่บอกไว้",
+        "en": "The old woman across the aisle held up her scarf to show me.\nFinished, just as she'd said."
+      }
+    },
+    {
+      "id": "s57",
+      "image": "images/16-arrival-station.png",
+      "image_prompt": "a small old northern railway station in the early morning mist, wooden roof, a few travellers far away with bags, soft cool light, calm",
+      "text": {
+        "th": "รถไฟจอดที่สถานีปลายทาง\nอากาศเย็น มีกลิ่นดอกไม้กับควันไฟไกล ๆ",
+        "en": "The train stopped at the last station.\nThe air was cold and smelled of flowers and faraway woodsmoke."
+      }
+    },
+    {
+      "id": "s58",
+      "image": "images/16-arrival-station.png",
+      "text": {
+        "th": "ฉันไม่ได้มีธุระอะไรที่นี่จริง ๆ\nแต่ฉันได้สิ่งที่ตามหามาแล้ว",
+        "en": "I really had no business here.\nBut I had already found what I came for."
+      }
+    },
+    {
+      "id": "s59",
+      "image": "images/16-arrival-station.png",
+      "text": {
+        "th": "ว่าบางคืน เราไม่ต้องเฝ้าทุกอย่างเอง\nโลกมีคนตื่นอยู่เสมอ… เพื่อให้คนอื่นได้หลับ",
+        "en": "That some nights, we don't have to watch over everything ourselves.\nThere is always someone awake… so that others can sleep."
+      }
+    },
+    {
+      "id": "s60",
+      "chapter": {
+        "th": "ก่อนหลับ",
+        "en": "Before You Sleep"
+      },
+      "image": "images/17-rain-window-sleep.png",
+      "image_prompt": "a night train window from inside, rain drops on the glass, darkness outside with one distant warm light, a soft blanket edge in the foreground, very calm sleepy mood",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nไม่ต้องพยายามนะ",
+        "en": "If you still can't sleep tonight…\ndon't try so hard."
+      }
+    },
+    {
+      "id": "s61",
+      "image": "images/17-rain-window-sleep.png",
+      "text": {
+        "th": "ปิดไฟ หลับตา\nนึกถึงเสียงล้อรถไฟ… กึก… กัก… กึก… กัก…",
+        "en": "Turn off the light. Close your eyes.\nThink of the wheels… clack… clack… clack… clack…"
+      }
+    },
+    {
+      "id": "s62",
+      "image": "images/17-rain-window-sleep.png",
+      "text": {
+        "th": "มีคนขับอยู่ข้างหน้า มีคนเดินดูผ้าห่มให้\nคืนนี้ ให้คนอื่นตื่นแทนเธอบ้าง",
+        "en": "Someone is driving up front. Someone is checking the blankets.\nTonight, let someone else stay awake for you."
+      }
+    },
+    {
+      "id": "s63",
+      "image": "images/17-rain-window-sleep.png",
+      "text": {
+        "th": "แล้วให้รถไฟ… พาเธอไปเอง",
+        "en": "And let the train… take you there."
+      }
+    },
+    {
+      "id": "s64",
+      "image": "images/17-rain-window-sleep.png",
+      "text": {
+        "th": "หลับฝันดีนะ",
+        "en": "Sleep well."
+      }
+    }
+  ],
+  "review": {
+    "stage": "script"
+  }
+}
