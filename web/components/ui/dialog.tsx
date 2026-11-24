@@ -24,7 +24,7 @@ export function Confirm({ open, close, title, description, action, confirmLabel,
         <Alert.Title>{title}</Alert.Title><Alert.Description className="muted">{description}</Alert.Description>
         {children}
         <footer className="modal-actions"><Alert.Cancel asChild><Button variant="outline">ยกเลิก</Button></Alert.Cancel>
-          <Alert.Action asChild><Button variant={destructive ? "danger" : "default"} onClick={() => void action()}>{confirmLabel}</Button></Alert.Action></footer>
+          <Alert.Action asChild><Button variant={destructive ? "danger" : "default"} onClick={async event => { event.preventDefault(); await action(); close(); }}>{confirmLabel}</Button></Alert.Action></footer>
       </Alert.Content>
     </Alert.Portal>
   </Alert.Root>;

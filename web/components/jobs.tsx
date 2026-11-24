@@ -8,7 +8,7 @@ import { duration } from "@/lib/time";
 import type { Job, Mode } from "@/lib/types";
 import { Empty, episodeHref, JobBadge, jobLabels, seriesNames } from "./common";
 import { useJob, useOps } from "./ops-provider";
-import { Button } from "./ui/button";
+import { AsyncForm, Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Confirm } from "./ui/dialog";
 
@@ -23,7 +23,7 @@ export function JobsScreen({ series }: { series: string[] }) {
     <header className="page-heading"><div><h1>สร้างตอนและงานผลิต</h1><p className="muted">เปิดตอนใหม่และติดตามคิวการผลิตคลิป</p></div></header>
     <div className="jobs-grid">
       <Card className="section-card"><div className="subheading-icon"><Plus size={20} /><h2>สร้างตอนใหม่</h2></div>
-        <form className="stack" onSubmit={async event => {
+        <AsyncForm className="stack" onSubmit={async event => {
           event.preventDefault();
           const form = new FormData(event.currentTarget);
           const id = await newEpisode(String(form.get("series")), String(form.get("slug")), form.get("mode") as Mode);
@@ -34,7 +34,7 @@ export function JobsScreen({ series }: { series: string[] }) {
           <label>ชื่อโฟลเดอร์<input name="slug" placeholder="เช่น late-night-thoughts" pattern="[a-z0-9]+(-[a-z0-9]+)*" required aria-describedby="slug-help" /><span id="slug-help" className="small muted">ใช้ตัวอักษรอังกฤษพิมพ์เล็กหรือตัวเลข คั่นคำด้วยขีดกลาง</span></label>
           <label>รูปแบบ<select name="mode"><option value="image">ภาพนิ่ง</option><option value="video">วิดีโอพิธีกร</option></select></label>
           <Button type="submit"><Plus size={17} /> สร้างตอน</Button>
-        </form>
+        </AsyncForm>
       </Card>
       <section className="jobs-list"><div className="section-heading"><div><h2>คิวงาน</h2><p className="muted">ประมวลผลทีละงาน</p></div><Workflow size={22} /></div>
         {jobs.length ? jobs.map(job => <Link key={job.id} className="job-row card" href={"/jobs/" + job.id}>

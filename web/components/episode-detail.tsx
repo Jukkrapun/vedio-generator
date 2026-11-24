@@ -11,7 +11,7 @@ import { platforms, type Episode, type EpisodeDetail, type Platform, type Post, 
 import { BackToList, CopyButton, isTestSeries, listHref, Empty, EpisodeStatusBadge, ModeBadge, PlatformBadge, PostLink, SeriesChip, VersionBadge, VideoPlayer, takeTime } from "./common";
 import { useOps } from "./ops-provider";
 import { PostForm } from "./post-form";
-import { Button } from "./ui/button";
+import { AsyncForm, Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Confirm, Modal } from "./ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
@@ -96,7 +96,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
     {action?.kind === "add" && <PostForm date={date} time={schedule.main_slot} close={close} save={async post => {
       await addPost(id, post); close(); toast.success("บันทึกแล้ว");
     }} />}
-    {action?.kind === "edit" && <Modal open close={close} title="แก้ไขสถิติโพสต์"><form className="stack" onSubmit={async event => {
+    {action?.kind === "edit" && <Modal open close={close} title="แก้ไขสถิติโพสต์"><AsyncForm className="stack" onSubmit={async event => {
       event.preventDefault();
       const form = new FormData(event.currentTarget);
       const stats = { views: Number(form.get("views")), likes: Number(form.get("likes")), saves: Number(form.get("saves")) };
@@ -107,7 +107,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
       <label>ถูกใจ<input required name="likes" type="number" min="0" defaultValue={action.post.likes} /></label>
       <label>บันทึก<input required name="saves" type="number" min="0" defaultValue={action.post.saves} /></label>
       <div className="modal-actions"><Button type="button" variant="outline" onClick={close}>ยกเลิก</Button><Button type="submit">บันทึก</Button></div>
-    </form></Modal>}
+    </AsyncForm></Modal>}
     {action?.kind === "drop-take" && <Confirm open close={close} destructive title={"ลบรอบ " + action.take.number + "?"} description="ไฟล์วิดีโอของรอบนี้จะถูกลบออกจากเครื่อง กู้คืนไม่ได้" confirmLabel="ลบรอบนี้" action={async () => {
       await deleteVersion(id, action.take.id); if (preview === action.take.id) setPreview(null); toast.success("ลบรอบแล้ว");
     }} />}

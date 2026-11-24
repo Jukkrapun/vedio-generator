@@ -10,7 +10,7 @@ import { duration } from "@/lib/time";
 import { stages, type Episode, type EpisodeDetail, type Job, type Order, type Stage, type WorkerInfo } from "@/lib/types";
 import { Empty, JobBadge, SeriesChip, episodeHref, jobLabels, seriesNames } from "./common";
 import { api, fail, useJob, useOps } from "./ops-provider";
-import { Button } from "./ui/button";
+import { AsyncForm, Button } from "./ui/button";
 import { Badge, Card } from "./ui/card";
 import { Confirm, Modal } from "./ui/dialog";
 
@@ -139,7 +139,7 @@ function NewOrder({ templates, close, created }: { templates: Template[]; close:
   if (!template) return <Modal open close={close} title="สั่งงานใหม่"><Empty>ไม่พบ template ใน PROMPTS.md</Empty></Modal>;
   const series = values.series ?? template.fields.find(f => f.series)?.options?.[0] ?? "";
   return <Modal open close={close} title="สั่งงานใหม่" description="เลือก template จาก PROMPTS.md แล้วกรอกช่องว่าง Claude จะเขียนบทอย่างเดียว ภาพ/เสียง/เรนเดอร์ทำหลังคุณอนุมัติ">
-    <form className="stack" onSubmit={async event => {
+    <AsyncForm className="stack" onSubmit={async event => {
       event.preventDefault();
       const order = await api<Order>("/api/orders", { method: "POST", json: { template: template.id, prompt, series, title: template.title + (series ? " · " + (seriesNames[series] ?? series) : "") } }).catch(fail);
       created(order); close(); toast.success("ส่งให้ Claude แล้ว");
@@ -156,7 +156,7 @@ function NewOrder({ templates, close, created }: { templates: Template[]; close:
       </label>)}
       <label>Prompt ที่จะส่ง <span className="small muted">(แก้ได้)</span><textarea rows={8} value={prompt} onChange={event => setEdited(event.target.value)} /></label>
       <div className="modal-actions"><Button type="button" variant="outline" onClick={close}>ยกเลิก</Button><Button type="submit"><Send size={16} /> ส่งให้ Claude</Button></div>
-    </form>
+    </AsyncForm>
   </Modal>;
 }
 
@@ -374,10 +374,10 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
       <Button variant="outline" disabled={busy} onClick={() => setRedo({ seg: seg.id, prompt: seg.image_prompt_th || seg.image_prompt })}><RefreshCw size={15} /> สร้างภาพนี้ใหม่</Button>
     </Card>)}</div>
     {redo && <Modal open close={() => setRedo(null)} title="สร้างภาพใหม่" description="แก้คำอธิบายภาพเป็นภาษาไทยได้ ระบบแปลเป็นอังกฤษให้ก่อนสร้าง · ภาพเดิมเก็บไว้ใน images/_old/">
-      <form className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_image", { episode: id, segment: redo.seg, prompt_th: redo.prompt }); setRedo(null); toast.success("กำลังสร้างภาพใหม่"); }}>
+      <AsyncForm className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_image", { episode: id, segment: redo.seg, prompt_th: redo.prompt }); setRedo(null); toast.success("กำลังสร้างภาพใหม่"); }}>
         <label>คำอธิบายภาพ (ไทย)<textarea rows={4} value={redo.prompt} onChange={event => setRedo({ ...redo, prompt: event.target.value })} /></label>
         <div className="modal-actions"><Button type="button" variant="outline" onClick={() => setRedo(null)}>ยกเลิก</Button><Button type="submit"><RefreshCw size={15} /> สร้างใหม่</Button></div>
-      </form>
+      </AsyncForm>
     </Modal>}
   </>;
 }
@@ -395,10 +395,10 @@ function VoiceReview({ id, detail, asset, busy }: { id: string; detail: EpisodeD
       <Button variant="outline" disabled={busy} onClick={() => setRedo({ seg: seg.id, text: seg.text })}><RefreshCw size={15} /> อัดใหม่</Button>
     </Card>)}</div>
     {redo && <Modal open close={() => setRedo(null)} title="อัดเสียงช่วงนี้ใหม่" description="แก้ข้อความได้ (ใส่ audio tag เช่น [softly] ได้ถ้าใช้ ElevenLabs)">
-      <form className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_voice", { episode: id, segment: redo.seg, text: redo.text }); setRedo(null); toast.success("กำลังอัดใหม่"); }}>
+      <AsyncForm className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_voice", { episode: id, segment: redo.seg, text: redo.text }); setRedo(null); toast.success("กำลังอัดใหม่"); }}>
         <label>บทพูด<textarea rows={3} value={redo.text} onChange={event => setRedo({ ...redo, text: event.target.value })} /></label>
         <div className="modal-actions"><Button type="button" variant="outline" onClick={() => setRedo(null)}>ยกเลิก</Button><Button type="submit"><Mic size={15} /> อัดใหม่</Button></div>
-      </form>
+      </AsyncForm>
     </Modal>}
   </>;
 }

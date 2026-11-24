@@ -402,3 +402,6 @@ textarea::placeholder { color: var(--muted); }
 @media (min-width: 1024px) { .script-read > li { grid-template-columns: 28px 64px minmax(0,1fr); } .script-thumb { width: 64px; } }
 .lang-tag, .lang-toggle { font-size: .65rem; padding: 1px 5px; border-radius: 4px; border: 1px solid var(--border); background: none; color: var(--muted); font-family: inherit; }
 .lang-toggle { cursor: pointer; }
+.button.is-busy { cursor: progress; opacity: .85; }
+.button.is-busy .spin { flex: none; }
+form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="true"] select { opacity: .7; }
