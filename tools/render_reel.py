@@ -102,14 +102,16 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
          "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)])
 
 
-def render_image(image: Path, duration: float, out: Path, i: int, motion: str) -> None:
+def render_image(image: Path, duration: float, out: Path, i: int, motion: str, opts: dict | None = None) -> None:
     """Image segment: "parallax" (default, 2.5D depth move) or "zoom" (flat Ken Burns).
-    Falls back to zoom when opencv/depth are unavailable (e.g. Docker worker without torch)."""
+    Falls back to zoom when opencv/depth are unavailable (e.g. Docker worker without torch).
+    `opts` = episode "parallax" block, e.g. {"margin": 0.06, "zoom": 0.06, "pan": 0.02} to crop less."""
     if motion == "parallax":
         try:
             import parallax
             grade = f"eq=brightness=-0.08:saturation=0.9,fade=t=in:st=0:d=0.4,fade=t=out:st={max(duration - 0.4, 0):.2f}:d=0.4"
-            parallax.render_parallax(image, duration, out, WIDTH, HEIGHT, FPS, variant=i, post_vf=grade)
+            parallax.render_parallax(image, duration, out, WIDTH, HEIGHT, FPS, variant=i, post_vf=grade,
+                                     **(opts or {}))
             return
         except Exception as e:  # noqa: BLE001
             print(f"WARNING: parallax failed for {image.name} ({e}) -> zoom", file=sys.stderr)
@@ -140,7 +142,8 @@ def render_backgrounds(episode: dict, episode_dir: Path, kept: list[dict], work:
     for i, (key, start, dur) in enumerate(group_spans(kept, default, punch_in)):
         clip = work / f"bg{i:02d}.mp4"
         if not key.startswith("host"):
-            render_image(episode_dir / key, dur, clip, i, episode.get("motion", "parallax"))
+            render_image(episode_dir / key, dur, clip, i, episode.get("motion", "parallax"),
+                         episode.get("parallax"))
         elif use_video:
             zoom = float(key.split("@")[1]) if "@" in key else 1.0
             render_host_cut(host_video, start, dur, clip, zoom)

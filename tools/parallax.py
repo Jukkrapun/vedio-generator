@@ -44,9 +44,9 @@ def ensure_depth(image: Path) -> Path:
     return out
 
 
-def _cover(img: np.ndarray, w: int, h: int, interp: int) -> np.ndarray:
+def _cover(img: np.ndarray, w: int, h: int, interp: int, margin: float = MARGIN) -> np.ndarray:
     import cv2
-    tw, th = int(w * (1 + MARGIN)), int(h * (1 + MARGIN))
+    tw, th = int(w * (1 + margin)), int(h * (1 + margin))
     s = max(tw / img.shape[1], th / img.shape[0])
     img = cv2.resize(img, (round(img.shape[1] * s), round(img.shape[0] * s)), interpolation=interp)
     y, x = (img.shape[0] - th) // 2, (img.shape[1] - tw) // 2
@@ -54,15 +54,17 @@ def _cover(img: np.ndarray, w: int, h: int, interp: int) -> np.ndarray:
 
 
 def render_parallax(image: Path, duration: float, out: Path, width: int, height: int, fps: int,
-                    variant: int = 0, post_vf: str = "", zoom: float = 0.10, pan: float = 0.035) -> None:
+                    variant: int = 0, post_vf: str = "", zoom: float = 0.10, pan: float = 0.035,
+                    margin: float = MARGIN) -> None:
     """Write a `duration`-second clip of `image` with a slow depth-aware dolly-in.
     `variant` alternates the sideways drift (even = right, odd = left) between consecutive clips.
-    `post_vf` is an extra ffmpeg filter chain (grade, fades) applied while encoding."""
+    `post_vf` is an extra ffmpeg filter chain (grade, fades) applied while encoding.
+    Smaller `margin` crops less of the image edges (keep zoom/pan small too, or edges stretch)."""
     import cv2
     img = cv2.imread(str(image), cv2.IMREAD_COLOR)
     d = cv2.imread(str(ensure_depth(image)), cv2.IMREAD_GRAYSCALE).astype(np.float32) / 255.0
-    img = _cover(img, width, height, cv2.INTER_LANCZOS4)
-    d = _cover(d, width, height, cv2.INTER_LINEAR)
+    img = _cover(img, width, height, cv2.INTER_LANCZOS4, margin)
+    d = _cover(d, width, height, cv2.INTER_LINEAR, margin)
     # Grow + soften near objects so their edges stretch smoothly instead of tearing.
     d = cv2.GaussianBlur(cv2.dilate(d, np.ones((9, 9), np.uint8)), (0, 0), 6)
 
