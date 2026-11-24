@@ -1,6 +1,6 @@
 ---
 title: รถไฟกลางคืน / The Night Train
-status: draft        # draft | ready | rendered | published
+status: rendered        # draft | ready | rendered | published
 duration_target: 540 # seconds (~3.8k TH chars + 64 x 1.0s pauses = about 8-9 min)
 publish_date:
 ---
