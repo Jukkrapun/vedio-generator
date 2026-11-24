@@ -133,6 +133,7 @@ codex exec --skip-git-repo-check "Generate an image using your image generation 
 - Same face across images: attach a generated (fictional) host image with `--image <path>` placed AFTER the prompt — `-i`/`--image` before the prompt swallows the prompt as an image path.
 - Never send photos of real people to Codex; describe only general style traits in text. User inspiration photos go in `shared/characters/_inspiration/` (git-ignored).
 - Image prompt library: `PROMPTS.md` section 8.
+- **Thai prompt for review (user, 2026-11-24):** every segment with an English `image_prompt` also gets `image_prompt_th` = a faithful Thai translation (the user reads/edits Thai in the web). Codex always gets the English `image_prompt`; keep both in sync. A Thai edit in the web is translated back to English by the worker (`claude -p`) before the image is (re)generated.
 
 ## Git & files outside git
 

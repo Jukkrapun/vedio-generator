@@ -123,7 +123,7 @@ export function textOf(text: unknown, lang?: string): string {
   }
   return "";
 }
-type RawSegment = { id?: string; text?: string | Record<string, string>; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string };
+type RawSegment = { id?: string; text?: string | Record<string, string>; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string; image_prompt_th?: string };
 type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; review?: Review; segments?: RawSegment[] };
 
 async function loadEpisode(series: string, slug: string): Promise<{ episode: Episode; raw: RawEpisode } | null> {
@@ -201,7 +201,7 @@ export async function getEpisodeDetail(series: string, slug: string): Promise<Ep
     segments: (loaded.raw.segments ?? []).map((s, i) => {
       const id = s.id ?? String(i + 1);
       const audio = `audio/${String(i).padStart(2, "0")}-${id}.mp3`;
-      return { id, text: textOf(s.text), cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", skip: !!s.skip,
+      return { id, text: textOf(s.text), cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", image_prompt_th: s.image_prompt_th ?? "", skip: !!s.skip,
         audio: existsSync(path.join(dir, audio)) ? audio : null };
     }),
     script: await readText(path.join(dir, "script.md")),
@@ -414,7 +414,8 @@ export async function stageAction(series: string, slug: string, action: StageAct
 }
 
 /** Inline script edits from the review page. */
-export async function updateScript(series: string, slug: string, body: { segments?: { id: string; text?: string; cards?: string[]; image_prompt?: string }[]; publish?: string; title?: string }) {
+export async function updateScript(series: string, slug: string, body: { segments?: { id: string; text?: string; cards?: string[]; image_prompt?: string; image_prompt_th?: string }[]; publish?: string; title?: string }) {
+  const thaiEdited: string[] = [];
   const dir = await resolveEpisode(series, slug);
   if (!dir) throw new Error("episode not found");
   const file = path.join(dir, "episode.json");
@@ -426,11 +427,18 @@ export async function updateScript(series: string, slug: string, body: { segment
       if (typeof edit.text === "string" && typeof seg.text !== "object") seg.text = edit.text; // story text {th,en} is not edited here
       if (Array.isArray(edit.cards)) seg.cards = edit.cards.map(String).filter(Boolean);
       if (typeof edit.image_prompt === "string") seg.image_prompt = edit.image_prompt;
+      if (typeof edit.image_prompt_th === "string" && edit.image_prompt_th.trim() !== (seg.image_prompt_th ?? "").trim()) {
+        seg.image_prompt_th = edit.image_prompt_th.trim();
+        thaiEdited.push(edit.id);
+      }
     }
     if (typeof body.title === "string" && body.title.trim()) data.title = body.title.trim();
     await writeJson(file, data);
   });
   if (typeof body.publish === "string") await fs.writeFile(path.join(dir, "publish.md"), body.publish, "utf-8");
+  if (thaiEdited.length) await createJob("revise", { episode: series + "/" + slug, note:
+    `The user edited the Thai image prompt (image_prompt_th) of segment(s) ${thaiEdited.join(", ")}. Update only the English image_prompt of those segments to match the new Thai meaning (a concise image-generation prompt, keep the series image style rules). Change nothing else.` });
+  return { translating: thaiEdited };
 }
 
 /** Episode files the review page may show (images, audio). */

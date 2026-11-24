@@ -104,7 +104,7 @@ def command(job: dict) -> list[str]:
         story = (read(ROOT / episode_path(a["episode"]) / "episode.json") or {}).get("mode") == "story"
         return [PY, "tools/render_story.py" if story else "tools/render_reel.py", episode_path(a["episode"])]
     if t in ("claude", "revise"):
-        return claude_command(a["prompt"] if t == "claude" else revise_prompt(a["episode"], a["note"]))
+        return claude_command(a["prompt"]) if t == "claude" else claude_command(revise_prompt(a["episode"], a["note"]), guard=False)
     raise ValueError(f"unknown job type {t!r}")
 
 
@@ -114,18 +114,23 @@ SCRIPT_GUARD = """
 ---
 (ops dashboard) Write SCRIPTS ONLY. For each clip: create the episode with tools/new_episode.py, then fill
 episode.json, script.md and publish.md following CLAUDE.md and the series' series.md (read catalog.md and
-ideas.md first, avoid repeating topics). Do NOT generate images, run TTS, render, or post anything - the user
-reviews every stage in the web dashboard. Reply in Thai with the episode folder names you created."""
+ideas.md first, avoid repeating topics). """ + "{TH}" + """ Do NOT generate images, run TTS, render, or post
+anything - the user reviews every stage in the web dashboard. Reply in Thai with the episode folder names you created."""
+# image prompts stay English for Codex; the user reviews them in Thai (decided 2026-11-24)
+THAI_PROMPTS = ("Every segment with an English \"image_prompt\" also gets \"image_prompt_th\": a faithful Thai "
+                "translation of that prompt (same content, natural Thai) for the user to read in the dashboard.")
+SCRIPT_GUARD = SCRIPT_GUARD.replace("{TH}", THAI_PROMPTS)
 
 
 def revise_prompt(episode_id: str, note: str) -> str:
     return (f"Revise the script of episode {episode_path(episode_id)} (episode.json segments text/cards/"
             f"image_prompt, script.md and publish.md) as follows:\n{note}\n\nKeep the series rules. "
+            f"{THAI_PROMPTS} Keep image_prompt and image_prompt_th in sync whenever either changes. "
             "Only edit files in that episode folder. Do NOT generate images, run TTS, render or post. "
             "Reply in Thai with a short summary of what changed.")
 
 
-def claude_command(prompt: str) -> list[str]:
+def claude_command(prompt: str, guard: bool = True) -> list[str]:
     exe = shutil.which("claude")
     if not exe:
         raise ValueError("claude CLI not found - run the worker on the host (ops/start-worker.ps1)")
@@ -133,9 +138,25 @@ def claude_command(prompt: str) -> list[str]:
     for py in (".venv/Scripts/python.exe", ".venv\\Scripts\\python.exe", "python"):
         for script in ("tools/new_episode.py", "tools/catalog.py"):
             tools += [f"Bash({py} {script}:*)", f"PowerShell({py} {script}:*)"]
-    return [exe, "-p", prompt + (SCRIPT_GUARD if "new_episode" not in prompt else ""),
+    return [exe, "-p", prompt + (SCRIPT_GUARD if guard else ""),
             "--permission-mode", "acceptEdits", "--allowedTools", *tools,
             "--disallowedTools", "WebFetch", "WebSearch"]
+
+
+def translate_prompt(thai: str, style: str) -> str:
+    """Thai image description -> English image-generation prompt (one short claude -p call, no tools)."""
+    ask = ("Translate this Thai image description into a concise English image-generation prompt. Keep every "
+           "concrete detail (subject, setting, light, camera angle, mood). Do not add style words already covered by "
+           f"this shared style: {style!r}. Output ONLY the English prompt, one line, no quotes.\n\nThai: {thai}")
+    exe = shutil.which("claude")
+    if not exe:
+        raise ValueError("claude CLI not found - run the worker on the host")
+    out = subprocess.run([exe, "-p", ask, "--disallowedTools", "Bash", "Write", "Edit", "WebFetch", "WebSearch"],
+                         cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=300)
+    english = out.stdout.strip().strip('"').splitlines()[-1].strip() if out.stdout.strip() else ""
+    if out.returncode or not english:
+        raise ValueError(f"translation failed: {out.stderr[-300:]}")
+    return english
 
 
 def episode_dirs() -> set[str]:
@@ -155,7 +176,12 @@ def prepare(job: dict, log) -> None:
         ep_dir = ROOT / episode_path(a["episode"])
         episode = read(ep_dir / "episode.json") or {}
         seg = next(s for s in episode["segments"] if s.get("id") == a["segment"])
-        if a.get("prompt"):
+        if a.get("prompt_th") and a["prompt_th"].strip() != seg.get("image_prompt_th", "").strip():
+            seg["image_prompt_th"] = a["prompt_th"].strip()
+            seg["image_prompt"] = translate_prompt(a["prompt_th"], episode.get("image_style", ""))
+            log.write(f"Thai prompt translated -> {seg['image_prompt']}\n")
+            write(ep_dir / "episode.json", episode)
+        elif a.get("prompt"):
             seg["image_prompt"] = a["prompt"]
             write(ep_dir / "episode.json", episode)
         image = ep_dir / seg["image"]

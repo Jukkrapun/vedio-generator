@@ -282,8 +282,9 @@ function ScriptReview({ id, detail, reload, busy, asset }: { id: string; detail:
   const story = detail.mode === "story"; // story text is {th, en}: read-only here, ask Claude to change it
   const edit = (segId: string, patch: Partial<EpisodeDetail["segments"][number]>) => { setDirty(true); setDraft(d => ({ ...d, segments: d.segments.map(s => s.id === segId ? { ...s, ...patch } : s) })); };
   async function save() {
-    await api("/api/episodes/" + id + "/script", { method: "PATCH", json: { title: draft.title, publish, segments: draft.segments.map(s => ({ id: s.id, ...(story ? {} : { text: s.text }), cards: s.cards, image_prompt: s.image_prompt })) } }).catch(fail);
-    setDirty(false); setEditing(false); await reload(); toast.success("บันทึกบทแล้ว");
+    const saved = await api("/api/episodes/" + id + "/script", { method: "PATCH", json: { title: draft.title, publish, segments: draft.segments.map(s => ({ id: s.id, ...(story ? {} : { text: s.text }), cards: s.cards, image_prompt_th: s.image_prompt_th })) } }).catch(fail) as { translating?: string[] };
+    setDirty(false); setEditing(false); await reload();
+    toast.success(saved.translating?.length ? "บันทึกแล้ว · Claude กำลังแปล prompt ภาพเป็นอังกฤษ" : "บันทึกบทแล้ว");
   }
   const cancel = () => { setDirty(false); setEditing(false); setDraft(detail); setPublish(detail.publish); };
   const spoken = draft.segments.filter(s => !s.skip);
@@ -315,8 +316,8 @@ function ScriptReview({ id, detail, reload, busy, asset }: { id: string; detail:
               : <p className="script-line">{seg.text.split("\n").map((line, i) => <span key={i}>{line}</span>)}</p>}
             {editing ? <textarea className="script-cards-edit" rows={Math.max(1, seg.cards.length)} placeholder="ซับ: 1 บรรทัด = 1 การ์ด" value={seg.cards.join("\n")} onChange={event => edit(seg.id, { cards: event.target.value.split("\n") })} />
               : !!seg.cards.length && <div className="script-cards">{seg.cards.map((card, i) => <span key={i}>{card}</span>)}</div>}
-            {seg.image && (editing ? <textarea className="script-prompt-edit" rows={2} placeholder="prompt ภาพ" value={seg.image_prompt} onChange={event => edit(seg.id, { image_prompt: event.target.value })} />
-              : showPrompts && <p className="script-prompt">🖼 {seg.image_prompt}</p>)}
+            {seg.image && (editing ? <textarea className="script-prompt-edit" rows={2} placeholder={"prompt ภาพ (ไทย) — เดิม: " + seg.image_prompt} value={seg.image_prompt_th} onChange={event => edit(seg.id, { image_prompt_th: event.target.value })} />
+              : showPrompts && <PromptText seg={seg} />)}
           </div>
         </li>)}</ol>
       </>}
@@ -330,6 +331,14 @@ function ScriptReview({ id, detail, reload, busy, asset }: { id: string; detail:
       <Button variant="outline" disabled={busy || !note.trim()} onClick={async () => { await enqueue("revise", { episode: id, note }); setNote(""); toast.success("ส่งให้ Claude แก้แล้ว"); }}><Sparkles size={15} /> ส่งให้ Claude แก้</Button>
     </Card>
   </div>;
+}
+
+/** Image prompt shown in Thai (image_prompt_th); tap to see the English prompt Codex actually gets. */
+function PromptText({ seg }: { seg: EpisodeDetail["segments"][number] }) {
+  const [english, setEnglish] = useState(false);
+  if (!seg.image_prompt_th) return <span className="script-prompt">🖼 <span className="lang-tag">EN</span> {seg.image_prompt}</span>;
+  return <span className="script-prompt">🖼 {english ? seg.image_prompt : seg.image_prompt_th}{" "}
+    <button type="button" className="lang-toggle" onClick={() => setEnglish(!english)}>{english ? "ไทย" : "EN"}</button></span>;
 }
 
 function ImagesReview({ id, detail, asset, busy }: { id: string; detail: EpisodeDetail; asset: (f: string) => string; busy: boolean }) {
@@ -361,12 +370,12 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
     </div>}
     <div className="image-grid">{items.map((seg, index) => <Card key={seg.id} className="image-card">
       <button type="button" className="image-frame" aria-label={"ดูภาพ " + seg.id + " เต็มจอ"} onClick={() => setZoom(index)}><img src={asset(seg.image)} alt={seg.image_prompt} onError={event => { event.currentTarget.style.visibility = "hidden"; }} /></button>
-      <p className="small"><code>{seg.id}</code> {seg.image_prompt}</p>
-      <Button variant="outline" disabled={busy} onClick={() => setRedo({ seg: seg.id, prompt: seg.image_prompt })}><RefreshCw size={15} /> สร้างภาพนี้ใหม่</Button>
+      <div className="small"><code>{seg.id}</code> <PromptText seg={seg} /></div>
+      <Button variant="outline" disabled={busy} onClick={() => setRedo({ seg: seg.id, prompt: seg.image_prompt_th || seg.image_prompt })}><RefreshCw size={15} /> สร้างภาพนี้ใหม่</Button>
     </Card>)}</div>
-    {redo && <Modal open close={() => setRedo(null)} title="สร้างภาพใหม่" description="ภาพเดิมจะเก็บไว้ใน images/_old/">
-      <form className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_image", { episode: id, segment: redo.seg, prompt: redo.prompt }); setRedo(null); toast.success("กำลังสร้างภาพใหม่"); }}>
-        <label>Prompt<textarea rows={4} value={redo.prompt} onChange={event => setRedo({ ...redo, prompt: event.target.value })} /></label>
+    {redo && <Modal open close={() => setRedo(null)} title="สร้างภาพใหม่" description="แก้คำอธิบายภาพเป็นภาษาไทยได้ ระบบแปลเป็นอังกฤษให้ก่อนสร้าง · ภาพเดิมเก็บไว้ใน images/_old/">
+      <form className="stack" onSubmit={async event => { event.preventDefault(); await enqueue("regen_image", { episode: id, segment: redo.seg, prompt_th: redo.prompt }); setRedo(null); toast.success("กำลังสร้างภาพใหม่"); }}>
+        <label>คำอธิบายภาพ (ไทย)<textarea rows={4} value={redo.prompt} onChange={event => setRedo({ ...redo, prompt: event.target.value })} /></label>
         <div className="modal-actions"><Button type="button" variant="outline" onClick={() => setRedo(null)}>ยกเลิก</Button><Button type="submit"><RefreshCw size={15} /> สร้างใหม่</Button></div>
       </form>
     </Modal>}
