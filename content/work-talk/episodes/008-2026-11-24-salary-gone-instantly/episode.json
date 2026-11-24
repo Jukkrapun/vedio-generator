@@ -1,0 +1,79 @@
+{
+  "mode": "image",
+  "title": "เงินเดือนเข้าปุ๊บ มีนัดออกจากบัญชีทันที",
+  "tags": [
+    "salary",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a phone notification glow on an excited face at night, screen not readable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] เงินเดือนเข้าปุ๊บ...",
+      "cards": [
+        "เงินเดือนเข้าปุ๊บ..."
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a pile of envelopes and bills on a desk under a lamp at night, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ค่าห้อง ค่าบัตร ค่าผ่อน... ต่อคิวรอแล้ว",
+      "cards": [
+        "ค่าห้อง ค่าบัตร",
+        "ค่าผ่อน ต่อคิวรอ"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "an office worker seen from behind standing at a convenience store counter at night holding a small basket, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "เหลือไว้กินข้าว... ถึงสิ้นเดือนไหมนะ",
+      "cards": [
+        "เหลือกินข้าว",
+        "ถึงสิ้นเดือนไหมนะ"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a hand holding a single warm cup noodle on a desk, steam, lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] เงินไม่ได้อยู่กับเรานาน... แต่อย่างน้อย เราจ่ายทุกอย่างได้เอง",
+      "cards": [
+        "เงินอยู่ไม่นาน",
+        "แต่เราจ่ายได้เอง"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a city at night seen from a small apartment balcony, a person from behind holding a drink, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เก่งแล้วนะ... มนุษย์เงินเดือนทุกคน",
+      "cards": [
+        "เก่งแล้วนะ",
+        "มนุษย์เงินเดือน"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-work"
+  }
+}

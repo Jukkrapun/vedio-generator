@@ -1,0 +1,80 @@
+{
+  "mode": "image",
+  "title": "นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ",
+  "tags": [
+    "couple-life",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "overhead shot of a night street-food table completely full of Thai dishes, two pairs of hands with chopsticks, steam, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] นัดกันว่า วันนี้กินเบา ๆ นะ...",
+      "cards": [
+        "\"วันนี้กินเบา ๆ นะ\""
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "close-up of a hand pointing at a menu photo board in a night food stall, warm bulbs, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "อันนี้น่ากิน... อันนั้นก็ต้องลอง",
+      "cards": [
+        "อันนี้น่ากิน",
+        "อันนั้นก็ต้องลอง"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "a couple seen from behind at a crowded night food table laughing, plates everywhere, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "สุดท้าย... เต็มโต๊ะ แล้วหันมามองหน้ากัน",
+      "cards": [
+        "สุดท้ายเต็มโต๊ะ",
+        "แล้วมองหน้ากัน"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of two hands sharing the last piece of food with chopsticks, warm lamp bokeh, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] ที่จริงเราไม่ได้หิวขนาดนั้นหรอก... แค่อยากนั่งด้วยกันนาน ๆ",
+      "cards": [
+        "ไม่ได้หิวขนาดนั้น",
+        "แค่อยากนั่งด้วยกัน",
+        "นาน ๆ"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a couple seen from behind walking home slowly under street lights after dinner, holding hands, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แท็กคนที่ชอบพูดว่า กินเบา ๆ มาเลย",
+      "cards": [
+        "แท็กคนที่ชอบพูดว่า",
+        "\"กินเบา ๆ\""
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-lovq"
+  }
+}

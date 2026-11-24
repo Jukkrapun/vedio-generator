@@ -1,0 +1,80 @@
+{
+  "mode": "image",
+  "title": "3 สัญญาณว่าคุณกำลังรักตัวเองน้อยเกินไป",
+  "tags": [
+    "self-love",
+    "signs-list"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of a woman's hand holding a phone in the dark, screen glow on her fingers, a message typed but not sent, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] สามสัญญาณ ว่าคุณรักตัวเองน้อยเกินไป... ข้อสุดท้ายเจ็บสุด",
+      "cards": [
+        "สามสัญญาณ",
+        "รักตัวเองน้อยเกินไป",
+        "ข้อสุดท้ายเจ็บสุด"
+      ]
+    },
+    {
+      "id": "sign-1",
+      "image": "images/02-sign-1.png",
+      "image_prompt": "a woman seen from behind sitting on the edge of a bed at night, shoulders slumped, phone face-up beside her, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "หนึ่ง... ขอโทษทุกครั้ง ทั้งที่ไม่ได้ผิด",
+      "cards": [
+        "1. ขอโทษ",
+        "ทั้งที่ไม่ได้ผิด"
+      ]
+    },
+    {
+      "id": "sign-2",
+      "image": "images/03-sign-2.png",
+      "image_prompt": "detail of a cold untouched dinner plate on a small table next to a laptop still open late at night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "สอง... ดูแลความรู้สึกทุกคน ยกเว้นของตัวเอง",
+      "cards": [
+        "2. ดูแลทุกคน",
+        "ยกเว้นตัวเอง"
+      ]
+    },
+    {
+      "id": "sign-3",
+      "image": "images/04-sign-3.png",
+      "image_prompt": "close-up of a woman's face half in shadow, looking down, soft lamp light, eyes tired, not clearly identifiable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "สาม... [pause] ยอมให้ใครทำร้าย แล้วบอกตัวเองว่า ไม่เป็นไร",
+      "cards": [
+        "3. บอกตัวเองว่า",
+        "\"ไม่เป็นไร\""
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a woman seen from behind wrapping herself in a blanket by a window, city lights outside, calm, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] คืนนี้ลองพูดกับตัวเองสักคำ... ว่าเราก็สำคัญ",
+      "cards": [
+        "คืนนี้ลองบอกตัวเอง",
+        "ว่าเราก็สำคัญ"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-lovq"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "mode": "image",
+  "title": "อย่ารีบตัดสินชีวิตตัวเองจากวันที่แย่วันเดียว",
+  "tags": [
+    "bad-day",
+    "reframe"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman sitting in a parked car at night, hands on the wheel, head down, street light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] วันนี้แย่จนอยากบอกว่า ชีวิตพังแล้ว",
+      "cards": [
+        "วันนี้แย่จน",
+        "อยากบอกว่าชีวิตพัง"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a spilled coffee on a desk next to wet papers, dim office light, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "งานพลาด โดนว่า... ทุกอย่างผิดไปหมด",
+      "cards": [
+        "งานพลาด โดนว่า",
+        "ผิดไปหมด"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/03-twist.png",
+      "image_prompt": "a city skyline at the edge of dawn seen from a window, the first light appearing, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] แต่มันคือหนึ่งวัน... ไม่ใช่ทั้งชีวิต",
+      "cards": [
+        "มันคือหนึ่งวัน",
+        "ไม่ใช่ทั้งชีวิต"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a woman seen from behind lying in bed turning off the lamp, calm, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] นอนก่อนนะ... พรุ่งนี้ค่อยว่ากันใหม่",
+      "cards": [
+        "นอนก่อนนะ",
+        "พรุ่งนี้ค่อยว่ากันใหม่"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-life"
+  }
+}

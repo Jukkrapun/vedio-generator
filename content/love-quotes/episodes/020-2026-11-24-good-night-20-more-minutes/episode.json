@@ -1,0 +1,78 @@
+{
+  "mode": "image",
+  "title": "คนคลั่งรักกับคำว่า ฝันดี ที่ต้องมีต่ออีก 20 นาที",
+  "tags": [
+    "couple-life",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman in bed under a blanket at night, face lit by phone glow, smiling, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] คนคลั่งรัก... พิมพ์ว่าฝันดี ตอนสี่ทุ่ม",
+      "cards": [
+        "คนคลั่งรัก",
+        "พิมพ์ \"ฝันดี\" ตอนสี่ทุ่ม"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a phone on a pillow glowing, a bedside clock out of focus, dim blue room, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แล้วก็... อีกเรื่องนึงนะ",
+      "cards": [
+        "\"อีกเรื่องนึงนะ\""
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "a woman seen from the side curled up in bed hugging a pillow, phone close, giggling, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ฝันดีจริง ๆ แล้วนะ... วางก่อนสิ ไม่ เธอวางก่อน",
+      "cards": [
+        "\"ฝันดีจริง ๆ\"",
+        "\"เธอวางก่อน\""
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a bedside clock-like glow past midnight beside a sleeping woman, phone still lit in her hand, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] รู้ตัวอีกที... เที่ยงคืนแล้ว",
+      "cards": [
+        "รู้ตัวอีกที",
+        "เที่ยงคืนแล้ว"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a dark cozy bedroom at night, phone screen dimming on the bed, city lights through the curtain, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] คืนนี้ใครวางก่อน... คอมเมนต์มาเลย",
+      "cards": [
+        "คืนนี้ใครวางก่อน?"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-lovq"
+  }
+}

@@ -1,0 +1,54 @@
+# Publish: ประชุมหนึ่งชั่วโมง เพื่อสรุปว่า เดี๋ยวค่อยคุยกันอีกที
+
+Log each post in episode.json -> "posts" (platform, date, url, views, likes, saves).
+
+## YouTube Shorts
+
+**Title** (max 100 chars, keep #shorts):
+```
+ประชุมหนึ่งชั่วโมง เพื่อสรุปว่า เดี๋ยวค่อยคุยกันอีกที 🌙 #shorts
+```
+
+**Description:**
+```
+ประชุมหนึ่งชั่วโมง...
+สรุปว่า... เดี๋ยวค่อยนัดคุยกันอีกที
+
+🌙 ตอนตีสอง — คุยกันตอนนอนไม่หลับ
+ติดตามไว้ เผื่อคืนไหนนอนไม่หลับ
+
+#ตอนตีสอง #มนุษย์เงินเดือน #ประชุม #ออฟฟิศ #shorts
+```
+
+- Playlist: ตอนตีสอง · เรื่องงาน
+- Thumbnail: frame where the hook subtitle is fully shown
+- Audience: not made for kids · no age restriction
+- Show more -> Altered content: **Yes** (realistic AI images + AI voice)
+
+## TikTok
+
+**Caption** (hook first, 3-5 hashtags):
+```
+ประชุมหนึ่งชั่วโมง... 🌙
+
+#ตอนตีสอง #มนุษย์เงินเดือน #ประชุม #ออฟฟิศ
+```
+
+- Cover text: ประชุม 1 ชม. → คุยกันอีกที
+- Settings: turn ON "AI-generated content" label
+
+## Facebook Reels
+
+**Caption** (conversational, end with a question, 2-3 hashtags):
+```
+ประชุมหนึ่งชั่วโมง...
+
+สรุปว่า... เดี๋ยวค่อยนัดคุยกันอีกที
+
+สัปดาห์นี้ประชุมไปกี่รอบแล้ว 🤍
+
+#ตอนตีสอง #ประชุม
+```
+
+- Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content
+- Share to the Page feed too (Reels + Feed)

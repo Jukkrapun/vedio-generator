@@ -1,0 +1,80 @@
+{
+  "mode": "image",
+  "title": "อย่าฝืนเป็นคนที่ใช่ ให้กับคนที่ไม่เลือกเรา",
+  "tags": [
+    "letting-go",
+    "self-worth"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman's reflection in a dark window at night, blurred, she is adjusting her hair, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] เราเคยเปลี่ยนตัวเอง... เพื่อให้เขาเลือก",
+      "cards": [
+        "เราเคยเปลี่ยนตัวเอง",
+        "เพื่อให้เขาเลือก"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a closet with clothes pushed aside, one unfamiliar style dress hanging out, dim lamp, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แต่งตัวแบบที่เขาชอบ... ชอบเพลงที่เขาฟัง",
+      "cards": [
+        "แต่งตัวแบบที่เขาชอบ",
+        "ชอบเพลงที่เขาฟัง"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "a woman seen from behind sitting alone at a cafe table at night, an empty chair opposite her, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แล้วเขาก็ยัง... ไม่เลือกเราอยู่ดี",
+      "cards": [
+        "แล้วเขาก็ยัง",
+        "ไม่เลือกเราอยู่ดี"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a woman's hands taking off a delicate necklace in lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] เพราะคนที่ใช่... ไม่ต้องฝืนเป็น",
+      "cards": [
+        "คนที่ใช่",
+        "ไม่ต้องฝืนเป็น"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a woman seen from behind walking alone down a quiet lit street at night, relaxed shoulders, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เป็นตัวเองไว้... แล้วคนที่ใช่จะเจอเราเอง",
+      "cards": [
+        "เป็นตัวเองไว้",
+        "คนที่ใช่จะเจอเราเอง"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-lovq"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "mode": "image",
+  "title": "ประชุมหนึ่งชั่วโมง เพื่อสรุปว่า เดี๋ยวค่อยคุยกันอีกที",
+  "tags": [
+    "meetings",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a meeting room at dusk seen from the door, people out of focus around a table, a clock-like light on the wall, projector glow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] ประชุมหนึ่งชั่วโมง...",
+      "cards": [
+        "ประชุมหนึ่งชั่วโมง..."
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a notebook with doodles and a pen on a meeting table, coffee cup, projector light, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ทุกคนพูด... ทุกคนพยักหน้า",
+      "cards": [
+        "ทุกคนพูด",
+        "ทุกคนพยักหน้า"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "close-up of a tired office worker's hand resting on chin at a meeting table, out-of-focus slides glow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "จดไปสามหน้า... ยังไม่รู้ว่าได้อะไร",
+      "cards": [
+        "จดไปสามหน้า",
+        "ยังไม่รู้ว่าได้อะไร"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "people seen from behind standing up from a meeting table, chairs pushed back, evening light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] สรุปว่า... เดี๋ยวค่อยนัดคุยกันอีกที",
+      "cards": [
+        "สรุปว่า...",
+        "\"เดี๋ยวค่อยคุยกันอีกที\""
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "close-up of a calendar app glow on a phone in a hand, another event appearing, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] แท็กเพื่อนที่นั่งประชุมด้วยกันมาเลย",
+      "cards": [
+        "แท็กเพื่อน",
+        "ที่นั่งประชุมด้วยกัน"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-work"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "mode": "image",
+  "title": "คุยกันทุกวัน แต่ยังไม่รู้ว่าเรียกว่าอะไร",
+  "tags": [
+    "situationship",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "extreme close-up of a phone screen glow lighting a woman's smiling face in bed at night, screen not readable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] สถานะความสัมพันธ์... คุยกันทุกวัน แต่ไม่รู้ว่าเรียกว่าอะไร",
+      "cards": [
+        "คุยกันทุกวัน",
+        "แต่ไม่รู้ว่าเรียกว่าอะไร"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of two coffee cups on a table by a window at morning blue hour, one with lipstick mark, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "อรุณสวัสดิ์ทุกเช้า... ฝันดีทุกคืน",
+      "cards": [
+        "อรุณสวัสดิ์ทุกเช้า",
+        "ฝันดีทุกคืน"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "two people seen from behind sitting close on a riverside bench at night, a small gap between them, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "เพื่อนถามว่าเป็นแฟนกันเหรอ... ก็ได้แต่ยิ้ม",
+      "cards": [
+        "\"เป็นแฟนกันเหรอ\"",
+        "ได้แต่ยิ้ม"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a woman lying in bed staring at the ceiling, phone resting on her chest, dim blue light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] แต่ถ้าวันนึงเขาหายไป... เราจะเสียใจ ในฐานะอะไร",
+      "cards": [
+        "ถ้าเขาหายไป",
+        "เราจะเสียใจ",
+        "ในฐานะอะไร"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a woman seen from behind sitting at a window at night holding her phone, deciding, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ถามเขาสักคำเถอะ... ใจเราจะได้รู้ที่ยืน",
+      "cards": [
+        "ถามเขาสักคำ",
+        "ใจจะได้รู้ที่ยืน"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-lovq"
+  }
+}

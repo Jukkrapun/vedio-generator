@@ -1,0 +1,80 @@
+{
+  "mode": "image",
+  "title": "งานที่ใช่ อาจไม่ใช่งานที่สมบูรณ์แบบ",
+  "tags": [
+    "career-doubt",
+    "reframe"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of an office worker's tired face lit by a laptop at night, looking away, not identifiable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] ถ้ารองานที่สมบูรณ์แบบ... อาจรอทั้งชีวิต",
+      "cards": [
+        "ถ้ารองานที่สมบูรณ์แบบ",
+        "อาจรอทั้งชีวิต"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a messy desk at night, sticky notes, cold coffee, laptop glow, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "งานที่เราทำอยู่... ก็มีวันเหนื่อย มีวันอยากลาออก",
+      "cards": [
+        "มีวันเหนื่อย",
+        "มีวันอยากลาออก"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "an office worker seen from behind smiling at a coworker beside the desk, late evening office, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แต่ก็มีวันที่... ทำเสร็จแล้วยิ้มได้",
+      "cards": [
+        "แต่ก็มีวันที่",
+        "ทำเสร็จแล้วยิ้มได้"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of hands closing a laptop gently in lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] งานที่ใช่... ไม่ใช่งานที่ไม่มีปัญหา แต่เป็นปัญหาที่เรายอมแก้",
+      "cards": [
+        "งานที่ใช่",
+        "คือปัญหาที่เรายอมแก้"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a person seen from behind walking out of an office building into a quiet city night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เซฟไว้อ่าน ในวันที่อยากลาออก",
+      "cards": [
+        "เซฟไว้อ่าน",
+        "วันที่อยากลาออก"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-work"
+  }
+}

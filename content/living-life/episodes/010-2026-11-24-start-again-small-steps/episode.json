@@ -1,0 +1,69 @@
+{
+  "mode": "image",
+  "title": "เราเริ่มต้นใหม่ได้ แม้จะเริ่มจากก้าวเล็ก ๆ",
+  "tags": [
+    "new-start",
+    "reframe"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman sitting on the edge of a bed at night looking at her feet on the floor, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] อยากเริ่มใหม่... แต่ไม่รู้จะเริ่มยังไง",
+      "cards": [
+        "อยากเริ่มใหม่",
+        "แต่ไม่รู้จะเริ่มยังไง"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a pair of running shoes by a door in dim night light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "คิดว่าต้องเปลี่ยนทุกอย่าง... เลยไม่ได้เริ่มสักที",
+      "cards": [
+        "คิดว่าต้องเปลี่ยนทุกอย่าง",
+        "เลยไม่ได้เริ่ม"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/03-twist.png",
+      "image_prompt": "close-up of a hand opening a curtain slightly, soft first light of morning coming in, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] ที่จริงแค่ก้าวเดียว... ก็นับว่าเริ่มแล้ว",
+      "cards": [
+        "แค่ก้าวเดียว",
+        "ก็นับว่าเริ่มแล้ว"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind walking out of an apartment into a quiet street at early dawn, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] พรุ่งนี้ลองหนึ่งก้าว... แล้วมาเล่าให้ฟังนะ",
+      "cards": [
+        "พรุ่งนี้ลองหนึ่งก้าว"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-life"
+  }
+}

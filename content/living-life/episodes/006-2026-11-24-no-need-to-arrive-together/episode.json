@@ -1,0 +1,71 @@
+{
+  "mode": "image",
+  "title": "ชีวิตไม่จำเป็นต้องไปถึงเป้าหมายพร้อมใคร",
+  "tags": [
+    "comparison",
+    "reframe"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman's face lit by a phone scrolling at night in bed, eyes heavy, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] เพื่อนแต่งงาน เพื่อนมีบ้าน... แล้วเราล่ะ",
+      "cards": [
+        "เพื่อนแต่งงาน",
+        "เพื่อนมีบ้าน",
+        "แล้วเราล่ะ"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a phone on a nightstand glowing with blurred photo feed, a half-drunk glass of water, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ไถดูชีวิตคนอื่น... แล้วรู้สึกว่าตัวเองช้า",
+      "cards": [
+        "ไถดูชีวิตคนอื่น",
+        "แล้วรู้สึกว่าช้า"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/03-twist.png",
+      "image_prompt": "a winding night road with scattered street lights and a few cars far apart, each going its own way, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] แต่ชีวิตไม่ใช่การวิ่งแข่ง... ไม่มีใครเริ่มจากจุดเดียวกัน",
+      "cards": [
+        "ชีวิตไม่ใช่การวิ่งแข่ง",
+        "ไม่มีใครเริ่มจุดเดียวกัน"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a person seen from behind walking slowly on a quiet lit street at night, calm, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] ไปถึงช้ากว่า... ก็ยังเป็นการไปถึงอยู่ดี",
+      "cards": [
+        "ไปถึงช้ากว่า",
+        "ก็ยังไปถึงอยู่ดี"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-life"
+  }
+}

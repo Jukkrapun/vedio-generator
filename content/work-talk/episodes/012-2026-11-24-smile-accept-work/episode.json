@@ -1,0 +1,79 @@
+{
+  "mode": "image",
+  "title": "ความสามารถพิเศษของมนุษย์เงินเดือน: ยิ้มรับงาน ทั้งที่ยังไม่รู้จะเริ่มตรงไหน",
+  "tags": [
+    "office-life",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of an office worker's polite smile in soft office light, face half out of frame, not identifiable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] ความสามารถพิเศษของมนุษย์เงินเดือน...",
+      "cards": [
+        "ความสามารถพิเศษ",
+        "ของมนุษย์เงินเดือน"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "over-the-shoulder shot of a manager out of focus handing a folder to an office worker, evening office, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ยิ้มรับงาน... ได้ค่ะ ไม่มีปัญหา",
+      "cards": [
+        "ยิ้มรับงาน",
+        "\"ได้ค่ะ ไม่มีปัญหา\""
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "detail of a blank notebook page and a pen on a desk under a lamp at night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "กลับมาที่โต๊ะ... แล้วจ้องกระดาษเปล่า",
+      "cards": [
+        "กลับมาที่โต๊ะ",
+        "จ้องกระดาษเปล่า"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a hand writing the first small line in a notebook, lamp light, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] แต่ทุกงานที่เคยทำได้... ก็เริ่มจากไม่รู้แบบนี้ทั้งนั้น",
+      "cards": [
+        "ทุกงานที่เคยทำได้",
+        "ก็เริ่มจากไม่รู้"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "an office worker seen from behind at a desk at night, focused, small lamp, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เริ่มจากข้อเล็กที่สุดก่อน... เดี๋ยวก็ไปต่อได้",
+      "cards": [
+        "เริ่มจากข้อเล็กที่สุด"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-work"
+  }
+}

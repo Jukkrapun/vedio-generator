@@ -1,0 +1,81 @@
+{
+  "mode": "image",
+  "title": "เช้าวันจันทร์กับสีหน้าที่ไม่อยากเป็นวันจันทร์",
+  "tags": [
+    "monday",
+    "humor"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a phone alarm glowing on a bedside table in early blue morning, a hand reaching to snooze, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] เช้าวันจันทร์... ปิดนาฬิกาปลุกไปห้ารอบ",
+      "cards": [
+        "เช้าวันจันทร์",
+        "ปิดปลุกไปห้ารอบ"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "a person seen from behind brushing teeth in a dim bathroom mirror, slouched, early morning, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ส่องกระจก... หน้าบอกเลยว่า ไม่พร้อม",
+      "cards": [
+        "ส่องกระจก",
+        "หน้าบอกว่าไม่พร้อม"
+      ]
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "a crowded train platform in the early morning, commuters out of focus, soft blue light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "บนรถไฟฟ้า... ทุกคนหน้าเดียวกันหมด",
+      "cards": [
+        "บนรถไฟฟ้า",
+        "ทุกคนหน้าเดียวกัน"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a hand holding a warm coffee cup on an office desk with morning light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] แต่เราก็มากันครบ... ทั้งที่ไม่อยากมา นั่นแหละเก่งแล้ว",
+      "cards": [
+        "ไม่อยากมา",
+        "แต่ก็มา",
+        "เก่งแล้ว"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "an office worker seen from behind at a desk, stretching arms up, morning sun, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] ขอให้วันจันทร์นี้... ผ่านไปไว ๆ นะ",
+      "cards": [
+        "ขอให้วันจันทร์นี้",
+        "ผ่านไปไว ๆ"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-work"
+  }
+}

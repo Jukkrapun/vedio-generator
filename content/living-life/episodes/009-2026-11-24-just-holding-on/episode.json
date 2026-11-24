@@ -1,0 +1,70 @@
+{
+  "mode": "image",
+  "title": "บางช่วงของชีวิต แค่ประคองตัวเองให้ไหวก็เก่งแล้ว",
+  "tags": [
+    "tired",
+    "reframe"
+  ],
+  "posts": [],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman resting her head on a desk beside a lamp at night, eyes open, tired, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] ช่วงนี้ไม่ได้ทำอะไรสำเร็จเลย...",
+      "cards": [
+        "ช่วงนี้",
+        "ไม่ได้ทำอะไรสำเร็จเลย"
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a simple bowl of instant noodles and a glass of water on a small table at night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แค่ตื่น ไปทำงาน กินข้าว กลับมานอน",
+      "cards": [
+        "ตื่น ทำงาน",
+        "กินข้าว นอน"
+      ]
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/03-twist.png",
+      "image_prompt": "a woman seen from behind standing in a dark kitchen holding a warm mug with both hands, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] แต่การผ่านแต่ละวันมาได้... ก็คือความสำเร็จแล้ว",
+      "cards": [
+        "ผ่านแต่ละวันมาได้",
+        "ก็คือความสำเร็จแล้ว"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/04-closing.png",
+      "image_prompt": "a window at night with rain drops and a single warm lamp glowing inside a small apartment, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] ไหวแค่นี้... ก็เก่งมากแล้วนะ",
+      "cards": [
+        "ไหวแค่นี้",
+        "ก็เก่งมากแล้ว"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "script",
+    "order": "20261124-222717-life"
+  }
+}
