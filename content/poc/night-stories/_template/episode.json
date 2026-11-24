@@ -1,0 +1,51 @@
+{
+  "mode": "story",
+  "title": "ชื่อเรื่อง",
+  "tags": [],
+  "posts": [],
+  "languages": {
+    "th": {
+      "title": "ชื่อเรื่อง",
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
+    },
+    "en": {
+      "title": "Story title",
+      "tts": "elevenlabs",
+      "voice": "Z3R5wn05IrDiVCyEkUrK",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
+    }
+  },
+  "pause_sec": 0.8,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, dim warm lamp and neon light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet lonely but comforting mood",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "ตอนที่ 1",
+        "en": "Part 1"
+      },
+      "image": "images/01-opening.png",
+      "image_prompt": "opening scene",
+      "text": {
+        "th": "ประโยคเปิดเรื่อง",
+        "en": "Opening line."
+      }
+    }
+  ]
+}
