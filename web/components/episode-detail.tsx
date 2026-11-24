@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import type { PublishField } from "@/lib/publish";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type Episode, type EpisodeDetail, type Platform, type Post, type Version } from "@/lib/types";
-import { CopyButton, isTestSeries, listHref, Empty, EpisodeStatusBadge, ModeBadge, PlatformBadge, PostLink, SeriesChip, VersionBadge, VideoPlayer, takeTime } from "./common";
+import { BackToList, CopyButton, isTestSeries, listHref, Empty, EpisodeStatusBadge, ModeBadge, PlatformBadge, PostLink, SeriesChip, VersionBadge, VideoPlayer, takeTime } from "./common";
 import { useOps } from "./ops-provider";
 import { PostForm } from "./post-form";
 import { Button } from "./ui/button";
@@ -36,7 +36,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
   const playing: Episode = shown ? { ...episode, videoUrl: shown.videoUrl, posterUrl: shown.posterUrl } : episode;
   const produce = <Button onClick={() => queue("produce")}><WandSparkles size={16} /> ผลิตคลิป</Button>;
   return <>
-    <Link className="back-link" href={listHref(episode.series)}><ArrowLeft size={16} /> {isTestSeries(episode.series) ? "ทดสอบ (POC)" : "คลิปทั้งหมด"}</Link>
+    <BackToList series={episode.series}><ArrowLeft size={16} /> {isTestSeries(episode.series) ? "ทดสอบ (POC)" : "คลิปทั้งหมด"}</BackToList>
     <header className="page-heading"><div><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} /><VersionBadge episode={episode} /><EpisodeStatusBadge status={episode.status} /></div><h1>{episode.title}</h1></div>
       <div className="heading-actions">{produce}<Button variant="outline" onClick={() => queue("catalog")}><ListRestart size={16} /> สร้างแค็ตตาล็อกใหม่</Button></div>
     </header>

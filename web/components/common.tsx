@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { AudioLines, Check, Clapperboard, Clock3, Copy, Image as ImageIcon, MoonStar, Play, UserRound, Youtube, Facebook } from "lucide-react";
 import { toast } from "sonner";
 import type { Episode, EpisodeStatus, Job, Mode, Platform, Slot } from "@/lib/types";
@@ -72,3 +73,15 @@ export function takeTime(iso: string) {
 }
 /** Mode of the take that will be posted (falls back to episode.json "mode"). */
 export const takeMode = (episode: Episode) => episode.versions.find(v => v.id === episode.selectedVersion)?.mode ?? episode.mode;
+/** Back link to the clips / POC list that restores the last filters used there (kept in sessionStorage). */
+export function rememberListUrl() {
+  try { sessionStorage.setItem("list:" + (window.location.pathname === "/poc" ? "poc" : "episodes"), window.location.pathname + window.location.search); } catch { /* private mode */ }
+}
+export function BackToList({ series, children }: { series: string; children: React.ReactNode }) {
+  const base = listHref(series);
+  const [href, setHref] = useState(base);
+  useEffect(() => {
+    try { setHref(sessionStorage.getItem("list:" + (base === "/poc" ? "poc" : "episodes")) ?? base); } catch { /* ignore */ }
+  }, [base]);
+  return <Link className="back-link" href={href}>{children}</Link>;
+}

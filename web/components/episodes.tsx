@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import { Check, Search } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { candidates } from "@/lib/planner";
 import { thaiShortDate } from "@/lib/time";
 import { platforms, type Episode, type EpisodeStatus, type Platform } from "@/lib/types";
-import { Empty, isTestSeries, EpisodeStatusBadge, ModeBadge, VersionBadge, takeMode, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
+import { Empty, isTestSeries, rememberListUrl, EpisodeStatusBadge, ModeBadge, VersionBadge, takeMode, PlatformBadge, PostLink, Poster, SeriesChip, episodeHref, modeLabels, platformNames, seriesNames, statusLabels } from "./common";
 import { useOps } from "./ops-provider";
 import { Card } from "./ui/card";
 
@@ -22,15 +23,26 @@ export function EpisodesScreen({ series: allSeries, test = false }: { series: st
   const { episodes: everything } = useOps();
   const episodes = everything.filter(episode => isTestSeries(episode.series) === test);
   const series = allSeries.filter(key => isTestSeries(key) === test);
-  const [selectedSeries, setSeries] = useState("");
-  const [status, setStatus] = useState("");
-  const [platform, setPlatform] = useState("");
-  const [search, setSearch] = useState("");
-  const [mode, setMode] = useState("");
+  // filters live in the URL (?series=&status=&platform=&mode=&q=) so Back from a clip restores them
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const [selectedSeries, status, platform, search, mode] = ["series", "status", "platform", "q", "mode"].map(key => params.get(key) ?? "");
+  const setParam = (key: string) => (value: string) => {
+    const next = new URLSearchParams(params.toString());
+    if (value) next.set(key, value); else next.delete(key);
+    const query = next.toString();
+    router.replace(pathname + (query ? "?" + query : ""), { scroll: false });
+  };
+  const [setSeries, setStatus, setPlatform, setQuery, setMode] = ["series", "status", "platform", "q", "mode"].map(setParam);
+  useEffect(() => { rememberListUrl(); }, [params]);
+  // typing stays local (Thai IME friendly); the URL is updated after a short pause
+  const [typed, setSearch] = useState(search);
+  useEffect(() => { const timer = window.setTimeout(() => { if (typed !== search) setQuery(typed); }, 300); return () => window.clearTimeout(timer); });
   const results = episodes.filter(episode =>
     (!selectedSeries || episode.series === selectedSeries) && (!status || episode.status === status) && (!mode || episode.versions.some(v => v.mode === mode) || (!episode.versions.length && episode.mode === mode)) &&
     (!platform || Boolean(episode.videoUrl) && !episode.posts.some(post => post.platform === platform)) &&
-    episode.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
+    episode.title.toLocaleLowerCase().includes(typed.trim().toLocaleLowerCase())
   );
   return <>
     <header className="page-heading"><div><h1>{test ? "ทดสอบ (POC)" : "คลิปทั้งหมด"}</h1><p className="muted">{test ? "งานทดลองจาก content/poc ไม่เข้าคิวลงคลิป" : "ค้นหาคลิปและดูประวัติการลงแต่ละแพลตฟอร์ม"}</p></div></header>
@@ -41,7 +53,7 @@ export function EpisodesScreen({ series: allSeries, test = false }: { series: st
     <section className="clip-list">
       <div className="segmented" aria-label="กรองตามซีรีส์">{["", ...series].map(key => <button key={key} aria-pressed={selectedSeries === key} onClick={() => setSeries(key)}>{key ? seriesNames[key] ?? key : "ทั้งหมด"}</button>)}</div>
       <div className="filters">
-        <label className="search-field">ค้นหา<div className="input-icon"><Search size={17} /><input type="search" placeholder="ค้นหาชื่อคลิป" value={search} onChange={event => setSearch(event.target.value)} /></div></label>
+        <label className="search-field">ค้นหา<div className="input-icon"><Search size={17} /><input type="search" placeholder="ค้นหาชื่อคลิป" value={typed} onChange={event => setSearch(event.target.value)} /></div></label>
         <label>สถานะ<select value={status} onChange={event => setStatus(event.target.value)}><option value="">ทุกสถานะ</option>{statuses.map(key => <option key={key} value={key}>{statusLabels[key]}</option>)}</select></label>
         <label>รูปแบบ<select value={mode} onChange={event => setMode(event.target.value)}><option value="">ทุกรูปแบบ</option>{(["image", "video"] as const).map(key => <option key={key} value={key}>{modeLabels[key]}</option>)}</select></label>
         <label>ยังไม่ลงใน<select value={platform} onChange={event => setPlatform(event.target.value)}><option value="">ทุกแพลตฟอร์ม</option>{platforms.map(key => <option key={key} value={key}>{platformNames[key]}</option>)}</select></label>

@@ -36,7 +36,14 @@ export async function loadTemplates(): Promise<Template[]> {
       // label = the word just before the bracket on its line ("หัวข้อ: [..]" -> "หัวข้อ"); the bracket text is the example
       const line = whole.slice(whole.lastIndexOf("\n", offset) + 1, offset).replace(/\{\{\w+\}\}|\[[^\]]*\]/g, " ");
       const before = line.replace(/[:\-\s]+$/, "").split(/\s+/).filter(Boolean).at(-1) ?? "";
-      fields.push({ key, label: before || inner.trim() || "ระบุ", example: inner.trim(), options });
+      // a number with a unit after it ("[35] วินาที", "[8–9] ฉาก") is labelled by the unit
+      const rest = whole.slice(offset + _match.length);
+      const after = rest.slice(0, rest.search(/\n|$/)).replace(/\[[^\]]*\]|\{\{\w+\}\}/g, " ").trim().split(/[\s:]+/)[0] ?? "";
+      const numeric = /^[0-9][0-9–\-]*$/.test(inner.trim());
+      // Thai has no spaces, so neighbouring "words" can be whole phrases; long ones make bad labels
+      const short = (word: string) => word.length > 0 && word.length <= 8;
+      const label = numeric ? (short(after) ? after : short(before) ? before : "จำนวน") : before || inner.trim() || "ระบุ";
+      fields.push({ key, label, example: inner.trim(), options });
       return "{{" + key + "}}";
     });
     out.push({ id, title: heading.replace(/^[0-9]+[a-z]?\.\s*/, "").trim(), body, fields });

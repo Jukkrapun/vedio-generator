@@ -11,7 +11,7 @@ const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { 
 function Nav({ className }: { className: string }) {
   const pathname = usePathname();
   return <nav className={className} aria-label="เมนูหลัก">{links.map(({ href, text, icon: Icon }) => {
-    const poc = pathname.startsWith("/episodes/poc/") || pathname.startsWith("/review/poc/");
+    const poc = /^\/(episodes|review)\/poc[./]/.test(pathname);  // poc, poc.sound, poc.cat-2am …
     const active = href === "/poc" ? pathname === "/poc" || poc
       : !poc && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")) || (href === "/jobs" && (pathname.startsWith("/orders/") || pathname.startsWith("/review/"))));
     return <Link key={href} href={href} aria-current={active ? "page" : undefined}><Icon size={20} />{text}</Link>;
