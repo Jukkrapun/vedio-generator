@@ -96,6 +96,22 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
         timeout=LONG_TIMEOUT)
 
 
+def render_image(image: Path, duration: float, out: Path, i: int, motion: str, opts: dict | None = None) -> None:
+    """Background shot: "parallax" (default, 2.5D depth move, tools/parallax.py) or "zoom" (flat).
+    Falls back to zoom when opencv/depth are unavailable. `opts` = episode "parallax" block."""
+    if motion == "parallax":
+        try:
+            import parallax
+            grade = (f"eq=brightness=-0.06:saturation=0.9,fade=t=in:st=0:d={FADE_SEC},"
+                     f"fade=t=out:st={max(duration - FADE_SEC, 0):.2f}:d={FADE_SEC}")
+            parallax.render_parallax(image, duration, out, WIDTH, HEIGHT, FPS, variant=i, post_vf=grade,
+                                     **(opts or {}))
+            return
+        except Exception as e:  # noqa: BLE001
+            print(f"WARNING: parallax failed for {image.name} ({e}) -> zoom", file=sys.stderr)
+    render_still(image, duration, out, zoom_in=i % 2 == 0)
+
+
 def wrap_words(text: str, limit: int) -> list[str]:
     words = text.split()
     n = max(2, -(-len(text) // limit))  # balanced: split into n roughly equal lines
@@ -191,7 +207,7 @@ def render_lang(episode_dir: Path, episode: dict, lang: str) -> Path:
     clips = []
     for i, (img, _, dur) in enumerate(image_spans(timeline, total)):
         clip = work / f"bg{i:02d}.mp4"
-        render_still(episode_dir / img, dur, clip, zoom_in=i % 2 == 0)
+        render_image(episode_dir / img, dur, clip, i, episode.get("motion", "parallax"), episode.get("parallax"))
         clips.append(clip)
     (work / "clips.txt").write_text("".join(f"file '{c.name}'\n" for c in clips), encoding="utf-8")
 
