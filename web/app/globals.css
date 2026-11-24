@@ -379,3 +379,4 @@ textarea::placeholder { color: var(--muted); }
 .stat-tab.selected { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
 .platform-slots { display: grid; gap: 10px; }
 @media (min-width: 1024px) { .platform-slots { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+.file-name { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .7rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; margin: 2px 0 4px; }

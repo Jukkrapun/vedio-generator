@@ -90,6 +90,7 @@ async function listVersions(series: string, slug: string): Promise<Version[]> {
     const meta = await readJson<Partial<Version>>(path.join(dir, v + ".json"), {});
     return {
       id: v, number: i + 1, mode: VERSION_RE.exec(v)![1] as Mode, variant: (VERSION_RE.exec(v)![2] ?? "").slice(1),
+      source: (meta as { source?: string }).source ?? `${slug}-${VERSION_RE.exec(v)![1]}${VERSION_RE.exec(v)![2] ?? ""}.mp4`,
       rendered_at: meta.rendered_at ?? "", duration: meta.duration ?? null, lines: (meta.lines ?? []).map(line => textOf(line, (VERSION_RE.exec(v)![2] ?? "").slice(1))),
       videoUrl: `/api/video/${id}?v=${v}`, posterUrl: `/api/poster/${id}?v=${v}`,
     } satisfies Version;

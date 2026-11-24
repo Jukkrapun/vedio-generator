@@ -67,6 +67,12 @@ export function VersionBadge({ episode }: { episode: Episode }) {
   if (!take) return null;
   return <Badge className="version" title={"render " + take.rendered_at}>รอบ {take.number}/{episode.versions.length}{take.variant ? " · " + take.variant : ""}</Badge>;
 }
+/** Render file of the take that will be posted, e.g. 010-2026-11-20-ordinary-days-image.mp4 */
+export function FileName({ episode }: { episode: Episode }) {
+  const take = episode.versions.find(v => v.id === episode.selectedVersion);
+  const name = take?.source ?? (episode.videoUrl ? `${episode.slug}-${episode.mode}.mp4` : episode.slug);
+  return <span className="file-name" title={name}>{name}</span>;
+}
 export function takeTime(iso: string) {
   if (!iso) return "—";
   return new Intl.DateTimeFormat("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));

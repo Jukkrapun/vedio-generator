@@ -10,7 +10,8 @@ function cleanPost(input: Partial<Post>): Post {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(input.date))) throw new Error("bad date");
   if (!/^\d{2}:\d{2}$/.test(String(input.time))) throw new Error("bad time");
   const url = String(input.url ?? "").trim();
-  if (url && !/^https?:\/\//i.test(url)) throw new Error("bad url");
+  // the post link is the proof that the clip was really posted
+  if (!/^https?:\/\/\S+\.\S+/i.test(url)) throw new Error("ต้องใส่ลิงก์โพสต์");
   return { platform: input.platform!, date: input.date!, time: input.time!, url, views: num(input.views), likes: num(input.likes), saves: num(input.saves), source: "web" };
 }
 
