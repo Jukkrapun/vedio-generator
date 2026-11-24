@@ -91,7 +91,9 @@ def command(job: dict) -> list[str]:
     if t in ("voice", "regen_voice"):
         return [PY, "tools/tts.py", episode_path(a["episode"])]
     if t == "render":
-        return [PY, "tools/render_reel.py", episode_path(a["episode"])]
+        # long-form story mode builds its voice per language inside render_story.py
+        story = (read(ROOT / episode_path(a["episode"]) / "episode.json") or {}).get("mode") == "story"
+        return [PY, "tools/render_story.py" if story else "tools/render_reel.py", episode_path(a["episode"])]
     if t in ("claude", "revise"):
         return claude_command(a["prompt"] if t == "claude" else revise_prompt(a["episode"], a["note"]))
     raise ValueError(f"unknown job type {t!r}")

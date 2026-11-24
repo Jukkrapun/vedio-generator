@@ -367,12 +367,29 @@ async function setReview(series: string, slug: string, change: (review: Review) 
     return review;
   });
 }
-export type StageAction = "approve" | "all" | "drop" | "restore" | "back";
-/** approve: stage OK -> next stage (+ its job). all: run every remaining stage (produce.py), then review the render. */
+export type StageAction = "approve" | "all" | "drop" | "restore" | "back" | "adopt";
+
+/** Stage an episode made outside the web is at, judged from its files (for "adopt"). */
+async function derivedStage(series: string, slug: string): Promise<Stage> {
+  const detail = await getEpisodeDetail(series, slug);
+  if (!detail) throw new Error("episode not found");
+  const dir = episodeDir(series, slug);
+  const images = detail.segments.filter(s => s.image);
+  if (!images.length || images.some(s => !existsSync(path.join(dir, s.image)))) return images.some(s => existsSync(path.join(dir, s.image))) ? "images" : "script";
+  if (detail.versions.length || detail.videoUrl) return "render";
+  if (detail.mode === "story") return "images"; // story voice is made together with the render
+  return detail.segments.some(s => s.audio) ? "voice" : "images";
+}
+
+/** approve: stage OK -> next stage (+ its job). all: run every remaining stage (produce.py), then review the render.
+ *  adopt: put an episode made outside the web (no "review" yet) into the review flow at the stage its files show. */
 export async function stageAction(series: string, slug: string, action: StageAction, target?: Stage) {
   const id = series + "/" + slug;
   let job: JobType | undefined;
+  const adopted = action === "adopt" ? await derivedStage(series, slug) : null;
+  const story = episodeMode(series, slug) === "story";
   const review = await setReview(series, slug, current => {
+    if (adopted) return { ...current, stage: adopted };
     if (action === "drop") return { ...current, stage: "dropped" };
     if (action === "restore") return { ...current, stage: "script" };
     if (action === "back") {
@@ -384,8 +401,9 @@ export async function stageAction(series: string, slug: string, action: StageAct
       job = "produce";
       return { ...current, stage: "render" };
     }
-    const next = NEXT[current.stage];
+    let next = NEXT[current.stage];
     if (!next) throw new Error("nothing to approve");
+    if (story && next.stage === "voice") next = NEXT.voice; // story: images -> render (voice built by render_story.py)
     job = next.job;
     return { ...current, stage: next.stage };
   });

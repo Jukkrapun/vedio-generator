@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ArrowLeft, ExternalLink, History, ListRestart, Pencil, Play, Plus, Star, Trash2, WandSparkles } from "lucide-react";
+import { ArrowLeft, ExternalLink, History, ListChecks, ListRestart, Pencil, Play, Plus, Star, Trash2, WandSparkles } from "lucide-react";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
 import type { PublishField } from "@/lib/publish";
@@ -38,7 +38,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
   return <>
     <BackToList series={episode.series}><ArrowLeft size={16} /> {isTestSeries(episode.series) ? "ทดสอบ (POC)" : "คลิปทั้งหมด"}</BackToList>
     <header className="page-heading"><div><div className="tag-row"><SeriesChip series={episode.series} /><ModeBadge mode={episode.mode} /><VersionBadge episode={episode} /><EpisodeStatusBadge status={episode.status} /></div><h1>{episode.title}</h1></div>
-      <div className="heading-actions">{produce}<Button variant="outline" onClick={() => queue("catalog")}><ListRestart size={16} /> สร้างแค็ตตาล็อกใหม่</Button></div>
+      <div className="heading-actions"><Button asChild variant="outline"><Link href={"/review/" + id}><ListChecks size={16} /> ตรวจงาน</Link></Button>{produce}<Button variant="outline" onClick={() => queue("catalog")}><ListRestart size={16} /> สร้างแค็ตตาล็อกใหม่</Button></div>
     </header>
     <div className="detail-grid">
       <div className="video-panel"><VideoPlayer key={playing.videoUrl ?? "none"} episode={playing} />{shown && <p className="small muted">กำลังแสดงรอบ {shown.number}{shown.variant ? " (" + shown.variant + ")" : ""} · {takeTime(shown.rendered_at)}{shown.id === episode.selectedVersion ? " · ⭐ รอบที่จะลง" : ""}</p>}{!episode.videoUrl && produce}</div>

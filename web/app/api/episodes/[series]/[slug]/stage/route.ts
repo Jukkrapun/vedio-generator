@@ -2,7 +2,7 @@ import { handle } from "@/lib/api";
 import { stageAction, type StageAction } from "@/lib/repo";
 import type { Stage } from "@/lib/types";
 
-const ACTIONS: StageAction[] = ["approve", "all", "drop", "restore", "back"];
+const ACTIONS: StageAction[] = ["approve", "all", "drop", "restore", "back", "adopt"];
 
 /** Body {action: approve|all|drop|restore|back, target?: stage} — see docs/ops-dashboard/PIPELINE.md. */
 export const POST = (request: Request, { params }: { params: Promise<{ series: string; slug: string }> }) => handle(async () => {

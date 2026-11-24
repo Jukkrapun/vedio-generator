@@ -118,6 +118,7 @@ export function OrdersScreen({ initial, templates }: { initial: Order[]; templat
         </>}
       </Link>;
     })}</div> : <Empty>ยังไม่มีงาน กด "สั่งงานใหม่" เพื่อเริ่ม</Empty>}
+    <UnreviewedDrafts />
     <SystemJobs />
     {creating && <NewOrder templates={templates} close={() => setCreating(false)} created={order => setOrders(current => [order, ...current])} />}
   </>;
@@ -156,6 +157,19 @@ function NewOrder({ templates, close, created }: { templates: Template[]; close:
       <div className="modal-actions"><Button type="button" variant="outline" onClick={close}>ยกเลิก</Button><Button type="submit"><Send size={16} /> ส่งให้ Claude</Button></div>
     </form>
   </Modal>;
+}
+
+/** Episodes written outside the web (chat / CLI) that are not rendered and have no review stage yet. */
+function UnreviewedDrafts() {
+  const { episodes } = useOps();
+  const drafts = episodes.filter(e => !e.review && e.status === "draft");
+  if (!drafts.length) return null;
+  return <Card className="section-card unreviewed">
+    <div className="section-heading"><div><h2>ตอนที่สร้างนอกเว็บ ยังไม่ได้ตรวจ ({drafts.length})</h2><p className="small muted">เขียนในแชทหรือรันเอง ยังไม่ได้เรนเดอร์ กดเพื่อเข้าขั้นตรวจ</p></div></div>
+    <div className="order-episodes">{drafts.map(episode => <Link key={episode.id} href={"/review/" + episode.id} className="order-episode">
+      <div><strong>{episode.slug.split("-")[0]} · {episode.title}</strong><div className="tag-row"><SeriesChip series={episode.series} /></div></div><ArrowRight size={17} />
+    </Link>)}</div>
+  </Card>;
 }
 
 function SystemJobs() {
@@ -213,14 +227,15 @@ export function ReviewScreen({ id, initial }: { id: string; initial: EpisodeDeta
   const [confirm, setConfirm] = useState<null | "all" | "drop">(null);
   const asset = (file: string) => `/api/asset/${id}?f=${encodeURIComponent(file)}&t=${encodeURIComponent(stamp)}`;
 
-  async function act(action: "approve" | "all" | "drop" | "restore" | "back", target?: Stage) {
+  async function act(action: "approve" | "all" | "drop" | "restore" | "back" | "adopt", target?: Stage) {
     await api("/api/episodes/" + id + "/stage", { method: "POST", json: { action, target } }).catch(fail);
     await refreshEpisodes();
-    toast.success(action === "approve" ? "อนุมัติแล้ว" : action === "drop" ? "ทิ้งตอนนี้แล้ว" : "อัปเดตแล้ว");
+    toast.success(action === "approve" ? "อนุมัติแล้ว" : action === "drop" ? "ทิ้งตอนนี้แล้ว" : action === "adopt" ? "เข้าขั้นตรวจแล้ว" : "อัปเดตแล้ว");
   }
   const orderId = episode.review?.order;
   const step = stage as StepKey;
-  const nextLabel: Record<StepKey, string> = { script: "อนุมัติบท → สร้างภาพ", images: "อนุมัติภาพ → ทำเสียง", voice: "อนุมัติเสียง → เรนเดอร์", render: "อนุมัติ → เข้าคิวลงคลิป" };
+  const story = episode.mode === "story";
+  const nextLabel: Record<StepKey, string> = { script: "อนุมัติบท → สร้างภาพ", images: story ? "อนุมัติภาพ → ทำเสียง + เรนเดอร์ (ไทย/อังกฤษ)" : "อนุมัติภาพ → ทำเสียง", voice: "อนุมัติเสียง → เรนเดอร์", render: "อนุมัติ → เข้าคิวลงคลิป" };
 
   return <>
     <Link className="back-link" href={orderId ? "/orders/" + orderId : "/jobs"}><ArrowLeft size={16} /> {orderId ? "กลับไปที่งาน" : "งานทั้งหมด"}</Link>
@@ -234,14 +249,15 @@ export function ReviewScreen({ id, initial }: { id: string; initial: EpisodeDeta
       {state === "failed" && <Button variant="outline" onClick={async () => { await enqueue(job.type, job.args); toast.success("ลองใหม่แล้ว"); }}><RotateCcw size={15} /> ลองใหม่</Button>}
     </Card>}
     {stage === "dropped" && <Card className="stage-status"><Ban size={18} /><div><strong>ตอนนี้ถูกทิ้งแล้ว</strong></div><Button variant="outline" onClick={() => act("restore")}><Undo2 size={15} /> เอากลับมา</Button></Card>}
-    {stage === "done" && <Card className="stage-status done"><Check size={18} /><div><strong>ผ่านครบทุกขั้นแล้ว อยู่ในคิวลงคลิป</strong><p className="small muted">เลือกรอบที่จะลงได้ในแท็บประวัติของหน้าคลิป</p></div></Card>}
+    {!episode.review && <Card className="stage-status"><ScrollText size={18} /><div><strong>ตอนนี้สร้างนอกเว็บ ยังไม่อยู่ในขั้นตรวจ</strong><p className="small muted">กด "เริ่มตรวจ" ระบบจะดูไฟล์ที่มี (บท ภาพ เสียง คลิป) แล้วพาไปขั้นที่ต้องตรวจต่อ</p></div><Button onClick={() => act("adopt")}><Check size={15} /> เริ่มตรวจ</Button></Card>}
+    {episode.review && stage === "done" && <Card className="stage-status done"><Check size={18} /><div><strong>ผ่านครบทุกขั้นแล้ว อยู่ในคิวลงคลิป</strong><p className="small muted">เลือกรอบที่จะลงได้ในแท็บประวัติของหน้าคลิป</p></div></Card>}
 
     {step === "script" && <ScriptReview id={id} detail={detail} reload={reload} busy={state === "busy"} />}
     {step === "images" && <ImagesReview id={id} detail={detail} asset={asset} busy={state === "busy"} />}
     {step === "voice" && <VoiceReview id={id} detail={detail} asset={asset} busy={state === "busy"} />}
     {step === "render" && <RenderReview episode={episode} busy={state === "busy"} />}
 
-    {stages.includes(step) && <div className="review-actions">
+    {episode.review && stages.includes(step) && <div className="review-actions">
       <Button disabled={state === "busy"} onClick={() => act("approve")}><Check size={16} /> {nextLabel[step]}</Button>
       {step !== "render" && <Button variant="outline" disabled={state === "busy"} onClick={() => setConfirm("all")}><FastForward size={16} /> อนุมัติที่เหลือทั้งหมด</Button>}
       {stages.indexOf(step) > 0 && <Button variant="ghost" disabled={state === "busy"} onClick={() => act("back", stages[stages.indexOf(step) - 1])}><Undo2 size={15} /> ย้อนไปขั้นก่อน</Button>}
