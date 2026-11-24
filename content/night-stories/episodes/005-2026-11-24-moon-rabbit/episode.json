@@ -1,0 +1,661 @@
+{
+  "mode": "story",
+  "title": "กระต่ายผู้ดูแลดวงจันทร์",
+  "tags": [
+    "moon-rabbit",
+    "fairy-tale",
+    "sleep-story",
+    "caretakers",
+    "kindness-returns"
+  ],
+  "posts": [],
+  "languages": {
+    "th": {
+      "title": "กระต่ายผู้ดูแลดวงจันทร์",
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
+    },
+    "en": {
+      "title": "The Rabbit Who Looks After the Moon",
+      "tts": "elevenlabs",
+      "voice": "Z3R5wn05IrDiVCyEkUrK",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
+    }
+  },
+  "pause_sec": 1.0,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "soft hand-painted children's picture book style, gouache and watercolor texture, deep midnight blues with silver moonlight and warm amber lamp glow, gentle grain, dreamy cozy sleepy bedtime mood. The rabbit is always the same: Nual, a small round fluffy white rabbit with long soft ears and a tiny dark-blue knitted scarf",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "กระต่ายบนดวงจันทร์",
+        "en": "The Rabbit on the Moon"
+      },
+      "image": "images/01-rabbit-looking-down.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting on the edge of a glowing full moon, seen from behind, looking down at a sleeping town far below with a few lit windows, deep blue night sky, stars",
+      "text": {
+        "th": "รู้ไหม…\nทุกคืนที่เธอมองดวงจันทร์ มีใครบางคนกำลังมองกลับมา",
+        "en": "Did you know…\nevery night you look up at the moon, someone up there is looking back."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-rabbit-looking-down.png",
+      "text": {
+        "th": "เธอชื่อนวล\nกระต่ายขาวตัวเล็ก ๆ ที่มีหน้าที่ดูแลดวงจันทร์",
+        "en": "Her name is Nual.\nA small white rabbit whose job is to look after the moon."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/01-rabbit-looking-down.png",
+      "text": {
+        "th": "แต่ก็มีอยู่คืนหนึ่ง… ที่ดวงจันทร์มืดสนิท\nและนวลไม่มีแสงเหลืออยู่เลย",
+        "en": "But there was one night… when the moon went completely dark,\nand Nual had no light left at all."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/01-rabbit-looking-down.png",
+      "text": {
+        "th": "คืนนี้ ถ้าเธอยังไม่ง่วง\nฉันจะเล่าเรื่องคืนนั้นให้ฟังนะ",
+        "en": "Tonight, if you're not sleepy yet,\nI'll tell you about that night."
+      }
+    },
+    {
+      "id": "s05",
+      "image": "images/02-moon-house.png",
+      "image_prompt": "wide view of the surface of the moon at night: a tiny round wooden house with a warm lit window, a little garden of silver grass, a broom leaning by the door, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) small in the distance",
+      "text": {
+        "th": "บนดวงจันทร์มีบ้านไม้หลังเล็ก ๆ หลังหนึ่ง\nหน้าต่างมีไฟสีส้มอุ่น ๆ",
+        "en": "On the moon there is a tiny wooden house.\nIts window glows a warm orange."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/02-moon-house.png",
+      "text": {
+        "th": "รอบบ้านเป็นสวนหญ้าสีเงิน\nเวลาลมพัด มันจะดังกรุ๊งกริ๊งเบา ๆ เหมือนกระดิ่งลม",
+        "en": "Around the house is a garden of silver grass.\nWhen the wind blows, it chimes softly, like little wind bells."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/02-moon-house.png",
+      "text": {
+        "th": "นวลอยู่ที่นั่นคนเดียว\nแต่เธอไม่เคยเหงา เพราะงานของเธอ… ทำให้เธอได้อยู่กับทุกคน",
+        "en": "Nual lives there alone.\nBut she's never lonely, because her work… keeps her close to everyone."
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": {
+        "th": "งานของนวล",
+        "en": "Nual's Work"
+      },
+      "image": "images/03-sweeping-stardust.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sweeping glittering stardust off the moon with a small straw broom, sparkling dust floating into space, soft silver light",
+      "text": {
+        "th": "ทุกเย็น พอพระอาทิตย์ลับไป\nนวลจะหยิบไม้กวาดฟางอันเล็ก ๆ ออกมา",
+        "en": "Every evening, when the sun goes down,\nNual takes out her little straw broom."
+      }
+    },
+    {
+      "id": "s09",
+      "image": "images/03-sweeping-stardust.png",
+      "text": {
+        "th": "เธอกวาดฝุ่นดาวที่ตกลงมาเกาะบนดวงจันทร์\nทีละนิด… ทีละนิด…",
+        "en": "She sweeps away the stardust that has settled on the moon,\nlittle by little… little by little…"
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/03-sweeping-stardust.png",
+      "text": {
+        "th": "ฝุ่นดาวลอยฟุ้งขึ้นไป ระยิบระยับ\nแล้วค่อย ๆ กลายเป็นดาวดวงเล็ก ๆ อีกครั้ง",
+        "en": "The stardust floats up, glittering,\nand slowly becomes tiny stars again."
+      }
+    },
+    {
+      "id": "s11",
+      "image": "images/04-polishing-moon.png",
+      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) polishing the glowing moon surface with a soft cloth, the surface shining like pearl, gentle concentration",
+      "text": {
+        "th": "จากนั้น เธอจะเอาผ้านุ่ม ๆ มาขัดดวงจันทร์\nวนเป็นวงกลม ช้า ๆ",
+        "en": "Then she polishes the moon with a soft cloth,\nin slow little circles."
+      }
+    },
+    {
+      "id": "s12",
+      "image": "images/04-polishing-moon.png",
+      "text": {
+        "th": "ขัดจนผิวดวงจันทร์เงาเหมือนไข่มุก\nขัดจนแสงสีเงินค่อย ๆ สว่างขึ้นมา",
+        "en": "She polishes until the moon shines like a pearl,\nuntil its silver light slowly brightens."
+      }
+    },
+    {
+      "id": "s13",
+      "image": "images/04-polishing-moon.png",
+      "text": {
+        "th": "นวลชอบงานนี้ที่สุด\nเพราะทุกครั้งที่ดวงจันทร์สว่าง ข้างล่างก็จะมีคนเงยหน้าขึ้นมามอง",
+        "en": "This is the part Nual loves most,\nbecause every time the moon brightens, someone down below looks up."
+      }
+    },
+    {
+      "id": "s14",
+      "image": "images/05-lantern-path.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) walking along the curved horizon of the moon carrying a small paper lantern, long soft shadow, huge starry sky",
+      "text": {
+        "th": "พอขัดเสร็จ เธอจะถือโคมกระดาษดวงเล็ก\nเดินไปรอบขอบดวงจันทร์ หนึ่งรอบ",
+        "en": "When she's done, she takes her little paper lantern\nand walks once around the edge of the moon."
+      }
+    },
+    {
+      "id": "s15",
+      "image": "images/05-lantern-path.png",
+      "text": {
+        "th": "ก้าวเบา ๆ… ก้าวเบา ๆ…\nเสียงเท้านุ่ม ๆ บนผิวดวงจันทร์ แทบไม่มีเสียงเลย",
+        "en": "Soft steps… soft steps…\nHer paws on the moon make almost no sound at all."
+      }
+    },
+    {
+      "id": "s16",
+      "image": "images/05-lantern-path.png",
+      "text": {
+        "th": "เธอเดินดูว่าทุกอย่างเรียบร้อย\nเหมือนคนที่เดินปิดไฟในบ้าน ก่อนทุกคนจะเข้านอน",
+        "en": "She checks that everything is in order,\nlike someone walking through the house turning off lights before bed."
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": {
+        "th": "แสงจันทร์ชิ้นเล็ก ๆ",
+        "en": "Little Pieces of Moonlight"
+      },
+      "image": "images/06-earth-windows.png",
+      "image_prompt": "view from the moon looking down at a small sleepy town at night: rooftops, a river, most windows dark, a few windows still glowing warm yellow, painterly",
+      "text": {
+        "th": "แล้วเธอก็จะนั่งลงที่ขอบดวงจันทร์\nมองลงไปที่โลกข้างล่าง",
+        "en": "Then she sits down at the edge of the moon\nand looks down at the world below."
+      }
+    },
+    {
+      "id": "s18",
+      "image": "images/06-earth-windows.png",
+      "text": {
+        "th": "ข้างล่างเป็นเมืองเล็ก ๆ\nหลังคาบ้าน แม่น้ำ ถนนที่เงียบไปหมดแล้ว",
+        "en": "Below is a small town.\nRooftops, a river, streets that have all gone quiet."
+      }
+    },
+    {
+      "id": "s19",
+      "image": "images/06-earth-windows.png",
+      "text": {
+        "th": "หน้าต่างส่วนใหญ่ดับไฟแล้ว\nแต่จะมีบางบาน… ที่ยังสว่างอยู่",
+        "en": "Most of the windows are dark.\nBut a few… are still lit."
+      }
+    },
+    {
+      "id": "s20",
+      "image": "images/07-sleepless-window.png",
+      "image_prompt": "a single lit window in a dark apartment building seen from outside at night, a person seen from behind sitting by the window hugging their knees, soft silver moonlight falling on them",
+      "text": {
+        "th": "นวลรู้ว่าหน้าต่างพวกนั้น\nเป็นของคนที่นอนไม่หลับ",
+        "en": "Nual knows those windows\nbelong to people who can't sleep."
+      }
+    },
+    {
+      "id": "s21",
+      "image": "images/07-sleepless-window.png",
+      "text": {
+        "th": "บางคนคิดถึงใครสักคน\nบางคนกังวลเรื่องพรุ่งนี้",
+        "en": "Some are missing someone.\nSome are worried about tomorrow."
+      }
+    },
+    {
+      "id": "s22",
+      "image": "images/07-sleepless-window.png",
+      "text": {
+        "th": "บางคนก็ไม่รู้ด้วยซ้ำว่าทำไมถึงนอนไม่หลับ\nแค่รู้ว่าคืนนี้มันยาวเหลือเกิน",
+        "en": "Some don't even know why they can't sleep.\nThey only know the night feels so very long."
+      }
+    },
+    {
+      "id": "s23",
+      "image": "images/08-cutting-moonlight.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) carefully cutting a thin glowing slice of moonlight from the edge of the moon with small silver scissors, the slice shining like a ribbon",
+      "text": {
+        "th": "นวลจึงหยิบกรรไกรสีเงินอันเล็ก ๆ ออกมา\nแล้วตัดแสงจันทร์ที่ขอบออกมาชิ้นหนึ่ง",
+        "en": "So Nual takes out a tiny pair of silver scissors\nand snips a piece of moonlight from the edge."
+      }
+    },
+    {
+      "id": "s24",
+      "image": "images/08-cutting-moonlight.png",
+      "text": {
+        "th": "ชิ้นบาง ๆ ยาว ๆ เหมือนริบบิ้น\nเรืองแสงอยู่ในอุ้งมือเล็ก ๆ ของเธอ",
+        "en": "A thin, long piece, like a ribbon,\nglowing in her small paws."
+      }
+    },
+    {
+      "id": "s25",
+      "image": "images/09-moonlight-falling.png",
+      "image_prompt": "a thin glowing ribbon of moonlight drifting down from the sky into a city at night, floating gently toward one lit window, sparkles around it",
+      "text": {
+        "th": "เธอเป่ามันเบา ๆ…\nแล้วแสงจันทร์ชิ้นนั้นก็ค่อย ๆ ลอยลงไป",
+        "en": "She blows on it softly…\nand the piece of moonlight drifts slowly down."
+      }
+    },
+    {
+      "id": "s26",
+      "image": "images/09-moonlight-falling.png",
+      "text": {
+        "th": "ลอยผ่านเมฆ ลอยผ่านหลังคา\nจนไปถึงหน้าต่างบานที่ยังสว่างอยู่",
+        "en": "Past the clouds, past the rooftops,\nall the way down to a window that's still lit."
+      }
+    },
+    {
+      "id": "s27",
+      "image": "images/10-moonlight-on-pillow.png",
+      "image_prompt": "close-up of soft silver moonlight resting on a pillow and blanket in a dim bedroom, a person sleeping peacefully seen from behind, warm and calm",
+      "text": {
+        "th": "แสงจันทร์ลอดผ่านม่านเข้าไป\nตกลงบนหมอน บนผ้าห่ม เงียบ ๆ",
+        "en": "The moonlight slips in through the curtain\nand settles on a pillow, on a blanket, quietly."
+      }
+    },
+    {
+      "id": "s28",
+      "image": "images/10-moonlight-on-pillow.png",
+      "text": {
+        "th": "คนในห้องไม่รู้หรอกว่ามันมาจากไหน\nรู้แค่ว่าจู่ ๆ ใจก็เบาลง… แล้วตาก็ค่อย ๆ ปิด",
+        "en": "The person in the room never knows where it came from.\nThey only feel their heart grow lighter… and their eyes slowly close."
+      }
+    },
+    {
+      "id": "s29",
+      "image": "images/07-sleepless-window.png",
+      "text": {
+        "th": "คืนก่อน ๆ ชิ้นหนึ่งไปตกที่ห้องของคุณลุงคนหนึ่ง\nที่นั่งรอโทรศัพท์จากลูกสาวซึ่งอยู่ไกลมาก",
+        "en": "Once, a piece fell into the room of an old man\nwho sat waiting for a call from his daughter, who lived very far away."
+      }
+    },
+    {
+      "id": "s30",
+      "image": "images/07-sleepless-window.png",
+      "text": {
+        "th": "อีกชิ้น ไปตกที่ห้องพยาบาลกะดึก\nที่เพิ่งกลับถึงบ้าน แต่ใจยังเต้นแรงอยู่เลย",
+        "en": "Another fell into the room of a night-shift nurse\nwho had just come home, her heart still racing."
+      }
+    },
+    {
+      "id": "s31",
+      "image": "images/07-sleepless-window.png",
+      "text": {
+        "th": "อีกชิ้น ไปตกบนโต๊ะของนักเรียนคนหนึ่ง\nที่อ่านหนังสือจนหลับคาโต๊ะ ไฟยังไม่ได้ปิด",
+        "en": "Another landed on the desk of a student\nwho had fallen asleep over her books, the lamp still on."
+      }
+    },
+    {
+      "id": "s32",
+      "image": "images/10-moonlight-on-pillow.png",
+      "text": {
+        "th": "นวลไม่เคยรู้ชื่อพวกเขาเลย\nแต่เธอจำหน้าต่างของทุกคนได้",
+        "en": "Nual never knew any of their names.\nBut she remembered every one of their windows."
+      }
+    },
+    {
+      "id": "s33",
+      "image": "images/10-moonlight-on-pillow.png",
+      "text": {
+        "th": "นวลทำแบบนี้ทุกคืน\nตัดแสงจันทร์ทีละชิ้น ส่งลงไปทีละหน้าต่าง",
+        "en": "Nual does this every night.\nOne piece of moonlight at a time, one window at a time."
+      }
+    },
+    {
+      "id": "s34",
+      "image": "images/11-crescent-tired.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting alone on a thin crescent moon, ears drooping, holding a nearly empty basket, many stars around, quiet and a little tired",
+      "text": {
+        "th": "และนี่แหละ… คือเหตุผลที่ดวงจันทร์\nค่อย ๆ เล็กลงทุกคืน",
+        "en": "And that… is why the moon\ngets a little smaller every night."
+      }
+    },
+    {
+      "id": "s35",
+      "image": "images/11-crescent-tired.png",
+      "text": {
+        "th": "จากดวงกลมโต กลายเป็นครึ่งดวง\nจากครึ่งดวง กลายเป็นเสี้ยวบาง ๆ",
+        "en": "From a big round moon, to half a moon.\nFrom half a moon, to a thin little sliver."
+      }
+    },
+    {
+      "id": "s36",
+      "image": "images/11-crescent-tired.png",
+      "text": {
+        "th": "ยิ่งคนนอนไม่หลับมากเท่าไร\nดวงจันทร์ก็ยิ่งบางลงเท่านั้น",
+        "en": "The more people who can't sleep,\nthe thinner the moon becomes."
+      }
+    },
+    {
+      "id": "s37",
+      "chapter": {
+        "th": "คืนที่ดวงจันทร์มืด",
+        "en": "The Night the Moon Went Dark"
+      },
+      "image": "images/12-old-owl.png",
+      "image_prompt": "a wise old grey owl with round glasses perched on a star-shaped lamp post next to Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf), the two of them talking quietly in the night sky",
+      "text": {
+        "th": "คืนหนึ่ง นกฮูกแก่ที่บินผ่านมาบ่อย ๆ\nเกาะลงข้าง ๆ นวล",
+        "en": "One night, the old owl who often flew by\nlanded beside Nual."
+      }
+    },
+    {
+      "id": "s38",
+      "image": "images/12-old-owl.png",
+      "text": {
+        "th": "\"นวล… ดวงจันทร์ของเธอเหลือนิดเดียวแล้วนะ\nแล้วถ้ามันหมด เธอจะทำยังไง\"",
+        "en": "\"Nual… your moon is almost gone.\nWhat will you do when there's none left?\""
+      }
+    },
+    {
+      "id": "s39",
+      "image": "images/12-old-owl.png",
+      "text": {
+        "th": "นวลยิ้มนิดหนึ่ง\n\"ไม่เป็นไรหรอก ข้างล่างยังมีคนนอนไม่หลับอยู่เลย\"",
+        "en": "Nual smiled a little.\n\"It's alright. There are still people down there who can't sleep.\""
+      }
+    },
+    {
+      "id": "s40",
+      "image": "images/11-crescent-tired.png",
+      "text": {
+        "th": "แล้วเธอก็ตัดชิ้นสุดท้าย\nส่งลงไปให้หน้าต่างบานสุดท้าย",
+        "en": "And she cut the very last piece\nand sent it down to the very last window."
+      }
+    },
+    {
+      "id": "s41",
+      "image": "images/13-new-moon-dark.png",
+      "image_prompt": "the moon almost completely dark (new moon), only a faint outline, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting small and alone on it in the darkness, a single tiny lantern beside her, vast night sky",
+      "text": {
+        "th": "คืนนั้น… ดวงจันทร์มืดสนิท",
+        "en": "That night… the moon went completely dark."
+      }
+    },
+    {
+      "id": "s42",
+      "image": "images/13-new-moon-dark.png",
+      "text": {
+        "th": "ไม่มีแสงสีเงิน ไม่มีหญ้าที่ส่งเสียงกรุ๊งกริ๊ง\nมีแค่โคมกระดาษดวงเล็ก กับกระต่ายตัวหนึ่ง นั่งอยู่ในความมืด",
+        "en": "No silver light. No chiming grass.\nJust one small paper lantern, and one little rabbit, sitting in the dark."
+      }
+    },
+    {
+      "id": "s43",
+      "image": "images/13-new-moon-dark.png",
+      "text": {
+        "th": "นวลเหนื่อยมาก\nเหนื่อยแบบที่คนดูแลคนอื่นมานาน ๆ จะรู้สึก",
+        "en": "Nual was very tired.\nThe kind of tired you feel after looking after others for a long, long time."
+      }
+    },
+    {
+      "id": "s44",
+      "image": "images/13-new-moon-dark.png",
+      "text": {
+        "th": "เธอกอดผ้าพันคอไว้แน่น แล้วคิดว่า…\nคืนนี้ ถ้าข้างล่างมีใครนอนไม่หลับ ฉันจะไม่มีอะไรให้เขาเลย",
+        "en": "She hugged her scarf tight and thought…\nif anyone down there can't sleep tonight, I'll have nothing to give them."
+      }
+    },
+    {
+      "id": "s45",
+      "image": "images/13-new-moon-dark.png",
+      "text": {
+        "th": "แล้วก็ไม่มีใครส่งแสงขึ้นมาให้ฉันเหมือนกัน",
+        "en": "And no one will send any light up to me, either."
+      }
+    },
+    {
+      "id": "s46",
+      "chapter": {
+        "th": "แสงจากข้างล่าง",
+        "en": "Light from Below"
+      },
+      "image": "images/14-first-light-below.png",
+      "image_prompt": "from high above at night: a dark town, and one tiny warm light switching on in a window, then another, like small stars appearing on the ground",
+      "text": {
+        "th": "แต่แล้ว… ข้างล่างก็มีแสงดวงเล็ก ๆ\nสว่างขึ้นมาดวงหนึ่ง",
+        "en": "But then… far below,\none tiny light came on."
+      }
+    },
+    {
+      "id": "s47",
+      "image": "images/14-first-light-below.png",
+      "text": {
+        "th": "แล้วก็อีกดวง… อีกดวง…\nเหมือนมีดาวค่อย ๆ ผุดขึ้นมาบนพื้นดิน",
+        "en": "Then another… and another…\nas if stars were slowly appearing on the ground."
+      }
+    },
+    {
+      "id": "s48",
+      "image": "images/15-child-flashlight.png",
+      "image_prompt": "a small child seen from behind at an open window at night, holding a flashlight pointing up at the dark sky, a teddy bear on the windowsill, warm room light",
+      "text": {
+        "th": "ที่หน้าต่างบานหนึ่ง มีเด็กตัวเล็ก ๆ\nยืนถือไฟฉาย ส่องขึ้นมาบนฟ้า",
+        "en": "At one window, a small child\nstood holding a flashlight, pointing it up at the sky."
+      }
+    },
+    {
+      "id": "s49",
+      "image": "images/15-child-flashlight.png",
+      "text": {
+        "th": "\"แม่บอกว่าคืนนี้ไม่มีพระจันทร์\nหนูเลยส่องไฟให้ เผื่อกระต่ายจะกลัวมืด\"",
+        "en": "\"Mom said there's no moon tonight.\nSo I'm shining a light, in case the rabbit is scared of the dark.\""
+      }
+    },
+    {
+      "id": "s50",
+      "image": "images/16-earth-glowing.png",
+      "image_prompt": "wide magical view: the whole town below glowing with hundreds of tiny warm lights pointing up toward the dark sky, fireflies rising, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) small on the dark moon looking down in wonder",
+      "text": {
+        "th": "แล้วหน้าต่างอื่น ๆ ก็เปิดไฟตาม\nคนที่เคยนอนไม่หลับ คนที่เคยได้แสงจันทร์ชิ้นเล็ก ๆ ของนวล",
+        "en": "Then other windows lit up too.\nPeople who once couldn't sleep. People who once got a little piece of Nual's moonlight."
+      }
+    },
+    {
+      "id": "s51",
+      "image": "images/16-earth-glowing.png",
+      "text": {
+        "th": "คุณลุงที่รอโทรศัพท์ เปิดโคมไฟหัวเตียง\nพยาบาลกะดึก เปิดไฟระเบียง นักเรียนคนนั้น หันโคมไฟอ่านหนังสือขึ้นไปบนฟ้า",
+        "en": "The old man who waited for calls switched on his bedside lamp.\nThe night nurse turned on her balcony light. The student tilted her desk lamp up at the sky."
+      }
+    },
+    {
+      "id": "s52",
+      "image": "images/16-earth-glowing.png",
+      "text": {
+        "th": "ไม่มีใครนัดกันไว้เลย\nแต่ทุกคนคิดเหมือนกันว่า… คืนนี้ ขอเป็นแสงให้ใครบ้าง",
+        "en": "No one had planned it.\nBut everyone was thinking the same thing… tonight, let me be the light for someone."
+      }
+    },
+    {
+      "id": "s53",
+      "image": "images/16-earth-glowing.png",
+      "text": {
+        "th": "ไฟข้างถนน ไฟร้านเล็ก ๆ ที่เปิดดึก\nหิ่งห้อยริมแม่น้ำ ลอยขึ้นมาทีละตัว",
+        "en": "Streetlamps. The lights of little shops open late.\nFireflies by the river, rising one by one."
+      }
+    },
+    {
+      "id": "s54",
+      "image": "images/16-earth-glowing.png",
+      "text": {
+        "th": "ทั้งเมือง… สว่างขึ้นมา\nเพื่อกระต่ายตัวเดียว ที่นั่งอยู่บนดวงจันทร์มืด ๆ",
+        "en": "The whole town… lit up,\nfor one small rabbit sitting on a dark moon."
+      }
+    },
+    {
+      "id": "s55",
+      "image": "images/17-lights-rising.png",
+      "image_prompt": "soft warm lights floating up from the earth like lanterns toward the dark moon, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) reaching out a paw to catch one, glowing gently",
+      "text": {
+        "th": "แสงเล็ก ๆ เหล่านั้นค่อย ๆ ลอยขึ้นมา\nอุ่น ๆ เหมือนโคมไฟ",
+        "en": "Those little lights slowly floated up,\nwarm, like lanterns."
+      }
+    },
+    {
+      "id": "s56",
+      "image": "images/17-lights-rising.png",
+      "text": {
+        "th": "นวลยื่นอุ้งมือออกไป\nแสงดวงหนึ่งตกลงมาอยู่ในมือเธอพอดี",
+        "en": "Nual reached out her paw,\nand one light landed right in it."
+      }
+    },
+    {
+      "id": "s57",
+      "image": "images/17-lights-rising.png",
+      "text": {
+        "th": "มันอุ่นมาก…\nอุ่นเหมือนตอนที่มีใครสักคนห่มผ้าให้",
+        "en": "It was so warm…\nwarm like someone pulling a blanket over you."
+      }
+    },
+    {
+      "id": "s58",
+      "image": "images/17-lights-rising.png",
+      "text": {
+        "th": "นวลเพิ่งเข้าใจ…",
+        "en": "Only then did Nual understand…"
+      }
+    },
+    {
+      "id": "s59",
+      "image": "images/17-lights-rising.png",
+      "text": {
+        "th": "แสงที่เธอให้ไปทุกคืน ไม่เคยหายไปไหนเลย\nมันแค่รอวันที่จะได้กลับมาหาเธอ",
+        "en": "The light she had given away every night had never been lost.\nIt had only been waiting for the day it could come back to her."
+      }
+    },
+    {
+      "id": "s60",
+      "image": "images/18-rabbit-sleeping.png",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) curled up asleep on the moon wrapped in her scarf, surrounded by small warm glowing lights from the earth like a blanket of fireflies, very peaceful",
+      "text": {
+        "th": "คืนนั้น นวลไม่ต้องกวาด ไม่ต้องขัด ไม่ต้องเฝ้าใคร\nเป็นครั้งแรก… ที่มีคนเฝ้าเธอบ้าง",
+        "en": "That night, Nual didn't have to sweep, or polish, or watch over anyone.\nFor the first time… someone was watching over her."
+      }
+    },
+    {
+      "id": "s61",
+      "image": "images/18-rabbit-sleeping.png",
+      "text": {
+        "th": "เธอขดตัวอยู่ในผ้าพันคอ\nท่ามกลางแสงอุ่น ๆ ที่ลอยอยู่รอบตัว",
+        "en": "She curled up inside her scarf,\nwith warm little lights floating all around her."
+      }
+    },
+    {
+      "id": "s62",
+      "image": "images/18-rabbit-sleeping.png",
+      "text": {
+        "th": "แล้วกระต่ายผู้ดูแลดวงจันทร์\nก็หลับไป",
+        "en": "And the rabbit who looks after the moon\nfell asleep."
+      }
+    },
+    {
+      "id": "s63",
+      "chapter": {
+        "th": "เสี้ยวใหม่",
+        "en": "A New Crescent"
+      },
+      "image": "images/19-new-crescent.png",
+      "image_prompt": "a thin new crescent moon glowing again in a dawn-blue sky, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) waking up and stretching on it, the owl flying past",
+      "text": {
+        "th": "คืนต่อมา ดวงจันทร์เสี้ยวบาง ๆ\nก็กลับมาเรืองแสงบนฟ้าอีกครั้ง",
+        "en": "The next night, a thin crescent moon\nglowed in the sky again."
+      }
+    },
+    {
+      "id": "s64",
+      "image": "images/19-new-crescent.png",
+      "text": {
+        "th": "แสงที่คนข้างล่างส่งขึ้นมา\nกลายเป็นดวงจันทร์ดวงใหม่ ค่อย ๆ โตขึ้นทุกคืน",
+        "en": "The light sent up from below\nhad become a new moon, growing a little more every night."
+      }
+    },
+    {
+      "id": "s65",
+      "image": "images/19-new-crescent.png",
+      "text": {
+        "th": "นกฮูกแก่บินผ่านมา แล้วพยักหน้า\n\"เห็นไหม… ความใจดี มันวนกลับมาเสมอ\"",
+        "en": "The old owl flew by and nodded.\n\"You see… kindness always comes back around.\""
+      }
+    },
+    {
+      "id": "s66",
+      "image": "images/19-new-crescent.png",
+      "text": {
+        "th": "นวลหยิบไม้กวาดขึ้นมาอีกครั้ง\nแล้วเริ่มงานของเธอ เหมือนทุกคืน",
+        "en": "Nual picked up her broom again\nand began her work, like every night."
+      }
+    },
+    {
+      "id": "s67",
+      "chapter": {
+        "th": "ก่อนหลับ",
+        "en": "Before You Sleep"
+      },
+      "image": "images/20-moon-over-window.png",
+      "image_prompt": "a calm bedroom window at night from inside, curtains slightly open, a soft glowing moon in the sky with a tiny white rabbit silhouette on it, a blanket edge in the foreground, very sleepy mood",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nลองมองขึ้นไปบนฟ้าดูนะ",
+        "en": "If you still can't sleep tonight…\ntry looking up at the sky."
+      }
+    },
+    {
+      "id": "s68",
+      "image": "images/20-moon-over-window.png",
+      "text": {
+        "th": "ถ้าเห็นดวงจันทร์ ก็แปลว่านวลยังเฝ้าอยู่\nถ้าไม่เห็น… ก็แปลว่าคืนนี้ เธอกำลังพักบ้าง",
+        "en": "If you see the moon, Nual is still watching.\nIf you don't… then tonight, she's getting some rest too."
+      }
+    },
+    {
+      "id": "s69",
+      "image": "images/20-moon-over-window.png",
+      "text": {
+        "th": "ไม่ว่าแบบไหน แสงที่เธอเคยให้ใครไป\nไม่เคยหายไปไหนเลยนะ",
+        "en": "Either way, the light you've ever given to someone\nhas never really been lost."
+      }
+    },
+    {
+      "id": "s70",
+      "image": "images/20-moon-over-window.png",
+      "text": {
+        "th": "ปิดไฟ หลับตา\nแล้วปล่อยให้แสงจันทร์ชิ้นเล็ก ๆ ตกลงบนหมอนของเธอ",
+        "en": "Turn off the light. Close your eyes.\nAnd let a little piece of moonlight settle on your pillow."
+      }
+    },
+    {
+      "id": "s71",
+      "image": "images/20-moon-over-window.png",
+      "text": {
+        "th": "หลับฝันดีนะ",
+        "en": "Sleep well."
+      }
+    }
+  ],
+  "image_rules": "original storybook illustration (NOT photorealistic), horizontal landscape 1536x1024 (16:9 framing), no text, no letters, no logos, no watermarks, humans only seen from behind, far away or as silhouettes (never faces); keep the main subject inside the central area, nothing important touching the edges; keep the bottom 20% calm and simple for subtitles"
+}
