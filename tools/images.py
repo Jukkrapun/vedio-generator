@@ -21,7 +21,8 @@ from pathlib import Path
 from media import ROOT
 
 CODEX_GENERATED = Path.home() / ".codex" / "generated_images"
-CODEX_TIMEOUT_SEC = 1200
+CODEX_TIMEOUT_SEC = 1200  # per batch
+BATCH = 8  # images per Codex run
 BASE_RULES = ("photorealistic, vertical portrait 1024x1536, no text, no letters, no logos, no watermarks, "
               "no recognizable real people or celebrities, calm empty area in the middle for subtitles")
 
@@ -58,11 +59,20 @@ def generate_images(episode_dir: Path) -> list[Path]:
     if not todo:
         print("Images: all present")
         return []
-    print(f"Images: generating {len(todo)} with Codex (a few minutes each) ...")
-    started = time.time()
     codex = shutil.which("codex")
     if not codex:
         raise RuntimeError("codex CLI not found on PATH")
+    print(f"Images: generating {len(todo)} with Codex (a few minutes each, batches of {BATCH}) ...")
+    written = []
+    # One Codex run per batch: a long story (20+ images) overran the timeout in a single run
+    # (2026-11-24), and per-batch copying keeps finished images if a later batch fails.
+    for k in range(0, len(todo), BATCH):
+        written += codex_batch(codex, todo[k:k + BATCH], episode, episode_dir, rules, refs)
+    return written
+
+
+def codex_batch(codex: str, todo: list[dict], episode: dict, episode_dir: Path, rules: str, refs: list[str]) -> list[Path]:
+    started = time.time()
     # Prompt goes through stdin ("-"): on Windows codex is a .cmd shim and cmd.exe cuts
     # command-line arguments at the first newline.
     result = subprocess.run(
@@ -83,7 +93,7 @@ def generate_images(episode_dir: Path) -> list[Path]:
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(src, dst)
         written.append(dst)
-        print(f"  {dst.relative_to(ROOT)}")
+        print(f"  {dst.relative_to(ROOT)}", flush=True)
     return written
 
 

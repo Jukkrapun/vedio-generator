@@ -411,7 +411,7 @@
     {
       "id": "s43",
       "image": "images/13b-tired-closeup.png",
-      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting in darkness on the dark moon, ears drooping, hugging her scarf tightly, a single small paper lantern lighting her face from below, tired and lonely but gentle",
+      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting in darkness on the dark moon, ears drooping, hugging her scarf tightly, a single small paper lantern lighting her face from below, tired and lonely but gentle. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "นวลเหนื่อยมาก\nเหนื่อยแบบที่คนดูแลคนอื่นมานาน ๆ จะรู้สึก",
         "en": "Nual was very tired.\nThe kind of tired you feel after looking after others for a long, long time."
@@ -432,7 +432,7 @@
         "en": "Light from Below"
       },
       "image": "images/14-first-light-below.png",
-      "image_prompt": "from high above at night: a dark town, and one tiny warm light switching on in a window, then another, like small stars appearing on the ground",
+      "image_prompt": "from high above at night: a dark town, and one tiny warm light switching on in a window, then another, like small stars appearing on the ground. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "แต่แล้ว… ข้างล่างก็มีแสงดวงเล็ก ๆ\nสว่างขึ้นมาดวงหนึ่ง",
         "en": "But then… far below,\none tiny light came on."
@@ -449,7 +449,7 @@
     {
       "id": "s47",
       "image": "images/15-child-flashlight.png",
-      "image_prompt": "a small child seen from behind at an open window at night, holding a flashlight pointing up at the dark sky, a teddy bear on the windowsill, warm room light",
+      "image_prompt": "a small child seen from behind at an open window at night, holding a flashlight pointing up at the dark sky, a teddy bear on the windowsill, warm room light. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "ที่หน้าต่างบานหนึ่ง มีเด็กตัวเล็ก ๆ\nยืนถือไฟฉาย ส่องขึ้นมาบนฟ้า",
         "en": "At one window, a small child\nstood holding a flashlight, pointing it up at the sky."
@@ -466,7 +466,7 @@
     {
       "id": "s49",
       "image": "images/15b-nual-sees-light.png",
-      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) looking down over the edge of the dark moon, a tiny warm beam of light from far below reflected in her eyes, ears slowly lifting, wonder",
+      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) looking down over the edge of the dark moon, a tiny warm beam of light from far below reflected in her eyes, ears slowly lifting, wonder. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "นวลก้มลงมอง…\nแสงไฟฉายดวงเล็ก ๆ สะท้อนอยู่ในตาของเธอ",
         "en": "Nual looked down…\nthe little beam of the flashlight shining in her eyes."
@@ -475,7 +475,7 @@
     {
       "id": "s50",
       "image": "images/16-earth-glowing.png",
-      "image_prompt": "wide magical view: the whole town below glowing with hundreds of tiny warm lights pointing up toward the dark sky, fireflies rising, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) small on the dark moon looking down in wonder",
+      "image_prompt": "wide magical view: the whole town below glowing with hundreds of tiny warm lights pointing up toward the dark sky, fireflies rising, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) small on the dark moon looking down in wonder. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "แล้วหน้าต่างอื่น ๆ ก็เปิดไฟตาม\nคนที่เคยนอนไม่หลับ คนที่เคยได้แสงจันทร์ชิ้นเล็ก ๆ ของนวล",
         "en": "Then other windows lit up too.\nPeople who once couldn't sleep. People who once got a little piece of Nual's moonlight."
@@ -532,7 +532,7 @@
     {
       "id": "s57",
       "image": "images/17-lights-rising.png",
-      "image_prompt": "soft warm lights floating up from the earth like lanterns toward the dark moon, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) reaching out a paw to catch one, glowing gently",
+      "image_prompt": "soft warm lights floating up from the earth like lanterns toward the dark moon, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) reaching out a paw to catch one, glowing gently. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "แสงเล็ก ๆ เหล่านั้นค่อย ๆ ลอยขึ้นมา\nอุ่น ๆ เหมือนโคมไฟ",
         "en": "Those little lights slowly floated up,\nwarm, like lanterns."
@@ -573,7 +573,7 @@
     {
       "id": "s62",
       "image": "images/18-rabbit-sleeping.png",
-      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) curled up asleep on the moon wrapped in her scarf, surrounded by small warm glowing lights from the earth like a blanket of fireflies, very peaceful",
+      "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) curled up asleep on the moon wrapped in her scarf, surrounded by small warm glowing lights from the earth like a blanket of fireflies, very peaceful. IMPORTANT: this is the night of the dark new moon: there is NO moon anywhere in the sky (no full moon, no crescent), only stars",
       "text": {
         "th": "คืนนั้น นวลไม่ต้องกวาด ไม่ต้องขัด ไม่ต้องเฝ้าใคร\nเป็นครั้งแรก… ที่มีคนเฝ้าเธอบ้าง",
         "en": "That night, Nual didn't have to sweep, or polish, or watch over anyone.\nFor the first time… someone was watching over her."
