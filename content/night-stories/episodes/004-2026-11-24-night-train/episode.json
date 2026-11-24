@@ -8,7 +8,18 @@
     "caretakers",
     "journey"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "youtube_long",
+      "date": "2026-11-25",
+      "time": "21:00",
+      "url": "https://youtu.be/Y7yQj5U7gGc",
+      "language": "th",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
   "languages": {
     "th": {
       "title": "รถไฟกลางคืน",

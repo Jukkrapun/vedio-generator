@@ -1,0 +1,80 @@
+{
+  "mode": "image",
+  "title": "เพื่อนร่วมงานที่ชอบพูดว่า คิดให้หน่อย",
+  "tags": [
+    "coworkers",
+    "office-life",
+    "humor"
+  ],
+  "posts": [
+    {
+      "platform": "tiktok",
+      "date": "2026-11-25",
+      "time": "12:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7711748161907232020",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    },
+    {
+      "platform": "youtube",
+      "date": "2026-11-25",
+      "time": "12:00",
+      "url": "https://youtube.com/shorts/tnI35bA2flY?feature=share",
+      "views": 0,
+      "likes": 0,
+      "saves": 0
+    }
+  ],
+  "tts": "elevenlabs",
+  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "model": "eleven_v3",
+  "fallback": {
+    "tts": "edge",
+    "voice": "th-TH-PremwadeeNeural",
+    "rate": "-8%"
+  },
+  "pause_sec": 0.45,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "late-night cinematic film photography, warm tungsten bulbs and neon glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a Thai street-side made-to-order food shop at night, two office workers seen from behind in work clothes standing in front of trays of curries under hanging bulbs, one pointing undecided, steam rising, vertical 9:16",
+      "text": "[laughs] เพื่อนที่ทำงานถามว่า กินอะไรดี... พอเสนอไป ก็บอกว่า ไม่เอาอันนี้",
+      "cards": [
+        "\"กินอะไรดี\"",
+        "เสนอไป...",
+        "\"ไม่เอาอันนี้\""
+      ]
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body.png",
+      "image_prompt": "a cozy small bar after work at night, two office workers out of focus sitting at the counter with loosened ties, two glasses and a small menu face-down on the counter, warm amber light and soft neon, vertical 9:16",
+      "text": "เลิกงานชวนไปนั่งต่อ... ร้านไหนก็ได้ แต่ร้านนั้นไม่ ร้านนี้ก็ไม่",
+      "cards": [
+        "ร้านไหนก็ได้...",
+        "แต่ร้านนั้นไม่\nร้านนี้ก็ไม่"
+      ]
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "close-up of two glasses clinking at a dim bar counter late at night, blurred office workers laughing in the background, warm bokeh lights, vertical 9:16",
+      "text": "[warmly] ทริคคือให้เลือกแค่สองทาง... แล้วแท็กเพื่อนคนนั้นไว้เลย",
+      "cards": [
+        "ให้เลือกแค่สองทาง",
+        "แล้วแท็กเพื่อน\nคนนั้นไว้เลย"
+      ]
+    }
+  ],
+  "review": {
+    "stage": "done",
+    "order": "20261123-121122-kptw"
+  }
+}

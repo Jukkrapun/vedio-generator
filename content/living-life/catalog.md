@@ -7,11 +7,11 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 | # | Title | Tags | Mode | Status | Length | Results |
 |---|---|---|---|---|---|---|
-| 001-2026-11-22-grown-up-lonely | โตแล้วเหงาเป็นเรื่องปกติ | loneliness, growing-up | image | rendered | 17.0s | - |
+| 001-2026-11-22-grown-up-lonely | โตแล้วเหงาเป็นเรื่องปกติ | loneliness, growing-up | image | posted | 17.0s | 0 views / 0 likes / 0 saves |
 | 002-2026-11-22-friends-drift-apart | เพื่อนที่ค่อย ๆ ห่างกันไป | friendship, growing-up | image | rendered | 19.2s | - |
 | 003-2026-11-22-slow-is-okay | ช้ากว่าคนอื่นไม่ได้แปลว่าแพ้ | comparison, self-worth | image | rendered | 18.7s | - |
 | 004-2026-11-22-living-alone | อยู่คนเดียวไม่ได้แปลว่าเหงา | living-alone, loneliness | image | rendered | 20.8s | - |
-| 005-2026-11-22-overthinking-2am | คิดมากตอนตีสอง | overthinking, sleep | image | rendered | 18.9s | - |
+| 005-2026-11-22-overthinking-2am | คิดมากตอนตีสอง | overthinking, sleep | image | posted | 18.9s | 0 views / 0 likes / 0 saves |
 
 ## Tags
 
@@ -23,6 +23,11 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 - **overthinking** (1): 005
 - **self-worth** (1): 003
 - **sleep** (1): 005
+
+## Best performing (by views)
+
+1. 001-2026-11-22-grown-up-lonely - 0 views / 0 likes / 0 saves
+2. 005-2026-11-22-overthinking-2am - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

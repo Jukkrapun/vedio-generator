@@ -4,7 +4,41 @@
     "missing",
     "moving-on"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "tiktok",
+      "date": "2026-11-24",
+      "time": "22:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7711562881745161478",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261119-235720-image"
+    },
+    {
+      "platform": "youtube",
+      "date": "2026-11-24",
+      "time": "12:00",
+      "url": "https://youtube.com/shorts/uQ5RcSJ1ido?feature=share",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261119-235720-image"
+    },
+    {
+      "platform": "facebook",
+      "date": "2026-11-24",
+      "time": "22:00",
+      "url": "https://www.facebook.com/share/r/1EeMbyHNHj/",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261119-235720-image"
+    }
+  ],
   "voice": "th-TH-PremwadeeNeural",
   "rate": "-8%",
   "pause_sec": 0.45,

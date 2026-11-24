@@ -1,0 +1,50 @@
+{
+  "total": 19.2,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a Thai street-side made-to-order food shop at night, two office workers seen from behind in work clothes standing in front of trays of curries under hanging bulbs, one pointing undecided, steam rising, vertical 9:16",
+      "text": "[laughs] เพื่อนที่ทำงานถามว่า กินอะไรดี... พอเสนอไป ก็บอกว่า ไม่เอาอันนี้",
+      "cards": [
+        "\"กินอะไรดี\"",
+        "เสนอไป...",
+        "\"ไม่เอาอันนี้\""
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 6.94,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body.png",
+      "image_prompt": "a cozy small bar after work at night, two office workers out of focus sitting at the counter with loosened ties, two glasses and a small menu face-down on the counter, warm amber light and soft neon, vertical 9:16",
+      "text": "เลิกงานชวนไปนั่งต่อ... ร้านไหนก็ได้ แต่ร้านนั้นไม่ ร้านนี้ก็ไม่",
+      "cards": [
+        "ร้านไหนก็ได้...",
+        "แต่ร้านนั้นไม่\nร้านนี้ก็ไม่"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 7.39,
+      "end": 13.15,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/03-closing.png",
+      "image_prompt": "close-up of two glasses clinking at a dim bar counter late at night, blurred office workers laughing in the background, warm bokeh lights, vertical 9:16",
+      "text": "[warmly] ทริคคือให้เลือกแค่สองทาง... แล้วแท็กเพื่อนคนนั้นไว้เลย",
+      "cards": [
+        "ให้เลือกแค่สองทาง",
+        "แล้วแท็กเพื่อน\nคนนั้นไว้เลย"
+      ],
+      "audio": "02-closing.mp3",
+      "start": 13.6,
+      "end": 18.0,
+      "align": "02-closing.align.json"
+    }
+  ]
+}

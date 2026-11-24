@@ -7,8 +7,8 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 | # | Title | Tags | Mode | Status | Length | Results |
 |---|---|---|---|---|---|---|
-| 001-2026-11-19-missing-without-returning | คิดถึงได้ โดยไม่ต้องกลับไป | missing, moving-on | image | rendered | 26.6s | - |
-| 003-2026-11-19-got-myself-back | ฉันไม่ได้เสียเขาไป ฉันได้ตัวเองคืนมา | self-love, moving-on | video | rendered | 25.4s | - |
+| 001-2026-11-19-missing-without-returning | คิดถึงได้ โดยไม่ต้องกลับไป | missing, moving-on | image | posted | 26.6s | 0 views / 0 likes / 0 saves |
+| 003-2026-11-19-got-myself-back | ฉันไม่ได้เสียเขาไป ฉันได้ตัวเองคืนมา | self-love, moving-on | video | posted | 25.4s | 0 views / 0 likes / 0 saves |
 | 004-2026-11-19-be-yourself | สิ่งที่เหนื่อยที่สุดในความรัก | self-love, self-worth | video | rendered | 18.3s | - |
 | 005-2026-11-20-dont-beg-for-attention | ถ้าต้องขอให้เขาสนใจ | self-worth, relationship-red-flags | image | posted | 16.2s | 0 views / 0 likes / 0 saves |
 | 006-2026-11-20-small-things | ความรักอยู่ในเรื่องเล็ก ๆ | true-love, small-gestures | image | posted | 19.5s | 0 views / 0 likes / 0 saves |
@@ -18,7 +18,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | 010-2026-11-20-ordinary-days | อยากมีคนอยู่ด้วยในวันธรรมดา | true-love, partnership | image | rendered | 15.3s | - |
 | 011-2026-11-22-move-on-quietly | มูฟออนแบบเงียบ ๆ | moving-on, self-love | image | rendered | 14.7s | - |
 | 012-2026-11-22-kind-to-myself | ใจดีกับตัวเองตอนตีสอง | self-love | image | rendered | 16.7s | - |
-| 013-2026-11-22-loved-alone | รักอยู่คนเดียว | unrequited | image | rendered | 16.8s | - |
+| 013-2026-11-22-loved-alone | รักอยู่คนเดียว | unrequited | image | posted | 16.8s | 0 views / 0 likes / 0 saves |
 | 014-2026-11-22-if-we-met-later | ถ้าเราเจอกันตอนนี้ | timing, missing | image | rendered | 17.4s | - |
 | 015-2026-11-22-thank-you-ex | ขอบคุณคนที่เคยรัก | letting-go, gratitude | image | rendered | 15.5s | - |
 
@@ -39,9 +39,12 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 ## Best performing (by views)
 
-1. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
-2. 006-2026-11-20-small-things - 0 views / 0 likes / 0 saves
-3. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
+1. 001-2026-11-19-missing-without-returning - 0 views / 0 likes / 0 saves
+2. 003-2026-11-19-got-myself-back - 0 views / 0 likes / 0 saves
+3. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
+4. 006-2026-11-20-small-things - 0 views / 0 likes / 0 saves
+5. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
+6. 013-2026-11-22-loved-alone - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

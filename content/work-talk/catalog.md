@@ -12,6 +12,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | 003-2026-11-20-boss-line-at-night | หัวหน้าทักไลน์ตอนห้าทุ่ม | boundaries, boss | image | posted | 20.4s | 0 views / 0 likes / 0 saves |
 | 004-2026-11-20-comparing-careers | เพื่อนไปไกลแล้ว แต่เรายังอยู่ที่เดิม | career-doubt, comparison | image | rendered | 18.4s | - |
 | 005-2026-11-20-rest-is-work | การพักก็เป็นส่วนหนึ่งของการทำงาน | burnout, rest | video | posted | 20.0s | 0 views / 0 likes / 0 saves |
+| 006-2026-11-23-think-for-me | เพื่อนร่วมงานที่ชอบพูดว่า คิดให้หน่อย | coworkers, office-life, humor | image | posted | 19.2s | 0 views / 0 likes / 0 saves |
 
 ## Tags
 
@@ -21,7 +22,10 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 - **burnout** (2): 002, 005
 - **career-doubt** (1): 004
 - **comparison** (1): 004
+- **coworkers** (1): 006
+- **humor** (1): 006
 - **monday** (1): 001
+- **office-life** (1): 006
 - **rest** (2): 002, 005
 
 ## Best performing (by views)
@@ -30,6 +34,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 2. 002-2026-11-20-tired-not-lazy - 0 views / 0 likes / 0 saves
 3. 003-2026-11-20-boss-line-at-night - 0 views / 0 likes / 0 saves
 4. 005-2026-11-20-rest-is-work - 0 views / 0 likes / 0 saves
+5. 006-2026-11-23-think-for-me - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 
@@ -62,3 +67,8 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 - จนวันที่ร่างกายสั่งให้หยุดเอง... ถึงได้รู้ว่าเราฝืนมานานแค่ไหน
 - ลองใส่เวลาพักลงในตารางเหมือนนัดสำคัญ... แล้วรักษามันให้ได้
 - คนที่พักเป็น... คือคนที่ไปได้ไกลกว่า
+
+### 006-2026-11-23-think-for-me - เพื่อนร่วมงานที่ชอบพูดว่า คิดให้หน่อย
+- เพื่อนที่ทำงานถามว่า กินอะไรดี... พอเสนอไป ก็บอกว่า ไม่เอาอันนี้
+- เลิกงานชวนไปนั่งต่อ... ร้านไหนก็ได้ แต่ร้านนั้นไม่ ร้านนี้ก็ไม่
+- ทริคคือให้เลือกแค่สองทาง... แล้วแท็กเพื่อนคนนั้นไว้เลย
