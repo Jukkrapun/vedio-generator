@@ -1,6 +1,6 @@
 ---
 title: กระต่ายผู้ดูแลดวงจันทร์ / The Rabbit Who Looks After the Moon
-status: draft        # draft | ready | rendered | published
+status: rendered        # draft | ready | rendered | published
 duration_target: 540 # seconds (~4.4k TH chars + 71 x 1.0s pauses = about 8.5-9 min)
 publish_date:
 ---
