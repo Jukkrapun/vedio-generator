@@ -405,11 +405,17 @@ function VoiceReview({ id, detail, asset, busy }: { id: string; detail: EpisodeD
 
 function RenderReview({ episode, busy }: { episode: Episode; busy: boolean }) {
   const { enqueue } = useOps();
+  const [note, setNote] = useState("");
   const take = episode.versions.find(v => v.id === episode.selectedVersion);
   return <Card className="section-card stack">
     {take ? <><video className="player review-player" key={take.videoUrl} controls playsInline preload="metadata" src={take.videoUrl} poster={take.posterUrl} />
       <p className="small muted">รอบ {take.number}/{episode.versions.length}{take.duration ? " · " + take.duration + " วิ" : ""} — รอบอื่นดูได้ในแท็บประวัติของหน้าคลิป</p></>
       : <Empty>{busy ? "กำลังเรนเดอร์…" : "ยังไม่มีคลิป (ระบบเก็บเข้าประวัติภายใน ~30 วินาทีหลังเรนเดอร์เสร็จ)"}</Empty>}
-    <Button variant="outline" disabled={busy} onClick={async () => { await enqueue("render", { episode: episode.id }); toast.success("เรนเดอร์ใหม่แล้ว"); }}><RefreshCw size={15} /> เรนเดอร์ใหม่</Button>
+    <label>อยากปรับอะไรก่อนเรนเดอร์ใหม่ <span className="small muted">(ไม่บังคับ — Claude แก้ episode.json ให้ก่อนเรนเดอร์)</span>
+      <textarea rows={3} value={note} placeholder="เช่น ซับใหญ่ขึ้นและอยู่ต่ำลง / ภาพขยับช้าลง / ตัดช่วงที่ 3 ออก / เว้นจังหวะก่อนประโยคสุดท้ายนานขึ้น" onChange={event => setNote(event.target.value)} /></label>
+    <Button variant="outline" disabled={busy} onClick={async () => {
+      await enqueue("render", note.trim() ? { episode: episode.id, note: note.trim() } : { episode: episode.id });
+      toast.success(note.trim() ? "ส่งให้ Claude ปรับแล้วเรนเดอร์ใหม่" : "เรนเดอร์ใหม่แล้ว"); setNote("");
+    }}><RefreshCw size={15} /> {note.trim() ? "ปรับแล้วเรนเดอร์ใหม่" : "เรนเดอร์ใหม่"}</Button>
   </Card>;
 }

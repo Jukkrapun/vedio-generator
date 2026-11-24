@@ -169,9 +169,27 @@ def episode_dirs() -> set[str]:
     return found
 
 
+def render_note_prompt(episode_id: str, note: str) -> str:
+    return (f"Before re-rendering episode {episode_path(episode_id)}, adjust its episode.json as the user asks:\n{note}\n\n"
+            "Change render settings (subtitles, cards, parallax/motion, music, pause_sec, skip on segments, voice_settings, "
+            "per-segment image/visual) per CLAUDE.md and the series' series.md. Only change spoken text if the user asks for it "
+            "(new text = new TTS credits). Only edit files in that episode folder. Do NOT render, generate images, run TTS or "
+            "post - the worker renders right after you. Reply in Thai with a short summary of what changed.")
+
+
 def prepare(job: dict, log) -> None:
     """File changes a job needs before its command runs."""
     t, a = job["type"], job.get("args", {})
+    if t == "render" and str(a.get("note", "")).strip():
+        # user's instructions for this re-render: Claude edits episode.json first, then the normal render runs
+        log.write("--- Claude: adjusting episode.json for this render ---\n")
+        log.flush()
+        done = subprocess.run(claude_command(render_note_prompt(a["episode"], a["note"]), guard=False), cwd=ROOT,
+                              stdout=log, stderr=subprocess.STDOUT, timeout=1800)
+        if done.returncode:
+            raise ValueError(f"Claude could not apply the render note (exit {done.returncode})")
+        log.write("\n--- render ---\n")
+        log.flush()
     if t == "regen_image":
         ep_dir = ROOT / episode_path(a["episode"])
         episode = read(ep_dir / "episode.json") or {}
