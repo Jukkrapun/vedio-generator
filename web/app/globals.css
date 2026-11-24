@@ -381,3 +381,22 @@ textarea::placeholder { color: var(--muted); }
 @media (min-width: 1024px) { .platform-slots { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .file-name { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .7rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; margin: 2px 0 4px; }
 .unreviewed { margin-top: 16px; }
+/* script review: read like a script, edit on demand */
+.script-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.script-tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.script-read { list-style: none; margin: 8px 0 0; padding: 0; display: grid; }
+.script-read > li { display: grid; grid-template-columns: 22px 44px minmax(0,1fr); gap: 10px; padding: 12px 0; border-top: 1px solid var(--border); align-items: start; }
+.script-read > li:first-child { border-top: 0; }
+.script-read > li.skipped { opacity: .45; }
+.script-no { font-size: .75rem; color: var(--muted); padding-top: 3px; text-align: right; }
+.script-thumb { width: 44px; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 5px; background: var(--surface); display: block; }
+.script-body { display: grid; gap: 6px; min-width: 0; }
+.script-meta { display: flex; gap: 6px; align-items: center; font-size: .7rem; color: var(--muted); }
+.script-line { margin: 0; font-size: 1.05rem; line-height: 1.65; display: grid; gap: 2px; }
+.script-cards { display: flex; flex-wrap: wrap; gap: 5px; }
+.script-cards span { font-size: .75rem; padding: 3px 8px; border-radius: 999px; background: var(--surface); color: var(--gold-text); }
+.script-prompt { margin: 0; font-size: .75rem; color: var(--muted); }
+.script-cards-edit, .script-prompt-edit { font-size: .85rem; }
+.publish-read { font-size: .92rem; }
+.publish-read pre { white-space: pre-wrap; }
+@media (min-width: 1024px) { .script-read > li { grid-template-columns: 28px 64px minmax(0,1fr); } .script-thumb { width: 64px; } }

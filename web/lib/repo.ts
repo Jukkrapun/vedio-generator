@@ -423,7 +423,7 @@ export async function updateScript(series: string, slug: string, body: { segment
     for (const edit of body.segments ?? []) {
       const seg = data.segments?.find(s => s.id === edit.id);
       if (!seg) throw new Error("segment not found");
-      if (typeof edit.text === "string") seg.text = edit.text;
+      if (typeof edit.text === "string" && typeof seg.text !== "object") seg.text = edit.text; // story text {th,en} is not edited here
       if (Array.isArray(edit.cards)) seg.cards = edit.cards.map(String).filter(Boolean);
       if (typeof edit.image_prompt === "string") seg.image_prompt = edit.image_prompt;
     }

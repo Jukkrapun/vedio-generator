@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Ban, Check, CircleAlert, FastForward, ImageIcon, Loader2, Mic, Pencil, RefreshCw, RotateCcw, ScrollText, Send, Sparkles, Undo2, Video } from "lucide-react";
+import Markdown from "react-markdown";
 import { toast } from "sonner";
 import { duration } from "@/lib/time";
 import { stages, type Episode, type EpisodeDetail, type Job, type Order, type Stage, type WorkerInfo } from "@/lib/types";
@@ -252,7 +253,7 @@ export function ReviewScreen({ id, initial }: { id: string; initial: EpisodeDeta
     {!episode.review && <Card className="stage-status"><ScrollText size={18} /><div><strong>ตอนนี้สร้างนอกเว็บ ยังไม่อยู่ในขั้นตรวจ</strong><p className="small muted">กด "เริ่มตรวจ" ระบบจะดูไฟล์ที่มี (บท ภาพ เสียง คลิป) แล้วพาไปขั้นที่ต้องตรวจต่อ</p></div><Button onClick={() => act("adopt")}><Check size={15} /> เริ่มตรวจ</Button></Card>}
     {episode.review && stage === "done" && <Card className="stage-status done"><Check size={18} /><div><strong>ผ่านครบทุกขั้นแล้ว อยู่ในคิวลงคลิป</strong><p className="small muted">เลือกรอบที่จะลงได้ในแท็บประวัติของหน้าคลิป</p></div></Card>}
 
-    {step === "script" && <ScriptReview id={id} detail={detail} reload={reload} busy={state === "busy"} />}
+    {step === "script" && <ScriptReview id={id} detail={detail} reload={reload} busy={state === "busy"} asset={asset} />}
     {step === "images" && <ImagesReview id={id} detail={detail} asset={asset} busy={state === "busy"} />}
     {step === "voice" && <VoiceReview id={id} detail={detail} asset={asset} busy={state === "busy"} />}
     {step === "render" && <RenderReview episode={episode} busy={state === "busy"} />}
@@ -268,29 +269,60 @@ export function ReviewScreen({ id, initial }: { id: string; initial: EpisodeDeta
   </>;
 }
 
-function ScriptReview({ id, detail, reload, busy }: { id: string; detail: EpisodeDetail; reload: () => Promise<unknown>; busy: boolean }) {
+function ScriptReview({ id, detail, reload, busy, asset }: { id: string; detail: EpisodeDetail; reload: () => Promise<unknown>; busy: boolean; asset: (f: string) => string }) {
   const { enqueue } = useOps();
   const [draft, setDraft] = useState(detail);
   const [publish, setPublish] = useState(detail.publish);
   const [dirty, setDirty] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [view, setView] = useState<"script" | "publish">("script");
+  const [showPrompts, setShowPrompts] = useState(false);
   const [note, setNote] = useState("");
   useEffect(() => { if (!dirty) { setDraft(detail); setPublish(detail.publish); } }, [detail, dirty]);
+  const story = detail.mode === "story"; // story text is {th, en}: read-only here, ask Claude to change it
   const edit = (segId: string, patch: Partial<EpisodeDetail["segments"][number]>) => { setDirty(true); setDraft(d => ({ ...d, segments: d.segments.map(s => s.id === segId ? { ...s, ...patch } : s) })); };
   async function save() {
-    await api("/api/episodes/" + id + "/script", { method: "PATCH", json: { title: draft.title, publish, segments: draft.segments.map(s => ({ id: s.id, text: s.text, cards: s.cards, image_prompt: s.image_prompt })) } }).catch(fail);
-    setDirty(false); await reload(); toast.success("บันทึกบทแล้ว");
+    await api("/api/episodes/" + id + "/script", { method: "PATCH", json: { title: draft.title, publish, segments: draft.segments.map(s => ({ id: s.id, ...(story ? {} : { text: s.text }), cards: s.cards, image_prompt: s.image_prompt })) } }).catch(fail);
+    setDirty(false); setEditing(false); await reload(); toast.success("บันทึกบทแล้ว");
   }
+  const cancel = () => { setDirty(false); setEditing(false); setDraft(detail); setPublish(detail.publish); };
+  const spoken = draft.segments.filter(s => !s.skip);
+  const chars = spoken.reduce((n, s) => n + s.text.replace(/\[[^\]]*\]/g, "").length, 0);
+
   return <div className="stack">
-    <Card className="section-card stack">
-      <label>ชื่อตอน<input value={draft.title} onChange={event => { setDirty(true); setDraft({ ...draft, title: event.target.value }); }} /></label>
-      {draft.segments.map((seg, index) => <div key={seg.id} className={"segment-edit" + (seg.skip ? " skipped" : "")}>
-        <div className="tag-row"><code>{index + 1}. {seg.id}</code>{seg.skip && <Badge>ข้าม</Badge>}</div>
-        <label>บทพูด<textarea rows={2} value={seg.text} onChange={event => edit(seg.id, { text: event.target.value })} /></label>
-        <label>ซับ (1 บรรทัด = 1 การ์ด)<textarea rows={Math.max(2, seg.cards.length)} value={seg.cards.join("\n")} onChange={event => edit(seg.id, { cards: event.target.value.split("\n") })} /></label>
-        {seg.image && <label>Prompt ภาพ<textarea rows={2} value={seg.image_prompt} onChange={event => edit(seg.id, { image_prompt: event.target.value })} /></label>}
-      </div>)}
-      <label>publish.md<textarea rows={10} value={publish} onChange={event => { setDirty(true); setPublish(event.target.value); }} /></label>
-      {dirty && <div className="modal-actions"><Button variant="outline" onClick={() => { setDirty(false); setDraft(detail); setPublish(detail.publish); }}>ยกเลิกที่แก้</Button><Button onClick={save}><Pencil size={15} /> บันทึก</Button></div>}
+    <Card className="section-card script-sheet">
+      <div className="script-toolbar">
+        <div className="segmented" role="tablist">
+          <button aria-pressed={view === "script"} onClick={() => setView("script")}>บทพูด ({spoken.length} ช่วง)</button>
+          <button aria-pressed={view === "publish"} onClick={() => setView("publish")}>แคปชัน / publish</button>
+        </div>
+        <div className="script-tools">
+          {view === "script" && <label className="checkbox small"><input type="checkbox" checked={showPrompts} onChange={event => setShowPrompts(event.target.checked)} />แสดง prompt ภาพ</label>}
+          {!editing ? <Button variant="outline" onClick={() => setEditing(true)}><Pencil size={15} /> แก้ไข</Button>
+            : <><Button variant="ghost" onClick={cancel}>ยกเลิก</Button><Button disabled={!dirty} onClick={save}>บันทึก</Button></>}
+        </div>
+      </div>
+      <p className="small muted">~{chars.toLocaleString("th-TH")} ตัวอักษรที่พูด{story ? " · เรื่องยาว: แก้บทพูดผ่าน \"ให้ Claude แก้บท\" ด้านล่าง" : ""}</p>
+
+      {view === "script" && <>
+        {editing && <label>ชื่อตอน<input value={draft.title} onChange={event => { setDirty(true); setDraft({ ...draft, title: event.target.value }); }} /></label>}
+        <ol className="script-read">{draft.segments.map((seg, index) => <li key={seg.id} className={seg.skip ? "skipped" : ""}>
+          <span className="script-no">{index + 1}</span>
+          {seg.image ? <img className="script-thumb" src={asset(seg.image)} alt="" loading="lazy" onError={event => { event.currentTarget.style.visibility = "hidden"; }} /> : <span className="script-thumb" />}
+          <div className="script-body">
+            <div className="script-meta"><code>{seg.id}</code>{seg.skip && <Badge>ข้าม</Badge>}</div>
+            {editing && !story ? <textarea rows={2} value={seg.text} onChange={event => edit(seg.id, { text: event.target.value })} />
+              : <p className="script-line">{seg.text.split("\n").map((line, i) => <span key={i}>{line}</span>)}</p>}
+            {editing ? <textarea className="script-cards-edit" rows={Math.max(1, seg.cards.length)} placeholder="ซับ: 1 บรรทัด = 1 การ์ด" value={seg.cards.join("\n")} onChange={event => edit(seg.id, { cards: event.target.value.split("\n") })} />
+              : !!seg.cards.length && <div className="script-cards">{seg.cards.map((card, i) => <span key={i}>{card}</span>)}</div>}
+            {seg.image && (editing ? <textarea className="script-prompt-edit" rows={2} placeholder="prompt ภาพ" value={seg.image_prompt} onChange={event => edit(seg.id, { image_prompt: event.target.value })} />
+              : showPrompts && <p className="script-prompt">🖼 {seg.image_prompt}</p>)}
+          </div>
+        </li>)}</ol>
+      </>}
+
+      {view === "publish" && (editing ? <textarea rows={18} value={publish} onChange={event => { setDirty(true); setPublish(event.target.value); }} />
+        : publish ? <div className="markdown publish-read"><Markdown>{publish}</Markdown></div> : <Empty>ยังไม่มี publish.md</Empty>)}
     </Card>
     <Card className="section-card stack">
       <h2>ให้ Claude แก้บท</h2>
