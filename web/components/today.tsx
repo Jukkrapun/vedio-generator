@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeftRight, ArrowUpRight, CalendarClock, Check, Clock3, Film, Star } from "lucide-react";
 import { toast } from "sonner";
 import { candidates, planToday } from "@/lib/planner";
@@ -27,6 +28,13 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
   const times = [...new Set(today.slots.map(slot => slot.time))].sort();
   const close = () => setActive(null);
   const activeEpisode = active?.slot.episode;
+  // platform tab (?p=tiktok|youtube|facebook) so posting can be done one platform at a time
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const tab = platforms.find(p => p === params.get("p")) ?? null;
+  const setTab = (next: Platform | null) => router.replace(next ? pathname + "?p=" + next : pathname, { scroll: false });
+  const onAction = (slot: Slot) => (kind: Active["kind"]) => { setDryRun(true); setActive({ kind, slot }); };
 
   return <>
     <header className="page-heading today-heading"><div><p className="date-label"><CalendarClock size={16} />{thaiDate(today.date)}</p><h1>ตารางลงคลิปวันนี้</h1></div>
@@ -34,14 +42,22 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
     </header>
 
     <section className="stats-grid today-stats" aria-label="สถานะรายแพลตฟอร์ม">
-      {today.summary.map(item => <Card key={item.platform} className={"stat-card" + (item.left < item.total * 2 ? " low-stock" : "")}>
+      {today.summary.map(item => <Card key={item.platform} role="button" tabIndex={0} onClick={() => setTab(tab === item.platform ? null : item.platform)} className={"stat-card stat-tab" + (item.left < item.total * 2 ? " low-stock" : "") + (tab === item.platform ? " selected" : "")}>
         <div className="stat-top"><PlatformBadge platform={item.platform} /><span className="small muted">ลงแล้ว {item.posted}/{item.total} วันนี้</span></div>
         <div className="stat-count"><strong>{item.left}</strong><span>คลิปที่ยังไม่ลง</span></div><p className="small muted">เหลือใช้ประมาณ {item.days} วัน</p>
       </Card>)}
     </section>
 
     <section className="schedule-section"><div className="section-heading"><div><h2>คิวลงคลิป</h2><p className="muted">เวลาไทย · {times.length} ช่วงเวลา</p></div><span className="main-slot"><Star size={14} fill="currentColor" /> รอบหลัก {schedule.main_slot}</span></div>
-      {times.length ? <div className="schedule-grid">
+      <div className="segmented platform-tabs" role="tablist" aria-label="เลือกแพลตฟอร์ม">
+        <button role="tab" aria-pressed={!tab} onClick={() => setTab(null)}>ทั้งหมด <span className="tab-count">{posted}/{today.slots.length}</span></button>
+        {platforms.map(platform => { const mine = today.slots.filter(slot => slot.platform === platform); return <button key={platform} role="tab" aria-pressed={tab === platform} onClick={() => setTab(platform)}>
+          <PlatformBadge platform={platform} compact /><span className="tab-count">{mine.filter(slot => slot.state === "posted").length}/{mine.length}</span></button>; })}
+      </div>
+      {tab ? <div className="platform-slots">{today.slots.filter(slot => slot.platform === tab).sort((a, b) => a.time.localeCompare(b.time)).map(slot =>
+        <SlotCard key={slot.time} slot={slot} main={slot.time === schedule.main_slot} fields={slot.episode ? fields[slot.episode.id]?.[tab] : undefined} onAction={onAction(slot)} />)}
+        {!today.slots.some(slot => slot.platform === tab) && <Empty>ไม่มีรอบลงคลิปของแพลตฟอร์มนี้</Empty>}</div>
+      : times.length ? <div className="schedule-grid">
         <div className="schedule-head"><span>เวลา</span>{platforms.map(platform => <PlatformBadge key={platform} platform={platform} />)}</div>
         {times.map(time => <div className="schedule-row" key={time}>
           <div className={"time-label" + (time === schedule.main_slot ? " main-time" : "")}><Clock3 size={15} />{time}</div>
