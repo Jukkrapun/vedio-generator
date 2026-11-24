@@ -80,7 +80,7 @@ def image_spans(timeline: list[dict], total: float) -> list[tuple[str, float, fl
     return [(img, a, b - a) for img, a, b in spans]
 
 
-def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None:
+def render_still(image: Path, duration: float, out: Path, zoom_in: bool, fade_in: bool = True) -> None:
     frames = int(duration * FPS) + 1
     step = ZOOM_RANGE / max(frames, 1)
     zoom = f"1+{step:.8f}*on" if zoom_in else f"{1 + ZOOM_RANGE}-{step:.8f}*on"
@@ -90,7 +90,7 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
     vf = (f"scale={w2}:{h2}:force_original_aspect_ratio=increase,crop={w2}:{h2},"
           f"zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s={WIDTH}x{HEIGHT}:fps={FPS},"
           f"eq=brightness=-0.06:saturation=0.9,"
-          f"fade=t=in:st=0:d={FADE_SEC},fade=t=out:st={max(duration - FADE_SEC, 0):.2f}:d={FADE_SEC}")
+          + (f"fade=t=in:st=0:d={FADE_SEC}," if fade_in else "") + f"fade=t=out:st={max(duration - FADE_SEC, 0):.2f}:d={FADE_SEC}")
     run(["ffmpeg", "-y", "-loop", "1", "-i", str(image), "-t", f"{duration:.3f}", "-vf", vf,
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)],
         timeout=LONG_TIMEOUT)
@@ -99,17 +99,19 @@ def render_still(image: Path, duration: float, out: Path, zoom_in: bool) -> None
 def render_image(image: Path, duration: float, out: Path, i: int, motion: str, opts: dict | None = None) -> None:
     """Background shot: "parallax" (default, 2.5D depth move, tools/parallax.py) or "zoom" (flat).
     Falls back to zoom when opencv/depth are unavailable. `opts` = episode "parallax" block."""
+    # the first shot opens without a fade-in so the hook image is visible at once (edit rule 1/9)
+    fade_in = f"fade=t=in:st=0:d={FADE_SEC}," if i > 0 else ""
     if motion == "parallax":
         try:
             import parallax
-            grade = (f"eq=brightness=-0.06:saturation=0.9,fade=t=in:st=0:d={FADE_SEC},"
+            grade = (f"eq=brightness=-0.06:saturation=0.9,{fade_in}"
                      f"fade=t=out:st={max(duration - FADE_SEC, 0):.2f}:d={FADE_SEC}")
             parallax.render_parallax(image, duration, out, WIDTH, HEIGHT, FPS, variant=i, post_vf=grade,
                                      **(opts or {}))
             return
         except Exception as e:  # noqa: BLE001
             print(f"WARNING: parallax failed for {image.name} ({e}) -> zoom", file=sys.stderr)
-    render_still(image, duration, out, zoom_in=i % 2 == 0)
+    render_still(image, duration, out, zoom_in=i % 2 == 0, fade_in=i > 0)
 
 
 def wrap_words(text: str, limit: int) -> list[str]:

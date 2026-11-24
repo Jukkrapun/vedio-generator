@@ -49,10 +49,19 @@ images, make a character sheet and add it as `image_refs`, the same way cat-2am 
 | Sound | No music yet. Soft chime / ambience would fit; nothing in `shared/sfx/` yet. |
 | Ending | Lullaby; the comment invitation is in the description only. |
 
+## Review fixes (2026-11-24, both skills)
+
+- Hook: dropped "รู้ไหม…"; the open loop ("the night the moon went dark") is now line 2.
+- Cut the line that gave the twist away ("ไม่มีใครส่งแสงขึ้นมาให้ฉัน"); the owl no longer states the moral.
+- Old man / nurse / student get their own images (07b–d), reused when they light up for Nual.
+- Close-ups added: 13b (tired, in the dark) and 15b (reaction to the child's flashlight).
+- `render_story.py`: the first shot no longer fades in.
+- Still open: soft ambient bed (about −24 dB) once a file exists in `shared/music/`.
+
 ## Notes on the English rewrite
 
 Natural rewrite. "นวล" kept as Nual. "หลับฝันดีนะ" = "Sleep well."
 
 ## Image list (16:9)
 
-20 images (01-rabbit-looking-down … 20-moon-over-window), prompts in episode.json.
+25 images (01 … 20 plus 07b old man, 07c nurse, 07d student, 13b tired close-up, 15b Nual sees the light), prompts in episode.json.

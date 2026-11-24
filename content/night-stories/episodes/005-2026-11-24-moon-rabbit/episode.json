@@ -49,24 +49,24 @@
       "image": "images/01-rabbit-looking-down.png",
       "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting on the edge of a glowing full moon, seen from behind, looking down at a sleeping town far below with a few lit windows, deep blue night sky, stars",
       "text": {
-        "th": "รู้ไหม…\nทุกคืนที่เธอมองดวงจันทร์ มีใครบางคนกำลังมองกลับมา",
-        "en": "Did you know…\nevery night you look up at the moon, someone up there is looking back."
+        "th": "ทุกคืนที่เธอมองดวงจันทร์\nมีใครบางคนกำลังมองกลับมา",
+        "en": "Every night you look up at the moon,\nsomeone up there is looking back."
       }
     },
     {
       "id": "s02",
       "image": "images/01-rabbit-looking-down.png",
       "text": {
-        "th": "เธอชื่อนวล\nกระต่ายขาวตัวเล็ก ๆ ที่มีหน้าที่ดูแลดวงจันทร์",
-        "en": "Her name is Nual.\nA small white rabbit whose job is to look after the moon."
+        "th": "แต่มีอยู่คืนหนึ่ง… ที่ดวงจันทร์มืดสนิท\nและคนที่มองกลับมา ไม่มีแสงเหลืออยู่เลย",
+        "en": "But there was one night… when the moon went completely dark,\nand the one looking back had no light left at all."
       }
     },
     {
       "id": "s03",
       "image": "images/01-rabbit-looking-down.png",
       "text": {
-        "th": "แต่ก็มีอยู่คืนหนึ่ง… ที่ดวงจันทร์มืดสนิท\nและนวลไม่มีแสงเหลืออยู่เลย",
-        "en": "But there was one night… when the moon went completely dark,\nand Nual had no light left at all."
+        "th": "เธอชื่อนวล\nกระต่ายขาวตัวเล็ก ๆ ที่มีหน้าที่ดูแลดวงจันทร์",
+        "en": "Her name is Nual.\nA small white rabbit whose job is to look after the moon."
       }
     },
     {
@@ -288,7 +288,8 @@
     },
     {
       "id": "s29",
-      "image": "images/07-sleepless-window.png",
+      "image": "images/07b-old-man-phone.png",
+      "image_prompt": "an old man seen from behind sitting on the edge of his bed next to an old home telephone on a small table, dim bedroom at night, soft silver moonlight through the window",
       "text": {
         "th": "คืนก่อน ๆ ชิ้นหนึ่งไปตกที่ห้องของคุณลุงคนหนึ่ง\nที่นั่งรอโทรศัพท์จากลูกสาวซึ่งอยู่ไกลมาก",
         "en": "Once, a piece fell into the room of an old man\nwho sat waiting for a call from his daughter, who lived very far away."
@@ -296,7 +297,8 @@
     },
     {
       "id": "s30",
-      "image": "images/07-sleepless-window.png",
+      "image": "images/07c-nurse-home.png",
+      "image_prompt": "a young night-shift nurse in scrubs seen from behind, just home in a small dark apartment at night, sitting on a chair by the balcony door, bag on the floor, soft silver moonlight",
       "text": {
         "th": "อีกชิ้น ไปตกที่ห้องพยาบาลกะดึก\nที่เพิ่งกลับถึงบ้าน แต่ใจยังเต้นแรงอยู่เลย",
         "en": "Another fell into the room of a night-shift nurse\nwho had just come home, her heart still racing."
@@ -304,7 +306,8 @@
     },
     {
       "id": "s31",
-      "image": "images/07-sleepless-window.png",
+      "image": "images/07d-student-desk.png",
+      "image_prompt": "a student seen from behind asleep with her head on a desk of open books, a small desk lamp still on, dark bedroom at night, soft silver moonlight on the pages",
       "text": {
         "th": "อีกชิ้น ไปตกบนโต๊ะของนักเรียนคนหนึ่ง\nที่อ่านหนังสือจนหลับคาโต๊ะ ไฟยังไม่ได้ปิด",
         "en": "Another landed on the desk of a student\nwho had fallen asleep over her books, the lamp still on."
@@ -407,7 +410,8 @@
     },
     {
       "id": "s43",
-      "image": "images/13-new-moon-dark.png",
+      "image": "images/13b-tired-closeup.png",
+      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) sitting in darkness on the dark moon, ears drooping, hugging her scarf tightly, a single small paper lantern lighting her face from below, tired and lonely but gentle",
       "text": {
         "th": "นวลเหนื่อยมาก\nเหนื่อยแบบที่คนดูแลคนอื่นมานาน ๆ จะรู้สึก",
         "en": "Nual was very tired.\nThe kind of tired you feel after looking after others for a long, long time."
@@ -415,7 +419,7 @@
     },
     {
       "id": "s44",
-      "image": "images/13-new-moon-dark.png",
+      "image": "images/13b-tired-closeup.png",
       "text": {
         "th": "เธอกอดผ้าพันคอไว้แน่น แล้วคิดว่า…\nคืนนี้ ถ้าข้างล่างมีใครนอนไม่หลับ ฉันจะไม่มีอะไรให้เขาเลย",
         "en": "She hugged her scarf tight and thought…\nif anyone down there can't sleep tonight, I'll have nothing to give them."
@@ -423,14 +427,6 @@
     },
     {
       "id": "s45",
-      "image": "images/13-new-moon-dark.png",
-      "text": {
-        "th": "แล้วก็ไม่มีใครส่งแสงขึ้นมาให้ฉันเหมือนกัน",
-        "en": "And no one will send any light up to me, either."
-      }
-    },
-    {
-      "id": "s46",
       "chapter": {
         "th": "แสงจากข้างล่าง",
         "en": "Light from Below"
@@ -443,7 +439,7 @@
       }
     },
     {
-      "id": "s47",
+      "id": "s46",
       "image": "images/14-first-light-below.png",
       "text": {
         "th": "แล้วก็อีกดวง… อีกดวง…\nเหมือนมีดาวค่อย ๆ ผุดขึ้นมาบนพื้นดิน",
@@ -451,7 +447,7 @@
       }
     },
     {
-      "id": "s48",
+      "id": "s47",
       "image": "images/15-child-flashlight.png",
       "image_prompt": "a small child seen from behind at an open window at night, holding a flashlight pointing up at the dark sky, a teddy bear on the windowsill, warm room light",
       "text": {
@@ -460,11 +456,20 @@
       }
     },
     {
-      "id": "s49",
+      "id": "s48",
       "image": "images/15-child-flashlight.png",
       "text": {
         "th": "\"แม่บอกว่าคืนนี้ไม่มีพระจันทร์\nหนูเลยส่องไฟให้ เผื่อกระต่ายจะกลัวมืด\"",
         "en": "\"Mom said there's no moon tonight.\nSo I'm shining a light, in case the rabbit is scared of the dark.\""
+      }
+    },
+    {
+      "id": "s49",
+      "image": "images/15b-nual-sees-light.png",
+      "image_prompt": "close-up of Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) looking down over the edge of the dark moon, a tiny warm beam of light from far below reflected in her eyes, ears slowly lifting, wonder",
+      "text": {
+        "th": "นวลก้มลงมอง…\nแสงไฟฉายดวงเล็ก ๆ สะท้อนอยู่ในตาของเธอ",
+        "en": "Nual looked down…\nthe little beam of the flashlight shining in her eyes."
       }
     },
     {
@@ -478,14 +483,30 @@
     },
     {
       "id": "s51",
-      "image": "images/16-earth-glowing.png",
+      "image": "images/07b-old-man-phone.png",
       "text": {
-        "th": "คุณลุงที่รอโทรศัพท์ เปิดโคมไฟหัวเตียง\nพยาบาลกะดึก เปิดไฟระเบียง นักเรียนคนนั้น หันโคมไฟอ่านหนังสือขึ้นไปบนฟ้า",
-        "en": "The old man who waited for calls switched on his bedside lamp.\nThe night nurse turned on her balcony light. The student tilted her desk lamp up at the sky."
+        "th": "คุณลุงที่รอโทรศัพท์ เปิดโคมไฟหัวเตียง",
+        "en": "The old man who waited for calls switched on his bedside lamp."
       }
     },
     {
       "id": "s52",
+      "image": "images/07c-nurse-home.png",
+      "text": {
+        "th": "พยาบาลกะดึก เปิดไฟระเบียง",
+        "en": "The night nurse turned on her balcony light."
+      }
+    },
+    {
+      "id": "s53",
+      "image": "images/07d-student-desk.png",
+      "text": {
+        "th": "นักเรียนคนนั้น หันโคมไฟอ่านหนังสือขึ้นไปบนฟ้า",
+        "en": "The student tilted her desk lamp up at the sky."
+      }
+    },
+    {
+      "id": "s54",
       "image": "images/16-earth-glowing.png",
       "text": {
         "th": "ไม่มีใครนัดกันไว้เลย\nแต่ทุกคนคิดเหมือนกันว่า… คืนนี้ ขอเป็นแสงให้ใครบ้าง",
@@ -493,7 +514,7 @@
       }
     },
     {
-      "id": "s53",
+      "id": "s55",
       "image": "images/16-earth-glowing.png",
       "text": {
         "th": "ไฟข้างถนน ไฟร้านเล็ก ๆ ที่เปิดดึก\nหิ่งห้อยริมแม่น้ำ ลอยขึ้นมาทีละตัว",
@@ -501,7 +522,7 @@
       }
     },
     {
-      "id": "s54",
+      "id": "s56",
       "image": "images/16-earth-glowing.png",
       "text": {
         "th": "ทั้งเมือง… สว่างขึ้นมา\nเพื่อกระต่ายตัวเดียว ที่นั่งอยู่บนดวงจันทร์มืด ๆ",
@@ -509,7 +530,7 @@
       }
     },
     {
-      "id": "s55",
+      "id": "s57",
       "image": "images/17-lights-rising.png",
       "image_prompt": "soft warm lights floating up from the earth like lanterns toward the dark moon, Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) reaching out a paw to catch one, glowing gently",
       "text": {
@@ -518,7 +539,7 @@
       }
     },
     {
-      "id": "s56",
+      "id": "s58",
       "image": "images/17-lights-rising.png",
       "text": {
         "th": "นวลยื่นอุ้งมือออกไป\nแสงดวงหนึ่งตกลงมาอยู่ในมือเธอพอดี",
@@ -526,7 +547,7 @@
       }
     },
     {
-      "id": "s57",
+      "id": "s59",
       "image": "images/17-lights-rising.png",
       "text": {
         "th": "มันอุ่นมาก…\nอุ่นเหมือนตอนที่มีใครสักคนห่มผ้าให้",
@@ -534,7 +555,7 @@
       }
     },
     {
-      "id": "s58",
+      "id": "s60",
       "image": "images/17-lights-rising.png",
       "text": {
         "th": "นวลเพิ่งเข้าใจ…",
@@ -542,7 +563,7 @@
       }
     },
     {
-      "id": "s59",
+      "id": "s61",
       "image": "images/17-lights-rising.png",
       "text": {
         "th": "แสงที่เธอให้ไปทุกคืน ไม่เคยหายไปไหนเลย\nมันแค่รอวันที่จะได้กลับมาหาเธอ",
@@ -550,7 +571,7 @@
       }
     },
     {
-      "id": "s60",
+      "id": "s62",
       "image": "images/18-rabbit-sleeping.png",
       "image_prompt": "Nual the small white moon rabbit (round, fluffy, long soft ears, tiny dark-blue knitted scarf) curled up asleep on the moon wrapped in her scarf, surrounded by small warm glowing lights from the earth like a blanket of fireflies, very peaceful",
       "text": {
@@ -559,7 +580,7 @@
       }
     },
     {
-      "id": "s61",
+      "id": "s63",
       "image": "images/18-rabbit-sleeping.png",
       "text": {
         "th": "เธอขดตัวอยู่ในผ้าพันคอ\nท่ามกลางแสงอุ่น ๆ ที่ลอยอยู่รอบตัว",
@@ -567,7 +588,7 @@
       }
     },
     {
-      "id": "s62",
+      "id": "s64",
       "image": "images/18-rabbit-sleeping.png",
       "text": {
         "th": "แล้วกระต่ายผู้ดูแลดวงจันทร์\nก็หลับไป",
@@ -575,7 +596,7 @@
       }
     },
     {
-      "id": "s63",
+      "id": "s65",
       "chapter": {
         "th": "เสี้ยวใหม่",
         "en": "A New Crescent"
@@ -588,7 +609,7 @@
       }
     },
     {
-      "id": "s64",
+      "id": "s66",
       "image": "images/19-new-crescent.png",
       "text": {
         "th": "แสงที่คนข้างล่างส่งขึ้นมา\nกลายเป็นดวงจันทร์ดวงใหม่ ค่อย ๆ โตขึ้นทุกคืน",
@@ -596,15 +617,15 @@
       }
     },
     {
-      "id": "s65",
+      "id": "s67",
       "image": "images/19-new-crescent.png",
       "text": {
-        "th": "นกฮูกแก่บินผ่านมา แล้วพยักหน้า\n\"เห็นไหม… ความใจดี มันวนกลับมาเสมอ\"",
-        "en": "The old owl flew by and nodded.\n\"You see… kindness always comes back around.\""
+        "th": "นกฮูกแก่บินผ่านมา หยุดมองเสี้ยวจันทร์ดวงใหม่\nแล้วยิ้ม โดยไม่พูดอะไรเลย",
+        "en": "The old owl flew by, paused to look at the new crescent,\nand smiled without saying a word."
       }
     },
     {
-      "id": "s66",
+      "id": "s68",
       "image": "images/19-new-crescent.png",
       "text": {
         "th": "นวลหยิบไม้กวาดขึ้นมาอีกครั้ง\nแล้วเริ่มงานของเธอ เหมือนทุกคืน",
@@ -612,7 +633,7 @@
       }
     },
     {
-      "id": "s67",
+      "id": "s69",
       "chapter": {
         "th": "ก่อนหลับ",
         "en": "Before You Sleep"
@@ -625,7 +646,7 @@
       }
     },
     {
-      "id": "s68",
+      "id": "s70",
       "image": "images/20-moon-over-window.png",
       "text": {
         "th": "ถ้าเห็นดวงจันทร์ ก็แปลว่านวลยังเฝ้าอยู่\nถ้าไม่เห็น… ก็แปลว่าคืนนี้ เธอกำลังพักบ้าง",
@@ -633,7 +654,7 @@
       }
     },
     {
-      "id": "s69",
+      "id": "s71",
       "image": "images/20-moon-over-window.png",
       "text": {
         "th": "ไม่ว่าแบบไหน แสงที่เธอเคยให้ใครไป\nไม่เคยหายไปไหนเลยนะ",
@@ -641,7 +662,7 @@
       }
     },
     {
-      "id": "s70",
+      "id": "s72",
       "image": "images/20-moon-over-window.png",
       "text": {
         "th": "ปิดไฟ หลับตา\nแล้วปล่อยให้แสงจันทร์ชิ้นเล็ก ๆ ตกลงบนหมอนของเธอ",
@@ -649,7 +670,7 @@
       }
     },
     {
-      "id": "s71",
+      "id": "s73",
       "image": "images/20-moon-over-window.png",
       "text": {
         "th": "หลับฝันดีนะ",
