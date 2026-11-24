@@ -39,9 +39,18 @@ def read(path: Path) -> dict | None:
 
 
 def write(path: Path, data: dict) -> None:
+    """Atomic write. On Windows os.replace fails with "Access is denied" while another process (the web
+    container via the bind mount, antivirus, an editor) has the target open - retry briefly instead of crashing."""
     tmp = path.with_suffix(f".{os.getpid()}.tmp")
     tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(tmp, path)
+    for attempt in range(20):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            time.sleep(0.05 * (attempt + 1))
+    tmp.unlink(missing_ok=True)
+    raise PermissionError(f"could not replace {path} (file kept open by another process)")
 
 
 def update(path: Path, **fields) -> dict:
@@ -333,8 +342,11 @@ def heartbeat() -> bool:
     other = read(WORKER_FILE) or {}
     if other.get("id") not in (None, ME) and time.time() - other.get("ts", 0) < STALE_SEC:
         return False
-    write(WORKER_FILE, {"id": ME, "ts": time.time(), "kind": "docker" if Path("/.dockerenv").exists() else "host",
-                        "claude": bool(shutil.which("claude")), "codex": bool(shutil.which("codex"))})
+    try:
+        write(WORKER_FILE, {"id": ME, "ts": time.time(), "kind": "docker" if Path("/.dockerenv").exists() else "host",
+                            "claude": bool(shutil.which("claude")), "codex": bool(shutil.which("codex"))})
+    except OSError as error:  # a missed heartbeat is harmless (next one in a few seconds); never kill a job over it
+        print(f"heartbeat skipped: {error}", flush=True)
     return True
 
 
