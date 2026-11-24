@@ -49,7 +49,7 @@ export function EpisodeScreen({ id, initial, date, fields }: { id: string; initi
           {!!details.segments.length && <><h2 className="subheading">ช่วงบรรยาย</h2><ol className="segment-list">{details.segments.map(segment => <li key={segment.id}><code>{segment.id}</code><span>{segment.text}</span></li>)}</ol></>}
         </TabsContent>
         <TabsContent value="publish" className="tab-panel">
-          <Tabs defaultValue="youtube"><TabsList aria-label="แพลตฟอร์ม">{(["youtube", "tiktok", "facebook"] as const).map(platform => <TabsTrigger key={platform} value={platform}><PlatformBadge platform={platform} compact /></TabsTrigger>)}</TabsList>
+          <Tabs defaultValue="youtube"><TabsList aria-label="แพลตฟอร์ม">{(["youtube", "tiktok", "facebook", "youtube_long"] as const).map(platform => <TabsTrigger key={platform} value={platform}><PlatformBadge platform={platform} compact /></TabsTrigger>)}</TabsList>
             {platforms.map(platform => <TabsContent key={platform} value={platform} className="tab-panel"><div className="stack">{fields[platform].length ? fields[platform].map((field, index) => <div className="publish-field" key={index}>
               <div><strong>{field.label}</strong><CopyButton value={field.value} /></div>{field.block ? <pre>{field.value}</pre> : <p>{field.value}</p>}
             </div>) : <Empty>ยังไม่มีข้อมูลสำหรับแพลตฟอร์มนี้</Empty>}</div></TabsContent>)}

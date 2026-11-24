@@ -15,7 +15,7 @@ export const seriesPath = (series: string) => series.replace(".", "/");
 
 export const defaultSchedule: Schedule = {
   timezone: "Asia/Bangkok",
-  slots: { tiktok: ["12:00", "19:00", "22:00"], youtube: ["12:00", "20:00"], facebook: ["20:00", "22:00"] },
+  slots: { tiktok: ["12:00", "19:00", "22:00"], youtube: ["12:00", "20:00"], facebook: ["20:00", "22:00"], youtube_long: ["21:00"] },
   main_slot: "22:00",
   test_until: "2026-12-06",
 };
@@ -234,7 +234,9 @@ export async function changePosts(series: string, slug: string, change: PostOp):
 export async function getSchedule(): Promise<Schedule> {
   const file = path.join(OPS, "schedule.json");
   if (!existsSync(file)) await writeJson(file, defaultSchedule);
-  return { ...defaultSchedule, ...(await readJson<Partial<Schedule>>(file, {})) };
+  const saved = await readJson<Partial<Schedule>>(file, {});
+  // merge slots per platform so a platform added later (e.g. youtube_long) gets its default times
+  return { ...defaultSchedule, ...saved, slots: { ...defaultSchedule.slots, ...saved.slots } };
 }
 export async function saveSchedule(schedule: Schedule) {
   const file = path.join(OPS, "schedule.json");

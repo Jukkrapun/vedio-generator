@@ -1,11 +1,13 @@
 import { platforms, type Episode, type Platform, type Schedule, type Slot, type Today } from "./types";
 
 export function candidates(episodes: Episode[], platform: Platform) {
-  return episodes.filter(episode => episode.videoUrl && episode.mode !== "story" && !episode.series.startsWith("poc") && (!episode.review || episode.review.stage === "done") && !episode.posts.some(post => post.platform === platform));
+  // youtube_long = long-form stories (mode "story") only; the short-form platforms never get them
+  const wantStory = platform === "youtube_long";
+  return episodes.filter(episode => episode.videoUrl && (episode.mode === "story") === wantStory && !episode.series.startsWith("poc") && (!episode.review || episode.review.stage === "done") && !episode.posts.some(post => post.platform === platform));
 }
 export function planToday(episodes: Episode[], schedule: Schedule, picks: Record<string, string>, date: string, now: string): Today {
   const slots = platforms.flatMap(platform => {
-    const times = [...schedule.slots[platform]].sort();
+    const times = [...(schedule.slots[platform] ?? [])].sort();
     const available = candidates(episodes, platform).sort((a, b) => a.slug.localeCompare(b.slug));
     const planned = new Map<string, Slot>();
     const used = new Set<string>();
@@ -41,7 +43,7 @@ export function planToday(episodes: Episode[], schedule: Schedule, picks: Record
     });
   });
   return { date, time: now, slots, summary: platforms.map(platform => {
-    const total = schedule.slots[platform].length;
+    const total = (schedule.slots[platform] ?? []).length;
     const left = candidates(episodes, platform).length;
     return { platform, total, left, days: total ? Math.floor(left / total) : 0, posted: slots.filter(slot => slot.platform === platform && slot.state === "posted").length };
   }) };

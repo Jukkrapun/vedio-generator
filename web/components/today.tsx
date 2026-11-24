@@ -101,7 +101,7 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
 function SlotCard({ slot, main, fields, onAction }: { slot: Slot; main: boolean; fields?: PublishField[]; onAction: (kind: Active["kind"]) => void }) {
   const { episode, platform, state } = slot;
   const find = (...labels: string[]) => fields?.find(field => labels.includes(field.label.toLowerCase()))?.value;
-  const caption = platform === "youtube" ? find("description", "คำอธิบาย") : find("caption", "แคปชัน");
+  const caption = platform === "youtube" || platform === "youtube_long" ? find("description", "คำอธิบาย") : find("caption", "แคปชัน");
   return <Card className={"slot-card slot-" + state}>
     <div className="slot-top"><PlatformBadge platform={platform} compact /><span className="slot-time">{slot.time}</span><SlotBadge state={state} /></div>
     {episode ? <>

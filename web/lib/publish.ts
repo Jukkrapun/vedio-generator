@@ -2,7 +2,7 @@ import { platforms, type Platform } from "./types";
 
 export type PublishField = { label: string; value: string; block?: boolean };
 export function parsePublish(markdown: string): Record<Platform, PublishField[]> {
-  const fields: Record<Platform, PublishField[]> = { tiktok: [], youtube: [], facebook: [] };
+  const fields: Record<Platform, PublishField[]> = { tiktok: [], youtube: [], facebook: [], youtube_long: [] };
   let platform: Platform | undefined;
   let label = "ข้อความ";
   let block: string[] | null = null;
@@ -14,7 +14,10 @@ export function parsePublish(markdown: string): Record<Platform, PublishField[]>
     }
     if (block) { block.push(line); continue; }
     if (line.startsWith("## ")) {
-      platform = platforms.find(key => line.toLowerCase().includes(key));
+      const heading = line.toLowerCase();
+      // long-form (night-stories) publish.md: "## YouTube: Thai" -> youtube_long; English upload not tracked yet
+      platform = /youtube: (thai|english)/.test(heading) ? (heading.includes("thai") ? "youtube_long" : undefined)
+        : platforms.find(key => heading.includes(key));
       label = "ข้อความ";
       continue;
     }

@@ -7,9 +7,9 @@ import type { Episode, EpisodeStatus, Job, Mode, Platform, Slot } from "@/lib/ty
 import { Button } from "./ui/button";
 import { Badge } from "./ui/card";
 
-export const platformNames: Record<Platform, string> = { tiktok: "TikTok", youtube: "YouTube Shorts", facebook: "Facebook Reels" };
-export const platformShort: Record<Platform, string> = { tiktok: "TT", youtube: "YT", facebook: "FB" };
-const icons = { tiktok: AudioLines, youtube: Youtube, facebook: Facebook };
+export const platformNames: Record<Platform, string> = { tiktok: "TikTok", youtube: "YouTube Shorts", facebook: "Facebook Reels", youtube_long: "YouTube คลิปยาว" };
+export const platformShort: Record<Platform, string> = { tiktok: "TT", youtube: "YT", facebook: "FB", youtube_long: "YT ยาว" };
+const icons = { tiktok: AudioLines, youtube: Youtube, facebook: Facebook, youtube_long: Youtube };
 export const seriesNames: Record<string, string> = { "love-quotes": "เรื่องความรัก", "work-talk": "เรื่องงาน", "living-life": "เรื่องชีวิต", "night-stories": "เรื่องเล่ายามดึก", poc: "ทดสอบ (POC)", "poc.sound": "ทดสอบเสียง" };
 /** Series used for experiments: shown under the "ทดสอบ" menu, kept out of the clips list and posting queue. */
 export const TEST_SERIES = ["poc"];

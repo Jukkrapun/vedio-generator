@@ -31,6 +31,7 @@ output/<series>/            rendered videos (git-ignored)
   - TikTok: 2–3/day at **12:00 · 19:00 · 22:00**
   - YouTube Shorts: 2/day at **12:00 · 20:00**
   - Facebook Reels: 1–2/day at **20:00 · 22:00** (`publish_fb.py --at` takes any time)
+  - YouTube long-form (night-stories, mode `story`, TH upload): 1/day at **21:00** (added 2026-11-24). Web platform key `youtube_long`; the planner only gives it story episodes and keeps them out of the short-form slots.
   - 22:00 = main "ตอนตีสอง" clip (strongest); daytime slots test new hooks/topics. Remake winners (part 2 / same hook).
   - After 2 weeks compare slots by completion rate and shares/saves; drop slots that underperform.
   - Whenever giving posting info, give the slot times above and suggest which clip goes in which slot. Image mode only for volume (video mode is POC in another session).

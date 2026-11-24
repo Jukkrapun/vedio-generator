@@ -1,4 +1,4 @@
-export const platforms = ["tiktok", "youtube", "facebook"] as const;
+export const platforms = ["tiktok", "youtube", "facebook", "youtube_long"] as const;
 export type Platform = typeof platforms[number];
 export type Mode = "image" | "video" | "story";
 export type EpisodeStatus = "draft" | "rendered" | "posted";
