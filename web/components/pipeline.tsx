@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Ban, Check, CircleAlert, FastForward, ImageIcon,
 import Markdown from "react-markdown";
 import { toast } from "sonner";
 import { duration } from "@/lib/time";
-import { stages, type Episode, type EpisodeDetail, type Job, type Order, type Stage, type WorkerInfo } from "@/lib/types";
+import { stages, type SubtitlePosition, type Episode, type EpisodeDetail, type Job, type Order, type Stage, type WorkerInfo } from "@/lib/types";
 import { Empty, JobBadge, SeriesChip, episodeHref, jobLabels, seriesNames } from "./common";
 import { api, fail, useJob, useOps } from "./ops-provider";
 import { AsyncForm, Button } from "./ui/button";
@@ -382,6 +382,31 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
   </>;
 }
 
+/** Where subtitles sit in the render: saved as episode.json "subtitles", used by the next render. */
+function SubtitlePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; busy: boolean }) {
+  const [value, setValue] = useState<SubtitlePosition>(detail.subtitles ?? detail.subtitlesDefault);
+  useEffect(() => { setValue(detail.subtitles ?? detail.subtitlesDefault); }, [detail.subtitles, detail.subtitlesDefault]);
+  const options: { key: SubtitlePosition; label: string; hint: string }[] = [
+    { key: "center", label: "กลางจอ", hint: "ตัวใหญ่ อ่านง่าย เหมาะกับภาพบรรยากาศ" },
+    { key: "lower", label: "ด้านล่าง", hint: "ไม่บังภาพ/ตัวละคร อยู่เหนือปุ่มของแอป" },
+  ];
+  async function choose(next: SubtitlePosition) {
+    if (next === value) return;
+    await api("/api/episodes/" + id + "/script", { method: "PATCH", json: { subtitles: next } }).catch(fail);
+    setValue(next);
+    toast.success("ซับ" + (next === "lower" ? "ด้านล่าง" : "กลางจอ") + " · มีผลตอนเรนเดอร์");
+  }
+  return <Card className="section-card subtitle-picker">
+    <div><span className="small muted">ตำแหน่งซับ</span>
+      <span className="small muted">{detail.subtitles ? "ตั้งไว้สำหรับตอนนี้" : "ค่าเริ่มต้น (" + (detail.subtitlesDefault === "lower" ? "ด้านล่าง" : "กลางจอ") + ")"}</span></div>
+    <div className="subtitle-options">{options.map(option => <button key={option.key} type="button" disabled={busy}
+      className={"subtitle-option" + (value === option.key ? " selected" : "")} aria-pressed={value === option.key} onClick={() => choose(option.key)}>
+      <span className={"phone-mock " + option.key}><i /></span>
+      <span><strong>{option.label}</strong><span className="small muted">{option.hint}</span></span>
+    </button>)}</div>
+  </Card>;
+}
+
 type VoiceOption = { key: string; tts: "edge" | "elevenlabs"; voice: string; model: string | null; name: string; detail: string; sample: string | null; usedBy: number };
 
 /** Pick the narrator voice for the whole episode (e.g. a female voice for a girl on screen); re-records every segment. */
@@ -430,6 +455,7 @@ function VoiceReview({ id, detail, asset, busy }: { id: string; detail: EpisodeD
   const [redo, setRedo] = useState<{ seg: string; text: string } | null>(null);
   return <>
     <VoicePicker id={id} detail={detail} busy={busy} />
+    <SubtitlePicker id={id} detail={detail} busy={busy} />
     <Card className="section-card stack">
       <h2>เสียงทั้งคลิป</h2><audio controls preload="none" src={asset("audio/voice.mp3")} />
     </Card>

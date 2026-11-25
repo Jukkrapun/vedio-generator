@@ -124,7 +124,7 @@ export function textOf(text: unknown, lang?: string): string {
   return "";
 }
 type RawSegment = { id?: string; text?: string | Record<string, string>; skip?: boolean; cards?: string[]; image?: string; image_prompt?: string; image_prompt_th?: string };
-type RawEpisode = { title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; review?: Review; segments?: RawSegment[] };
+type RawEpisode = { subtitles?: string; host?: unknown; title?: string; tags?: string[]; mode?: Mode; posts?: Post[]; publish_version?: string; review?: Review; segments?: RawSegment[] };
 
 async function loadEpisode(series: string, slug: string): Promise<{ episode: Episode; raw: RawEpisode } | null> {
   const raw = await readJson<RawEpisode | null>(path.join(episodeDir(series, slug), "episode.json"), null);
@@ -204,6 +204,9 @@ export async function getEpisodeDetail(series: string, slug: string): Promise<Ep
       return { id, text: textOf(s.text), cards: s.cards ?? [], image: s.image ?? "", image_prompt: s.image_prompt ?? "", image_prompt_th: s.image_prompt_th ?? "", skip: !!s.skip,
         audio: existsSync(path.join(dir, audio)) ? audio : null };
     }),
+    // same default as tools/render_reel.py: lower third only when a lip-synced host is on screen
+    subtitles: loaded.raw.subtitles === "lower" || loaded.raw.subtitles === "center" ? loaded.raw.subtitles : null,
+    subtitlesDefault: loaded.raw.mode === "video" && loaded.raw.host ? "lower" : "center",
     script: await readText(path.join(dir, "script.md")),
     publish: await readText(path.join(dir, "publish.md")),
   };
@@ -414,7 +417,7 @@ export async function stageAction(series: string, slug: string, action: StageAct
 }
 
 /** Inline script edits from the review page. */
-export async function updateScript(series: string, slug: string, body: { segments?: { id: string; text?: string; cards?: string[]; image_prompt?: string; image_prompt_th?: string }[]; publish?: string; title?: string }) {
+export async function updateScript(series: string, slug: string, body: { segments?: { id: string; text?: string; cards?: string[]; image_prompt?: string; image_prompt_th?: string }[]; publish?: string; title?: string; subtitles?: string | null }) {
   const thaiEdited: string[] = [];
   const dir = await resolveEpisode(series, slug);
   if (!dir) throw new Error("episode not found");
@@ -433,6 +436,8 @@ export async function updateScript(series: string, slug: string, body: { segment
       }
     }
     if (typeof body.title === "string" && body.title.trim()) data.title = body.title.trim();
+    if (body.subtitles === null) delete data.subtitles;
+    else if (body.subtitles === "lower" || body.subtitles === "center") data.subtitles = body.subtitles;
     await writeJson(file, data);
   });
   if (typeof body.publish === "string") await fs.writeFile(path.join(dir, "publish.md"), body.publish, "utf-8");

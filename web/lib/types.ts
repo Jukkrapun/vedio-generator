@@ -9,7 +9,10 @@ export type Stage = typeof stages[number] | "done" | "dropped";
 export type Review = { stage: Stage; order?: string };
 export type Episode = { review: Review | null; id: string; series: string; slug: string; title: string; tags: string[]; mode: Mode; status: EpisodeStatus; videoUrl: string | null; posterUrl: string | null; posts: Post[]; versions: Version[]; selectedVersion: string | null; pinnedVersion: string | null };
 export type Segment = { id: string; text: string; cards: string[]; image: string; image_prompt: string; image_prompt_th: string; audio: string | null; skip?: boolean };
-export type EpisodeDetail = Episode & { segments: Segment[]; script: string; publish: string };
+export type SubtitlePosition = "center" | "lower";
+export type EpisodeDetail = Episode & { segments: Segment[]; script: string; publish: string;
+  /** "subtitles" in episode.json (null = renderer default: lower for host video, center otherwise) */
+  subtitles: SubtitlePosition | null; subtitlesDefault: SubtitlePosition };
 export type Order = { id: string; template: string; title: string; series: string; prompt: string; created_at: string; job_id: string; episodes: string[] };
 export type Schedule = { timezone: "Asia/Bangkok"; slots: Record<Platform, string[]>; main_slot: string; test_until: string };
 export type Slot = { platform: Platform; time: string; state: "posted" | "due" | "upcoming" | "empty"; episode: Episode | null; post?: Post };
