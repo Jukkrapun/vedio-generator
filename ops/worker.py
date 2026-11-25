@@ -18,6 +18,7 @@ import socket
 import subprocess
 import sys
 import time
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -106,7 +107,10 @@ def command(job: dict) -> list[str]:
     if t == "voice_samples":  # characters page: one ElevenLabs line per emotion in character.json "samples"
         return [PY, "tools/voice_samples.py", a["character"]]
     if t in ("claude", "revise"):
-        return claude_command(a["prompt"]) if t == "claude" else claude_command(revise_prompt(a["episode"], a["note"]), guard=False)
+        if t == "claude":
+            return claude_command(a["prompt"], session=job_session(job))
+        return claude_command(revise_prompt(a["episode"], a["note"]), guard=False,
+                              session=job_session(job), resume=episode_session(a["episode"]))
     raise ValueError(f"unknown job type {t!r}")
 
 
@@ -121,12 +125,57 @@ anything - the user reviews every stage in the web dashboard. Reply in Thai with
 # image prompts stay English for Codex; the user reviews them in Thai (decided 2026-11-24)
 THAI_PROMPTS = ("Every segment with an English \"image_prompt\" also gets \"image_prompt_th\": a faithful Thai "
                 "translation of that prompt (same content, natural Thai) for the user to read in the dashboard.")
-# project skills (.claude/skills/) the web's Claude jobs must use - CLAUDE.md "Writing & editing skills"
-SKILLS = ("Use the project skills (Skill tool): story-hook-framework for the story/script, vertical-edit-techniques "
-          "for segments/cards/pacing, and art-director for the look and every image_prompt (pick the look from the "
-          "content, avoid repeating recent episodes, follow shared/brand/style-bible.md, reuse characters from "
-          "shared/characters/ via the \"characters\"/\"narrator\"/\"style_anchor\" keys). The series' series.md and "
-          "the channel tone win over the skills.")
+# Project skills (.claude/skills/) for the web's Claude jobs - CLAUDE.md "Writing & editing skills".
+# Their SKILL.md texts go into the system prompt (--append-system-prompt-file): identical in every job, so the
+# prompt cache covers them, and Claude never has to call the Skill tool.
+SKILL_NAMES = ("story-hook-framework", "vertical-edit-techniques", "art-director")
+SKILLS_FILE = OPS / "skills-prompt.md"
+SKILLS = ("The project skills story-hook-framework (story/script), vertical-edit-techniques (segments/cards/pacing) "
+          "and art-director (the look and every image_prompt: pick the look from the content, avoid repeating recent "
+          "episodes, follow shared/brand/style-bible.md, reuse characters from shared/characters/ via the "
+          "\"characters\"/\"narrator\"/\"style_anchor\" keys) are already in your system prompt - follow them, "
+          "no need to load them again. The series' series.md and the channel tone win over the skills.")
+
+
+def skills_prompt() -> Path:
+    """Write the skills' SKILL.md texts to one file (only when they changed, so the cached prefix stays stable)."""
+    parts = ["# Project skills (preloaded by the ops worker)\n"]
+    for name in SKILL_NAMES:
+        text = (ROOT / ".claude" / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
+        parts.append(f'\n\n<skill name="{name}">\n{text.strip()}\n</skill>')
+    text = "".join(parts) + "\n"
+    if not SKILLS_FILE.exists() or SKILLS_FILE.read_text(encoding="utf-8") != text:
+        SKILLS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        SKILLS_FILE.write_text(text, encoding="utf-8")
+    return SKILLS_FILE
+
+
+# ---- Claude sessions: one per order, reused by later script revisions of its episodes ----
+def job_session(job: dict) -> str:
+    """Stable session id for a job (so after_claude can record it without parsing output)."""
+    return str(uuid.uuid5(uuid.NAMESPACE_URL, "tonteesong-job:" + job["id"]))
+
+
+def session_exists(sid: str) -> bool:
+    base = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude") / "projects"
+    return any(base.glob(f"*/{sid}.jsonl"))
+
+
+def episode_session(episode_id: str) -> str | None:
+    """Session that wrote/last revised this episode, if Claude can still resume it."""
+    sid = ((read(ROOT / episode_path(episode_id) / "episode.json") or {}).get("review") or {}).get("session")
+    return sid if sid and session_exists(sid) else None
+
+
+def record_session(episode_id: str, sid: str) -> None:
+    path = ROOT / episode_path(episode_id) / "episode.json"
+    episode = read(path)
+    if episode is None or (episode.get("review") or {}).get("session") == sid:
+        return
+    episode["review"] = {**(episode.get("review") or {}), "session": sid}
+    write(path, episode)
+
+
 SCRIPT_GUARD = SCRIPT_GUARD.replace("{TH}", THAI_PROMPTS + " " + SKILLS)
 
 
@@ -138,15 +187,18 @@ def revise_prompt(episode_id: str, note: str) -> str:
             "Reply in Thai with a short summary of what changed.")
 
 
-def claude_command(prompt: str, guard: bool = True) -> list[str]:
+def claude_command(prompt: str, guard: bool = True, session: str | None = None, resume: str | None = None) -> list[str]:
+    """resume = continue that session (keeps its context + recorded system prompt); else start `session` (or a new one)."""
     exe = shutil.which("claude")
     if not exe:
         raise ValueError("claude CLI not found - run the worker on the host (ops/start-worker.ps1)")
-    tools = ["Read", "Write", "Edit", "Glob", "Grep", "Skill"]
+    tools = ["Read", "Write", "Edit", "Glob", "Grep"]
     for py in (".venv/Scripts/python.exe", ".venv\\Scripts\\python.exe", "python"):
         for script in ("tools/new_episode.py", "tools/catalog.py"):
             tools += [f"Bash({py} {script}:*)", f"PowerShell({py} {script}:*)"]
-    return [exe, "-p", prompt + (SCRIPT_GUARD if guard else ""),
+    where = ["--resume", resume] if resume else ["--session-id", session or str(uuid.uuid4())]
+    return [exe, "-p", prompt + (SCRIPT_GUARD if guard else ""), *where,
+            "--append-system-prompt-file", str(skills_prompt()),
             "--permission-mode", "acceptEdits", "--allowedTools", *tools,
             "--disallowedTools", "WebFetch", "WebSearch"]
 
@@ -193,10 +245,15 @@ def prepare(job: dict, log) -> None:
         # user's instructions for this re-render: Claude edits episode.json first, then the normal render runs
         log.write("--- Claude: adjusting episode.json for this render ---\n")
         log.flush()
-        done = subprocess.run(claude_command(render_note_prompt(a["episode"], a["note"]), guard=False), cwd=ROOT,
+        resume = episode_session(a["episode"])
+        if resume:
+            log.write(f"(continuing Claude session {resume})\n")
+        done = subprocess.run(claude_command(render_note_prompt(a["episode"], a["note"]), guard=False,
+                                             session=job_session(job), resume=resume), cwd=ROOT,
                               stdout=log, stderr=subprocess.STDOUT, timeout=1800)
         if done.returncode:
             raise ValueError(f"Claude could not apply the render note (exit {done.returncode})")
+        record_session(a["episode"], resume or job_session(job))
         log.write("\n--- render ---\n")
         log.flush()
     if t == "regen_image":
@@ -239,7 +296,7 @@ def after_claude(job: dict, before: set[str]) -> None:
     for ep in new:
         path = ROOT / episode_path(ep) / "episode.json"
         episode = read(path) or {}
-        episode["review"] = {"stage": "script", "order": job["args"].get("order", "")}
+        episode["review"] = {"stage": "script", "order": job["args"].get("order", ""), "session": job_session(job)}
         write(path, episode)
     order_file = OPS / "orders" / f"{job['args'].get('order', '')}.json"
     if new and order_file.exists():
@@ -365,6 +422,9 @@ def run(path: Path) -> None:
         code = proc.wait()
         log.write(f"\n[exit {code}]\n")
     after(job, code)
+    if job["type"] == "revise" and code == 0:
+        # a resumed session keeps its id; a fresh one (old episode, or session gone) becomes the episode's session
+        record_session(job["args"]["episode"], episode_session(job["args"]["episode"]) or job_session(job))
     if job["type"] == "claude":
         after_claude(job, before)  # also on failure: keep whatever episodes were written
     update(path, status="done" if code == 0 else "failed", exit_code=code, finished_at=now())
