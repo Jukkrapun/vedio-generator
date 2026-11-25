@@ -61,6 +61,7 @@ output/<series>/            rendered videos (git-ignored)
 **Writing & editing skills (`.claude/skills/`):** use both whenever writing, rewriting or reviewing an episode (script, segments, image prompts, cards, sound, render QA):
 - `story-hook-framework` — story/script: 1.5s hook, open loop within 3s, visual change every 3–5s, climax = Kishōtenketsu twist (standalone shorts) or Serial Reversal (episodic series).
 - `vertical-edit-techniques` — editing for 9:16: phone framing + safe zones, shot choice by emotion, pause before key lines, J/L-cuts, reaction shots, readable subtitles, voice above music, hard cuts by default, cliffhanger ending, check on a phone before export.
+- `art-director` — look & brand: channel style bible `shared/brand/style-bible.md` (night palette, one warm light, lifted shadows, Thai type, safe zones, frame-1 cover), 4-block image prompts, image/render visual QA.
 - Reviews give a table per rule (✅/⚠️/❌ + segment + concrete fix). The series' `series.md` and the channel tone win over both skills.
 
 **New series:** create `content/<new-series>/` with its own `series.md`, `_template/`, `episodes/`, plus `output/<new-series>/`. Add it to "Current series" above.
