@@ -223,7 +223,7 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
 @media (min-width: 620px) {
   .main { padding-inline: 24px; }
   .progress-summary { width: 170px; }
-  .today-stats { grid-auto-flow: row; grid-template-columns: repeat(3,minmax(0,1fr)); overflow: visible; }
+  .today-stats { grid-auto-flow: row; grid-template-columns: repeat(2,minmax(0,1fr)); overflow: visible; }
   .today-stats .stat-top { flex-wrap: wrap; }
   .clip-stats { grid-template-columns: repeat(4,minmax(0,1fr)); }
   .schedule-row { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -249,7 +249,7 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
   .main { padding: 28px 24px 40px; }
   .topbar { padding-inline: 24px; }
   .stat-card { padding: 14px; }
-  .schedule-head, .schedule-row { display: grid; grid-template-columns: 51px repeat(3,minmax(0,1fr)); gap: 8px; padding: 0; border: 0; }
+  .schedule-head, .schedule-row { display: grid; grid-template-columns: 51px repeat(4,minmax(0,1fr)); gap: 8px; padding: 0; border: 0; }
   .schedule-head { color: var(--muted); font-size: .84rem; padding-block: 5px 7px; }
   .blank-slot { display: block; border-top: 1px solid var(--border); opacity: .55; margin-top: 19px; }
   .time-label { grid-column: auto; align-self: start; margin-top: 8px; }
@@ -273,7 +273,7 @@ a:has(.post-date) { display: inline-flex; align-items: center; min-height: 44px;
   .shell { grid-template-columns: 220px minmax(0,1fr); }
   .sidebar { padding-inline: 17px; }
   .topbar, .main { padding-inline: 35px; }
-  .schedule-head, .schedule-row { grid-template-columns: 68px repeat(3,minmax(0,1fr)); gap: 11px; }
+  .schedule-head, .schedule-row { grid-template-columns: 68px repeat(4,minmax(0,1fr)); gap: 11px; }
   .slot-card, .stat-card { padding: 14px; }
   .slot-actions .button { font-size: .82rem; }
 }
@@ -428,3 +428,4 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 .day-tabs { display: flex; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
 .day-tabs::-webkit-scrollbar { display: none; }
 .day-tabs button { flex: none; white-space: nowrap; display: inline-flex; gap: 5px; align-items: center; }
+@media (min-width: 1024px) { .today-stats { grid-template-columns: repeat(4,minmax(0,1fr)); } }
