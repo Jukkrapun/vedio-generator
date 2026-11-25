@@ -1,7 +1,13 @@
 """Render a vertical reel (1080x1920) from an episode folder.
 
 Usage:
-    python tools/render_reel.py content/<series>/episodes/<episode>
+    python tools/render_reel.py content/<series>/episodes/<episode> [--tiktok]
+
+--tiktok: also writes output/<series>/<episode>-<mode>-tiktok.mp4 with big hook text on
+frame 1 (HyperFrames overlay; text = episode "hook_text" or the first card).
+"overlay": "hyperframes" in episode.json replaces the ASS subtitles with the HyperFrames
+graphics layer (animated captions, dust, vignette, end card; tools/overlay_hf.py). Falls
+back to ASS subtitles if Node/HyperFrames fails.
 
 Steps: voice track (tools/tts.py, cached) -> backgrounds per span -> ASS subtitles
 -> mux voice (+ optional music) -> burn subs -> output/<series>/<episode>-<mode>.mp4
@@ -22,6 +28,7 @@ from dotenv import load_dotenv
 from fontTools.ttLib import TTFont
 
 from media import FPS, HEIGHT, ROOT, WIDTH, host_look, output_path, run
+from overlay_hf import render_overlay
 from subtitles import build_subtitles
 from tts import build_voice
 
@@ -178,8 +185,11 @@ def check_inputs(episode: dict, episode_dir: Path) -> None:
         raise FileNotFoundError(f"Missing host scene: {host_look(episode['host'])['scene']}")
 
 
-def render(episode_dir: Path, host_video: Path | None = None, out: Path | None = None) -> Path:
-    """host_video/out override video/host.mp4 and the output path (used for engine comparisons)."""
+def render(episode_dir: Path, host_video: Path | None = None, out: Path | None = None,
+           tiktok: bool = False) -> Path:
+    """host_video/out override video/host.mp4 and the output path (used for engine comparisons).
+    tiktok=True writes <episode>-<mode>-tiktok.mp4 with hook text on frame 1 (always uses the
+    HyperFrames overlay)."""
     episode = json.loads((episode_dir / "episode.json").read_text(encoding="utf-8"))
     check_inputs(episode, episode_dir)
     timeline, voice_total = build_voice(episode_dir)
@@ -200,10 +210,27 @@ def render(episode_dir: Path, host_video: Path | None = None, out: Path | None =
     mux_audio(episode_dir / "audio" / "voice.mp3", kept, total, music, work / "audio.m4a")
 
     out = out or output_path(episode_dir, episode.get("mode", "image"))
+    if tiktok:
+        out = out.with_name(f"{out.stem}-tiktok.mp4")
     out.parent.mkdir(parents=True, exist_ok=True)
+
+    overlay = None
+    if tiktok or episode.get("overlay") == "hyperframes":
+        try:
+            overlay = render_overlay(episode, kept, total, work, font_file, position,
+                                     episode_dir / "audio", tiktok=tiktok)
+        except Exception as e:  # never lose a render over the graphics layer
+            if tiktok:
+                raise
+            print(f"WARNING: HyperFrames overlay failed, falling back to ASS subtitles: {e}")
+
     # Run in the build dir so the subtitle filter gets plain relative paths (avoids Windows escaping issues)
+    if overlay:
+        video = ["-i", overlay.name, "-filter_complex", "[0:v][2:v]overlay=0:0:format=auto[v]", "-map", "[v]"]
+    else:
+        video = ["-vf", "ass=subs.ass:fontsdir=fonts", "-map", "0:v"]
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "clips.txt", "-i", "audio.m4a",
-         "-vf", "ass=subs.ass:fontsdir=fonts", "-map", "0:v", "-map", "1:a",
+         *video, "-map", "1:a",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
          "-c:a", "copy", "-shortest", "-movflags", "+faststart", str(out)], cwd=work)
     print(f"Rendered {out} ({total:.1f}s)")
@@ -211,7 +238,8 @@ def render(episode_dir: Path, host_video: Path | None = None, out: Path | None =
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    args = [a for a in sys.argv[1:] if a != "--tiktok"]
+    if len(args) != 1:
         sys.exit(__doc__)
     load_dotenv(ROOT / ".env")
-    render(Path(sys.argv[1]).resolve())
+    render(Path(args[0]).resolve(), tiktok="--tiktok" in sys.argv[1:])

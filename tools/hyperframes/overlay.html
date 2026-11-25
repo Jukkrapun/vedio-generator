@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="th" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!--
+      Transparent graphics layer for tools/render_reel.py ("overlay": "hyperframes").
+      tools/overlay_hf.py copies this file next to a generated data.js (window.OVERLAY)
+      and the episode font (font.ttf), renders it to a ProRes 4444 .mov with alpha,
+      and render_reel.py composites it over the parallax backgrounds.
+      Layers: vignette, dust motes, word-by-word captions, optional hook text, end card.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="data.js"></script>
+    <style>
+      @font-face { font-family: "EpisodeFont"; src: url("font.ttf") format("truetype"); font-display: block; }
+      :root { --ink: #f4f1ea; --gold: #ffcf6b; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "EpisodeFont", sans-serif; }
+      #root { position: relative; width: 100%; height: 100%; }
+      #vignette { position: absolute; inset: 0;
+        background:
+          radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(3, 5, 12, 0.5) 100%),
+          linear-gradient(to bottom, transparent 60%, rgba(3, 5, 12, 0.45) 100%); }
+      #dust { position: absolute; inset: 0; overflow: hidden; }
+      .mote { position: absolute; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 230, 180, 0.9), rgba(255, 230, 180, 0) 70%); }
+
+      /* captions; top is set from data (center or lower third), always inside the 9:16 safe zone */
+      #captions { position: absolute; left: 130px; right: 130px; height: 340px; }
+      .card { position: absolute; inset: 0; display: flex; flex-wrap: wrap; align-content: center;
+        justify-content: center; text-align: center; opacity: 0; }
+      .word { display: inline-block; white-space: pre; color: var(--ink); font-size: 80px; line-height: 1.45;
+        text-shadow: 0 0 4px #000, 0 3px 10px rgba(0, 0, 0, 0.85), 0 0 2px #000;
+        -webkit-text-stroke: 2px rgba(0, 0, 0, 0.55); paint-order: stroke fill; opacity: 0; }
+      .card.hook .word { font-size: 88px; }
+
+      /* TikTok hook: big text at the top for the first seconds */
+      #hook { position: absolute; left: 110px; right: 110px; top: 260px; text-align: center;
+        color: var(--ink); font-size: 92px; line-height: 1.35; opacity: 0;
+        text-shadow: 0 0 6px #000, 0 4px 18px rgba(0, 0, 0, 0.9); -webkit-text-stroke: 3px rgba(0, 0, 0, 0.6); paint-order: stroke fill; }
+      #hook .bar { display: block; width: 0; height: 6px; margin: 26px auto 0; background: var(--gold); border-radius: 3px; }
+
+      /* end card */
+      #brand { position: absolute; left: 0; right: 0; top: 300px; text-align: center; color: var(--ink); opacity: 0;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+      #brand .name { font-size: 70px; letter-spacing: 0.08em; }
+      #brand .moon { width: 90px; height: 90px; margin: 0 auto 26px; border-radius: 50%;
+        box-shadow: inset -22px -6px 0 0 var(--gold); transform: rotate(-20deg); }
+      #brand .line { width: 0; height: 2px; margin: 22px auto 0; background: var(--gold); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10"
+         data-width="1080" data-height="1920" data-fps="30">
+      <div id="overlay" class="clip" data-start="0" data-duration="10" data-track-index="1">
+        <div id="vignette"></div>
+        <div id="dust"></div>
+        <div id="captions"></div>
+        <div id="hook"><span class="text"></span><span class="bar"></span></div>
+        <div id="brand"><div class="moon"></div><div class="name">ตอนตีสอง</div><div class="line"></div></div>
+      </div>
+    </div>
+
+    <script>
+      const D = window.OVERLAY;
+      document.getElementById("captions").style.top = (D.position === "center" ? 790 : 1020) + "px";
+
+      const tl = gsap.timeline({ paused: true });
+      let seed = D.seed || 20261124;
+      const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+      if (!D.vignette) document.getElementById("vignette").remove();
+
+      // dust motes
+      const dust = document.getElementById("dust");
+      for (let i = 0; i < (D.dust ? 26 : 0); i++) {
+        const m = document.createElement("div");
+        m.className = "mote";
+        const size = 6 + rand() * 16;
+        Object.assign(m.style, { width: size + "px", height: size + "px",
+          left: rand() * 1080 + "px", top: 200 + rand() * 1500 + "px" });
+        dust.appendChild(m);
+        tl.fromTo(m, { x: 0, y: 0, opacity: 0 },
+          { x: (rand() - 0.5) * 120, y: -(80 + rand() * 160), opacity: 0.2 + rand() * 0.4,
+            duration: D.total, ease: "sine.inOut" }, 0);
+        tl.to(m, { scale: 0.4, duration: 1.6 + rand() * 1.6, yoyo: true,
+                   repeat: Math.floor(D.total / 2.4), ease: "sine.inOut" }, rand() * 1.5);
+      }
+
+      // captions: one card at a time, words rise + unblur, spoken word glows gold
+      const box = document.getElementById("captions");
+      const endAt = D.endcard ? D.total - 2.4 : D.total;
+      D.segments.forEach((seg) => {
+        const isHook = seg.style === "Hook";
+        seg.cards.forEach((card) => {
+          const el = document.createElement("div");
+          el.className = "card" + (isHook ? " hook" : "");
+          const spans = card.words.map((w) => {
+            const s = document.createElement("span");
+            s.className = "word"; s.textContent = w.text; el.appendChild(s); return s;
+          });
+          box.appendChild(el);
+          // captions give way to the end card
+          const hide = Math.min(card.end, D.total - 0.05, card.start < endAt ? endAt : card.end);
+          tl.set(el, { opacity: 1 }, card.start - 0.01).set(el, { opacity: 0 }, hide);
+          card.words.forEach((w, i) => {
+            const next = i + 1 < card.words.length ? card.words[i + 1].t : card.end;
+            tl.fromTo(spans[i], { opacity: 0, y: 28, filter: "blur(10px)", scale: isHook ? 1.12 : 1 },
+              { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, w.t);
+            tl.fromTo(spans[i],
+              { color: "#ffcf6b", textShadow: "0 0 18px rgba(255,207,107,0.85), 0 3px 10px rgba(0,0,0,0.85)" },
+              { color: "#f4f1ea", textShadow: "0 0 4px #000, 0 3px 10px rgba(0,0,0,0.85)",
+                duration: 0.35, ease: "power1.inOut", immediateRender: false }, Math.max(w.t + 0.1, next - 0.05));
+          });
+        });
+      });
+
+      // twist segment: slow push-in on the captions
+      const twist = D.segments.find((s) => s.id === "twist");
+      if (twist) {
+        tl.fromTo("#captions", { scale: 1 }, { scale: 1.08, duration: Math.max(0.1, twist.end - twist.start), ease: "sine.in" }, twist.start)
+          .set("#captions", { scale: 1 }, twist.end + 0.4);
+      }
+
+      // TikTok hook text: visible from frame 1, fades out after hook.duration seconds
+      if (D.hook) {
+        document.querySelector("#hook .text").textContent = D.hook.text;
+        tl.set("#hook", { opacity: 1 }, 0)
+          .fromTo("#hook .bar", { width: 0 }, { width: 240, duration: 0.5, ease: "power2.out" }, 0)
+          .to("#hook", { opacity: 0, y: -20, duration: 0.4, ease: "power1.in" }, D.hook.duration);
+      }
+
+      // end card
+      if (D.endcard) {
+        tl.fromTo("#brand", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, endAt)
+          .fromTo("#brand .moon", { rotate: -60, scale: 0.6 }, { rotate: -20, scale: 1, duration: 0.9, ease: "back.out(1.6)" }, endAt)
+          .fromTo("#brand .line", { width: 0 }, { width: 220, duration: 0.8, ease: "power2.inOut" }, endAt + 0.3);
+      }
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
