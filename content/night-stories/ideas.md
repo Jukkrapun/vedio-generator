@@ -12,3 +12,4 @@
 - คนเฝ้าประภาคาร: a lighthouse keeper's nightly routine (bedtime)
 - ห้องสมุดหลังปิด: a librarian reshelving books, each with a tiny story (bedtime)
 - กระต่ายผู้ดูแลดวงจันทร์: moon rabbit gives moonlight away, the town lights up for her (005, user topic, fairy tale)
+- คลื่นตีสอง (radio-2am): recurring 2 a.m. radio DJ + the seventh-floor window listener; season plan in radio-2am.md (006 = night 1)

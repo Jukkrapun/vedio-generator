@@ -1,0 +1,672 @@
+{
+  "mode": "story",
+  "title": "คลื่นตีสอง ตอนที่ 1: คืนแรก",
+  "tags": [
+    "radio-2am",
+    "insomnia",
+    "sleep-story",
+    "strangers",
+    "window"
+  ],
+  "posts": [],
+  "languages": {
+    "th": {
+      "title": "คลื่นตีสอง ตอนที่ 1: คืนแรก",
+      "tts": "elevenlabs",
+      "voice": "gbZNaSxK771GgOTJIKRB",
+      "model": "eleven_v4",
+      "language": "th",
+      "fallback": {
+        "tts": "edge",
+        "voice": "th-TH-PremwadeeNeural",
+        "rate": "-10%"
+      }
+    },
+    "en": {
+      "title": "2 A.M. Radio, Night 1: The First Night",
+      "tts": "elevenlabs",
+      "voice": "Z3R5wn05IrDiVCyEkUrK",
+      "model": "eleven_v3",
+      "language": "en",
+      "fallback": {
+        "tts": "edge",
+        "voice": "en-US-AvaNeural",
+        "rate": "-8%"
+      }
+    }
+  },
+  "pause_sec": 1.0,
+  "music": null,
+  "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "image_style": "cinematic night film still, wide 16:9 composition, small old radio station and quiet city at night, dim warm lamp light and a touch of red from the on-air lamp, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet cozy late-night mood, people only from behind, from the side in shadow, far away or out of focus, no readable text, no letters, no logos",
+  "segments": [
+    {
+      "id": "s01",
+      "chapter": {
+        "th": "ไฟสีแดง",
+        "en": "The Red Light"
+      },
+      "image": "images/01-red-light.png",
+      "image_prompt": "close-up of a small round red on-air lamp glowing above a dark studio door at night, nothing written on it, soft red glow on the wall",
+      "image_prompt_th": "ภาพใกล้ไฟกลมสีแดงดวงเล็กที่สว่างอยู่เหนือประตูห้องอัดที่มืด ตอนกลางคืน ไม่มีตัวหนังสือบนไฟ แสงแดงนุ่ม ๆ ตกบนผนัง",
+      "text": {
+        "th": "ตีสองตรง\nไฟสีแดงเหนือประตูก็สว่างขึ้น",
+        "en": "Two a.m. exactly.\nThe red light above the door came on."
+      }
+    },
+    {
+      "id": "s02",
+      "image": "images/01-red-light.png",
+      "text": {
+        "th": "คืนแรกที่ฉันออกอากาศ มีข้อความเข้ามาแค่ข้อความเดียว\nและมันเปลี่ยนเหตุผลที่ฉันอยู่ตรงนี้ไปตลอดกาล",
+        "en": "On my first night on air, only one message came in.\nAnd it changed why I was there, for good."
+      }
+    },
+    {
+      "id": "s03",
+      "image": "images/02-mic-desk.png",
+      "image_prompt": "a woman seen from behind sitting at an old radio studio desk at night, headphones on, a vintage microphone on an arm, one warm desk lamp, mixing console with small glowing buttons",
+      "image_prompt_th": "ผู้หญิงหันหลังนั่งที่โต๊ะสตูดิโอวิทยุเก่าตอนกลางคืน สวมหูฟัง ไมโครโฟนวินเทจบนแขนจับ โคมไฟโต๊ะดวงเดียวสีอุ่น คอนโซลมิกเซอร์มีปุ่มเรืองแสงเล็ก ๆ",
+      "text": {
+        "th": "ที่นี่คือ คลื่นตีสอง\nรายการวิทยุสำหรับคนที่ยังไม่หลับ",
+        "en": "This is 2 A.M. Radio.\nA show for people who are still awake."
+      }
+    },
+    {
+      "id": "s04",
+      "image": "images/02-mic-desk.png",
+      "text": {
+        "th": "และคืนนี้ ฉันจะเล่าให้ฟังว่า…\nคืนแรกของคลื่นนี้ เป็นยังไง",
+        "en": "And tonight, I'll tell you…\nwhat the very first night of this station was like."
+      }
+    },
+    {
+      "id": "s05",
+      "chapter": {
+        "th": "ทำไมต้องตีสอง",
+        "en": "Why Two A.M."
+      },
+      "image": "images/03-old-building.png",
+      "image_prompt": "wide view of a small old five-storey building on a quiet city street at 2 a.m., only one window on the top floor lit, a thin antenna on the roof, wet street, one streetlight",
+      "image_prompt_th": "ภาพกว้างตึกเก่าห้าชั้นขนาดเล็กบนถนนในเมืองที่เงียบตอนตีสอง มีหน้าต่างชั้นบนสุดเปิดไฟอยู่บานเดียว เสาอากาศบาง ๆ บนหลังคา ถนนเปียก ไฟถนนดวงเดียว",
+      "text": {
+        "th": "สถานีของเราเป็นตึกเก่าห้าชั้น ริมถนนเล็ก ๆ\nบนหลังคามีเสาอากาศผอม ๆ ต้นหนึ่ง",
+        "en": "Our station is an old five-storey building on a narrow street.\nThere's a thin antenna on the roof."
+      }
+    },
+    {
+      "id": "s06",
+      "image": "images/03-old-building.png",
+      "text": {
+        "th": "กลางวันมีรายการเพลง รายการข่าว รายการคุยเล่น\nแต่ช่วงตีสองถึงตีห้า… ไม่เคยมีใครอยากจัด",
+        "en": "In the daytime there are music shows, news shows, chat shows.\nBut two to five a.m.… nobody ever wanted it."
+      }
+    },
+    {
+      "id": "s07",
+      "image": "images/04-bedroom-awake.png",
+      "image_prompt": "a woman seen from behind lying awake in bed in a dark small apartment, phone screen light on the ceiling, clock glow on the bedside table, blue night light",
+      "image_prompt_th": "ผู้หญิงหันหลังนอนลืมตาอยู่บนเตียงในห้องเช่าเล็ก ๆ ที่มืด แสงจอโทรศัพท์สะท้อนบนเพดาน แสงนาฬิกาบนโต๊ะข้างเตียง แสงกลางคืนสีฟ้า",
+      "text": {
+        "th": "ส่วนฉัน… นอนไม่ค่อยหลับมาหลายปีแล้ว",
+        "en": "And me… I hadn't slept properly in years."
+      }
+    },
+    {
+      "id": "s08",
+      "image": "images/04-bedroom-awake.png",
+      "text": {
+        "th": "ทุกคืนจะนอนมองเพดาน\nดูแสงจากจอโทรศัพท์สะท้อนเป็นสี่เหลี่ยมเล็ก ๆ",
+        "en": "Every night I'd lie there looking at the ceiling,\nwatching my phone's light make a small square up there."
+      }
+    },
+    {
+      "id": "s09",
+      "image": "images/04-bedroom-awake.png",
+      "text": {
+        "th": "นับเวลาไปเรื่อย ๆ\nตีหนึ่ง… ตีสอง… ตีสาม…",
+        "en": "Counting the hours.\nOne… two… three…"
+      }
+    },
+    {
+      "id": "s10",
+      "image": "images/04-bedroom-awake.png",
+      "text": {
+        "th": "ที่แย่ที่สุดไม่ใช่การนอนไม่หลับหรอก\nแต่คือความรู้สึกว่า… ทั้งโลกหลับไปหมดแล้ว เหลือเราอยู่คนเดียว",
+        "en": "The worst part wasn't the not sleeping.\nIt was the feeling that… the whole world had gone to sleep, and left me behind."
+      }
+    },
+    {
+      "id": "s11",
+      "image": "images/04-bedroom-awake.png",
+      "text": {
+        "th": "อยากคุยกับใครสักคน\nแต่ก็ไม่กล้าโทรไปปลุกใคร",
+        "en": "I wanted to talk to someone,\nbut I didn't dare wake anyone up."
+      }
+    },
+    {
+      "id": "s12",
+      "image": "images/05-job-board.png",
+      "image_prompt": "close-up of a hand pinning a small blank paper note onto a cork board in a dim office corridor at night, other blank notes around it, no readable text",
+      "image_prompt_th": "ภาพใกล้มือที่กำลังปักกระดาษโน้ตเปล่าแผ่นเล็กลงบนบอร์ดไม้ก๊อกในทางเดินออฟฟิศที่สลัว ตอนกลางคืน มีโน้ตเปล่าอื่น ๆ รอบ ๆ ไม่มีตัวหนังสือที่อ่านได้",
+      "text": {
+        "th": "วันหนึ่ง ฉันเห็นประกาศที่บอร์ดหน้าห้องเครื่อง\nหาคนจัดรายการช่วงตีสอง",
+        "en": "One day I saw a note on the board outside the control room.\nLooking for someone to host the two a.m. slot."
+      }
+    },
+    {
+      "id": "s13",
+      "image": "images/05-job-board.png",
+      "text": {
+        "th": "ฉันเขียนชื่อตัวเองลงไป\nไม่ได้คิดอะไรมาก แค่คิดว่า…",
+        "en": "I wrote my name on it.\nI didn't think much. I just thought…"
+      }
+    },
+    {
+      "id": "s14",
+      "image": "images/05-job-board.png",
+      "text": {
+        "th": "ถ้ายังไงก็ต้องตื่นอยู่แล้ว\nก็ตื่นอยู่ที่ไหนสักแห่ง ที่มีคนอื่นได้ยินเสียงเราบ้างก็ได้",
+        "en": "If I'm going to be awake anyway,\nI might as well be awake somewhere someone else can hear me."
+      }
+    },
+    {
+      "id": "s15",
+      "chapter": {
+        "th": "ห้องชั้นบนสุด",
+        "en": "The Room at the Top"
+      },
+      "image": "images/06-studio-wide.png",
+      "image_prompt": "wide shot of a small cozy old radio studio at night: wooden walls with sound panels, shelves of vinyl records, one desk lamp, a big window showing city lights, empty chair for a guest",
+      "image_prompt_th": "ภาพกว้างสตูดิโอวิทยุเก่าเล็ก ๆ ที่อบอุ่นตอนกลางคืน ผนังไม้มีแผ่นซับเสียง ชั้นแผ่นเสียงไวนิล โคมไฟโต๊ะดวงเดียว หน้าต่างบานใหญ่เห็นไฟเมือง เก้าอี้แขกว่างหนึ่งตัว",
+      "text": {
+        "th": "ห้องอัดอยู่ชั้นบนสุด\nผนังไม้ แผ่นซับเสียงสีเทา ชั้นแผ่นเสียงเก่า ๆ เต็มผนัง",
+        "en": "The studio is on the top floor.\nWooden walls, grey sound panels, a whole wall of old records."
+      }
+    },
+    {
+      "id": "s16",
+      "image": "images/06-studio-wide.png",
+      "text": {
+        "th": "มีโคมไฟตั้งโต๊ะดวงเดียว\nกับเก้าอี้แขกอีกตัว ที่ไม่ค่อยมีใครมานั่ง",
+        "en": "There's one desk lamp,\nand a guest chair that hardly anyone sits in."
+      }
+    },
+    {
+      "id": "s17",
+      "image": "images/07-coffee-headphones.png",
+      "image_prompt": "close-up of a steaming mug of coffee next to a pair of headphones and a small notebook on a wooden studio desk, warm lamp light, night",
+      "image_prompt_th": "ภาพใกล้แก้วกาแฟร้อนมีไอลอย วางข้างหูฟังกับสมุดโน้ตเล่มเล็กบนโต๊ะไม้ในสตูดิโอ แสงโคมไฟสีอุ่น กลางคืน",
+      "text": {
+        "th": "ฉันชงกาแฟไว้หนึ่งแก้ว วางข้างหูฟัง\nไอร้อนลอยขึ้นมาช้า ๆ ใต้แสงไฟ",
+        "en": "I made a cup of coffee and set it by the headphones.\nThe steam rose slowly under the lamp."
+      }
+    },
+    {
+      "id": "s18",
+      "image": "images/07-coffee-headphones.png",
+      "text": {
+        "th": "ในสมุดเล่มเล็ก ฉันเขียนไว้ว่าจะพูดอะไรบ้าง\nแต่พอถึงเวลาจริง… ฉันก็ไม่ได้เปิดมันเลย",
+        "en": "In a little notebook I'd written what I was going to say.\nBut when the time came… I never even opened it."
+      }
+    },
+    {
+      "id": "s19",
+      "image": "images/08-window-seventh.png",
+      "image_prompt": "view from inside a dark radio studio through a big window across a narrow street to an old apartment building, all windows dark except one window on the seventh floor glowing warm yellow",
+      "image_prompt_th": "มุมมองจากในสตูดิโอวิทยุที่มืด มองผ่านหน้าต่างบานใหญ่ข้ามถนนแคบไปยังตึกอพาร์ตเมนต์เก่า ทุกหน้าต่างมืดหมด ยกเว้นหน้าต่างชั้นเจ็ดบานเดียวที่สว่างเป็นสีเหลืองอุ่น",
+      "text": {
+        "th": "ข้างโต๊ะมีหน้าต่างบานใหญ่\nมองข้ามถนนไปเห็นตึกอพาร์ตเมนต์เก่าฝั่งตรงข้าม",
+        "en": "Next to the desk is a big window.\nAcross the street you can see an old apartment building."
+      }
+    },
+    {
+      "id": "s20",
+      "image": "images/08-window-seventh.png",
+      "text": {
+        "th": "คืนนั้น ทุกหน้าต่างมืดหมด\nยกเว้นบานเดียว… ชั้นที่เจ็ด",
+        "en": "That night, every window was dark\nexcept one… on the seventh floor."
+      }
+    },
+    {
+      "id": "s21",
+      "image": "images/08-window-seventh.png",
+      "text": {
+        "th": "ฉันจำได้ว่ามองมันอยู่นาน\nแล้วคิดว่า… ห้องนั้นก็คงนอนไม่หลับเหมือนกัน",
+        "en": "I remember looking at it for a long time\nand thinking… that room can't sleep either."
+      }
+    },
+    {
+      "id": "s22",
+      "chapter": {
+        "th": "พูดกับความเงียบ",
+        "en": "Talking to the Quiet"
+      },
+      "image": "images/09-fader-hand.png",
+      "image_prompt": "close-up of a woman's hand slowly pushing up a fader on an old radio mixing console, small green and amber lights, dark studio",
+      "image_prompt_th": "ภาพใกล้มือผู้หญิงค่อย ๆ ดันเฟดเดอร์ขึ้นบนคอนโซลมิกเซอร์วิทยุเก่า ไฟเล็ก ๆ สีเขียวและสีเหลืองอำพัน สตูดิโอมืด",
+      "text": {
+        "th": "ตีสองตรง ฉันดันเฟดเดอร์ขึ้นช้า ๆ\nแล้วพูดประโยคแรกออกไป",
+        "en": "At two exactly, I slowly pushed up the fader\nand said my first words."
+      }
+    },
+    {
+      "id": "s23",
+      "image": "images/09-fader-hand.png",
+      "text": {
+        "th": "\"สวัสดีค่ะ… ใครที่ยังตื่นอยู่\nตอนนี้ตีสองแล้วนะ\"",
+        "en": "\"Hello… to whoever is still awake.\nIt's two in the morning now.\""
+      }
+    },
+    {
+      "id": "s24",
+      "image": "images/09-fader-hand.png",
+      "text": {
+        "th": "เสียงตัวเองในหูฟัง ฟังดูแปลก ๆ\nเบากว่าที่คิด แต่ก็อุ่นกว่าที่คิด",
+        "en": "My own voice in the headphones sounded strange.\nSofter than I expected. But warmer, too."
+      }
+    },
+    {
+      "id": "s25",
+      "image": "images/09-fader-hand.png",
+      "text": {
+        "th": "ฉันบอกเวลา บอกอากาศ\nว่าคืนนี้ลมเย็นนิด ๆ ท้องฟ้าโปร่ง มีเมฆบาง ๆ ลอยผ่านพระจันทร์",
+        "en": "I gave the time, and the weather.\nA little cool tonight, clear skies, a few thin clouds passing the moon."
+      }
+    },
+    {
+      "id": "s26",
+      "image": "images/09-fader-hand.png",
+      "text": {
+        "th": "\"ถ้าใครยังไม่ได้ห่มผ้า ก็ห่มสักหน่อยนะคะ\nตอนตีสามอากาศจะเย็นลงอีก\"",
+        "en": "\"If you haven't pulled up a blanket yet, maybe do.\nIt gets cooler around three.\""
+      }
+    },
+    {
+      "id": "s27",
+      "image": "images/10-phone-silent.png",
+      "image_prompt": "an old studio telephone with several unlit line buttons on a desk at night, the receiver resting, dim lamp light, quiet and still",
+      "image_prompt_th": "โทรศัพท์สตูดิโอแบบเก่าที่มีปุ่มสายหลายปุ่มไม่มีไฟติด วางบนโต๊ะตอนกลางคืน หูโทรศัพท์วางอยู่ แสงโคมไฟสลัว เงียบนิ่ง",
+      "text": {
+        "th": "ที่โต๊ะมีโทรศัพท์เครื่องเก่า\nมีปุ่มสายเข้าหลายปุ่ม",
+        "en": "On the desk was an old telephone\nwith several line buttons."
+      }
+    },
+    {
+      "id": "s28",
+      "image": "images/10-phone-silent.png",
+      "text": {
+        "th": "ทุกปุ่มดับสนิท\nไม่มีสายเข้ามาเลยสักสาย",
+        "en": "Every button was dark.\nNot a single call came in."
+      }
+    },
+    {
+      "id": "s29",
+      "image": "images/11-vinyl-spinning.png",
+      "image_prompt": "close-up of a vinyl record spinning on an old turntable, the needle on the groove, warm amber light, dust in the air, night",
+      "image_prompt_th": "ภาพใกล้แผ่นเสียงไวนิลหมุนอยู่บนเครื่องเล่นแผ่นเสียงเก่า เข็มวางบนร่อง แสงสีเหลืองอำพันอุ่น ๆ ฝุ่นลอยในอากาศ กลางคืน",
+      "text": {
+        "th": "ฉันเลยเปิดเพลง\nแผ่นเสียงเก่าแผ่นหนึ่ง ที่หยิบมาจากชั้นแบบสุ่ม ๆ",
+        "en": "So I played a song.\nAn old record I'd pulled from the shelf at random."
+      }
+    },
+    {
+      "id": "s30",
+      "image": "images/11-vinyl-spinning.png",
+      "text": {
+        "th": "เข็มแตะลงบนร่อง เสียงซ่าเบา ๆ ดังขึ้นก่อน\nแล้วเพลงช้า ๆ ก็ค่อย ๆ ลอยออกมา",
+        "en": "The needle touched the groove. A soft crackle first,\nthen a slow song drifted out."
+      }
+    },
+    {
+      "id": "s31",
+      "image": "images/12-city-sleeping.png",
+      "image_prompt": "wide high view of a sleeping city at 3 a.m.: dark rooftops, empty roads with a few orange streetlights, a river, soft mist, calm",
+      "image_prompt_th": "ภาพกว้างมุมสูงของเมืองที่กำลังหลับตอนตีสาม หลังคามืด ถนนว่างมีไฟถนนสีส้มไม่กี่ดวง แม่น้ำ หมอกบาง ๆ สงบ",
+      "text": {
+        "th": "ระหว่างเพลง ฉันเล่าให้ใครก็ไม่รู้ฟังว่า\nเมืองตอนตีสาม เป็นยังไง",
+        "en": "Between songs, I told whoever might be listening\nwhat the city is like at three a.m."
+      }
+    },
+    {
+      "id": "s32",
+      "image": "images/12-city-sleeping.png",
+      "text": {
+        "th": "ถนนเส้นใหญ่ว่างจนได้ยินเสียงไฟจราจรเปลี่ยนสี\nแม่น้ำนิ่ง มีหมอกบาง ๆ ลอยอยู่",
+        "en": "The big roads are so empty you can hear the traffic lights click.\nThe river is still, with a thin mist on it."
+      }
+    },
+    {
+      "id": "s33",
+      "image": "images/13-night-market-closed.png",
+      "image_prompt": "a quiet street at night with closed food stalls covered in tarps, a stray cat sleeping on a stool, one light from a 24-hour shop far away",
+      "image_prompt_th": "ถนนเงียบตอนกลางคืน แผงขายอาหารปิดแล้วคลุมผ้าใบ แมวจรนอนหลับบนเก้าอี้ มีแสงจากร้านเปิด 24 ชั่วโมงอยู่ไกล ๆ",
+      "text": {
+        "th": "แผงข้าวมันไก่หน้าซอยคลุมผ้าใบไว้แล้ว\nมีแมวสีส้มนอนขดอยู่บนเก้าอี้พลาสติก",
+        "en": "The chicken-rice stall at the corner is covered with a tarp.\nAn orange cat is curled up asleep on a plastic stool."
+      }
+    },
+    {
+      "id": "s34",
+      "image": "images/13-night-market-closed.png",
+      "text": {
+        "th": "ร้านสะดวกซื้อปลายถนนยังเปิดไฟอยู่\nเหมือนประภาคารเล็ก ๆ ของคนที่ยังไม่กลับบ้าน",
+        "en": "The convenience store at the end of the road is still lit,\nlike a tiny lighthouse for people who haven't gone home yet."
+      }
+    },
+    {
+      "id": "s35",
+      "image": "images/12-city-sleeping.png",
+      "text": {
+        "th": "ริมแม่น้ำ เรือข้ามฟากลำสุดท้ายจอดผูกไว้กับท่า\nโคลงเบา ๆ ตามน้ำ เหมือนเปลที่ไม่มีใครไกว",
+        "en": "By the river, the last ferry is tied to the pier,\nrocking gently with the water, like a cradle no one is pushing."
+      }
+    },
+    {
+      "id": "s36",
+      "image": "images/12-city-sleeping.png",
+      "text": {
+        "th": "บนสะพาน ไฟถนนเรียงกันเป็นแถว\nส่องลงบนน้ำ เป็นทางสีส้มยาว ๆ ไปถึงอีกฝั่ง",
+        "en": "On the bridge, streetlights stand in a row,\nshining on the water like a long orange path to the other side."
+      }
+    },
+    {
+      "id": "s37",
+      "image": "images/12-city-sleeping.png",
+      "text": {
+        "th": "ทั้งเมือง… กำลังหายใจช้า ๆ\nเหมือนคนที่กำลังจะหลับ",
+        "en": "The whole city… breathing slowly,\nlike someone about to fall asleep."
+      }
+    },
+    {
+      "id": "s38",
+      "chapter": {
+        "th": "ไม่มีใครฟังหรอก",
+        "en": "Nobody's Listening"
+      },
+      "image": "images/14-dj-doubt.png",
+      "image_prompt": "a woman seen from the side in deep shadow, headphones around her neck, resting her chin on her hand at a radio desk, looking at a silent phone, tired",
+      "image_prompt_th": "ผู้หญิงมองจากด้านข้างในเงามืด หูฟังคล้องคอ เท้าคางอยู่ที่โต๊ะสตูดิโอวิทยุ มองโทรศัพท์ที่เงียบ ดูเหนื่อย",
+      "text": {
+        "th": "ตีสามกว่าแล้ว\nโทรศัพท์ยังไม่ดังสักครั้ง",
+        "en": "It was past three.\nThe phone hadn't rung once."
+      }
+    },
+    {
+      "id": "s39",
+      "image": "images/14-dj-doubt.png",
+      "text": {
+        "th": "ฉันเริ่มคิดว่า…\nฉันกำลังพูดอยู่คนเดียวในห้องนี้",
+        "en": "I started to think…\nI was just talking to myself in this room."
+      }
+    },
+    {
+      "id": "s40",
+      "image": "images/14-dj-doubt.png",
+      "text": {
+        "th": "กาแฟในแก้วเย็นชืดไปแล้ว\nแผ่นเสียงหมุนจนสุดหน้า เหลือแต่เสียงซ่าเบา ๆ วนไปเรื่อย ๆ",
+        "en": "The coffee had gone cold.\nThe record had reached the end of its side, just a soft crackle going round and round."
+      }
+    },
+    {
+      "id": "s41",
+      "image": "images/14-dj-doubt.png",
+      "text": {
+        "th": "ก็เหมือนทุกคืนที่ผ่านมานั่นแหละ\nแค่คราวนี้ มีไมโครโฟนอยู่ตรงหน้า",
+        "en": "Just like every other night.\nOnly this time, there was a microphone in front of me."
+      }
+    },
+    {
+      "id": "s42",
+      "image": "images/14-dj-doubt.png",
+      "text": {
+        "th": "แต่ฉันก็ยังพูดต่อ\nเพราะการพูดกับใครสักคน… ถึงจะมองไม่เห็นเขา\nก็ยังดีกว่านอนมองเพดานอยู่คนเดียว",
+        "en": "But I kept talking.\nBecause talking to someone… even someone I couldn't see,\nwas still better than staring at the ceiling alone."
+      }
+    },
+    {
+      "id": "s43",
+      "chapter": {
+        "th": "ข้อความเดียว",
+        "en": "One Message"
+      },
+      "image": "images/15-clock-340.png",
+      "image_prompt": "close-up of a simple round wall clock in a dim studio showing twenty to four, no numbers or letters on the face, soft lamp light",
+      "image_prompt_th": "ภาพใกล้นาฬิกาแขวนผนังทรงกลมเรียบ ๆ ในสตูดิโอสลัว เข็มชี้เวลาตีสามสี่สิบ หน้าปัดไม่มีตัวเลขหรือตัวหนังสือ แสงโคมไฟนุ่ม ๆ",
+      "text": {
+        "th": "แล้วตอนตีสามสี่สิบ…",
+        "en": "And then, at three-forty…"
+      }
+    },
+    {
+      "id": "s44",
+      "image": "images/16-message-light.png",
+      "image_prompt": "close-up of an old computer screen in a dark studio glowing with a single new message box, text blurred and unreadable, the woman's hand near the mouse",
+      "image_prompt_th": "ภาพใกล้จอคอมพิวเตอร์เก่าในสตูดิโอมืด มีกล่องข้อความใหม่หนึ่งกล่องเรืองแสง ตัวหนังสือเบลออ่านไม่ออก มือผู้หญิงอยู่ใกล้เมาส์",
+      "text": {
+        "th": "หน้าจอคอมพิวเตอร์เก่า ๆ ข้างโต๊ะ\nก็มีกล่องข้อความเด้งขึ้นมา",
+        "en": "on the old computer screen by the desk,\na message box popped up."
+      }
+    },
+    {
+      "id": "s45",
+      "image": "images/16-message-light.png",
+      "text": {
+        "th": "ข้อความสั้น ๆ\nไม่มีชื่อ มีแค่คำว่า… ผู้ฟังหน้าต่างชั้นเจ็ด",
+        "en": "A short message.\nNo name. Just… the listener in the seventh-floor window."
+      }
+    },
+    {
+      "id": "s46",
+      "image": "images/16-message-light.png",
+      "text": {
+        "th": "\"ฟังอยู่นะ ตั้งแต่ประโยคแรกเลย\"",
+        "en": "\"I'm listening. Since your very first word.\""
+      }
+    },
+    {
+      "id": "s47",
+      "image": "images/16-message-light.png",
+      "text": {
+        "th": "\"ไฟห้องชั้นเจ็ดที่คุณเห็น คือห้องฉันเอง\nขอบคุณที่อยู่เป็นเพื่อน\"",
+        "en": "\"That light on the seventh floor you can see is my room.\nThank you for keeping me company.\""
+      }
+    },
+    {
+      "id": "s48",
+      "image": "images/17-looking-out.png",
+      "image_prompt": "a woman seen from behind standing at the big studio window at night, headphones around her neck, looking across the street at the one lit window on the seventh floor",
+      "image_prompt_th": "ผู้หญิงหันหลังยืนที่หน้าต่างบานใหญ่ของสตูดิโอตอนกลางคืน หูฟังคล้องคอ มองข้ามถนนไปที่หน้าต่างชั้นเจ็ดบานเดียวที่ยังเปิดไฟ",
+      "text": {
+        "th": "ฉันลุกไปที่หน้าต่าง\nมองข้ามถนนไปที่ชั้นเจ็ด",
+        "en": "I got up and went to the window.\nI looked across the street, up to the seventh floor."
+      }
+    },
+    {
+      "id": "s49",
+      "image": "images/18-window-blink.png",
+      "image_prompt": "the old apartment building across the street at night, the one lit window on the seventh floor seen closer, warm light, curtain slightly open, a silhouette's hand on the light switch",
+      "image_prompt_th": "ตึกอพาร์ตเมนต์เก่าฝั่งตรงข้ามตอนกลางคืน มองใกล้ขึ้นไปที่หน้าต่างชั้นเจ็ดที่เปิดไฟ แสงอุ่น ม่านเปิดนิดหนึ่ง เงามือของใครบางคนอยู่ที่สวิตช์ไฟ",
+      "text": {
+        "th": "แล้วไฟห้องนั้น…\nก็กะพริบสองครั้ง",
+        "en": "And the light in that room…\nblinked twice."
+      }
+    },
+    {
+      "id": "s50",
+      "image": "images/18-window-blink.png",
+      "text": {
+        "th": "ดับ… สว่าง… ดับ… สว่าง…\nเหมือนใครบางคนกำลังโบกมือ",
+        "en": "Off… on… off… on…\nlike someone waving."
+      }
+    },
+    {
+      "id": "s51",
+      "image": "images/19-dj-smile.png",
+      "image_prompt": "close-up of a woman's face in soft profile, half in shadow, out of focus, a faint smile, warm red glow from the on-air lamp on her cheek, headphones",
+      "image_prompt_th": "ภาพใกล้ใบหน้าผู้หญิงด้านข้างแบบนุ่ม ๆ ครึ่งหนึ่งอยู่ในเงา หลุดโฟกัส ยิ้มบาง ๆ แสงสีแดงจากไฟออนแอร์ตกบนแก้ม สวมหูฟัง",
+      "text": {
+        "th": "ฉันยืนอยู่ตรงนั้นนานมาก",
+        "en": "I stood there for a long time."
+      }
+    },
+    {
+      "id": "s52",
+      "image": "images/19-dj-smile.png",
+      "text": {
+        "th": "ทั้งชีวิต ฉันคิดว่าการตื่นตอนตีสอง\nเป็นเรื่องที่ต้องทนอยู่คนเดียว",
+        "en": "All my life, I'd thought being awake at two a.m.\nwas something you had to bear alone."
+      }
+    },
+    {
+      "id": "s53",
+      "image": "images/19-dj-smile.png",
+      "text": {
+        "th": "แต่คืนนั้น มีคนหนึ่งคนที่ไม่ได้อยู่คนเดียว\nเพราะฉันตื่นอยู่",
+        "en": "But that night, one person wasn't alone\nbecause I was awake."
+      }
+    },
+    {
+      "id": "s54",
+      "image": "images/19-dj-smile.png",
+      "text": {
+        "th": "เป็นครั้งแรก…\nที่การนอนไม่หลับของฉัน มีประโยชน์กับใครสักคน",
+        "en": "For the first time…\nmy not sleeping was good for someone."
+      }
+    },
+    {
+      "id": "s55",
+      "chapter": {
+        "th": "ไฟที่ดับลง",
+        "en": "The Light Goes Out"
+      },
+      "image": "images/02-mic-desk.png",
+      "text": {
+        "th": "ฉันกลับมาที่ไมค์\nเสียงสั่นนิดหน่อย",
+        "en": "I went back to the mic.\nMy voice shook a little."
+      }
+    },
+    {
+      "id": "s56",
+      "image": "images/02-mic-desk.png",
+      "text": {
+        "th": "\"ถึงผู้ฟังหน้าต่างชั้นเจ็ด…\nได้รับข้อความแล้วนะคะ\"",
+        "en": "\"To the listener in the seventh-floor window…\nI got your message.\""
+      }
+    },
+    {
+      "id": "s57",
+      "image": "images/02-mic-desk.png",
+      "text": {
+        "th": "\"ฉันเองก็นอนไม่หลับเหมือนกัน\nคืนนี้ เราตื่นอยู่ด้วยกันนะ\"",
+        "en": "\"I can't sleep either.\nTonight, we're awake together.\""
+      }
+    },
+    {
+      "id": "s58",
+      "image": "images/02-mic-desk.png",
+      "text": {
+        "th": "\"แต่ถ้าเริ่มง่วงเมื่อไร ไม่ต้องเกรงใจนะคะ\nหลับไปก่อนได้เลย ฉันจะเฝ้าไว้ให้\"",
+        "en": "\"But whenever you start to feel sleepy, don't wait for me.\nGo ahead and sleep. I'll keep watch.\""
+      }
+    },
+    {
+      "id": "s59",
+      "image": "images/11-vinyl-spinning.png",
+      "text": {
+        "th": "แล้วฉันก็เปิดเพลงช้า ๆ อีกเพลงหนึ่ง\nให้หน้าต่างชั้นเจ็ด",
+        "en": "Then I played one more slow song,\nfor the seventh-floor window."
+      }
+    },
+    {
+      "id": "s60",
+      "image": "images/20-window-dark.png",
+      "image_prompt": "the old apartment building across the street at night, now every window dark including the seventh floor, a few stars above, calm and peaceful",
+      "image_prompt_th": "ตึกอพาร์ตเมนต์เก่าฝั่งตรงข้ามตอนกลางคืน ตอนนี้ทุกหน้าต่างมืดหมดรวมถึงชั้นเจ็ด มีดาวไม่กี่ดวงด้านบน สงบ",
+      "text": {
+        "th": "ก่อนเพลงจะจบ\nไฟห้องนั้นก็ดับลงอย่างเงียบ ๆ",
+        "en": "Before the song ended,\nthat light went out, quietly."
+      }
+    },
+    {
+      "id": "s61",
+      "image": "images/20-window-dark.png",
+      "text": {
+        "th": "คราวนี้ไม่กะพริบแล้ว\nฉันรู้ว่า… เขาหลับแล้ว",
+        "en": "This time it didn't blink.\nI knew… they were asleep."
+      }
+    },
+    {
+      "id": "s62",
+      "image": "images/21-dawn-street.png",
+      "image_prompt": "the quiet street in front of the old radio building at dawn, pale blue and pink sky, a woman seen far away from behind walking home with a tote bag, first street sweeper",
+      "image_prompt_th": "ถนนเงียบหน้าตึกสถานีวิทยุเก่าตอนรุ่งสาง ฟ้าสีฟ้าซีดกับชมพู ผู้หญิงหันหลังเดินกลับบ้านอยู่ไกล ๆ ถือกระเป๋าผ้า คนกวาดถนนคนแรกของวัน",
+      "text": {
+        "th": "ตีห้า ฉันปิดรายการ แล้วเดินกลับบ้าน\nฟ้าเริ่มเป็นสีชมพูอ่อน ๆ",
+        "en": "At five I closed the show and walked home.\nThe sky was turning a pale pink."
+      }
+    },
+    {
+      "id": "s63",
+      "image": "images/21-dawn-street.png",
+      "text": {
+        "th": "แล้วเช้านั้น…\nฉันหลับได้ เป็นครั้งแรกในรอบหลายเดือน",
+        "en": "And that morning…\nI slept, for the first time in months."
+      }
+    },
+    {
+      "id": "s64",
+      "image": "images/21-dawn-street.png",
+      "text": {
+        "th": "จนถึงวันนี้ ฉันก็ยังไม่รู้ว่าผู้ฟังหน้าต่างชั้นเจ็ดเป็นใคร\nแต่ทุกคืน ไฟห้องนั้นก็ยังเปิดรอฉันอยู่",
+        "en": "To this day, I still don't know who the seventh-floor listener is.\nBut every night, that light is still on, waiting for me."
+      }
+    },
+    {
+      "id": "s65",
+      "chapter": {
+        "th": "คลื่นตีสองขอตัวลา",
+        "en": "Signing Off"
+      },
+      "image": "images/22-red-light-off.png",
+      "image_prompt": "close-up of the small round red on-air lamp above the studio door switched off, the dark studio behind, a mug and headphones left on the desk, very calm",
+      "image_prompt_th": "ภาพใกล้ไฟกลมสีแดงเหนือประตูสตูดิโอที่ดับแล้ว สตูดิโอมืดด้านหลัง มีแก้วกาแฟกับหูฟังวางทิ้งไว้บนโต๊ะ สงบมาก",
+      "text": {
+        "th": "ถ้าคืนนี้เธอยังนอนไม่หลับ…\nเปิดไฟห้องทิ้งไว้ก็ได้นะ",
+        "en": "If you still can't sleep tonight…\nyou can leave your light on."
+      }
+    },
+    {
+      "id": "s66",
+      "image": "images/22-red-light-off.png",
+      "text": {
+        "th": "เผื่อมีใครอีกฝั่งหนึ่งของถนน\nกำลังมองหาหน้าต่างที่ยังสว่างอยู่เหมือนกัน",
+        "en": "In case someone across the street\nis looking for a window that's still lit, too."
+      }
+    },
+    {
+      "id": "s67",
+      "image": "images/22-red-light-off.png",
+      "text": {
+        "th": "คลื่นตีสอง ขอตัวลาไปก่อนนะ…\nใครที่ยังตื่นอยู่ ไม่ต้องรีบหลับนะ",
+        "en": "This is 2 A.M. Radio, signing off for now…\nIf you're still awake, there's no hurry to sleep."
+      }
+    },
+    {
+      "id": "s68",
+      "image": "images/22-red-light-off.png",
+      "text": {
+        "th": "ฉันอยู่ตรงนี้\nจนกว่าเธอจะหลับ",
+        "en": "I'm right here,\nuntil you fall asleep."
+      }
+    },
+    {
+      "id": "s69",
+      "image": "images/22-red-light-off.png",
+      "text": {
+        "th": "หลับฝันดีนะ",
+        "en": "Sleep well."
+      }
+    }
+  ]
+}
