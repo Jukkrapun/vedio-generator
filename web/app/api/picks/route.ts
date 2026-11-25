@@ -1,6 +1,13 @@
 import { handle } from "@/lib/api";
-import { setPick } from "@/lib/repo";
+import { getPicks, setPick } from "@/lib/repo";
 import { platforms } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
+export const GET = (request: Request) => handle(async () => {
+  const date = new URL(request.url).searchParams.get("date") ?? "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("bad date");
+  return getPicks(date);
+});
 
 export const PUT = (request: Request) => handle(async () => {
   const { date, platform, time, episode } = await request.json();

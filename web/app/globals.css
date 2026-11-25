@@ -424,3 +424,4 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 .phone-mock.center i { top: calc(50% - 1.5px); }
 .phone-mock.lower i { bottom: 24%; }
 .voice-picker, .subtitle-picker { margin-bottom: 14px; }
+.day-tabs { margin-bottom: 12px; }
