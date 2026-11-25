@@ -18,6 +18,6 @@ export type Schedule = { timezone: "Asia/Bangkok"; slots: Record<Platform, strin
 export type Slot = { platform: Platform; time: string; state: "posted" | "due" | "upcoming" | "empty"; episode: Episode | null; post?: Post };
 export type Summary = { platform: Platform; posted: number; total: number; left: number; days: number };
 export type Today = { date: string; time: string; slots: Slot[]; summary: Summary[] };
-export type JobType = "new_episode" | "produce" | "catalog" | "publish_fb" | "poster" | "claude" | "revise" | "images" | "regen_image" | "voice" | "regen_voice" | "render";
+export type JobType = "new_episode" | "produce" | "catalog" | "publish_fb" | "poster" | "claude" | "revise" | "images" | "regen_image" | "voice" | "regen_voice" | "render" | "voice_samples";
 export type WorkerInfo = { kind: "host" | "docker"; claude: boolean; codex: boolean; online: boolean } | null;
 export type Job = { id: string; type: JobType; args: Record<string, string | boolean>; status: "queued" | "running" | "done" | "failed"; created_at: string; started_at: string | null; finished_at: string | null; exit_code: number | null; episodeId?: string; log: string[] };

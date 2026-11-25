@@ -28,7 +28,7 @@ services:
     volumes:
       - ./content:/repo/content
       - ./output:/repo/output
-      - ./shared:/repo/shared:ro
+      - ./shared:/repo/shared   # voice_samples job writes shared/characters/*/voice-samples/
       - ./tools:/repo/tools:ro
       - ./ops:/repo/ops:ro
       - ./.ops:/repo/.ops

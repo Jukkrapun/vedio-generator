@@ -24,6 +24,7 @@ Goal (user, 2026-11-25): every character is designed once (name, age, look, art 
 - [x] `tools/voice_samples.py <name> [--voice --model]` → `voice-samples/<emotion>.mp3` from `samples` (costs ElevenLabs credits).
 - [x] Series templates: `"style_anchor": true` in love-quotes, work-talk, living-life, night-stories, poc/cat-2am; cat-2am also `"characters": ["somchun"]` + `"narrator": "somchun"` (replaces `image_refs`). Existing episodes unchanged.
 - [x] Web page `/characters` (menu "ตัวละคร"): reference images, voice samples, episodes that use each character, persona.md; edits `image_block`, voice id/model and sample lines in `character.json` (`web/lib/characters.ts`, `PATCH /api/characters/<name>`). docker-compose mounts `./shared` into the web container.
+- [x] "สร้างเสียงตัวอย่าง" button on the character page = job `voice_samples` (worker runs `tools/voice_samples.py <name>`; Docker worker mounts `./shared` read-write). Order templates in `PROMPTS.md` (1, 2, 3) have a "ตัวละครในภาพ" field; 2c/9 use the `characters`/`narrator` keys.
 
 ## Rules
 

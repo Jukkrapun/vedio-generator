@@ -103,6 +103,8 @@ def command(job: dict) -> list[str]:
         # long-form story mode builds its voice per language inside render_story.py
         story = (read(ROOT / episode_path(a["episode"]) / "episode.json") or {}).get("mode") == "story"
         return [PY, "tools/render_story.py" if story else "tools/render_reel.py", episode_path(a["episode"])]
+    if t == "voice_samples":  # characters page: one ElevenLabs line per emotion in character.json "samples"
+        return [PY, "tools/voice_samples.py", a["character"]]
     if t in ("claude", "revise"):
         return claude_command(a["prompt"]) if t == "claude" else claude_command(revise_prompt(a["episode"], a["note"]), guard=False)
     raise ValueError(f"unknown job type {t!r}")

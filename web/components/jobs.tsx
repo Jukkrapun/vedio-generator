@@ -13,7 +13,7 @@ import { Card } from "./ui/card";
 import { Confirm } from "./ui/dialog";
 
 function jobTarget(job: Job, title?: string) {
-  return title ?? String(job.args.series ?? job.args.episode ?? "—");
+  return title ?? String(job.args.series ?? job.args.episode ?? job.args.character ?? "—");
 }
 
 export function JobsScreen({ series }: { series: string[] }) {

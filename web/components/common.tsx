@@ -17,7 +17,7 @@ export const isTestSeries = (series: string) => TEST_SERIES.includes(series.spli
 export const listHref = (series: string) => isTestSeries(series) ? "/poc" : "/episodes";
 export const episodeHref = (episode: Pick<Episode, "id">) => "/episodes/" + episode.id;
 export const statusLabels: Record<EpisodeStatus, string> = { draft: "ฉบับร่าง", rendered: "พร้อมลง", posted: "ลงแล้ว" };
-export const jobLabels: Record<Job["type"], string> = { new_episode: "สร้างตอนใหม่", produce: "ผลิตที่เหลือทั้งหมด", catalog: "สร้างแค็ตตาล็อก", publish_fb: "ตั้งเวลา Facebook", poster: "สร้างภาพปก", claude: "Claude เขียนบท", revise: "Claude แก้บท", images: "สร้างภาพ", regen_image: "สร้างภาพใหม่", voice: "ทำเสียง", regen_voice: "อัดเสียงใหม่", render: "เรนเดอร์" };
+export const jobLabels: Record<Job["type"], string> = { new_episode: "สร้างตอนใหม่", produce: "ผลิตที่เหลือทั้งหมด", catalog: "สร้างแค็ตตาล็อก", publish_fb: "ตั้งเวลา Facebook", poster: "สร้างภาพปก", claude: "Claude เขียนบท", revise: "Claude แก้บท", images: "สร้างภาพ", regen_image: "สร้างภาพใหม่", voice: "ทำเสียง", regen_voice: "อัดเสียงใหม่", render: "เรนเดอร์", voice_samples: "เสียงตัวอย่างตัวละคร" };
 const jobStatus: Record<Job["status"], string> = { queued: "รอคิว", running: "กำลังทำงาน", done: "เสร็จแล้ว", failed: "ไม่สำเร็จ" };
 const slotStatus: Record<Slot["state"], string> = { posted: "ลงแล้ว", due: "เลยเวลา", upcoming: "รอลง", empty: "คลิปหมด" };
 

@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Mic, Plus, Save, Trash2, UsersRound } from "lucide-react";
+import { ArrowLeft, AudioLines, Mic, Plus, Save, Trash2, UsersRound } from "lucide-react";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
 import type { Character, CharacterFile } from "@/lib/characters";
-import { Empty } from "./common";
+import { Empty, JobBadge } from "./common";
+import { useOps } from "./ops-provider";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 
@@ -49,7 +50,24 @@ export function CharacterDetail({ item }: { item: Character }) {
   const [samples, setSamples] = useState<[string, string][]>(Object.entries(item.samples));
   const [persona, setPersona] = useState(false);
   const [saving, setSaving] = useState(false);
-  const sampleUrl = (emotion: string) => item.voiceSamples.find(f => f.name === emotion + ".mp3")?.url;
+  const { jobs, enqueue } = useOps();
+  const sampleJob = jobs.find(j => j.type === "voice_samples" && j.args.character === item.name);
+  const busy = sampleJob?.status === "queued" || sampleJob?.status === "running";
+  const dirty = JSON.stringify(Object.fromEntries(samples)) !== JSON.stringify(item.samples)
+    || voiceId !== (item.voice.voice ?? "") || model !== (item.voice.model ?? "") || block !== item.imageBlock;
+  const doneId = sampleJob?.status === "done" ? sampleJob.id : "";
+  useEffect(() => { if (doneId) router.refresh(); }, [doneId, router]);  // pick up new mp3 files
+  // cache-bust audio after a new run
+  const sampleUrl = (emotion: string) => {
+    const url = item.voiceSamples.find(f => f.name === emotion + ".mp3")?.url;
+    return url && sampleJob?.finished_at ? url + "&t=" + encodeURIComponent(sampleJob.finished_at) : url;
+  };
+
+  async function makeSamples() {
+    if (!window.confirm(`สร้างเสียงตัวอย่าง ${samples.length} ประโยคด้วย ElevenLabs? (ใช้เครดิตประมาณ ${samples.reduce((n, [, t]) => n + t.length, 0)} ตัวอักษร, ไฟล์เดิมจะถูกแทนที่)`)) return;
+    await enqueue("voice_samples", { character: item.name });
+    toast.success("ส่งงานสร้างเสียงตัวอย่างแล้ว");
+  }
 
   async function save() {
     setSaving(true);
@@ -91,7 +109,11 @@ export function CharacterDetail({ item }: { item: Character }) {
         {sampleUrl(emotion) && <audio controls preload="none" src={sampleUrl(emotion)} />}
       </div>)}
       <Button type="button" variant="outline" onClick={() => setSamples([...samples, ["", ""]])}><Plus size={16} /> เพิ่มอารมณ์</Button>
-      <p className="small muted">ไฟล์เสียงตัวอย่างสร้างด้วย <code>tools/voice_samples.py {item.name}</code> (ใช้เครดิต ElevenLabs)</p>
+      <div className="character-sample-run">
+        <Button type="button" variant="outline" onClick={makeSamples} disabled={busy || dirty || !samples.length}><AudioLines size={16} /> สร้างเสียงตัวอย่าง</Button>
+        {sampleJob && <Link href={"/jobs/" + sampleJob.id}><JobBadge status={sampleJob.status} /></Link>}
+        <span className="small muted">{dirty ? "บันทึกก่อน แล้วค่อยสร้างเสียง" : "ใช้เครดิต ElevenLabs · ต้องมี worker ทำงานอยู่"}</span>
+      </div>
       <Button type="button" onClick={save} disabled={saving}><Save size={16} /> {saving ? "กำลังบันทึก…" : "บันทึก"}</Button>
     </Card> : <Card className="section-card"><Empty>ยังไม่มี character.json — เครื่องมือยังใช้ตัวละครนี้อัตโนมัติไม่ได้</Empty></Card>}
 

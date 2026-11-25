@@ -281,7 +281,7 @@ export async function getJob(id: string, tail = 400): Promise<Job | null> {
   return { ...job, log: log.slice(-tail) };
 }
 
-const JOB_TYPES: JobType[] = ["new_episode", "produce", "catalog", "publish_fb", "poster", "claude", "revise", "images", "regen_image", "voice", "regen_voice", "render"];
+const JOB_TYPES: JobType[] = ["new_episode", "produce", "catalog", "publish_fb", "poster", "claude", "revise", "images", "regen_image", "voice", "regen_voice", "render", "voice_samples"];
 export async function createJob(type: JobType, args: Record<string, string | boolean>): Promise<Job> {
   if (!JOB_TYPES.includes(type)) throw new Error("unknown job type");
   let episodeId: string | undefined;
@@ -291,6 +291,10 @@ export async function createJob(type: JobType, args: Record<string, string | boo
     if (!["image", "video"].includes(String(args.mode))) throw new Error("bad mode");
   } else if (type === "claude") {
     if (!String(args.prompt ?? "").trim()) throw new Error("empty prompt");
+  } else if (type === "voice_samples") {
+    const name = String(args.character ?? "");
+    if (!NAME_RE.test(name) || !existsSync(path.join(ROOT, "shared", "characters", name, "character.json"))) throw new Error("character not found");
+    args = { character: name };
   } else if (type === "catalog") {
     if (!(await listSeries()).includes(String(args.series))) throw new Error("unknown series");
   } else {
