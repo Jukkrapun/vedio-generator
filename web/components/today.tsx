@@ -26,29 +26,45 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-  // ?d=tomorrow: plan tomorrow's slots. Clips planned (not yet posted) for today are reserved so tomorrow doesn't repeat them.
-  const tomorrow = params.get("d") === "tomorrow";
-  const nextDate = new Date(Date.parse(initial.date + "T12:00:00+07:00") + 86_400_000).toISOString().slice(0, 10);
-  const [nextPicks, setNextPicks] = useState<Record<string, string>>({});
-  useEffect(() => { if (tomorrow) void api<Record<string, string>>("/api/picks?date=" + nextDate).then(setNextPicks).catch(() => undefined); }, [tomorrow, nextDate]);
-  const todayPlan = planToday(episodes, schedule, picks, initial.date, now);
-  const today = tomorrow ? planToday(episodes.map(episode => {
-    const reserved = todayPlan.slots.filter(slot => slot.state !== "posted" && slot.episode?.id === episode.id)
-      .map(slot => ({ platform: slot.platform, date: initial.date, time: slot.time, url: "", views: 0, likes: 0, saves: 0 }));
-    return reserved.length ? { ...episode, posts: [...episode.posts, ...reserved] } : episode;
-  }), schedule, nextPicks, nextDate, "00:00") : todayPlan;
-  async function pickFor(platform: Platform, time: string, episodeId: string) {
-    if (!tomorrow) return setPick(platform, time, episodeId);
-    await api("/api/picks", { method: "PUT", json: { date: nextDate, platform, time, episode: episodeId } }).catch(fail);
-    setNextPicks(current => ({ ...current, [platform + "@" + time]: episodeId }));
+  // ?d=0..6: plan the next 7 days. Each day reserves the clips planned (not yet posted) on the days before it,
+  // so the week has no repeats. Posts can be marked ahead of time (scheduled posts) on any day.
+  const DAYS = 7;
+  const dayParam = params.get("d");
+  const day = dayParam === "tomorrow" ? 1 : Math.min(DAYS - 1, Math.max(0, Number(dayParam) || 0));
+  const dates = Array.from({ length: DAYS }, (_, i) => new Date(Date.parse(initial.date + "T12:00:00+07:00") + i * 86_400_000).toISOString().slice(0, 10));
+  const [futurePicks, setFuturePicks] = useState<Record<string, Record<string, string>>>({});
+  useEffect(() => {
+    void Promise.all(dates.slice(1).map(date => api<Record<string, string>>("/api/picks?date=" + date).then(p => [date, p] as const).catch(() => [date, {}] as const)))
+      .then(entries => setFuturePicks(Object.fromEntries(entries)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initial.date]);
+  const plans: Today[] = [];
+  let pool = episodes;
+  for (let i = 0; i <= day; i++) {
+    const plan = planToday(pool, schedule, i === 0 ? picks : futurePicks[dates[i]] ?? {}, dates[i], i === 0 ? now : "00:00");
+    plans.push(plan);
+    pool = pool.map(episode => {
+      const reserved = plan.slots.filter(slot => slot.state !== "posted" && slot.episode?.id === episode.id)
+        .map(slot => ({ platform: slot.platform, date: dates[i], time: slot.time, url: "", views: 0, likes: 0, saves: 0 }));
+      return reserved.length ? { ...episode, posts: [...episode.posts, ...reserved] } : episode;
+    });
   }
-  const query = (next: { p?: string | null; d?: boolean }) => {
+  const today = plans[day];
+  async function pickFor(platform: Platform, time: string, episodeId: string) {
+    if (day === 0) return setPick(platform, time, episodeId);
+    await api("/api/picks", { method: "PUT", json: { date: dates[day], platform, time, episode: episodeId } }).catch(fail);
+    setFuturePicks(current => ({ ...current, [dates[day]]: { ...(current[dates[day]] ?? {}), [platform + "@" + time]: episodeId } }));
+  }
+  const query = (next: { p?: string | null; d?: number }) => {
     const q = new URLSearchParams();
     const p = next.p === undefined ? params.get("p") : next.p;
     if (p) q.set("p", p);
-    if (next.d ?? tomorrow) q.set("d", "tomorrow");
+    const d = next.d ?? day;
+    if (d) q.set("d", String(d));
     return pathname + (q.toString() ? "?" + q : "");
   };
+  const dayLabel = (i: number) => i === 0 ? "วันนี้" : i === 1 ? "พรุ่งนี้"
+    : new Intl.DateTimeFormat("th-TH", { timeZone: "Asia/Bangkok", weekday: "short", day: "numeric" }).format(new Date(dates[i] + "T12:00:00+07:00"));
   const posted = today.slots.filter(slot => slot.state === "posted").length;
   const times = [...new Set(today.slots.map(slot => slot.time))].sort();
   const close = () => setActive(null);
@@ -59,18 +75,19 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
   const onAction = (slot: Slot) => (kind: Active["kind"]) => { setDryRun(true); setActive({ kind, slot }); };
 
   return <>
-    <div className="segmented day-tabs" role="tablist" aria-label="เลือกวัน">
-      <button role="tab" aria-pressed={!tomorrow} onClick={() => router.replace(query({ d: false }), { scroll: false })}>วันนี้</button>
-      <button role="tab" aria-pressed={tomorrow} onClick={() => router.replace(query({ d: true }), { scroll: false })}>แผนพรุ่งนี้</button>
-    </div>
-    <header className="page-heading today-heading"><div><p className="date-label"><CalendarClock size={16} />{thaiDate(today.date)}</p><h1>{tomorrow ? "แผนลงคลิปพรุ่งนี้" : "ตารางลงคลิปวันนี้"}</h1>
-      {tomorrow && <p className="small muted">ไม่ซ้ำคลิปที่วางไว้วันนี้ · กด "เปลี่ยนคลิป" เพื่อจัดเอง ระบบจำไว้ให้พรุ่งนี้</p>}</div>
+    <div className="segmented day-tabs" role="tablist" aria-label="เลือกวัน">{dates.map((date, i) => {
+      const plan = i <= day ? plans[i] : null;
+      return <button key={date} role="tab" aria-pressed={day === i} onClick={() => router.replace(query({ d: i }), { scroll: false })}>
+        {dayLabel(i)}{plan && <span className="tab-count">{plan.slots.filter(slot => slot.state === "posted").length}/{plan.slots.length}</span>}</button>;
+    })}</div>
+    <header className="page-heading today-heading"><div><p className="date-label"><CalendarClock size={16} />{thaiDate(today.date)}</p><h1>{day === 0 ? "ตารางลงคลิปวันนี้" : "แผนลงคลิป" + dayLabel(day)}</h1>
+      {day > 0 && <p className="small muted">ไม่ซ้ำคลิปที่วางไว้วันก่อนหน้า · กด "เปลี่ยนคลิป" เพื่อจัดเอง · ตั้งเวลาลงล่วงหน้าแล้วกด "ลงแล้ว" ได้เลย</p>}</div>
       <div className="progress-summary"><span>ลงแล้ว <strong>{posted}/{today.slots.length}</strong> สล็อต</span><progress value={posted} max={today.slots.length || 1} aria-label="ความคืบหน้าการลงคลิป" /></div>
     </header>
 
     <section className="stats-grid today-stats" aria-label="สถานะรายแพลตฟอร์ม">
       {today.summary.map(item => <Card key={item.platform} role="button" tabIndex={0} onClick={() => setTab(tab === item.platform ? null : item.platform)} className={"stat-card stat-tab" + (item.left < item.total * 2 ? " low-stock" : "") + (tab === item.platform ? " selected" : "")}>
-        <div className="stat-top"><PlatformBadge platform={item.platform} /><span className="small muted">{tomorrow ? item.total + " สล็อตพรุ่งนี้" : "ลงแล้ว " + item.posted + "/" + item.total + " วันนี้"}</span></div>
+        <div className="stat-top"><PlatformBadge platform={item.platform} /><span className="small muted">{"ลงแล้ว " + item.posted + "/" + item.total + (day === 0 ? " วันนี้" : " " + dayLabel(day))}</span></div>
         <div className="stat-count"><strong>{item.left}</strong><span>คลิปที่ยังไม่ลง</span></div><p className="small muted">เหลือใช้ประมาณ {item.days} วัน</p>
       </Card>)}
     </section>
@@ -82,7 +99,7 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
           <PlatformBadge platform={platform} compact /><span className="tab-count">{mine.filter(slot => slot.state === "posted").length}/{mine.length}</span></button>; })}
       </div>
       {tab ? <div className="platform-slots">{today.slots.filter(slot => slot.platform === tab).sort((a, b) => a.time.localeCompare(b.time)).map(slot =>
-        <SlotCard future={tomorrow} key={slot.time} slot={slot} main={slot.time === schedule.main_slot} fields={slot.episode ? fields[slot.episode.id]?.[tab] : undefined} onAction={onAction(slot)} />)}
+        <SlotCard key={slot.time} slot={slot} main={slot.time === schedule.main_slot} fields={slot.episode ? fields[slot.episode.id]?.[tab] : undefined} onAction={onAction(slot)} />)}
         {!today.slots.some(slot => slot.platform === tab) && <Empty>ไม่มีรอบลงคลิปของแพลตฟอร์มนี้</Empty>}</div>
       : times.length ? <div className="schedule-grid">
         <div className="schedule-head"><span>เวลา</span>{platforms.map(platform => <PlatformBadge key={platform} platform={platform} />)}</div>
@@ -90,7 +107,7 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
           <div className={"time-label" + (time === schedule.main_slot ? " main-time" : "")}><Clock3 size={15} />{time}</div>
           {platforms.map(platform => {
             const slot = today.slots.find(item => item.time === time && item.platform === platform);
-            return slot ? <SlotCard future={tomorrow} key={platform} slot={slot} main={time === schedule.main_slot} fields={slot.episode ? fields[slot.episode.id]?.[platform] : undefined} onAction={kind => { setDryRun(true); setActive({ kind, slot }); }} /> : <div className="blank-slot" aria-hidden key={platform} />;
+            return slot ? <SlotCard key={platform} slot={slot} main={time === schedule.main_slot} fields={slot.episode ? fields[slot.episode.id]?.[platform] : undefined} onAction={kind => { setDryRun(true); setActive({ kind, slot }); }} /> : <div className="blank-slot" aria-hidden key={platform} />;
           })}
         </div>)}
       </div> : <Empty>ยังไม่มีเวลาลงคลิปในตาราง</Empty>}

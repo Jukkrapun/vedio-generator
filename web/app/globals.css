@@ -425,3 +425,6 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 .phone-mock.lower i { bottom: 24%; }
 .voice-picker, .subtitle-picker { margin-bottom: 14px; }
 .day-tabs { margin-bottom: 12px; }
+.day-tabs { display: flex; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
+.day-tabs::-webkit-scrollbar { display: none; }
+.day-tabs button { flex: none; white-space: nowrap; display: inline-flex; gap: 5px; align-items: center; }
