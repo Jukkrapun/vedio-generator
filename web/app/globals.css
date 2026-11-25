@@ -429,3 +429,6 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 .day-tabs::-webkit-scrollbar { display: none; }
 .day-tabs button { flex: none; white-space: nowrap; display: inline-flex; gap: 5px; align-items: center; }
 @media (min-width: 1024px) { .today-stats { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+/* slot card: primary action ("ลงแล้ว") full width so the buttons line up in narrow 4-column cells */
+.slot-actions .button-default { grid-column: 1 / -1; }
+.schedule-row > .slot-card { align-self: start; }
