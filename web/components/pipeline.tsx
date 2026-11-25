@@ -359,6 +359,7 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
   }, [zoom, items.length]);
   const zoomed = zoom === null ? null : items[zoom];
   return <>
+    {detail.mode !== "story" && <VoicePicker id={id} detail={detail} busy={busy} record={false} />}
     {zoomed && <div className="lightbox" role="dialog" aria-modal="true" aria-label={"ภาพ " + zoomed.id} onClick={() => setZoom(null)}>
       <img src={asset(zoomed.image)} alt={zoomed.image_prompt} />
       <div className="lightbox-bar" onClick={event => event.stopPropagation()}>
@@ -410,7 +411,8 @@ function SubtitlePicker({ id, detail, busy }: { id: string; detail: EpisodeDetai
 type VoiceOption = { key: string; tts: "edge" | "elevenlabs"; voice: string; model: string | null; name: string; detail: string; sample: string | null; usedBy: number };
 
 /** Pick the narrator voice for the whole episode (e.g. a female voice for a girl on screen); re-records every segment. */
-function VoicePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; busy: boolean }) {
+/** record=false: choose the voice before any audio exists (images step) - it is used when the voice step runs. */
+function VoicePicker({ id, detail, busy, record = true }: { id: string; detail: EpisodeDetail; busy: boolean; record?: boolean }) {
   const { refreshEpisodes } = useOps();
   const [voices, setVoices] = useState<VoiceOption[] | null>(null);
   const [current, setCurrent] = useState<string>("");
@@ -430,7 +432,7 @@ function VoicePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; 
     <div><span className="small muted">เสียงผู้บรรยาย</span><strong>{now ? now.name : current.split("|")[1] || "—"}</strong>
       <span className="small muted">{now?.detail ?? current.split("|").filter(Boolean).join(" · ")}</span></div>
     <Button variant="outline" disabled={busy} onClick={() => setOpen(true)}><Mic size={15} /> เปลี่ยนเสียง</Button>
-    {open && <Modal open close={() => setOpen(false)} title="เลือกเสียงผู้บรรยาย" description={`ฟังตัวอย่างก่อนเลือก · เปลี่ยนแล้วจะอัดเสียงใหม่ทั้งตอน (~${chars.toLocaleString("th-TH")} ตัวอักษร)`}>
+    {open && <Modal open close={() => setOpen(false)} title="เลือกเสียงผู้บรรยาย" description={record ? `ฟังตัวอย่างก่อนเลือก · เปลี่ยนแล้วจะอัดเสียงใหม่ทั้งตอน (~${chars.toLocaleString("th-TH")} ตัวอักษร)` : `ฟังตัวอย่างก่อนเลือก · เสียงนี้จะใช้ตอนทำเสียงหลังอนุมัติภาพ (~${chars.toLocaleString("th-TH")} ตัวอักษร)`}>
       <div className="stack">
         <input type="search" placeholder="ค้นหาชื่อเสียง / หญิง / ชาย" value={query} onChange={event => setQuery(event.target.value)} />
         {!voices ? <p className="small muted"><Loader2 size={14} className="spin" /> กำลังโหลดรายชื่อเสียง…</p>
@@ -442,10 +444,10 @@ function VoicePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; 
           </label>)}</div>}
         <div className="modal-actions"><Button type="button" variant="outline" onClick={() => setOpen(false)}>ยกเลิก</Button>
           <Button disabled={!pick || chosen === current} onClick={async () => {
-            await api("/api/episodes/" + id + "/voice", { method: "POST", json: { tts: pick!.tts, voice: pick!.voice, model: pick!.model } }).catch(fail);
+            await api("/api/episodes/" + id + "/voice", { method: "POST", json: { tts: pick!.tts, voice: pick!.voice, model: pick!.model, record } }).catch(fail);
             setCurrent(chosen); setOpen(false); await refreshEpisodes();
-            toast.success("เปลี่ยนเป็นเสียง " + pick!.name + " · กำลังอัดใหม่ทั้งตอน");
-          }}><Mic size={15} /> ใช้เสียงนี้ อัดใหม่ทั้งตอน</Button></div>
+            toast.success("เปลี่ยนเป็นเสียง " + pick!.name + (record ? " · กำลังอัดใหม่ทั้งตอน" : " · ใช้ตอนทำเสียง"));
+          }}><Mic size={15} /> {record ? "ใช้เสียงนี้ อัดใหม่ทั้งตอน" : "ใช้เสียงนี้"}</Button></div>
       </div>
     </Modal>}
   </Card>;

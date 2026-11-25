@@ -75,7 +75,8 @@ export async function listVoices(): Promise<VoiceOption[]> {
 }
 
 /** Switch an episode's voice; tts.py's cache key includes tts/voice/model, so the voice job re-records every segment. */
-export async function setEpisodeVoice(series: string, slug: string, choice: { tts: string; voice: string; model?: string | null }) {
+/** record=false (images step): only set the voice; the voice step records it later. */
+export async function setEpisodeVoice(series: string, slug: string, choice: { tts: string; voice: string; model?: string | null; record?: boolean }) {
   const dir = await resolveEpisode(series, slug);
   if (!dir) throw new Error("episode not found");
   if (!["edge", "elevenlabs"].includes(choice.tts) || !/^[A-Za-z0-9_-]{6,64}$/.test(choice.voice)) throw new Error("bad voice");
@@ -89,7 +90,7 @@ export async function setEpisodeVoice(series: string, slug: string, choice: { tt
   const tmp = file + ".voice.tmp";
   await fs.writeFile(tmp, JSON.stringify(data, null, 2) + "\n", "utf-8");
   await fs.rename(tmp, file);
-  return createJob("voice", { episode: series + "/" + slug });
+  return choice.record === false ? { ok: true } : createJob("voice", { episode: series + "/" + slug });
 }
 
 export function currentVoiceKey(raw: { tts?: string; voice?: string; model?: string }) {
