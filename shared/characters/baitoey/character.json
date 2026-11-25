@@ -1,0 +1,23 @@
+{
+  "name": "Baitoey",
+  "image_block": "Baitoey: the SAME fictional Thai woman as her reference images, late 20s, fair skin, soft rosy blush, natural rose lips, glossy black hair in a high messy bun with soft face-framing strands, slim gold metal oval glasses, small gold hoop earrings, tailored blazer over a simple top. Do not redesign the character.",
+  "refs": [
+    "reference/face-closeup.png",
+    "reference/turnaround.png"
+  ],
+  "voice": {
+    "tts": "elevenlabs",
+    "voice": "MYZYcGOqrkYQcwDunXl7",
+    "model": "eleven_v3",
+    "fallback": {
+      "tts": "edge",
+      "voice": "th-TH-PremwadeeNeural",
+      "rate": "-8%"
+    }
+  },
+  "samples": {
+    "calm": "บางที เราก็แค่เหนื่อย… ไม่ได้แปลว่าเราแพ้",
+    "sad": "[softly] คนที่เคยคุยกันทุกคืน… วันนี้ไม่ทักมาแล้ว",
+    "warm": "[warmly] พักก่อนนะ พรุ่งนี้ค่อยว่ากันใหม่"
+  }
+}

@@ -16,11 +16,13 @@ Goal (user, 2026-11-25): every character is designed once (name, age, look, art 
 - [x] Style anchor per series = `content/<series>/style-anchor.png`, picked from approved episode images (no Codex cost): love-quotes 019 hook (caricature cartoon), work-talk 012 hook (semi-real anime), living-life 002 hook (photoreal still-life), night-stories 005 moon-house (storybook), poc/cat-2am 001 two-lights (2D hand-painted).
 - Attach as 2nd ref: `image_refs` = [character sheet, style anchor], roles labelled. Replace an anchor when the user approves a new series look.
 
-## Phase 3 — tooling (later, optional)
+## Phase 3 — tooling ✅ done 2026-11-25
 
-- `episode.json` → `"characters": ["somchun"]`; `images.py` reads each persona's Character block + `reference/` automatically (replaces hand-copied `image_style` text / `image_refs`).
-- `tts.py` takes voice/model/voice_settings from the narrator's persona when the episode doesn't set them.
-- Voice test helper: render one sample line per emotion to `shared/characters/<name>/voice-samples/` before a voice is saved.
+- [x] `shared/characters/<name>/character.json` = machine side of persona.md (`image_block`, `refs`, `voice`, `samples`); `tools/characters.py` loads it.
+- [x] `images.py`: `"characters": [...]` appends each `image_block` to the shared style and attaches its `refs`; `"style_anchor": true` (or a path) attaches `content/<series>/style-anchor.png`; every attached image is labelled by role in the Codex prompt. Old `image_refs` still work.
+- [x] `tts.py` (`synthesize_segments`, also used by `render_story.py`): `"narrator": "<name>"` fills tts/voice/model/rate/voice_settings/fallback when the episode doesn't set them. Explicit keys win, so existing episodes and their TTS caches are unchanged.
+- [x] `tools/voice_samples.py <name> [--voice --model]` → `voice-samples/<emotion>.mp3` from `samples` (costs ElevenLabs credits).
+- Not done: web UI doesn't show/edit characters; `new_episode.py` templates don't set the new keys yet (add per series when convenient).
 
 ## Rules
 

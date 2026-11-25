@@ -1,0 +1,22 @@
+{
+  "name": "Somchun",
+  "image_block": "Somchun: chubby orange tabby house cat from the reference sheet, round body, short legs, big round head, sleepy half-closed amber eyes, small pink nose, cream-white chest and muzzle, three dark forehead stripes, striped tail, thin dark-green collar with a small brass bell. Do not redesign the character.",
+  "refs": [
+    "reference/sheet.png",
+    "reference/expressions.png"
+  ],
+  "voice": {
+    "tts": "elevenlabs",
+    "voice": "gbZNaSxK771GgOTJIKRB",
+    "model": "eleven_v4",
+    "fallback": {
+      "tts": "edge",
+      "voice": "th-TH-PremwadeeNeural"
+    }
+  },
+  "samples": {
+    "deadpan": "มนุษย์ของฉันร้องไห้อีกแล้ว ซึ่ง… ก็ไม่ผิด",
+    "curious": "ตีสองแล้ว ทำไมไฟห้องนี้ยังเปิดอยู่",
+    "kind": "[softly] ฉันเลยนั่งทับมือเขาไว้ เผื่อมันจะช่วย"
+  }
+}

@@ -19,6 +19,7 @@ import time
 from pathlib import Path
 
 from media import ROOT
+from characters import image_context
 
 CODEX_GENERATED = Path.home() / ".codex" / "generated_images"
 CODEX_TIMEOUT_SEC = 1200  # per batch
@@ -36,9 +37,15 @@ def missing_images(episode: dict, episode_dir: Path) -> list[dict]:
             if s.get("image_prompt") and s.get("image") and not (episode_dir / s["image"]).exists()]
 
 
-def codex_prompt(segments: list[dict], style: str, rules: str = BASE_RULES, refs: bool = False) -> str:
-    ref = (" The attached image(s) are the character reference sheet: whenever that character appears, keep "
-           "exactly the same design, colours, markings and proportions." if refs else "")
+def codex_prompt(segments: list[dict], style: str, rules: str = BASE_RULES, refs: bool = False,
+                 roles: list[str] | None = None) -> str:
+    if roles:
+        listed = "; ".join(f"attached image {i} = {r}" for i, r in enumerate(roles, start=1))
+        ref = (f" Attached references: {listed}. Whenever a character appears, keep exactly the same design, "
+               "colours, markings and proportions as its reference sheet.")
+    else:
+        ref = (" The attached image(s) are the character reference sheet: whenever that character appears, keep "
+               "exactly the same design, colours, markings and proportions." if refs else "")
     items = "\n".join(f"Image {i}: {s['image_prompt']}" for i, s in enumerate(segments, start=1))
     return (f"Use your image generation tool to create {len(segments)} separate images, in this exact order. "
             f"Every image: {rules}. Shared style for all: {style or 'soft warm cinematic film look'}.{ref}\n"
@@ -53,6 +60,15 @@ def generate_images(episode_dir: Path) -> list[Path]:
     todo = [s for s in todo if not (s["image"] in seen or seen.add(s["image"]))]
     rules = episode.get("image_rules") or (STORY_RULES if episode.get("mode") == "story" else BASE_RULES)
     refs = [str(ROOT / r) for r in episode.get("image_refs", [])]
+    roles = ["character reference sheet"] * len(refs)
+    extra_style, extra_refs = image_context(episode, episode_dir)
+    for path, role in extra_refs:
+        if path not in refs:
+            refs.append(path)
+            roles.append(role)
+    if extra_style:
+        episode["image_style"] = f"{episode.get('image_style', '')} {extra_style}".strip()
+    episode["_ref_roles"] = roles if extra_refs else None
     missing_refs = [r for r in refs if not Path(r).exists()]
     if missing_refs:
         raise FileNotFoundError(f"image_refs not found: {missing_refs}")
@@ -78,7 +94,7 @@ def codex_batch(codex: str, todo: list[dict], episode: dict, episode_dir: Path, 
     result = subprocess.run(
         # --image takes several values: it must come AFTER "-" or it swallows the prompt argument.
         [codex, "exec", "--skip-git-repo-check", "-"] + (["--image", *refs] if refs else []),
-        input=codex_prompt(todo, episode.get("image_style", ""), rules, bool(refs)),
+        input=codex_prompt(todo, episode.get("image_style", ""), rules, bool(refs), episode.get("_ref_roles")),
         capture_output=True, text=True, encoding="utf-8", timeout=CODEX_TIMEOUT_SEC,
     )
     if result.returncode != 0:

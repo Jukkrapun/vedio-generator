@@ -56,3 +56,6 @@ TH (for review in the web):
 - [ ] `sheet.png` turnaround (front / side / back)
 - [ ] `expressions.png` expression sheet (emotions above)
 - [ ] style anchor frame (approved scene in final style)
+
+## character.json (machine side — keep in sync with this file)
+`image_block` (= Character block EN), `refs` (files in reference/), `voice` {tts, voice, model, voice_settings, fallback}, `samples` {emotion: line}. Used by `tools/characters.py`: episodes set `"characters": [...]`, `"narrator": "<name>"`, `"style_anchor": true`. Test a voice with `tools/voice_samples.py <name>`.

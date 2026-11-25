@@ -32,7 +32,7 @@ Use their reasoning (fit to emotion/audience, AI prompting tips, pitfalls). If a
 
 1. Check `shared/characters/README.md` first — reuse an existing character if it fits.
 2. Otherwise create one from `shared/characters/_template/persona.md`: name, age, role, personality, backstory, art style (+ report), locked look, Character block EN+TH, voice (tested voice_id, settings, sound, speaking style), emotion range. Save it and add a row to the README.
-3. References: `shared/characters/<name>/reference/` (sheet/turnaround + `expressions.png`) and the series style anchor `content/<series>/style-anchor.png` — attach as `image_refs` with roles labelled ("Image 1 = identity sheet, Image 2 = style anchor: match palette and rendering only"). If you deliberately propose a new look, drop the anchor and say so.
+3. In episode.json use `"characters": ["<name>"]`, `"narrator": "<name>"` and `"style_anchor": true` — the tools then add the Character block, attach `reference/` + `content/<series>/style-anchor.png` with labelled roles, and take the voice from `character.json`. If you deliberately propose a new look, leave `style_anchor` off and say so. New/changed voice → `tools/voice_samples.py <name>` and listen before saving.
 4. Every image prompt includes the character's **Character block** verbatim + its `reference/` sheet. Every voice line/script is written for that character's age, voice and the emotion from its emotion table (pick v3/v4 audio tags / settings from there).
 5. Never copy real people or existing famous characters.
 

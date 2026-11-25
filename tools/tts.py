@@ -24,6 +24,7 @@ import edge_tts
 from dotenv import load_dotenv
 
 from media import MAX_DURATION_SEC, ROOT, probe_duration, run
+from characters import apply_voice
 
 LEAD_IN_SEC = 0.3
 TAIL_SEC = 1.2
@@ -106,6 +107,7 @@ def cache_key(episode: dict, text: str) -> str:
 
 def synthesize_segments(episode: dict, audio_dir: Path) -> list[dict]:
     """Synthesize (or reuse cached) clips; return segments with start/end times."""
+    apply_voice(episode)  # "narrator" -> voice keys from shared/characters (episode keys win)
     manifest_path = audio_dir / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     new_manifest, timeline, cursor = {}, [], LEAD_IN_SEC
