@@ -420,7 +420,8 @@ function VoicePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; 
   useEffect(() => {
     void api<{ key: string }>("/api/episodes/" + id + "/voice").then(r => { setCurrent(r.key); setChosen(r.key); }).catch(() => undefined);
   }, [id, detail]);
-  useEffect(() => { if (open && !voices) void api<VoiceOption[]>("/api/voices").then(setVoices).catch(fail); }, [open, voices]);
+  // load the voice list up front so the card shows the voice's name, not its id (server caches ElevenLabs for 10 min)
+  useEffect(() => { void api<VoiceOption[]>("/api/voices").then(setVoices).catch(() => undefined); }, []);
   const chars = detail.segments.filter(s => !s.skip).reduce((n, s) => n + s.text.replace(/\[[^\]]*\]/g, "").length, 0);
   const now = voices?.find(v => v.key === current);
   const pick = voices?.find(v => v.key === chosen);
