@@ -10,10 +10,11 @@ Goal (user, 2026-11-25): every character is designed once (name, age, look, art 
 - [x] `shared/characters/README.md` = index of characters (who, style, voice, series).
 - [x] CLAUDE.md pointer.
 
-## Phase 2 — reference sheets (needs Codex quota, ask first)
+## Phase 2 — reference sheets ✅ done 2026-11-25
 
-- Turnaround (front/side/back) + expression sheet per character in `reference/`.
-- One approved style anchor frame per series.
+- [x] baitoey `reference/turnaround.png` + `expressions.png` (Codex, from `face-closeup.png`); somchun `reference/expressions.png` (`sheet.png` is already a turnaround).
+- [x] Style anchor per series = `content/<series>/style-anchor.png`, picked from approved episode images (no Codex cost): love-quotes 019 hook (caricature cartoon), work-talk 012 hook (semi-real anime), living-life 002 hook (photoreal still-life), night-stories 005 moon-house (storybook), poc/cat-2am 001 two-lights (2D hand-painted).
+- Attach as 2nd ref: `image_refs` = [character sheet, style anchor], roles labelled. Replace an anchor when the user approves a new series look.
 
 ## Phase 3 — tooling (later, optional)
 

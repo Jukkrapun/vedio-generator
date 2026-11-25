@@ -38,3 +38,8 @@ TH: ส้มฉุนจากภาพที่ 1 แมวส้มลาย�
 | curious | ears forward, head tilt | slightly up | |
 | secretly kind | sits close, tail around human's hand | softer, slower | |
 | annoyed | flattened ears, tail flick | short, dry | |
+
+## reference/ (Phase 2, 2026-11-25)
+- [x] `sheet.png` turnaround (front sit, side walk, back, close-up)
+- [x] `expressions.png` 2x3: deadpan · curious · secretly kind · annoyed · surprised · yawning
+- Style anchor: `content/poc/cat-2am/style-anchor.png`

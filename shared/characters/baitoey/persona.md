@@ -16,6 +16,7 @@ Style inspired by general traits only (hair/makeup/vibe) — no real-person phot
 - Makeup: fair skin, soft rosy blush, natural rose lips
 - Outfit: tailored blazer (black / camel / slate-blue) over a simple top
 - Mic: small black lavalier clipped on the lapel — no big mic in frame
+- Earrings: small gold hoops (seen in every reference)
 
 ## Looks (`looks/`) — used by new episodes
 Outfit + background chosen per episode to match its content; see `looks/README.md`.
@@ -63,3 +64,8 @@ TH: ผู้หญิงไทยคนเดียวกับภาพที�
 | sad / deep | eyes lowered, small pause | `[softly]`, slower | |
 | warm / comforting | gentle smile, slight head tilt | `[warmly]` | |
 | wry | half smile, one brow | normal pace | |
+
+## reference/ (Phase 2, 2026-11-25)
+- [x] `face-closeup.png` identity source · `face-sofa.png`
+- [x] `turnaround.png` front / side / back, camel blazer + dark trousers
+- [x] `expressions.png` 2x3: calm smile · sad · warm tilt · wry · tired · quiet laugh
