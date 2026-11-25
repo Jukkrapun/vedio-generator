@@ -40,3 +40,26 @@ Real lip-synced talking footage, reusable as the input video for video-to-video 
 ## New scenes
 Use `PROMPTS.md` section 8.2 with `--image shared/characters/baitoey/reference/face-closeup.png`.
 Keep: face, glasses, bun, makeup, lavalier mic, seated waist-up, face to camera, hands away from face.
+
+## Art style
+- Style: photorealistic (current). Alternative researched: semi-realistic anime → `reports/สไตล์อนิเมะกึ่งสมจริง.md` ("real in light, not in skin") if a drawn version is ever needed.
+- Why: host persona for lip-sync video mode; realism fits talk-show framing.
+
+## Character block (paste into every image prompt)
+```
+The SAME fictional Thai woman as Image 1 (identity reference): late 20s, fair skin, soft rosy blush, natural rose lips, glossy black hair in a high messy bun with soft face-framing strands, slim gold metal oval glasses, tailored blazer over a simple top, small black lavalier mic on the lapel. Image 1 is the identity sheet. Do not redesign the character.
+```
+TH: ผู้หญิงไทยคนเดียวกับภาพที่ 1 อายุปลาย 20 ผิวขาว แก้มชมพูอ่อน ปากสีกุหลาบธรรมชาติ ผมดำเงามวยสูงหลวม ๆ มีปอยผมข้างหน้า แว่นกรอบทองทรงรีบาง สูทเข้ารูปทับเสื้อเรียบ ไมค์หนีบปกสีดำ ห้ามออกแบบตัวละครใหม่
+
+## Voice (detail)
+- Sound: warm, calm, mid-low pitch, unhurried; like a wise older sister.
+- Speaking style: short sentences, pauses before the key line, "เรา" / "เธอ", no slang shouting.
+
+## Emotion range
+
+| Emotion | Face / body | Voice | Example line |
+|---|---|---|---|
+| calm (default) | soft smile, eyes to camera | default | "บางทีเราก็แค่เหนื่อย" |
+| sad / deep | eyes lowered, small pause | `[softly]`, slower | |
+| warm / comforting | gentle smile, slight head tilt | `[warmly]` | |
+| wry | half smile, one brow | normal pace | |
