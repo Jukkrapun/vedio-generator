@@ -382,10 +382,54 @@ function ImagesReview({ id, detail, asset, busy }: { id: string; detail: Episode
   </>;
 }
 
+type VoiceOption = { key: string; tts: "edge" | "elevenlabs"; voice: string; model: string | null; name: string; detail: string; sample: string | null; usedBy: number };
+
+/** Pick the narrator voice for the whole episode (e.g. a female voice for a girl on screen); re-records every segment. */
+function VoicePicker({ id, detail, busy }: { id: string; detail: EpisodeDetail; busy: boolean }) {
+  const { refreshEpisodes } = useOps();
+  const [voices, setVoices] = useState<VoiceOption[] | null>(null);
+  const [current, setCurrent] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [chosen, setChosen] = useState<string>("");
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    void api<{ key: string }>("/api/episodes/" + id + "/voice").then(r => { setCurrent(r.key); setChosen(r.key); }).catch(() => undefined);
+  }, [id, detail]);
+  useEffect(() => { if (open && !voices) void api<VoiceOption[]>("/api/voices").then(setVoices).catch(fail); }, [open, voices]);
+  const chars = detail.segments.filter(s => !s.skip).reduce((n, s) => n + s.text.replace(/\[[^\]]*\]/g, "").length, 0);
+  const now = voices?.find(v => v.key === current);
+  const pick = voices?.find(v => v.key === chosen);
+  const shown = (voices ?? []).filter(v => !query.trim() || (v.name + " " + v.detail).toLowerCase().includes(query.trim().toLowerCase()));
+  return <Card className="section-card voice-picker">
+    <div><span className="small muted">เสียงผู้บรรยาย</span><strong>{now ? now.name : current.split("|")[1] || "—"}</strong>
+      <span className="small muted">{now?.detail ?? current.split("|").filter(Boolean).join(" · ")}</span></div>
+    <Button variant="outline" disabled={busy} onClick={() => setOpen(true)}><Mic size={15} /> เปลี่ยนเสียง</Button>
+    {open && <Modal open close={() => setOpen(false)} title="เลือกเสียงผู้บรรยาย" description={`ฟังตัวอย่างก่อนเลือก · เปลี่ยนแล้วจะอัดเสียงใหม่ทั้งตอน (~${chars.toLocaleString("th-TH")} ตัวอักษร)`}>
+      <div className="stack">
+        <input type="search" placeholder="ค้นหาชื่อเสียง / หญิง / ชาย" value={query} onChange={event => setQuery(event.target.value)} />
+        {!voices ? <p className="small muted"><Loader2 size={14} className="spin" /> กำลังโหลดรายชื่อเสียง…</p>
+          : <div className="voice-list">{shown.map(v => <label key={v.key} className={"voice-option" + (v.key === chosen ? " selected" : "")}>
+            <input type="radio" name="voice" checked={v.key === chosen} onChange={() => setChosen(v.key)} />
+            <span className="voice-text"><strong>{v.name}{v.key === current && <span className="small muted"> · ใช้อยู่</span>}</strong>
+              <span className="small muted">{v.detail}{v.usedBy ? ` · ใช้ใน ${v.usedBy} ตอน` : ""}</span></span>
+            {v.sample ? <audio controls preload="none" src={v.sample} onClick={event => event.stopPropagation()} /> : <span className="small muted">ไม่มีตัวอย่าง</span>}
+          </label>)}</div>}
+        <div className="modal-actions"><Button type="button" variant="outline" onClick={() => setOpen(false)}>ยกเลิก</Button>
+          <Button disabled={!pick || chosen === current} onClick={async () => {
+            await api("/api/episodes/" + id + "/voice", { method: "POST", json: { tts: pick!.tts, voice: pick!.voice, model: pick!.model } }).catch(fail);
+            setCurrent(chosen); setOpen(false); await refreshEpisodes();
+            toast.success("เปลี่ยนเป็นเสียง " + pick!.name + " · กำลังอัดใหม่ทั้งตอน");
+          }}><Mic size={15} /> ใช้เสียงนี้ อัดใหม่ทั้งตอน</Button></div>
+      </div>
+    </Modal>}
+  </Card>;
+}
+
 function VoiceReview({ id, detail, asset, busy }: { id: string; detail: EpisodeDetail; asset: (f: string) => string; busy: boolean }) {
   const { enqueue } = useOps();
   const [redo, setRedo] = useState<{ seg: string; text: string } | null>(null);
   return <>
+    <VoicePicker id={id} detail={detail} busy={busy} />
     <Card className="section-card stack">
       <h2>เสียงทั้งคลิป</h2><audio controls preload="none" src={asset("audio/voice.mp3")} />
     </Card>
