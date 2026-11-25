@@ -121,13 +121,19 @@ anything - the user reviews every stage in the web dashboard. Reply in Thai with
 # image prompts stay English for Codex; the user reviews them in Thai (decided 2026-11-24)
 THAI_PROMPTS = ("Every segment with an English \"image_prompt\" also gets \"image_prompt_th\": a faithful Thai "
                 "translation of that prompt (same content, natural Thai) for the user to read in the dashboard.")
-SCRIPT_GUARD = SCRIPT_GUARD.replace("{TH}", THAI_PROMPTS)
+# project skills (.claude/skills/) the web's Claude jobs must use - CLAUDE.md "Writing & editing skills"
+SKILLS = ("Use the project skills (Skill tool): story-hook-framework for the story/script, vertical-edit-techniques "
+          "for segments/cards/pacing, and art-director for the look and every image_prompt (pick the look from the "
+          "content, avoid repeating recent episodes, follow shared/brand/style-bible.md, reuse characters from "
+          "shared/characters/ via the \"characters\"/\"narrator\"/\"style_anchor\" keys). The series' series.md and "
+          "the channel tone win over the skills.")
+SCRIPT_GUARD = SCRIPT_GUARD.replace("{TH}", THAI_PROMPTS + " " + SKILLS)
 
 
 def revise_prompt(episode_id: str, note: str) -> str:
     return (f"Revise the script of episode {episode_path(episode_id)} (episode.json segments text/cards/"
             f"image_prompt, script.md and publish.md) as follows:\n{note}\n\nKeep the series rules. "
-            f"{THAI_PROMPTS} Keep image_prompt and image_prompt_th in sync whenever either changes. "
+            f"{THAI_PROMPTS} {SKILLS} Keep image_prompt and image_prompt_th in sync whenever either changes. "
             "Only edit files in that episode folder. Do NOT generate images, run TTS, render or post. "
             "Reply in Thai with a short summary of what changed.")
 
@@ -136,7 +142,7 @@ def claude_command(prompt: str, guard: bool = True) -> list[str]:
     exe = shutil.which("claude")
     if not exe:
         raise ValueError("claude CLI not found - run the worker on the host (ops/start-worker.ps1)")
-    tools = ["Read", "Write", "Edit", "Glob", "Grep"]
+    tools = ["Read", "Write", "Edit", "Glob", "Grep", "Skill"]
     for py in (".venv/Scripts/python.exe", ".venv\\Scripts\\python.exe", "python"):
         for script in ("tools/new_episode.py", "tools/catalog.py"):
             tools += [f"Bash({py} {script}:*)", f"PowerShell({py} {script}:*)"]
@@ -174,7 +180,8 @@ def episode_dirs() -> set[str]:
 def render_note_prompt(episode_id: str, note: str) -> str:
     return (f"Before re-rendering episode {episode_path(episode_id)}, adjust its episode.json as the user asks:\n{note}\n\n"
             "Change render settings (subtitles, cards, parallax/motion, music, pause_sec, skip on segments, voice_settings, "
-            "per-segment image/visual) per CLAUDE.md and the series' series.md. Only change spoken text if the user asks for it "
+            "per-segment image/visual) per CLAUDE.md and the series' series.md, using the vertical-edit-techniques skill "
+            "(and art-director if the look/images change). Only change spoken text if the user asks for it "
             "(new text = new TTS credits). Only edit files in that episode folder. Do NOT render, generate images, run TTS or "
             "post - the worker renders right after you. Reply in Thai with a short summary of what changed.")
 
