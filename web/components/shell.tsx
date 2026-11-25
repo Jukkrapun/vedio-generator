@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, Clapperboard, FlaskConical, Settings2, Workflow } from "lucide-react";
+import { CalendarDays, Clapperboard, FlaskConical, Settings2, Workflow, UsersRound } from "lucide-react";
 import { Brand } from "./common";
 import { ThemeToggle } from "./theme";
 import { Button } from "./ui/button";
 
-const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "งาน", icon: Workflow }, { href: "/poc", text: "ทดสอบ", icon: FlaskConical }];
+const links = [{ href: "/", text: "วันนี้", icon: CalendarDays }, { href: "/episodes", text: "คลิป", icon: Clapperboard }, { href: "/jobs", text: "งาน", icon: Workflow }, { href: "/characters", text: "ตัวละคร", icon: UsersRound }, { href: "/poc", text: "ทดสอบ", icon: FlaskConical }];
 
 function Nav({ className }: { className: string }) {
   const pathname = usePathname();

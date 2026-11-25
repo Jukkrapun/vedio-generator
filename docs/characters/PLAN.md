@@ -22,7 +22,8 @@ Goal (user, 2026-11-25): every character is designed once (name, age, look, art 
 - [x] `images.py`: `"characters": [...]` appends each `image_block` to the shared style and attaches its `refs`; `"style_anchor": true` (or a path) attaches `content/<series>/style-anchor.png`; every attached image is labelled by role in the Codex prompt. Old `image_refs` still work.
 - [x] `tts.py` (`synthesize_segments`, also used by `render_story.py`): `"narrator": "<name>"` fills tts/voice/model/rate/voice_settings/fallback when the episode doesn't set them. Explicit keys win, so existing episodes and their TTS caches are unchanged.
 - [x] `tools/voice_samples.py <name> [--voice --model]` → `voice-samples/<emotion>.mp3` from `samples` (costs ElevenLabs credits).
-- Not done: web UI doesn't show/edit characters; `new_episode.py` templates don't set the new keys yet (add per series when convenient).
+- [x] Series templates: `"style_anchor": true` in love-quotes, work-talk, living-life, night-stories, poc/cat-2am; cat-2am also `"characters": ["somchun"]` + `"narrator": "somchun"` (replaces `image_refs`). Existing episodes unchanged.
+- [x] Web page `/characters` (menu "ตัวละคร"): reference images, voice samples, episodes that use each character, persona.md; edits `image_block`, voice id/model and sample lines in `character.json` (`web/lib/characters.ts`, `PATCH /api/characters/<name>`). docker-compose mounts `./shared` into the web container.
 
 ## Rules
 

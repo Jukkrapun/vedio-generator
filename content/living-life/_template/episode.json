@@ -14,6 +14,7 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "style_anchor": true,
   "image_style": "late-night cinematic film photography, dim warm lamp and soft window light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet and lonely but comforting mood",
   "segments": [
     {

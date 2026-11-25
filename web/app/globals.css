@@ -434,3 +434,13 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 .schedule-row > .slot-card { align-self: start; }
 .fb-all { margin-bottom: 10px; }
 .fb-all-list { margin: 8px 0; padding-left: 18px; display: grid; gap: 4px; font-size: .9rem; }
+
+/* characters */
+.character-card { color: inherit; text-decoration: none; }
+.character-card:hover .section-card, .character-card:focus-visible .section-card { border-color: var(--gold-text); }
+.character-thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: var(--surface); }
+.character-voice { display: grid; gap: 10px; grid-template-columns: minmax(0,1fr); }
+.character-sample { display: grid; gap: 6px; grid-template-columns: 90px minmax(0,1fr) auto; align-items: center; }
+.character-sample audio { grid-column: 1 / -1; width: 100%; height: 34px; }
+.character-uses { display: grid; gap: 4px; padding-left: 18px; overflow-wrap: anywhere; }
+@media (min-width: 620px) { .character-voice { grid-template-columns: 2fr 1fr; } }

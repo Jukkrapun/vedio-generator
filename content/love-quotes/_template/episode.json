@@ -10,6 +10,7 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "style_anchor": true,
   "image_style": "soft warm cinematic film photography, muted golden tones, gentle grain, shallow depth of field",
   "host": {
     "character": "baitoey",

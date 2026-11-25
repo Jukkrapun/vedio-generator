@@ -32,6 +32,7 @@
   "pause_sec": 0.8,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "style_anchor": true,
   "image_style": "cinematic night film still, wide 16:9 composition, dim warm lamp and neon light, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, quiet lonely but comforting mood",
   "segments": [
     {

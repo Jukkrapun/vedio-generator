@@ -10,6 +10,7 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
+  "style_anchor": true,
   "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field",
   "host": {
     "character": "baitoey",

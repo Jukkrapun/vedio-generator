@@ -14,6 +14,7 @@ services:
       - ./content:/repo/content
       - ./output:/repo/output
       - ./.ops:/repo/.ops
+      - ./shared:/repo/shared   # characters page reads/edits shared/characters/*/character.json
       - ./PROMPTS.md:/repo/PROMPTS.md:ro   # order templates (web/lib/templates.ts)
     restart: unless-stopped
 

@@ -17,9 +17,11 @@
   "pause_sec": 0.35,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
-  "image_refs": [
-    "shared/characters/somchun/reference/sheet.png"
+  "style_anchor": true,
+  "characters": [
+    "somchun"
   ],
+  "narrator": "somchun",
   "image_rules": "original 2D cartoon illustration (NOT photorealistic), vertical portrait 1024x1536, no text, no letters, no numbers on paper, no logos, no watermarks, humans never show their faces (only hands, backs, silhouettes or feet). Composition: the cat and every important subject sit fully inside the CENTRAL 60% of the width with clear empty space on the left and right edges (the sides will be cropped for a 9:16 phone screen), nothing important touching any edge; keep the bottom 25% calm and simple for subtitles",
   "image_style": "soft hand-painted 2D animated film look, painterly backgrounds, warm amber lamp light against deep night blues, gentle grain, cozy quiet late-night mood. The cat is always Somchun from the reference sheet: chubby orange tabby, sleepy amber eyes, dark-green collar with brass bell",
   "segments": [
