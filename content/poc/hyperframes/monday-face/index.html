@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="th" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="captions.js"></script>
+    <style>
+      @font-face {
+        font-family: "PlexThai";
+        src: url("assets/font.ttf") format("truetype");
+        font-display: block;
+      }
+      :root {
+        --ground: #05070d;
+        --ink: #f4f1ea;
+        --gold: #ffcf6b;
+        --night: #0b1430;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--ground);
+        font-family: "PlexThai", sans-serif;
+      }
+      #root { position: relative; width: 100%; height: 100%; }
+      .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+      /* soft night vignette above the image */
+      #vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(3, 5, 12, 0.55) 100%),
+          linear-gradient(to bottom, transparent 55%, rgba(3, 5, 12, 0.6) 100%);
+      }
+      #dip { position: absolute; inset: 0; background: #000; opacity: 0; }
+
+      #dust { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+      .mote {
+        position: absolute; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 230, 180, 0.9), rgba(255, 230, 180, 0) 70%);
+      }
+
+      /* captions: lower third, inside TikTok/Reels safe zone */
+      #captions { position: absolute; left: 130px; right: 130px; top: 1020px; height: 340px; }
+      .card {
+        position: absolute; inset: 0;
+        display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
+        text-align: center; opacity: 0;
+      }
+      .word {
+        display: inline-block; white-space: pre;
+        color: var(--ink); font-size: 84px; line-height: 1.45;
+        text-shadow: 0 0 4px #000, 0 3px 10px rgba(0, 0, 0, 0.85), 0 0 2px #000;
+        -webkit-text-stroke: 2px rgba(0, 0, 0, 0.55); paint-order: stroke fill;
+        will-change: transform, opacity; opacity: 0;
+      }
+      .card.hook .word { font-size: 88px; }
+
+      /* end card */
+      #brand {
+        position: absolute; left: 0; right: 0; top: 300px;
+        text-align: center; color: var(--ink); opacity: 0;
+      }
+      #brand .name { font-size: 70px; letter-spacing: 0.08em; }
+      #brand .moon {
+        width: 90px; height: 90px; margin: 0 auto 26px; border-radius: 50%;
+        box-shadow: inset -22px -6px 0 0 var(--gold);
+        transform: rotate(-20deg);
+      }
+      #brand .line { width: 0; height: 2px; margin: 22px auto 0; background: var(--gold); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="25.7"
+         data-width="1080" data-height="1920" data-fps="30">
+      <video class="clip bg" src="assets/bg00.mp4" data-start="0" data-duration="5.167" data-track-index="0" muted playsinline></video>
+      <video class="clip bg" src="assets/bg01.mp4" data-start="5.167" data-duration="5.167" data-track-index="0" muted playsinline></video>
+      <video class="clip bg" src="assets/bg02.mp4" data-start="10.333" data-duration="4.7" data-track-index="0" muted playsinline></video>
+      <video class="clip bg" src="assets/bg03.mp4" data-start="15.033" data-duration="3.8" data-track-index="0" muted playsinline></video>
+      <video class="clip bg" src="assets/bg04.mp4" data-start="18.833" data-duration="6.867" data-track-index="0" muted playsinline></video>
+
+      <audio src="assets/voice.mp3" data-start="0" data-duration="25.7" data-track-index="5" data-volume="1"></audio>
+
+      <div id="overlay" class="clip" data-start="0" data-duration="25.7" data-track-index="1">
+        <div id="vignette"></div>
+        <div id="dust"></div>
+        <div id="captions"></div>
+        <div id="brand">
+          <div class="moon"></div>
+          <div class="name">ตอนตีสอง</div>
+          <div class="line"></div>
+        </div>
+        <div id="dip"></div>
+      </div>
+    </div>
+
+    <script>
+      const EP = window.EPISODE;
+      const tl = gsap.timeline({ paused: true });
+
+      // ---- seeded PRNG (determinism: no Math.random) ----
+      let seed = 20261124;
+      const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+      // ---- floating dust motes ----
+      const dust = document.getElementById("dust");
+      for (let i = 0; i < 26; i++) {
+        const m = document.createElement("div");
+        m.className = "mote";
+        const size = 6 + rand() * 16;
+        Object.assign(m.style, {
+          width: size + "px", height: size + "px",
+          left: rand() * 1080 + "px", top: 200 + rand() * 1500 + "px",
+        });
+        dust.appendChild(m);
+        const drift = 80 + rand() * 160;
+        tl.fromTo(m,
+          { x: 0, y: 0, opacity: 0 },
+          { x: (rand() - 0.5) * 120, y: -drift, opacity: 0.25 + rand() * 0.45,
+            duration: EP.total, ease: "sine.inOut" }, 0);
+        // gentle twinkle, a few cycles over the clip
+        tl.to(m, { scale: 0.4, duration: 1.6 + rand() * 1.6, yoyo: true,
+                   repeat: Math.floor(EP.total / 2.4), ease: "sine.inOut" }, rand() * 1.5);
+      }
+
+      // ---- dip-to-black between scenes (very short, keeps hard-cut feel) ----
+      EP.clips.slice(1).forEach((c) => {
+        tl.fromTo("#dip", { opacity: 0 }, { opacity: 0.55, duration: 0.08, ease: "none" }, c.start - 0.08)
+          .to("#dip", { opacity: 0, duration: 0.22, ease: "power1.out" }, c.start);
+      });
+
+      // ---- captions: one card at a time, word-by-word reveal ----
+      const box = document.getElementById("captions");
+      EP.segments.forEach((seg) => {
+        const isHook = seg.style === "Hook";
+        seg.cards.forEach((card) => {
+          const el = document.createElement("div");
+          el.className = "card" + (isHook ? " hook" : "");
+          const words = card.words.map((w) => {
+            const s = document.createElement("span");
+            s.className = "word";
+            s.textContent = w.text;
+            el.appendChild(s);
+            return s;
+          });
+          box.appendChild(el);
+
+          tl.set(el, { opacity: 1 }, card.start - 0.01);
+          tl.set(el, { opacity: 0 }, card.end);
+
+          card.words.forEach((w, i) => {
+            const s = words[i];
+            const next = i + 1 < card.words.length ? card.words[i + 1].t : card.end;
+            // enter: rise + unblur
+            tl.fromTo(s,
+              { opacity: 0, y: 28, filter: "blur(10px)", scale: isHook ? 1.12 : 1 },
+              { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false },
+              w.t);
+            // spoken: gold + glow, then settle back to white
+            tl.fromTo(s,
+              { color: "#ffcf6b", textShadow: "0 0 18px rgba(255,207,107,0.85), 0 3px 10px rgba(0,0,0,0.85)" },
+              { color: "#f4f1ea", textShadow: "0 0 4px #000, 0 3px 10px rgba(0,0,0,0.85)",
+                duration: 0.35, ease: "power1.inOut", immediateRender: false },
+              Math.max(w.t + 0.1, next - 0.05));
+          });
+        });
+      });
+
+      // twist: slow push-in on the whole caption block
+      const twist = EP.segments.find((s) => s.id === "twist");
+      if (twist) {
+        tl.fromTo("#captions", { scale: 1 }, { scale: 1.08, duration: twist.end - twist.start, ease: "sine.in" }, twist.start)
+          .set("#captions", { scale: 1 }, twist.end + 0.4);
+      }
+
+      // ---- end card ----
+      const endAt = EP.total - 2.4;
+      tl.fromTo("#brand", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, endAt)
+        .fromTo("#brand .moon", { rotate: -60, scale: 0.6 }, { rotate: -20, scale: 1, duration: 0.9, ease: "back.out(1.6)" }, endAt)
+        .fromTo("#brand .line", { width: 0 }, { width: 220, duration: 0.8, ease: "power2.inOut" }, endAt + 0.3);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

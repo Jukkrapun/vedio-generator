@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="th" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="captions.js"></script>
+    <script src="mouth.js"></script>
+    <style>
+      @font-face { font-family: "PlexThai"; src: url("assets/font.ttf") format("truetype"); font-display: block; }
+      :root { --ground: #05070d; --ink: #f4f1ea; --gold: #ffcf6b; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); font-family: "PlexThai", sans-serif; }
+      #root { position: relative; width: 100%; height: 100%; }
+      #stage { position: absolute; inset: 0; }
+      #stage canvas { width: 1080px !important; height: 1920px !important; display: block; }
+      #vignette { position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(3,5,12,0.6) 100%); }
+      #captions { position: absolute; left: 130px; right: 130px; top: 1260px; height: 300px; }
+      .card { position: absolute; inset: 0; display: flex; flex-wrap: wrap; align-content: center;
+        justify-content: center; text-align: center; opacity: 0; }
+      .word { display: inline-block; white-space: pre; color: var(--ink); font-size: 80px; line-height: 1.45;
+        text-shadow: 0 0 4px #000, 0 3px 10px rgba(0,0,0,0.85); -webkit-text-stroke: 2px rgba(0,0,0,0.55);
+        paint-order: stroke fill; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10.4"
+         data-width="1080" data-height="1920" data-fps="30">
+      <audio src="assets/voice.mp3" data-start="0" data-duration="10.4" data-track-index="5" data-volume="1"></audio>
+      <div id="overlay" class="clip" data-start="0" data-duration="10.4" data-track-index="1">
+        <div id="stage"></div>
+        <div id="vignette"></div>
+        <div id="captions"></div>
+      </div>
+    </div>
+
+    <script>
+      const DUR = 10.4, SCENE2 = 5.167;
+      const M = window.MOUTH;
+
+      // ================= 3D scene =================
+      const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(1080, 1920, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 0.85;
+      document.getElementById("stage").appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0a1024);
+      scene.fog = new THREE.Fog(0x0a1024, 9, 22);
+      const camera = new THREE.PerspectiveCamera(32, 1080 / 1920, 0.1, 100);
+
+      // toon shading ramp (3 steps) for a soft cartoon look
+      const ramp = new THREE.DataTexture(new Uint8Array([70, 70, 70, 255, 160, 160, 160, 255, 255, 255, 255, 255]), 3, 1);
+      ramp.minFilter = ramp.magFilter = THREE.NearestFilter; ramp.needsUpdate = true;
+      const toon = (c, extra = {}) => new THREE.MeshToonMaterial({ color: c, gradientMap: ramp, ...extra });
+      const flat = (c) => new THREE.MeshBasicMaterial({ color: c });
+      const add = (parent, geo, mat, p = [0, 0, 0], s = [1, 1, 1], r = [0, 0, 0]) => {
+        const m = new THREE.Mesh(geo, mat);
+        m.position.set(...p); m.scale.set(...s); m.rotation.set(...r);
+        parent.add(m); return m;
+      };
+      const SPH = new THREE.SphereGeometry(1, 48, 32);
+
+      // ---- lights ----
+      scene.add(new THREE.HemisphereLight(0x4a5f9e, 0x0a0c18, 0.45));
+      const moonLight = new THREE.DirectionalLight(0x8fb0ff, 0.5); moonLight.position.set(4, 5, -2); scene.add(moonLight);
+      const lamp = new THREE.PointLight(0xffa64d, 5, 7, 1.6); lamp.position.set(-2.6, 2.4, 0.4); scene.add(lamp);
+      const phoneLight = new THREE.PointLight(0x9ec4ff, 1.2, 1.6, 1.5); scene.add(phoneLight);
+
+      // ---- room ----
+      add(scene, new THREE.PlaneGeometry(30, 30), toon(0x141c3a), [0, 0, -3]);                 // back wall
+      add(scene, new THREE.PlaneGeometry(30, 30), toon(0x10162c), [0, -0.01, 0], [1, 1, 1], [-Math.PI / 2, 0, 0]); // floor
+      // window + moon
+      add(scene, new THREE.PlaneGeometry(1.8, 2.4), flat(0x1b2a5c), [2.3, 2.9, -2.98]);
+      add(scene, new THREE.BoxGeometry(1.9, 0.06, 0.05), toon(0x2a3352), [2.3, 2.9, -2.95]);
+      add(scene, new THREE.BoxGeometry(0.06, 2.5, 0.05), toon(0x2a3352), [2.3, 2.9, -2.95]);
+      add(scene, new THREE.CircleGeometry(0.28, 40), flat(0xfff2c4), [2.75, 3.55, -2.96]);
+      // bed
+      add(scene, new THREE.BoxGeometry(4.2, 0.6, 3), toon(0x2b3766), [0.3, 0.3, -1.2]);
+      add(scene, new THREE.BoxGeometry(4.3, 0.25, 3.1), toon(0x34427a), [0.3, 0.72, -1.2]);  // blanket
+      add(scene, SPH, toon(0xc9cde6), [-0.9, 1.0, -2.3], [0.9, 0.28, 0.5]);                  // pillow
+      // lamp
+      add(scene, new THREE.CylinderGeometry(0.05, 0.05, 1.1), toon(0x3b3020), [-2.6, 1.55, -1.6]);
+      add(scene, new THREE.CylinderGeometry(0.28, 0.42, 0.45, 32, 1, true), toon(0xffc070, { emissive: 0xff9a3c, emissiveIntensity: 0.9, side: THREE.DoubleSide }), [-2.6, 2.25, -1.6]);
+      add(scene, new THREE.BoxGeometry(0.9, 1.0, 0.7), toon(0x2a2236), [-2.6, 0.5, -1.6]);   // bedside table
+
+      // dust motes (seeded)
+      let seed = 20261125;
+      const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+      const motes = [];
+      for (let i = 0; i < 40; i++) {
+        const m = add(scene, new THREE.SphereGeometry(0.012, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffe2b0, transparent: true }),
+          [(rand() - 0.5) * 6, 0.8 + rand() * 3.5, -2 + rand() * 3]);
+        motes.push({ m, y0: m.position.y, sp: 0.03 + rand() * 0.06, ph: rand() * 6.28 });
+      }
+
+      // ================= chibi girl =================
+      const SKIN = 0xffe3d3, HAIR = 0x17121a, PJ = 0xf4e6c8;
+      const girl = new THREE.Group(); girl.position.set(0.3, 0.85, -0.6); scene.add(girl);
+
+      // body (sitting, knees up, blanket covers legs)
+      const body = new THREE.Group(); girl.add(body);
+      add(body, new THREE.CapsuleGeometry(0.34, 0.35, 8, 24), toon(PJ), [0, 0.42, 0]);
+      add(body, SPH, toon(PJ), [-0.17, 0.2, 0.42], [0.2, 0.2, 0.32]);   // knees
+      add(body, SPH, toon(PJ), [0.17, 0.2, 0.42], [0.2, 0.2, 0.32]);
+      // arms + hands + phone
+      const armL = add(body, new THREE.CapsuleGeometry(0.09, 0.32, 6, 12), toon(PJ), [-0.3, 0.52, 0.22], [1, 1, 1], [1.2, 0, 0.5]);
+      const armR = add(body, new THREE.CapsuleGeometry(0.09, 0.32, 6, 12), toon(PJ), [0.3, 0.52, 0.22], [1, 1, 1], [1.2, 0, -0.5]);
+      const phone = new THREE.Group(); phone.position.set(0, 0.5, 0.5); phone.rotation.x = -0.6; body.add(phone);
+      add(phone, new THREE.BoxGeometry(0.2, 0.36, 0.03), toon(0x5a5f7a));
+      const screen = add(phone, new THREE.PlaneGeometry(0.18, 0.33), new THREE.MeshBasicMaterial({ color: 0xbcd6ff }), [0, 0, -0.017], [1, 1, 1], [0, Math.PI, 0]);
+      add(phone, SPH, toon(SKIN), [-0.11, -0.05, 0.02], [0.07, 0.08, 0.06]);
+      add(phone, SPH, toon(SKIN), [0.11, -0.05, 0.02], [0.07, 0.08, 0.06]);
+
+      // head (big chibi head)
+      const head = new THREE.Group(); head.position.set(0, 1.18, 0.05); girl.add(head);
+      add(head, SPH, toon(SKIN), [0, 0, 0], [0.62, 0.56, 0.56]);
+      // hair: back volume, top cap, bangs, side locks
+      add(head, SPH, toon(HAIR), [0, 0.06, -0.08], [0.68, 0.64, 0.6]);
+      add(head, SPH, toon(HAIR), [0, 0.3, 0.12], [0.6, 0.3, 0.46]);
+      for (let i = -2; i <= 2; i++)
+        add(head, SPH, toon(HAIR), [i * 0.17, 0.28 - Math.abs(i) * 0.03, 0.42], [0.14, 0.2, 0.1], [0, 0, i * 0.18]);
+      add(head, SPH, toon(HAIR), [-0.6, -0.25, 0.05], [0.14, 0.4, 0.2]);
+      add(head, SPH, toon(HAIR), [0.6, -0.25, 0.05], [0.14, 0.4, 0.2]);
+
+      // face
+      const face = new THREE.Group(); face.position.z = 0.5; head.add(face);
+      const eyes = [-0.22, 0.22].map((x) => {
+        const g = new THREE.Group(); g.position.set(x, -0.04, 0.02); face.add(g);
+        add(g, SPH, flat(0x2a1a18), [0, 0, 0], [0.1, 0.13, 0.04]);
+        add(g, SPH, flat(0x6b4a3c), [0, -0.03, 0.02], [0.07, 0.08, 0.03]);
+        add(g, SPH, flat(0xffffff), [0.035, 0.05, 0.04], [0.03, 0.035, 0.01]);
+        add(g, SPH, flat(0xffffff), [-0.03, -0.05, 0.04], [0.014, 0.014, 0.01]);
+        const lid = add(g, SPH, toon(SKIN), [0, 0.11, 0.035], [0.12, 0.06, 0.03]); // drops down for sleepy/blink
+        return { g, lid };
+      });
+      const brows = [-0.22, 0.22].map((x, i) =>
+        add(face, new THREE.CapsuleGeometry(0.012, 0.1, 4, 8), flat(0x2a1a18), [x, 0.14, 0.03], [1, 1, 1], [0, 0, Math.PI / 2]));
+      add(face, SPH, new THREE.MeshBasicMaterial({ color: 0xff8f9a, transparent: true, opacity: 0.45 }), [-0.34, -0.15, -0.03], [0.08, 0.04, 0.02]);
+      add(face, SPH, new THREE.MeshBasicMaterial({ color: 0xff8f9a, transparent: true, opacity: 0.45 }), [0.34, -0.15, -0.03], [0.08, 0.04, 0.02]);
+      const mouth = add(face, SPH, flat(0x7a2e35), [0, -0.2, 0.03], [0.045, 0.012, 0.02]);
+
+      // ================= animation (pure function of time) =================
+      const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+      const BLINKS = [1.6, 3.9, 6.2, 7.0, 9.1];
+
+      function draw(t) {
+        const s2 = smooth(SCENE2 - 0.01, SCENE2, t);   // hard cut into scene 2
+        const tt = t - (s2 ? SCENE2 : 0);
+
+        // camera: scene 1 = close on face from slightly above, slow push in
+        //         scene 2 = lower angle, girl looks up at the ceiling (worried)
+        if (!s2) {
+          camera.position.set(0.3 + 0.15 * Math.sin(t * 0.3), 2.2, 5.6 - tt * 0.15);
+          camera.lookAt(0.3, 1.55, -0.6);
+        } else {
+          camera.position.set(-0.7 + tt * 0.05, 1.5, 5.0 - tt * 0.1);
+          camera.lookAt(0.3, 1.75, -0.6);
+        }
+
+        // breathing + idle sway
+        const breath = Math.sin(t * 2.1);
+        body.scale.set(1 + breath * 0.012, 1 + breath * 0.02, 1);
+        head.position.y = 1.18 + breath * 0.01;
+        head.rotation.z = Math.sin(t * 0.7) * 0.05;
+        // scene 1: looking down at phone; scene 2: looking up (lerped over 0.6s)
+        const up = smooth(SCENE2, SCENE2 + 0.6, t);
+        head.rotation.x = 0.28 * (1 - up) - 0.32 * up;
+        phone.visible = true;
+
+        // eyes: sleepy in scene 1, worried in scene 2; blinks
+        let blink = 0;
+        for (const b of BLINKS) blink = Math.max(blink, 1 - Math.abs(t - b) / 0.08);
+        const sleepy = 0.45 * (1 - up) + 0.1 * up;
+        const close = Math.min(1, sleepy + Math.max(0, blink));
+        eyes.forEach(({ g, lid }) => {
+          lid.position.y = 0.11 - close * 0.1;
+          lid.scale.y = 0.06 + close * 0.07;
+          lid.visible = close > 0.15;
+        });
+        brows[0].rotation.z = Math.PI / 2 - 0.25 * up; brows[1].rotation.z = Math.PI / 2 + 0.25 * up;
+        brows[0].position.y = brows[1].position.y = 0.14 + 0.03 * up;
+
+        // lip-sync from the voice envelope
+        const f = Math.min(M.v.length - 1, Math.floor(t * M.fps));
+        const open = M.v[f];
+        mouth.scale.set(0.045 - open * 0.008, 0.012 + open * 0.055, 0.02);
+
+        // phone glow flicker (deterministic), lights the face
+        const wp = new THREE.Vector3(); phone.getWorldPosition(wp);
+        phoneLight.position.set(wp.x, wp.y + 0.15, wp.z + 0.25);
+        phoneLight.intensity = (0.35 + Math.sin(t * 9.0) * 0.04) * (1 - up * 0.6);
+        screen.material.color.setHSL(0.6, 0.8, 0.82 + Math.sin(t * 3.1) * 0.04);
+
+        // dust
+        motes.forEach((d) => {
+          d.m.position.y = d.y0 + ((t * d.sp) % 1.5);
+          d.m.material.opacity = 0.35 + 0.35 * Math.sin(t * 1.3 + d.ph);
+        });
+
+        renderer.render(scene, camera);
+      }
+
+      // ================= timeline =================
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.fromTo(clock, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(clock.t) }, 0);
+
+      // captions (first two segments only)
+      const box = document.getElementById("captions");
+      window.EPISODE.segments.filter((s) => s.start < DUR).forEach((seg) => {
+        seg.cards.forEach((card) => {
+          const el = document.createElement("div"); el.className = "card";
+          const spans = card.words.map((w) => {
+            const s = document.createElement("span"); s.className = "word"; s.textContent = w.text; el.appendChild(s); return s;
+          });
+          box.appendChild(el);
+          tl.set(el, { opacity: 1 }, card.start - 0.01).set(el, { opacity: 0 }, Math.min(card.end, DUR - 0.05));
+          card.words.forEach((w, i) => {
+            const next = i + 1 < card.words.length ? card.words[i + 1].t : card.end;
+            tl.fromTo(spans[i], { opacity: 0, y: 24, filter: "blur(8px)" },
+              { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out", immediateRender: false }, w.t);
+            tl.fromTo(spans[i], { color: "#ffcf6b" }, { color: "#f4f1ea", duration: 0.35, immediateRender: false }, Math.max(w.t + 0.1, next - 0.05));
+          });
+        });
+      });
+
+      draw(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

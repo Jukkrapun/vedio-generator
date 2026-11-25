@@ -1,0 +1,78 @@
+{
+  "total": 22.9,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of an office worker's tired face lit by a laptop at night, looking away, not identifiable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] ถ้ารองานที่สมบูรณ์แบบ... อาจรอทั้งชีวิต",
+      "cards": [
+        "ถ้ารองานที่สมบูรณ์แบบ",
+        "อาจรอทั้งชีวิต"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 4.62,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a messy desk at night, sticky notes, cold coffee, laptop glow, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "งานที่เราทำอยู่... ก็มีวันเหนื่อย มีวันอยากลาออก",
+      "cards": [
+        "มีวันเหนื่อย",
+        "มีวันอยากลาออก"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 5.07,
+      "end": 8.99,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "The image shows an office worker from behind, smiling at a colleague at a desk next to them, on a weekday evening. The subject is in the center of the image, with empty space above and below. It is a vertical photograph taken at 9:16 AM.",
+      "text": "แต่ก็มีวันที่... ทำเสร็จแล้วยิ้มได้",
+      "cards": [
+        "แต่ก็มีวันที่",
+        "ทำเสร็จแล้วยิ้มได้"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 9.44,
+      "end": 12.72,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of hands closing a laptop gently in lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] งานที่ใช่... ไม่ใช่งานที่ไม่มีปัญหา แต่เป็นปัญหาที่เรายอมแก้",
+      "cards": [
+        "งานที่ใช่",
+        "คือปัญหาที่เรายอมแก้"
+      ],
+      "audio": "03-twist.mp3",
+      "start": 13.17,
+      "end": 18.85,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a person seen from behind walking out of an office building into a quiet city night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เซฟไว้อ่าน ในวันที่อยากลาออก",
+      "cards": [
+        "เซฟไว้อ่าน",
+        "วันที่อยากลาออก"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 19.3,
+      "end": 21.7,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

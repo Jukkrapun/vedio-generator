@@ -1,4 +1,4 @@
-# Publish: นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ
+# Publish: วันนี้กินเบา ๆ 3 ขวด... ตีสามหมดไป 3 ลัง
 
 Log each post in episode.json -> "posts" (platform, date, url, views, likes, saves).
 
@@ -6,48 +6,50 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 
 **Title** (max 100 chars, keep #shorts):
 ```
-นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ 🌙 #shorts
+วันนี้กินเบา ๆ 3 ขวด... ตีสามหมดไป 3 ลัง 🌙 #shorts
 ```
 
 **Description:**
 ```
-นัดกันว่า วันนี้กินเบา ๆ นะ...
-ที่จริงเราไม่ได้หิวขนาดนั้นหรอก... แค่อยากนั่งด้วยกันนาน ๆ
+วันนี้... กินเบา ๆ นะ แค่ 3 ขวด
+รู้ตัวอีกที... ตีสาม หมดไป 3 ลัง
+ที่จริงไม่ได้อยากกินขนาดนั้นหรอก... แค่ไม่อยากให้คืนนี้จบเร็ว
 
 🌙 ตอนตีสอง — คุยกันตอนนอนไม่หลับ
 ติดตามไว้ เผื่อคืนไหนนอนไม่หลับ
 
-#ตอนตีสอง #ความรัก #คู่รัก #ของกิน #shorts
+#ตอนตีสอง #เพื่อน #เพื่อนสนิท #วงเหล้า #shorts
 ```
 
 - Playlist: ตอนตีสอง · เรื่องความรัก
 - Thumbnail: frame where the hook subtitle is fully shown
-- Audience: not made for kids · no age restriction
-- Show more -> Altered content: **Yes** (realistic AI images + AI voice)
+- Audience: not made for kids · consider 18+ restriction (alcohol)
+- Show more -> Altered content: **Yes** (AI images + AI voice)
 
 ## TikTok
 
 **Caption** (hook first, 3-5 hashtags):
 ```
-นัดกันว่า วันนี้กินเบา ๆ นะ... 🌙
+วันนี้กินเบา ๆ แค่ 3 ขวด... 🌙
 
-#ตอนตีสอง #ความรัก #คู่รัก #ของกิน
+#ตอนตีสอง #เพื่อน #เพื่อนสนิท #วงเหล้า
 ```
 
-- Cover text: กินเบา ๆ (เต็มโต๊ะ)
+- Cover text: 3 ขวด → 3 ลัง
 - Settings: turn ON "AI-generated content" label
 
 ## Facebook Reels
 
 **Caption** (conversational, end with a question, 2-3 hashtags):
 ```
-นัดกันว่า วันนี้กินเบา ๆ นะ...
+วันนี้... กินเบา ๆ นะ แค่ 3 ขวด
+รู้ตัวอีกที ตีสาม หมดไป 3 ลัง 😂
 
-ที่จริงเราไม่ได้หิวขนาดนั้นหรอก... แค่อยากนั่งด้วยกันนาน ๆ
+ที่จริงไม่ได้อยากกินขนาดนั้นหรอก... แค่ไม่อยากให้คืนนี้จบเร็ว
 
-คุณกับแฟนเป็นแบบนี้ไหม 🤍
+มีเพื่อนแบบนี้ไหม แท็กมาเลย 🍻
 
-#ตอนตีสอง #คู่รัก
+#ตอนตีสอง #เพื่อนสนิท
 ```
 
 - Settings: turn ON "AI info" / "Add AI label" (Meta) for AI-generated content

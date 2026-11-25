@@ -1,0 +1,1285 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 2,
+    "warningCount": 7,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video class=\"bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video class=\"bg\" data-start=\"5.167\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video class=\"bg\" data-start=\"10.333\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video class=\"bg\" data-start=\"15.033\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video class=\"bg\" data-start=\"18.833\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<audio data-start=\"0\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "media_missing_id",
+        "severity": "error",
+        "message": "<video> has data-start but no id attribute. The renderer requires id to discover media elements, so this video will be FROZEN in renders.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a unique id attribute: <video id=\"my-video\" ...>"
+      },
+      {
+        "code": "media_missing_id",
+        "severity": "error",
+        "message": "<audio> has data-start but no id attribute. The renderer requires id to discover media elements, so this audio will be SILENT in renders.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a unique id attribute: <audio id=\"my-audio\" ...>"
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"overlay\"> is a timeline element that contains nested <div id=\"vignette\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#overlay",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Project\\vdio-generator\\content\\poc\\hyperframes\\monday-face\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"overlay\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 30,
+    "infoCount": 0,
+    "findings": [
+      {
+        "selector": "#captions > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 166.59,
+          "y": 1280.41,
+          "width": 107.63,
+          "height": 158
+        },
+        "time": 1.428,
+        "rect": {
+          "left": 166.59,
+          "top": 1280.41,
+          "right": 274.22,
+          "bottom": 1438.41,
+          "width": 107.63,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ห้า",
+        "message": "<span> \"ห้า\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.428,
+        "lastSeen": 1.428,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.428
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(1) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 271.12,
+          "y": 1288.45,
+          "width": 124.57,
+          "height": 166.26
+        },
+        "time": 1.428,
+        "rect": {
+          "left": 271.12,
+          "top": 1288.45,
+          "right": 395.69,
+          "bottom": 1454.71,
+          "width": 124.57,
+          "height": 166.26
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ทุ่ม",
+        "message": "<span> \"ทุ่ม\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.428,
+        "lastSeen": 1.428,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.428
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(2) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 143.83,
+          "y": 1280.41,
+          "width": 178.76,
+          "height": 158
+        },
+        "time": 4.283,
+        "rect": {
+          "left": 143.83,
+          "top": 1280.41,
+          "right": 322.59,
+          "bottom": 1438.41,
+          "width": 178.76,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ง่วง",
+        "message": "<span> \"ง่วง\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 4.283,
+        "lastSeen": 4.283,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.283
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(2) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 322.59,
+          "y": 1280.41,
+          "width": 121.64,
+          "height": 158
+        },
+        "time": 4.283,
+        "rect": {
+          "left": 322.59,
+          "top": 1280.41,
+          "right": 444.23,
+          "bottom": 1438.41,
+          "width": 121.64,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "แต่",
+        "message": "<span> \"แต่\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 4.283,
+        "lastSeen": 4.283,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.283
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(2) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 444.23,
+          "y": 1280.41,
+          "width": 90.07,
+          "height": 158
+        },
+        "time": 4.283,
+        "rect": {
+          "left": 444.23,
+          "top": 1280.41,
+          "right": 534.3,
+          "bottom": 1438.41,
+          "width": 90.07,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ไม่",
+        "message": "<span> \"ไม่\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 4.283,
+        "lastSeen": 4.283,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.283
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(2) > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 534.2,
+          "y": 1280.54,
+          "width": 224.74,
+          "height": 158.14
+        },
+        "time": 4.283,
+        "rect": {
+          "left": 534.2,
+          "top": 1280.54,
+          "right": 758.94,
+          "bottom": 1438.68,
+          "width": 224.74,
+          "height": 158.14
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "อยาก",
+        "message": "<span> \"อยาก\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 4.283,
+        "lastSeen": 4.283,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.283
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(3) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 362.08,
+          "y": 1290.09,
+          "width": 251.67,
+          "height": 139
+        },
+        "time": 7.139,
+        "rect": {
+          "left": 362.08,
+          "top": 1290.09,
+          "right": 613.75,
+          "bottom": 1429.09,
+          "width": 251.67,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "หลับตา",
+        "message": "<span> \"หลับตา\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 7.139,
+        "lastSeen": 7.139,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.139
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(4) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 266.09,
+          "y": 1290.09,
+          "width": 199.77,
+          "height": 139
+        },
+        "time": 9.994,
+        "rect": {
+          "left": 266.09,
+          "top": 1290.09,
+          "right": 465.86,
+          "bottom": 1429.09,
+          "width": 199.77,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ลืมตา",
+        "message": "<span> \"ลืมตา\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 9.994,
+        "lastSeen": 9.994,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.994
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(4) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 465.86,
+          "y": 1290.09,
+          "width": 53.02,
+          "height": 139
+        },
+        "time": 9.994,
+        "rect": {
+          "left": 465.86,
+          "top": 1290.09,
+          "right": 518.88,
+          "bottom": 1429.09,
+          "width": 53.02,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ก็",
+        "message": "<span> \"ก็\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 9.994,
+        "lastSeen": 9.994,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.994
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(4) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 518.88,
+          "y": 1290.09,
+          "width": 96.93,
+          "height": 139
+        },
+        "time": 9.994,
+        "rect": {
+          "left": 518.88,
+          "top": 1290.09,
+          "right": 615.81,
+          "bottom": 1429.09,
+          "width": 96.93,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "วัน",
+        "message": "<span> \"วัน\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 9.994,
+        "lastSeen": 9.994,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.994
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(4) > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 615.81,
+          "y": 1290.09,
+          "width": 198.08,
+          "height": 139
+        },
+        "time": 9.994,
+        "rect": {
+          "left": 615.81,
+          "top": 1290.09,
+          "right": 813.89,
+          "bottom": 1429.09,
+          "width": 198.08,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "จันทร์",
+        "message": "<span> \"จันทร์\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 9.994,
+        "lastSeen": 9.994,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.994
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(6) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 321.08,
+          "y": 1291.87,
+          "width": 103.33,
+          "height": 139
+        },
+        "time": 12.85,
+        "rect": {
+          "left": 321.08,
+          "top": 1291.87,
+          "right": 424.41,
+          "bottom": 1430.87,
+          "width": 103.33,
+          "height": 139
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "อีก",
+        "message": "<span> \"อีก\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 12.85,
+        "lastSeen": 12.85,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.85
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(7) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 224.34,
+          "y": 1282.56,
+          "width": 91.57,
+          "height": 160.64
+        },
+        "time": 15.706,
+        "rect": {
+          "left": 224.34,
+          "top": 1282.56,
+          "right": 315.91,
+          "bottom": 1443.2,
+          "width": 91.57,
+          "height": 160.64
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ไม่",
+        "message": "<span> \"ไม่\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 15.706,
+        "lastSeen": 15.706,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          15.706
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 90.8,
+          "y": 1274.27,
+          "width": 119.34,
+          "height": 170.18
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 90.8,
+          "top": 1274.27,
+          "right": 210.14,
+          "bottom": 1444.45,
+          "width": 119.34,
+          "height": 170.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "วัน",
+        "message": "<span> \"วัน\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 210.14,
+          "y": 1274.27,
+          "width": 243.83,
+          "height": 170.18
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 210.14,
+          "top": 1274.27,
+          "right": 453.97,
+          "bottom": 1444.45,
+          "width": 243.83,
+          "height": 170.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "จันทร์",
+        "message": "<span> \"จันทร์\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 453.97,
+          "y": 1274.27,
+          "width": 101.23,
+          "height": 170.18
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 453.97,
+          "top": 1274.27,
+          "right": 555.2,
+          "bottom": 1444.45,
+          "width": 101.23,
+          "height": 170.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "จะ",
+        "message": "<span> \"จะ\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 555.2,
+          "y": 1274.27,
+          "width": 215.08,
+          "height": 170.18
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 555.2,
+          "top": 1274.27,
+          "right": 770.28,
+          "bottom": 1444.45,
+          "width": 215.08,
+          "height": 170.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ได้มา",
+        "message": "<span> \"ได้มา\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 770.28,
+          "y": 1274.27,
+          "width": 97.01,
+          "height": 170.18
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 770.28,
+          "top": 1274.27,
+          "right": 867.29,
+          "bottom": 1444.45,
+          "width": 97.01,
+          "height": 170.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ไม่",
+        "message": "<span> \"ไม่\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(8) > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 867.26,
+          "y": 1274.33,
+          "width": 121.97,
+          "height": 170.25
+        },
+        "time": 18.561,
+        "rect": {
+          "left": 867.26,
+          "top": 1274.33,
+          "right": 989.23,
+          "bottom": 1444.58,
+          "width": 121.97,
+          "height": 170.25
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ถึง",
+        "message": "<span> \"ถึง\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 18.561,
+        "lastSeen": 18.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.561
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 156.7,
+          "y": 1210.81,
+          "width": 133.83,
+          "height": 158
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 156.7,
+          "top": 1210.81,
+          "right": 290.53,
+          "bottom": 1368.81,
+          "width": 133.83,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "เช้า",
+        "message": "<span> \"เช้า\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 290.53,
+          "y": 1210.81,
+          "width": 187.78,
+          "height": 158
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 290.53,
+          "top": 1210.81,
+          "right": 478.31,
+          "bottom": 1368.81,
+          "width": 187.78,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "แล้ว",
+        "message": "<span> \"แล้ว\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 478.31,
+          "y": 1210.81,
+          "width": 110.8,
+          "height": 158
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 478.31,
+          "top": 1210.81,
+          "right": 589.11,
+          "bottom": 1368.81,
+          "width": 110.8,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "วัน",
+        "message": "<span> \"วัน\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 589.11,
+          "y": 1210.81,
+          "width": 226.37,
+          "height": 158
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 589.11,
+          "top": 1210.81,
+          "right": 815.48,
+          "bottom": 1368.81,
+          "width": 226.37,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "จันทร์",
+        "message": "<span> \"จันทร์\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 815.48,
+          "y": 1210.81,
+          "width": 107.82,
+          "height": 158
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 815.48,
+          "top": 1210.81,
+          "right": 923.3,
+          "bottom": 1368.81,
+          "width": 107.82,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "มา",
+        "message": "<span> \"มา\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (right and bottom edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(9) > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 362.67,
+          "y": 1350.03,
+          "width": 354.66,
+          "height": 158.01
+        },
+        "time": 21.417,
+        "rect": {
+          "left": 362.67,
+          "top": 1350.03,
+          "right": 717.33,
+          "bottom": 1508.04,
+          "width": 354.66,
+          "height": 158.01
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ตรงเวลา",
+        "message": "<span> \"ตรงเวลา\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 21.417,
+        "lastSeen": 21.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.417
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(10) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 109.38,
+          "y": 1280.41,
+          "width": 176.84,
+          "height": 158
+        },
+        "time": 24.272,
+        "rect": {
+          "left": 109.38,
+          "top": 1280.41,
+          "right": 286.22,
+          "bottom": 1438.41,
+          "width": 176.84,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "แถม",
+        "message": "<span> \"แถม\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 24.272,
+        "lastSeen": 24.272,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          24.272
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(10) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 286.22,
+          "y": 1280.41,
+          "width": 112.23,
+          "height": 158
+        },
+        "time": 24.272,
+        "rect": {
+          "left": 286.22,
+          "top": 1280.41,
+          "right": 398.45,
+          "bottom": 1438.41,
+          "width": 112.23,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ตา",
+        "message": "<span> \"ตา\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 24.272,
+        "lastSeen": 24.272,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          24.272
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(10) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 398.45,
+          "y": 1280.41,
+          "width": 296.64,
+          "height": 158
+        },
+        "time": 24.272,
+        "rect": {
+          "left": 398.45,
+          "top": 1280.41,
+          "right": 695.09,
+          "bottom": 1438.41,
+          "width": 296.64,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "แพนด้า",
+        "message": "<span> \"แพนด้า\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 24.272,
+        "lastSeen": 24.272,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          24.272
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(10) > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 695.09,
+          "y": 1280.41,
+          "width": 143.72,
+          "height": 158
+        },
+        "time": 24.272,
+        "rect": {
+          "left": 695.09,
+          "top": 1280.41,
+          "right": 838.81,
+          "bottom": 1438.41,
+          "width": 143.72,
+          "height": 158
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ฟรี",
+        "message": "<span> \"ฟรี\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 24.272,
+        "lastSeen": 24.272,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          24.272
+        ]
+      },
+      {
+        "selector": "#captions > div:nth-of-type(10) > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 831.54,
+          "y": 1297.37,
+          "width": 146.35,
+          "height": 175.42
+        },
+        "time": 24.272,
+        "rect": {
+          "left": 831.54,
+          "top": 1297.37,
+          "right": 977.89,
+          "bottom": 1472.79,
+          "width": 146.35,
+          "height": 175.42
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "🐼",
+        "message": "<span> \"🐼\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 24.272,
+        "lastSeen": 24.272,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          24.272
+        ]
+      }
+    ],
+    "duration": 25.7,
+    "samples": [
+      1.428,
+      4.283,
+      7.139,
+      9.994,
+      12.85,
+      15.706,
+      18.561,
+      21.417,
+      24.272
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 30,
+    "truncated": false,
+    "faceCheck": {
+      "ran": true,
+      "candidates": 0,
+      "faces": 0
+    }
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.428,
+      7.139,
+      12.85,
+      18.561,
+      24.272
+    ],
+    "checked": 16,
+    "passed": 16
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"ตอนตีสอง\" (3 words) is on screen 1.43 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "ตอนตีสอง",
+        "selector": "div.name",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 367.8,
+          "y": 424.75,
+          "width": 344.40000000000003,
+          "height": 115
+        },
+        "time": 24.273,
+        "words": 3,
+        "seconds": 1.431,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 23.953,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 24.078,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 24.203,
+            "opacity": 0.37,
+            "heightPx": 115
+          },
+          {
+            "time": 24.328,
+            "opacity": 0.64,
+            "heightPx": 115
+          },
+          {
+            "time": 24.452,
+            "opacity": 0.86,
+            "heightPx": 115
+          },
+          {
+            "time": 24.577,
+            "opacity": 0.96,
+            "heightPx": 115
+          },
+          {
+            "time": 24.702,
+            "opacity": 1,
+            "heightPx": 115
+          },
+          {
+            "time": 25.201,
+            "opacity": 1,
+            "heightPx": 115
+          },
+          {
+            "time": 25.326,
+            "opacity": 1,
+            "heightPx": 115
+          },
+          {
+            "time": 25.45,
+            "opacity": 1,
+            "heightPx": 115
+          },
+          {
+            "time": 25.575,
+            "opacity": 1,
+            "heightPx": 115
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 206
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

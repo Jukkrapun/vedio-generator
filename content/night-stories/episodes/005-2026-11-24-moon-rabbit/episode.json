@@ -8,7 +8,19 @@
     "caretakers",
     "kindness-returns"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "youtube_long",
+      "date": "2026-11-26",
+      "time": "21:00",
+      "url": "https://youtu.be/TpXyh00Ze1s",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261124-230856-story-th"
+    }
+  ],
   "languages": {
     "th": {
       "title": "กระต่ายผู้ดูแลดวงจันทร์",
@@ -35,7 +47,7 @@
       }
     }
   },
-  "pause_sec": 1.0,
+  "pause_sec": 1,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
   "image_style": "soft hand-painted children's picture book style, gouache and watercolor texture, deep midnight blues with silver moonlight and warm amber lamp glow, gentle grain, dreamy cozy sleepy bedtime mood. The rabbit is always the same: Nual, a small round fluffy white rabbit with long soft ears and a tiny dark-blue knitted scarf",

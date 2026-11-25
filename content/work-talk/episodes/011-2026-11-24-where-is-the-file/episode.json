@@ -3,7 +3,8 @@
   "title": "ทำงานแบบมืออาชีพ แม้ในใจจะถามว่า ไฟล์อยู่ไหนนะ",
   "tags": [
     "office-life",
-    "humor"
+    "humor",
+    "chibi"
   ],
   "posts": [],
   "tts": "elevenlabs",
@@ -17,13 +18,14 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
-  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "image_style": "cute chibi cartoon illustration, soft clean line art, flat pastel colors with gentle cel shading, late-night office mood: dim desk-lamp and laptop glow, deep blue shadows with warm amber highlights; the same original chibi office-worker girl in every image: big head, small body (2.5-head proportions), short dark bob hair, oversized cream cardigan over a white shirt, staff lanyard, big round expressive eyes; no readable text, no logos",
+  "image_rules": "original 2D chibi cartoon illustration (NOT photorealistic, not in the style of any existing anime or franchise), vertical portrait 1024x1536, no text, no letters, no numbers, no logos, no watermarks. Keep the same chibi character design in every image. Composition: the character and every important subject sit fully inside the CENTRAL 60% of the width with empty space on the left and right edges (the sides are cropped for a 9:16 phone screen), nothing important touching any edge; keep the bottom 25% calm and simple for subtitles",
   "segments": [
     {
       "id": "hook",
       "style": "Hook",
       "image": "images/01-hook.png",
-      "image_prompt": "close-up of an office worker's eyes reflecting a laptop screen in a dark office, frantic searching mood, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt": "the chibi girl at her desk at night, turned toward her boss off-screen, big round eyes frozen wide, a single cartoon sweat drop on her forehead, laptop glow on her face, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
       "text": "[laughs] หัวหน้าบอก ส่งไฟล์เมื่อกี้มาหน่อย...",
       "cards": [
         "\"ส่งไฟล์เมื่อกี้มาหน่อย\""
@@ -32,29 +34,29 @@
     {
       "id": "body-1",
       "image": "images/02-body-1.png",
-      "image_prompt": "an office worker seen from behind at a desk calmly typing, posture confident, laptop glow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "ข้างนอก... ได้เลยค่ะ เดี๋ยวส่งให้",
+      "image_prompt": "the chibi girl giving a polite confident smile and a small thumbs-up, while a tiny panicked chibi version of herself floats in a thought bubble above her head, screaming silently with hands on cheeks, laptop glow, medium shot, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ปากบอก... ได้เลยค่ะ เดี๋ยวส่งให้ [whispers] แต่ในหัว... เมื่อกี้คือไฟล์ไหนนะ",
       "cards": [
-        "ข้างนอก:",
-        "\"ได้เลยค่ะ\""
+        "\"ได้เลยค่ะ\"",
+        "(ในหัว: ไฟล์ไหนนะ...)"
       ]
     },
     {
       "id": "body-2",
       "image": "images/03-body-2.png",
-      "image_prompt": "detail of a laptop screen glow with many blurred folder icons, no readable text, hand on trackpad, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "ข้างใน... ไฟล์ไหนนะ ไฟนอล ไฟนอลจริง หรือไฟนอลล่าสุด",
+      "image_prompt": "the chibi girl hunched close to the laptop with spiral dizzy cartoon eyes, dozens of identical cartoon folder and document icons swirling around her head like a tiny tornado, no readable text, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[whispers] ไฟนอล... ไฟนอลจริง... ไฟนอลล่าสุด... หรือไฟนอลจริงๆ ห้ามแก้แล้ว... ตั้งชื่อแบบนี้ทำไมเนี่ยเรา",
       "cards": [
-        "ข้างใน:",
-        "final? final-จริง?",
-        "final-ล่าสุด?"
+        "(final? final-จริง?)",
+        "(final-ล่าสุด?)",
+        "(ตั้งชื่อแบบนี้ทำไม...)"
       ]
     },
     {
       "id": "twist",
       "style": "Hook",
       "image": "images/04-twist.png",
-      "image_prompt": "close-up of a relieved smile half in shadow, hand pressing send key, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt": "the chibi girl with sparkly relieved eyes and a proud tiny smile, pressing the send key with one finger like a pro, small sparkle effects around her, half in soft shadow, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
       "text": "[pause] เจอแล้ว... แล้วก็ส่งไปอย่างมืออาชีพ",
       "cards": [
         "เจอแล้ว...",
@@ -65,7 +67,7 @@
       "id": "closing",
       "style": "Hook",
       "image": "images/05-closing.png",
-      "image_prompt": "an empty office at night, one desk lamp on, chair pushed back, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt": "wide shot of the dark night office, the chibi girl slumped over her desk, melted like a little puddle with a happy exhausted face, one desk lamp on, chair pushed back, subject centered in the middle third, empty space top and bottom, vertical 9:16",
       "text": "ใครเคยเป็นบ้าง... คอมเมนต์ชื่อไฟล์มาเลย",
       "cards": [
         "ใครเคยเป็นบ้าง?"
@@ -73,7 +75,8 @@
     }
   ],
   "review": {
-    "stage": "script",
+    "stage": "done",
     "order": "20261124-222717-work"
-  }
+  },
+  "subtitles": "lower"
 }

@@ -1,0 +1,77 @@
+{
+  "total": 29.38,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "the chibi girl at her desk at night, turned toward her boss off-screen, big round eyes frozen wide, a single cartoon sweat drop on her forehead, laptop glow on her face, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] หัวหน้าบอก ส่งไฟล์เมื่อกี้มาหน่อย...",
+      "cards": [
+        "\"ส่งไฟล์เมื่อกี้มาหน่อย\""
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.98,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "the chibi girl giving a polite confident smile and a small thumbs-up, while a tiny panicked chibi version of herself floats in a thought bubble above her head, screaming silently with hands on cheeks, laptop glow, medium shot, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ปากบอก... ได้เลยค่ะ เดี๋ยวส่งให้ [whispers] แต่ในหัว... เมื่อกี้คือไฟล์ไหนนะ",
+      "cards": [
+        "\"ได้เลยค่ะ\"",
+        "(ในหัว: ไฟล์ไหนนะ...)"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 4.43,
+      "end": 10.91,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "the chibi girl hunched close to the laptop with spiral dizzy cartoon eyes, dozens of identical cartoon folder and document icons swirling around her head like a tiny tornado, no readable text, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[whispers] ไฟนอล... ไฟนอลจริง... ไฟนอลล่าสุด... หรือไฟนอลจริงๆ ห้ามแก้แล้ว... ตั้งชื่อแบบนี้ทำไมเนี่ยเรา",
+      "cards": [
+        "(final? final-จริง?)",
+        "(final-ล่าสุด?)",
+        "(ตั้งชื่อแบบนี้ทำไม...)"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 11.36,
+      "end": 20.56,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "the chibi girl with sparkly relieved eyes and a proud tiny smile, pressing the send key with one finger like a pro, small sparkle effects around her, half in soft shadow, close-up, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] เจอแล้ว... แล้วก็ส่งไปอย่างมืออาชีพ",
+      "cards": [
+        "เจอแล้ว...",
+        "ส่งอย่างมืออาชีพ"
+      ],
+      "audio": "03-twist.mp3",
+      "start": 21.01,
+      "end": 24.53,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "wide shot of the dark night office, the chibi girl slumped over her desk, melted like a little puddle with a happy exhausted face, one desk lamp on, chair pushed back, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ใครเคยเป็นบ้าง... คอมเมนต์ชื่อไฟล์มาเลย",
+      "cards": [
+        "ใครเคยเป็นบ้าง?"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 24.98,
+      "end": 28.18,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

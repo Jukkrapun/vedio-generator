@@ -1,0 +1,77 @@
+{
+  "total": 21.54,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a phone notification glow on an excited face at night, screen not readable, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] เงินเดือนเข้าปุ๊บ...",
+      "cards": [
+        "เงินเดือนเข้าปุ๊บ..."
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 2.7,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a pile of envelopes and bills on a desk under a lamp at night, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ค่าห้อง ค่าบัตร ค่าผ่อน... ต่อคิวรอแล้ว",
+      "cards": [
+        "ค่าห้อง ค่าบัตร",
+        "ค่าผ่อน ต่อคิวรอ"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 3.15,
+      "end": 7.47,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "an office worker seen from behind standing at a convenience store counter at night holding a small basket, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "เหลือไว้กินข้าว... ถึงสิ้นเดือนไหมนะ",
+      "cards": [
+        "เหลือกินข้าว",
+        "ถึงสิ้นเดือนไหมนะ"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 7.92,
+      "end": 11.12,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a hand holding a single warm cup noodle on a desk, steam, lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] เงินไม่ได้อยู่กับเรานาน... แต่อย่างน้อย เราจ่ายทุกอย่างได้เอง",
+      "cards": [
+        "เงินอยู่ไม่นาน",
+        "แต่เราจ่ายได้เอง"
+      ],
+      "audio": "03-twist.mp3",
+      "start": 11.57,
+      "end": 17.17,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a city at night seen from a small apartment balcony, a person from behind holding a drink, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เก่งแล้วนะ... มนุษย์เงินเดือนทุกคน",
+      "cards": [
+        "เก่งแล้วนะ",
+        "มนุษย์เงินเดือน"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 17.62,
+      "end": 20.34,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 - Playlist: ตอนตีสอง · เรื่องงาน
 - Thumbnail: frame where the hook subtitle is fully shown
 - Audience: not made for kids · no age restriction
-- Show more -> Altered content: **Yes** (realistic AI images + AI voice)
+- Show more -> Altered content: **Yes** (AI anime-style images + AI voice)
 
 ## TikTok
 
@@ -34,7 +34,7 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 #ตอนตีสอง #มนุษย์เงินเดือน #มนุษย์เงินเดือน #ทำงาน
 ```
 
-- Cover text: ยิ้มรับงาน (ไม่รู้จะเริ่มไง)
+- Cover text: ยิ้มรับงาน… ทั้งที่จะเลิกงานแล้ว
 - Settings: turn ON "AI-generated content" label
 
 ## Facebook Reels
@@ -42,6 +42,7 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 **Caption** (conversational, end with a question, 2-3 hashtags):
 ```
 ความสามารถพิเศษของมนุษย์เงินเดือน...
+ปากบอก "ได้ค่ะ" ...แต่นั่งคนเดียวแล้วก็คิด "นี่มันจะเลิกงานแล้วนะ" 😅
 
 แต่ทุกงานที่เคยทำได้... ก็เริ่มจากไม่รู้แบบนี้ทั้งนั้น
 

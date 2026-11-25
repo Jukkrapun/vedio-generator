@@ -5,7 +5,19 @@
     "comparison",
     "self-worth"
   ],
-  "posts": [],
+  "posts": [
+    {
+      "platform": "tiktok",
+      "date": "2026-11-26",
+      "time": "12:00",
+      "url": "https://www.tiktok.com/@tonteesong/video/7712120656409660678",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261122-213743-image"
+    }
+  ],
   "tts": "elevenlabs",
   "voice": "MYZYcGOqrkYQcwDunXl7",
   "model": "eleven_v3",

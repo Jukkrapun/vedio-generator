@@ -26,11 +26,13 @@ Mood: ขำปนจริง · โหมด image · 5 ภาพ (~4–5 ว�
 
 | Seg | Shot | Subject | Line | Sound |
 |---|---|---|---|---|
-| 1 | CU | extreme close-up of a phone screen glow lighting a woman's smiling face in bed at night | [laughs] สถานะความสัมพันธ์... คุยกันทุกวัน แต่ไม่รู้ว่าเรียกว่าอะไร | hook hit |
-| 2 | detail | detail of two coffee cups on a table by a window at morning blue hour | อรุณสวัสดิ์ทุกเช้า... ฝันดีทุกคืน | — |
-| 3 | 2-shot | two people seen from behind sitting close on a riverside bench at night | เพื่อนถามว่าเป็นแฟนกันเหรอ... ก็ได้แต่ยิ้ม | — |
-| 4 | CU | close-up of a woman lying in bed staring at the ceiling | [sighs] แต่ถ้าวันนึงเขาหายไป... เราจะเสียใจ ในฐานะอะไร | beat ก่อนบรรทัด |
-| 5 | MS | a woman seen from behind sitting at a window at night holding her phone | ถามเขาสักคำเถอะ... ใจเราจะได้รู้ที่ยืน | — |
+| 1 | CU | (อนิเมะ) โคลสอัปหน้าหญิงสาวยิ้ม แสงจอมือถือส่องหน้า บนเตียงตอนกลางคืน | [laughs] สถานะความสัมพันธ์... คุยกันทุกวัน แต่ไม่รู้ว่าเรียกว่าอะไร | hook hit |
+| 2 | detail | (อนิเมะ) แก้วกาแฟสองใบริมหน้าต่างยามเช้า แก้วหนึ่งมีรอยลิปสติก | อรุณสวัสดิ์ทุกเช้า... ฝันดีทุกคืน | — |
+| 3 | 2-shot | (อนิเมะ) หนุ่มสาวมองจากด้านหลัง นั่งใกล้กันบนม้านั่งริมแม่น้ำตอนกลางคืน | เพื่อนถามว่าเป็นแฟนกันเหรอ... ก็ได้แต่ยิ้ม | — |
+| 4 | CU | (อนิเมะ) หญิงสาวนอนจ้องเพดาน มือถือวางบนอก | [sighs] แต่ถ้าวันนึงเขาหายไป... เราจะเสียใจ ในฐานะอะไร | beat ก่อนบรรทัด |
+| 5 | MS | (อนิเมะ) หญิงสาวมองจากด้านหลัง นั่งริมหน้าต่างตอนกลางคืน ถือมือถือ | ถามเขาสักคำเถอะ... ใจเราจะได้รู้ที่ยืน | — |
+
+ภาพทั้งหมดเป็นสไตล์มังงะ/อนิเมะ 2D (`image_style` + `image_rules` ใน episode.json) ตัวละครหญิงคนเดียวกันทุกภาพ; แต่ละ segment มี `image_prompt_th` (ภาษาไทย ไว้อ่าน/แก้ในเว็บ) คู่กับ `image_prompt` อังกฤษที่ส่งให้ Codex
 
 ## Review (story-hook-framework + vertical-edit-techniques)
 

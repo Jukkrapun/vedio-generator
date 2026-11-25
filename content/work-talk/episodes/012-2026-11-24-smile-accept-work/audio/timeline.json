@@ -1,0 +1,82 @@
+{
+  "total": 21.94,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "anime-style close-up of an office worker's polite gentle smile, soft office light, face partly out of frame, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพสไตล์อนิเมะจิบิ ระยะใกล้ รอยยิ้มสุภาพอ่อนโยนของพนักงานออฟฟิศ แสงออฟฟิศนุ่ม ๆ ใบหน้าหลุดเฟรมบางส่วน ตัวแบบอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[laughs] ความสามารถพิเศษของมนุษย์เงินเดือน...",
+      "cards": [
+        "ความสามารถพิเศษ",
+        "ของมนุษย์เงินเดือน"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 5.1,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "anime-style over-the-shoulder view, a manager softly blurred handing a folder to an office worker, evening office with warm windows, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพสไตล์อนิเมะจิบิ มุมข้ามไหล่ หัวหน้าเบลอนุ่ม ๆ กำลังยื่นแฟ้มให้พนักงาน ออฟฟิศตอนเย็น หน้าต่างแสงอุ่น ตัวแบบอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "ยิ้มรับงาน... ได้ค่ะ ไม่มีปัญหา",
+      "cards": [
+        "ยิ้มรับงาน",
+        "\"ได้ค่ะ ไม่มีปัญหา\""
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 5.55,
+      "end": 8.75,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "anime-style quiet scene, an office worker alone at a desk seen from behind, holding a new folder, looking up at a wall clock near six in the evening, empty dim office, lonely thoughtful mood, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพสไตล์อนิเมะจิบิ ฉากเงียบ พนักงานนั่งอยู่คนเดียวที่โต๊ะ มองจากด้านหลัง ถือแฟ้มใหม่ เงยหน้ามองนาฬิกาผนังที่ใกล้หกโมงเย็น ออฟฟิศว่างและสลัว อารมณ์เหงาครุ่นคิด ตัวแบบอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[softly] ...นี่มันจะเลิกงานแล้วนะ [sighs] สั่งไม่ดูเวลาเลย",
+      "cards": [
+        "นี่มันจะเลิกงานแล้วนะ",
+        "สั่งไม่ดูเวลาเลย"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 9.2,
+      "end": 12.32,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "anime-style close-up of a hand writing the first small line in a notebook under lamp light, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพสไตล์อนิเมะจิบิ ระยะใกล้ มือกำลังเขียนบรรทัดแรกเล็ก ๆ ในสมุดใต้แสงโคมไฟ ไม่มีตัวอักษรที่อ่านได้ ตัวแบบอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[softly] แต่ทุกงานที่เคยทำได้... ก็เริ่มจากไม่รู้แบบนี้ทั้งนั้น",
+      "cards": [
+        "ทุกงานที่เคยทำได้",
+        "ก็เริ่มจากไม่รู้"
+      ],
+      "audio": "03-twist.mp3",
+      "start": 12.77,
+      "end": 16.85,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "anime-style office worker seen from behind at a desk at night, focused, small warm lamp, city lights through the window, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพสไตล์อนิเมะจิบิ พนักงานนั่งที่โต๊ะตอนกลางคืน มองจากด้านหลัง ตั้งใจทำงาน โคมไฟเล็กแสงอุ่น แสงไฟเมืองนอกหน้าต่าง ตัวแบบอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[warmly] เริ่มจากข้อเล็กที่สุดก่อน... เดี๋ยวก็ไปต่อได้",
+      "cards": [
+        "เริ่มจากข้อเล็กที่สุด"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 17.3,
+      "end": 20.74,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

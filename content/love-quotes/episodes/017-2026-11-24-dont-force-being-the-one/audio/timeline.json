@@ -1,0 +1,78 @@
+{
+  "total": 20.5,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "close-up of a woman's reflection in a dark window at night, blurred, she is adjusting her hair, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[softly] เราเคยเปลี่ยนตัวเอง... เพื่อให้เขาเลือก",
+      "cards": [
+        "เราเคยเปลี่ยนตัวเอง",
+        "เพื่อให้เขาเลือก"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 3.5,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a closet with clothes pushed aside, one unfamiliar style dress hanging out, dim lamp, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แต่งตัวแบบที่เขาชอบ... ชอบเพลงที่เขาฟัง",
+      "cards": [
+        "แต่งตัวแบบที่เขาชอบ",
+        "ชอบเพลงที่เขาฟัง"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 3.95,
+      "end": 7.63,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "a woman seen from behind sitting alone at a cafe table at night, an empty chair opposite her, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "แล้วเขาก็ยัง... ไม่เลือกเราอยู่ดี",
+      "cards": [
+        "แล้วเขาก็ยัง",
+        "ไม่เลือกเราอยู่ดี"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 8.08,
+      "end": 11.2,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "close-up of a woman's hands taking off a delicate necklace in lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] เพราะคนที่ใช่... ไม่ต้องฝืนเป็น",
+      "cards": [
+        "คนที่ใช่",
+        "ไม่ต้องฝืนเป็น"
+      ],
+      "audio": "03-twist.mp3",
+      "start": 11.65,
+      "end": 14.85,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "a woman seen from behind walking alone down a quiet lit street at night, relaxed shoulders, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[warmly] เป็นตัวเองไว้... แล้วคนที่ใช่จะเจอเราเอง",
+      "cards": [
+        "เป็นตัวเองไว้",
+        "คนที่ใช่จะเจอเราเอง"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 15.3,
+      "end": 19.3,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

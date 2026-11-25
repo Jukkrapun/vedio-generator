@@ -1,13 +1,13 @@
 {
   "mode": "image",
-  "title": "นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ",
+  "title": "วันนี้กินเบา ๆ 3 ขวด... ตีสามหมดไป 3 ลัง",
   "tags": [
-    "couple-life",
+    "friendship",
     "humor"
   ],
   "posts": [],
   "tts": "elevenlabs",
-  "voice": "MYZYcGOqrkYQcwDunXl7",
+  "voice": "KhBRXgEQjvfdIyXOu7G3",
   "model": "eleven_v3",
   "fallback": {
     "tts": "edge",
@@ -17,64 +17,71 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
-  "image_style": "late-night cinematic film photography, soft warm lamp and city-light bokeh, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "image_style": "caricature illustration, exaggerated big heads and expressive faces, playful hand-drawn lines with soft painted shading, late-night palette of deep blue shadows and warm amber lamp light, no readable text, no logos, no brand labels on bottles",
+  "image_rules": "Style is a 2D caricature illustration (not photorealistic). Two fictional Thai men in their late 20s, the same two characters in every image: friend A = short messy hair, black t-shirt; friend B = round glasses, white t-shirt. Keep faces and outfits consistent. Bottles and crates have no labels or readable text.",
   "segments": [
     {
       "id": "hook",
       "style": "Hook",
       "image": "images/01-hook.png",
-      "image_prompt": "overhead shot of a night street-food table completely full of Thai dishes, two pairs of hands with chopsticks, steam, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "[laughs] นัดกันว่า วันนี้กินเบา ๆ นะ...",
+      "image_prompt": "caricature of two male friends at a small street-side table in the early evening, one raising exactly three beer bottles with a confident grin, the other giving a thumbs up, the table still almost empty, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพล้อเลียน (caricature) เพื่อนผู้ชายสองคนนั่งโต๊ะริมทางตอนหัวค่ำ คนหนึ่งชูขวดเบียร์ 3 ขวดยิ้มมั่นใจ อีกคนยกนิ้วโป้ง โต๊ะยังเกือบโล่ง ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[laughs] วันนี้... กินเบา ๆ นะ แค่ 3 ขวด",
       "cards": [
-        "\"วันนี้กินเบา ๆ นะ\""
+        "\"วันนี้กินเบา ๆ\"",
+        "แค่ 3 ขวด"
       ]
     },
     {
       "id": "body-1",
       "image": "images/02-body-1.png",
-      "image_prompt": "close-up of a hand pointing at a menu photo board in a night food stall, warm bulbs, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "อันนี้น่ากิน... อันนั้นก็ต้องลอง",
+      "image_prompt": "caricature close-up of the two friends clinking bottles, exaggerated cheerful faces, one holding up one finger as if saying 'just one more', a few empty bottles starting to pile up on the table, warm lamp light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพล้อเลียนระยะใกล้ เพื่อนสองคนชนขวดกัน หน้าตาร่าเริงเกินจริง คนหนึ่งชูนิ้วเดียวเหมือนพูดว่า 'อีกขวดเดียว' ขวดเปล่าเริ่มกองบนโต๊ะ แสงไฟอุ่น ๆ ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "ขวดเดียวพอ... งั้นอีกขวด... อีกขวดเดียวจริง ๆ",
       "cards": [
-        "อันนี้น่ากิน",
-        "อันนั้นก็ต้องลอง"
+        "อีกขวด...",
+        "อีกขวดเดียวจริง ๆ"
       ]
     },
     {
       "id": "body-2",
       "image": "images/03-body-2.png",
-      "image_prompt": "a couple seen from behind at a crowded night food table laughing, plates everywhere, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "สุดท้าย... เต็มโต๊ะ แล้วหันมามองหน้ากัน",
+      "image_prompt": "caricature of a wall clock showing 3 a.m. in the foreground, behind it the two friends with flushed exaggerated faces surrounded by three stacked empty beer crates, funny shocked expressions, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพล้อเลียน นาฬิกาแขวนบอกเวลาตีสามอยู่ด้านหน้า ด้านหลังเป็นเพื่อนสองคนหน้าแดง ล้อมรอบด้วยลังเบียร์เปล่าซ้อนกัน 3 ลัง ทำหน้าตกใจแบบตลก ๆ ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[pause] รู้ตัวอีกที... ตีสาม หมดไป 3 ลัง",
       "cards": [
-        "สุดท้ายเต็มโต๊ะ",
-        "แล้วมองหน้ากัน"
+        "รู้ตัวอีกที ตีสาม",
+        "หมดไป 3 ลัง"
       ]
     },
     {
       "id": "twist",
       "style": "Hook",
       "image": "images/04-twist.png",
-      "image_prompt": "close-up of two hands sharing the last piece of food with chopsticks, warm lamp bokeh, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "[warmly] ที่จริงเราไม่ได้หิวขนาดนั้นหรอก... แค่อยากนั่งด้วยกันนาน ๆ",
+      "image_prompt": "caricature of the two friends sitting quietly side by side on the curb late at night, shoulders touching, soft tired smiles, gentle warm streetlight, calmer mood, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพล้อเลียน เพื่อนสองคนนั่งเงียบ ๆ ข้างกันบนขอบฟุตบาทตอนดึก ไหล่ชิดกัน ยิ้มเหนื่อย ๆ แบบอบอุ่น ไฟถนนสีอุ่น บรรยากาศสงบลง ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[warmly] ที่จริงไม่ได้อยากกินขนาดนั้นหรอก... แค่ไม่อยากให้คืนนี้จบเร็ว",
       "cards": [
-        "ไม่ได้หิวขนาดนั้น",
-        "แค่อยากนั่งด้วยกัน",
-        "นาน ๆ"
+        "ไม่ได้อยากกินขนาดนั้น",
+        "แค่ไม่อยากให้",
+        "คืนนี้จบเร็ว"
       ]
     },
     {
       "id": "closing",
       "style": "Hook",
       "image": "images/05-closing.png",
-      "image_prompt": "a couple seen from behind walking home slowly under street lights after dinner, holding hands, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "แท็กคนที่ชอบพูดว่า กินเบา ๆ มาเลย",
+      "image_prompt": "caricature of the two friends seen from behind walking home under streetlights near dawn, arms over each other's shoulders, wobbly happy walk, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพล้อเลียน เพื่อนสองคนเดินกลับบ้านใต้ไฟถนนตอนใกล้รุ่งเช้า มองจากด้านหลัง กอดคอกัน เดินโซเซอย่างมีความสุข ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "แท็กเพื่อนที่ชอบพูดว่า กินเบา ๆ มาเลย",
       "cards": [
-        "แท็กคนที่ชอบพูดว่า",
+        "แท็กเพื่อนที่ชอบพูดว่า",
         "\"กินเบา ๆ\""
       ]
     }
   ],
   "review": {
-    "stage": "script",
+    "stage": "voice",
     "order": "20261124-222717-lovq"
   }
 }

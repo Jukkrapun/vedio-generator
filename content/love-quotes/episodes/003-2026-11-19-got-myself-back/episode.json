@@ -16,6 +16,28 @@
       "saves": 0,
       "source": "web",
       "version": "20261119-232836-video"
+    },
+    {
+      "platform": "youtube",
+      "date": "2026-11-26",
+      "time": "20:00",
+      "url": "https://youtube.com/shorts/VtLbiMjHL6w?feature=share",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261119-232836-video"
+    },
+    {
+      "platform": "facebook",
+      "date": "2026-11-26",
+      "time": "20:00",
+      "url": "https://www.facebook.com/reel/40140545485592661",
+      "video_id": "40140545485592661",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "version": "20261119-232836-video"
     }
   ],
   "tts": "elevenlabs",

@@ -12,18 +12,19 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 **Description:**
 ```
 หัวหน้าบอก ส่งไฟล์เมื่อกี้มาหน่อย...
+ปากบอก ได้เลยค่ะ แต่ในหัว... ไฟล์ไหนนะ
 เจอแล้ว... แล้วก็ส่งไปอย่างมืออาชีพ
 
 🌙 ตอนตีสอง — คุยกันตอนนอนไม่หลับ
 ติดตามไว้ เผื่อคืนไหนนอนไม่หลับ
 
-#ตอนตีสอง #มนุษย์เงินเดือน #ออฟฟิศ #มนุษย์เงินเดือน #shorts
+#ตอนตีสอง #มนุษย์เงินเดือน #ออฟฟิศ #การ์ตูน #shorts
 ```
 
 - Playlist: ตอนตีสอง · เรื่องงาน
 - Thumbnail: frame where the hook subtitle is fully shown
 - Audience: not made for kids · no age restriction
-- Show more -> Altered content: **Yes** (realistic AI images + AI voice)
+- Show more -> Altered content: **Yes** (AI voice; images are AI chibi cartoons)
 
 ## TikTok
 
@@ -31,7 +32,7 @@ Log each post in episode.json -> "posts" (platform, date, url, views, likes, sav
 ```
 หัวหน้าบอก ส่งไฟล์เมื่อกี้มาหน่อย... 🌙
 
-#ตอนตีสอง #มนุษย์เงินเดือน #ออฟฟิศ #มนุษย์เงินเดือน
+#ตอนตีสอง #มนุษย์เงินเดือน #ออฟฟิศ #การ์ตูน
 ```
 
 - Cover text: ไฟล์อยู่ไหนนะ

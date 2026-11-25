@@ -27,6 +27,17 @@
       "saves": 0,
       "source": "web",
       "version": "20261123-201448-image"
+    },
+    {
+      "platform": "youtube",
+      "date": "2026-11-26",
+      "time": "12:00",
+      "url": "https://youtube.com/shorts/2Sln_hXBdig?feature=share",
+      "views": 0,
+      "likes": 0,
+      "saves": 0,
+      "source": "web",
+      "version": "20261123-201448-image"
     }
   ],
   "tts": "elevenlabs",

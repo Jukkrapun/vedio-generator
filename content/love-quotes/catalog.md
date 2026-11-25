@@ -9,7 +9,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 |---|---|---|---|---|---|---|
 | 001-2026-11-19-missing-without-returning | คิดถึงได้ โดยไม่ต้องกลับไป | missing, moving-on | image | posted | 26.6s | 0 views / 0 likes / 0 saves |
 | 003-2026-11-19-got-myself-back | ฉันไม่ได้เสียเขาไป ฉันได้ตัวเองคืนมา | self-love, moving-on | video | posted | 25.4s | 0 views / 0 likes / 0 saves |
-| 004-2026-11-19-be-yourself | สิ่งที่เหนื่อยที่สุดในความรัก | self-love, self-worth | video | rendered | 18.3s | - |
+| 004-2026-11-19-be-yourself | สิ่งที่เหนื่อยที่สุดในความรัก | self-love, self-worth | video | posted | 18.3s | 0 views / 0 likes / 0 saves |
 | 005-2026-11-20-dont-beg-for-attention | ถ้าต้องขอให้เขาสนใจ | self-worth, relationship-red-flags | image | posted | 16.2s | 0 views / 0 likes / 0 saves |
 | 006-2026-11-20-small-things | ความรักอยู่ในเรื่องเล็ก ๆ | true-love, small-gestures | image | posted | 19.5s | 0 views / 0 likes / 0 saves |
 | 007-2026-11-20-right-person-wrong-time | คนที่ใช่ในเวลาที่ไม่ใช่ | timing, letting-go | image | rendered | 14.6s | - |
@@ -21,15 +21,16 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | 013-2026-11-22-loved-alone | รักอยู่คนเดียว | unrequited | image | posted | 16.8s | 0 views / 0 likes / 0 saves |
 | 014-2026-11-22-if-we-met-later | ถ้าเราเจอกันตอนนี้ | timing, missing | image | rendered | 17.4s | - |
 | 015-2026-11-22-thank-you-ex | ขอบคุณคนที่เคยรัก | letting-go, gratitude | image | rendered | 15.5s | - |
-| 016-2026-11-24-love-yourself-too-little | 3 สัญญาณว่าคุณกำลังรักตัวเองน้อยเกินไป | self-love, signs-list | image | draft | - | - |
-| 017-2026-11-24-dont-force-being-the-one | อย่าฝืนเป็นคนที่ใช่ ให้กับคนที่ไม่เลือกเรา | letting-go, self-worth | image | draft | - | - |
-| 018-2026-11-24-talking-every-day-no-label | คุยกันทุกวัน แต่ยังไม่รู้ว่าเรียกว่าอะไร | situationship, humor | image | draft | - | - |
-| 019-2026-11-24-eat-light-full-table | นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ | couple-life, humor | image | draft | - | - |
+| 016-2026-11-24-love-yourself-too-little | 3 สัญญาณว่าคุณกำลังรักตัวเองน้อยเกินไป | self-love, signs-list | image | rendered | 27.5s | - |
+| 017-2026-11-24-dont-force-being-the-one | อย่าฝืนเป็นคนที่ใช่ ให้กับคนที่ไม่เลือกเรา | letting-go, self-worth | image | rendered | 20.5s | - |
+| 018-2026-11-24-talking-every-day-no-label | คุยกันทุกวัน แต่ยังไม่รู้ว่าเรียกว่าอะไร | situationship, humor | image | rendered | 26.3s | - |
+| 019-2026-11-24-eat-light-full-table | วันนี้กินเบา ๆ 3 ขวด... ตีสามหมดไป 3 ลัง | friendship, humor | image | draft | - | - |
 | 020-2026-11-24-good-night-20-more-minutes | คนคลั่งรักกับคำว่า ฝันดี ที่ต้องมีต่ออีก 20 นาที | couple-life, humor | image | draft | - | - |
 
 ## Tags
 
-- **couple-life** (2): 019, 020
+- **couple-life** (1): 020
+- **friendship** (1): 019
 - **gratitude** (1): 015
 - **humor** (3): 018, 019, 020
 - **letting-go** (4): 007, 009, 015, 017
@@ -50,10 +51,11 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 
 1. 001-2026-11-19-missing-without-returning - 0 views / 0 likes / 0 saves
 2. 003-2026-11-19-got-myself-back - 0 views / 0 likes / 0 saves
-3. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
-4. 006-2026-11-20-small-things - 0 views / 0 likes / 0 saves
-5. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
-6. 013-2026-11-22-loved-alone - 0 views / 0 likes / 0 saves
+3. 004-2026-11-19-be-yourself - 0 views / 0 likes / 0 saves
+4. 005-2026-11-20-dont-beg-for-attention - 0 views / 0 likes / 0 saves
+5. 006-2026-11-20-small-things - 0 views / 0 likes / 0 saves
+6. 009-2026-11-20-stop-waiting - 0 views / 0 likes / 0 saves
+7. 013-2026-11-22-loved-alone - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 
@@ -152,12 +154,12 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 - แต่ถ้าวันนึงเขาหายไป... เราจะเสียใจ ในฐานะอะไร
 - ถามเขาสักคำเถอะ... ใจเราจะได้รู้ที่ยืน
 
-### 019-2026-11-24-eat-light-full-table - นัดกันว่าจะกินเบา ๆ แล้วสั่งอาหารเต็มโต๊ะ
-- นัดกันว่า วันนี้กินเบา ๆ นะ...
-- อันนี้น่ากิน... อันนั้นก็ต้องลอง
-- สุดท้าย... เต็มโต๊ะ แล้วหันมามองหน้ากัน
-- ที่จริงเราไม่ได้หิวขนาดนั้นหรอก... แค่อยากนั่งด้วยกันนาน ๆ
-- แท็กคนที่ชอบพูดว่า กินเบา ๆ มาเลย
+### 019-2026-11-24-eat-light-full-table - วันนี้กินเบา ๆ 3 ขวด... ตีสามหมดไป 3 ลัง
+- วันนี้... กินเบา ๆ นะ แค่ 3 ขวด
+- ขวดเดียวพอ... งั้นอีกขวด... อีกขวดเดียวจริง ๆ
+- รู้ตัวอีกที... ตีสาม หมดไป 3 ลัง
+- ที่จริงไม่ได้อยากกินขนาดนั้นหรอก... แค่ไม่อยากให้คืนนี้จบเร็ว
+- แท็กเพื่อนที่ชอบพูดว่า กินเบา ๆ มาเลย
 
 ### 020-2026-11-24-good-night-20-more-minutes - คนคลั่งรักกับคำว่า ฝันดี ที่ต้องมีต่ออีก 20 นาที
 - คนคลั่งรัก... พิมพ์ว่าฝันดี ตอนสี่ทุ่ม

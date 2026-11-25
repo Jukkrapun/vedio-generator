@@ -8,7 +8,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 | # | Title | Tags | Mode | Status | Length | Results |
 |---|---|---|---|---|---|---|
 | 004-2026-11-24-night-train | รถไฟกลางคืน | night-train, insomnia, sleep-story, caretakers, journey | story | posted | 436.9s | 0 views / 0 likes / 0 saves |
-| 005-2026-11-24-moon-rabbit | กระต่ายผู้ดูแลดวงจันทร์ | moon-rabbit, fairy-tale, sleep-story, caretakers, kindness-returns | story | rendered | 496.7s | - |
+| 005-2026-11-24-moon-rabbit | กระต่ายผู้ดูแลดวงจันทร์ | moon-rabbit, fairy-tale, sleep-story, caretakers, kindness-returns | story | posted | 496.7s | 0 views / 0 likes / 0 saves |
 | 006-2026-11-25-radio-2am-01 | คลื่นตีสอง ตอนที่ 1: คืนแรก | radio-2am, insomnia, sleep-story, strangers, window | story | draft | - | - |
 
 ## Tags
@@ -28,6 +28,7 @@ Check this before writing a new episode: avoid repeating a topic angle or a line
 ## Best performing (by views)
 
 1. 004-2026-11-24-night-train - 0 views / 0 likes / 0 saves
+2. 005-2026-11-24-moon-rabbit - 0 views / 0 likes / 0 saves
 
 ## Lines already used
 

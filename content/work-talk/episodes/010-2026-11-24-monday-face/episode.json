@@ -1,9 +1,11 @@
 {
   "mode": "image",
-  "title": "เช้าวันจันทร์กับสีหน้าที่ไม่อยากเป็นวันจันทร์",
+  "subtitles": "lower",
+  "title": "ไม่อยากนอน เพราะตื่นมาเป็นวันจันทร์",
   "tags": [
     "monday",
-    "humor"
+    "sunday-night",
+    "revenge-bedtime"
   ],
   "posts": [],
   "tts": "elevenlabs",
@@ -17,65 +19,65 @@
   "pause_sec": 0.45,
   "music": null,
   "font": "shared/fonts/IBMPlexSansThai-SemiBold.ttf",
-  "image_style": "late-night cinematic film photography, dim desk-lamp and screen glow, deep blue shadows with warm amber highlights, gentle grain, shallow depth of field, no readable text, no logos",
+  "image_rules": "ภาพการ์ตูน 2D สไตล์จิบิ (chibi) ไม่ใช่ภาพถ่ายเหมือนจริง ตัวละครหัวโตตัวเล็ก สัดส่วนหัวต่อตัวประมาณ 1:2 มือเท้าเล็กกลม ตาโตเป็นประกาย หน้าตาแสดงอารมณ์เกินจริงแบบจิบิ ตัวละครหลักคนเดียวกันทุกภาพ: สาวน้อยจิบิ ผิวขาว ผมดำยาวประบ่า แก้มชมพูเล็กน้อย ใส่ชุดนอนสีครีม (ยกเว้นภาพที่ระบุชุดทำงาน) วางตัวละครกลางเฟรม เว้นที่ว่างด้านบนและล่าง ห้ามมีตัวหนังสือที่อ่านได้ ห้ามมีโลโก้ แนวตั้ง 9:16",
+  "image_style": "การ์ตูนจิบิ 2D ลายเส้นนุ่ม ตัวหัวโต บรรยากาศดึกเงียบ ห้องมืดโทนน้ำเงินเข้ม แสงจอมือถือและโคมไฟสีส้มอุ่น สีพาสเทลหม่น ๆ",
   "segments": [
     {
       "id": "hook",
       "style": "Hook",
       "image": "images/01-hook.png",
-      "image_prompt": "close-up of a phone alarm glowing on a bedside table in early blue morning, a hand reaching to snooze, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "[sighs] เช้าวันจันทร์... ปิดนาฬิกาปลุกไปห้ารอบ",
+      "image_prompt": "ภาพใกล้ สาวน้อยจิบิผิวขาว นอนตะแคงบนหมอน ถือมือถือเรืองแสงไว้ตรงหน้า ตาปรือง่วงมากแต่ยังฝืนจ้องจอ ห้องนอนมืดตอนกลางคืน จอมือถือเบลออ่านไม่ออก ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[sighs] ห้าทุ่มคืนวันอาทิตย์... ง่วงมาก แต่ไม่อยากนอน",
       "cards": [
-        "เช้าวันจันทร์",
-        "ปิดปลุกไปห้ารอบ"
+        "ห้าทุ่มคืนวันอาทิตย์",
+        "ง่วง แต่ไม่อยากนอน"
       ]
     },
     {
       "id": "body-1",
       "image": "images/02-body-1.png",
-      "image_prompt": "a person seen from behind brushing teeth in a dim bathroom mirror, slouched, early morning, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "ส่องกระจก... หน้าบอกเลยว่า ไม่พร้อม",
+      "image_prompt": "สาวน้อยจิบิผิวขาว ห่มผ้าห่มถึงคาง มองเพดานด้วยสีหน้ากังวล มีปฏิทินลอยเป็นฟองความคิดเหนือหัวแบบไม่มีตัวหนังสือ ห้องมืดมีแสงจอมือถือส่องหน้า ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "เพราะรู้ว่า... หลับตาปุ๊บ ลืมตาอีกที ก็วันจันทร์แล้ว",
       "cards": [
-        "ส่องกระจก",
-        "หน้าบอกว่าไม่พร้อม"
+        "หลับตาปุ๊บ",
+        "ลืมตาก็วันจันทร์"
       ]
     },
     {
       "id": "body-2",
       "image": "images/03-body-2.png",
-      "image_prompt": "a crowded train platform in the early morning, commuters out of focus, soft blue light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "บนรถไฟฟ้า... ทุกคนหน้าเดียวกันหมด",
+      "image_prompt": "สาวน้อยจิบิผิวขาว นั่งกอดเข่าบนเตียง เลื่อนมือถือรัว ๆ ข้างเตียงมีกระเป๋าทำงานกับชุดทำงานพับวางรอบนเก้าอี้ แสงจันทร์สีน้ำเงินจากหน้าต่าง ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "เลยเลื่อนมือถือต่อ... ยื้อวันหยุดไว้อีกนิด อีกนิด",
       "cards": [
-        "บนรถไฟฟ้า",
-        "ทุกคนหน้าเดียวกัน"
+        "ยื้อวันหยุดไว้",
+        "อีกนิด อีกนิด"
       ]
     },
     {
       "id": "twist",
       "style": "Hook",
       "image": "images/04-twist.png",
-      "image_prompt": "close-up of a hand holding a warm coffee cup on an office desk with morning light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "[softly] แต่เราก็มากันครบ... ทั้งที่ไม่อยากมา นั่นแหละเก่งแล้ว",
+      "image_prompt": "สาวน้อยจิบิผิวขาว นั่งบนเตียงถือมือถือ ตาเบิกโพลงแบบฝืน ผมเริ่มยุ่ง นาฬิกาปลุกข้างเตียงเข็มชี้ตีสี่ ท้องฟ้านอกหน้าต่างเริ่มเป็นสีม่วงอมฟ้า ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[determined] ไม่นอนมันซะเลย... วันจันทร์จะได้มาไม่ถึง",
       "cards": [
-        "ไม่อยากมา",
-        "แต่ก็มา",
-        "เก่งแล้ว"
+        "ไม่นอนมันซะเลย",
+        "วันจันทร์จะได้มาไม่ถึง"
       ]
     },
     {
       "id": "closing",
       "style": "Hook",
       "image": "images/05-closing.png",
-      "image_prompt": "an office worker seen from behind at a desk, stretching arms up, morning sun, subject centered in the middle third, empty space top and bottom, vertical 9:16",
-      "text": "[warmly] ขอให้วันจันทร์นี้... ผ่านไปไว ๆ นะ",
+      "image_prompt": "ภาพใกล้ สาวน้อยจิบิผิวขาว ใส่ชุดทำงาน ยืนหน้ากระจก รอบตาดำคล้ำเป็นวงกลมเหมือนหมีแพนด้า ผมชี้ฟู ถือแก้วกาแฟ สีหน้ามึนงง แสงแดดยามเช้าสาดเข้ามาจากหน้าต่าง ตัวละครอยู่กลางเฟรม เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[deadpan] ...เช้าแล้ว วันจันทร์มาตรงเวลาเป๊ะ แถมได้ตาแพนด้ามาฟรีอีกคู่",
       "cards": [
-        "ขอให้วันจันทร์นี้",
-        "ผ่านไปไว ๆ"
+        "เช้าแล้ว วันจันทร์มาตรงเวลา",
+        "แถมตาแพนด้าฟรี 🐼"
       ]
     }
   ],
   "review": {
-    "stage": "script",
+    "stage": "done",
     "order": "20261124-222717-work"
   }
 }

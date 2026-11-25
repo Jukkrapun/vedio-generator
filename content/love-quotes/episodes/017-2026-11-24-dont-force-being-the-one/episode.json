@@ -7,8 +7,8 @@
   ],
   "posts": [],
   "tts": "elevenlabs",
-  "voice": "MYZYcGOqrkYQcwDunXl7",
-  "model": "eleven_v3",
+  "voice": "UjBxWv1V7fV0cO58n675",
+  "model": "eleven_v4",
   "fallback": {
     "tts": "edge",
     "voice": "th-TH-PremwadeeNeural",
@@ -74,7 +74,8 @@
     }
   ],
   "review": {
-    "stage": "script",
+    "stage": "done",
     "order": "20261124-222717-lovq"
-  }
+  },
+  "subtitles": "lower"
 }

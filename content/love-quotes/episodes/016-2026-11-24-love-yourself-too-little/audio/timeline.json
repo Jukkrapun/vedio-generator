@@ -1,0 +1,83 @@
+{
+  "total": 27.46,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "chibi anime girl in pajamas hugging her knees on a bed in the dark, holding a glowing phone, a message typed but not sent, small worried face lit by the screen, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "สาวน้อยอนิเมะสไตล์ chibi ใส่ชุดนอน นั่งกอดเข่าบนเตียงในความมืด ถือโทรศัพท์ที่จอเรืองแสง พิมพ์ข้อความไว้แต่ยังไม่กดส่ง ใบหน้าเล็ก ๆ ดูกังวลสว่างด้วยแสงจอ ตัวละครอยู่กลางเฟรมช่วงกลาง เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[softly] สามสัญญาณ ว่าคุณรักตัวเองน้อยเกินไป... ข้อสุดท้ายเจ็บสุด",
+      "cards": [
+        "สามสัญญาณ",
+        "รักตัวเองน้อยเกินไป",
+        "ข้อสุดท้ายเจ็บสุด"
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 6.46,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "sign-1",
+      "image": "images/02-sign-1.png",
+      "image_prompt": "chibi anime girl bowing deeply and apologizing with a sweat drop, a tiny cartoon speech bubble with only a small apology symbol (no text), the other chibi person looking confused because she did nothing wrong, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "สาวน้อยอนิเมะสไตล์ chibi ก้มหัวขอโทษอย่างลึก มีหยดเหงื่อแบบการ์ตูน มีบับเบิลคำพูดเล็ก ๆ เป็นแค่สัญลักษณ์ขอโทษ (ไม่มีตัวอักษร) อีกคนแบบ chibi มองอย่างงง ๆ เพราะเธอไม่ได้ทำอะไรผิด ตัวละครอยู่กลางเฟรมช่วงกลาง เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "หนึ่ง... ขอโทษทุกครั้ง ทั้งที่ไม่ได้ผิด",
+      "cards": [
+        "1. ขอโทษ",
+        "ทั้งที่ไม่ได้ผิด"
+      ],
+      "audio": "01-sign-1.mp3",
+      "start": 6.91,
+      "end": 10.67,
+      "align": "01-sign-1.align.json"
+    },
+    {
+      "id": "sign-2",
+      "image": "images/03-sign-2.png",
+      "image_prompt": "chibi anime girl handing out small glowing hearts to a few tiny chibi friends around her, while her own plate of dinner sits cold and untouched beside an open laptop late at night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "สาวน้อยอนิเมะสไตล์ chibi กำลังแจกหัวใจดวงเล็ก ๆ ที่เรืองแสงให้เพื่อนตัวจิ๋วแบบ chibi รอบตัว ขณะที่จานข้าวของเธอเองวางเย็นชืดไม่ได้แตะ ข้างแล็ปท็อปที่ยังเปิดอยู่ตอนดึก ตัวละครอยู่กลางเฟรมช่วงกลาง เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "สอง... ดูแลความรู้สึกทุกคน ยกเว้นของตัวเอง",
+      "cards": [
+        "2. ดูแลทุกคน",
+        "ยกเว้นตัวเอง"
+      ],
+      "audio": "02-sign-2.mp3",
+      "start": 11.12,
+      "end": 15.6,
+      "align": "02-sign-2.align.json"
+    },
+    {
+      "id": "sign-3",
+      "image": "images/04-sign-3.png",
+      "image_prompt": "close-up of a chibi anime girl forcing a small smile while a single tear runs down her cheek, a tiny bandage on her heart-shaped hair clip, soft lamp light, half of her face in shadow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "ภาพใกล้ใบหน้าสาวน้อยอนิเมะสไตล์ chibi ฝืนยิ้มเล็ก ๆ ขณะที่น้ำตาหยดเดียวไหลลงแก้ม มีพลาสเตอร์แปะบนกิ๊บติดผมรูปหัวใจ แสงโคมไฟนุ่ม ๆ ใบหน้าครึ่งหนึ่งอยู่ในเงา ตัวละครอยู่กลางเฟรมช่วงกลาง เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "สาม... [pause] ยอมให้ใครทำร้าย แล้วบอกตัวเองว่า ไม่เป็นไร",
+      "cards": [
+        "3. บอกตัวเองว่า",
+        "\"ไม่เป็นไร\""
+      ],
+      "audio": "03-sign-3.mp3",
+      "start": 16.05,
+      "end": 21.49,
+      "align": "03-sign-3.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "chibi anime girl wrapped in a fluffy blanket by a window, gently hugging herself with a calm soft smile, a small glowing heart floating at her chest, city lights outside at night, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt_th": "สาวน้อยอนิเมะสไตล์ chibi ห่มผ้าห่มนุ่มฟูนั่งริมหน้าต่าง กอดตัวเองเบา ๆ ยิ้มสงบอ่อนโยน มีหัวใจดวงเล็กเรืองแสงลอยอยู่ที่หน้าอก ข้างนอกเป็นแสงไฟเมืองยามค่ำคืน ตัวละครอยู่กลางเฟรมช่วงกลาง เว้นที่ว่างด้านบนและล่าง แนวตั้ง 9:16",
+      "text": "[warmly] คืนนี้ลองพูดกับตัวเองสักคำ... ว่าเราก็สำคัญ",
+      "cards": [
+        "คืนนี้ลองบอกตัวเอง",
+        "ว่าเราก็สำคัญ"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 21.94,
+      "end": 26.26,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

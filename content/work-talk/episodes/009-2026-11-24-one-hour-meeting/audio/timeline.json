@@ -1,0 +1,77 @@
+{
+  "total": 18.18,
+  "segments": [
+    {
+      "id": "hook",
+      "style": "Hook",
+      "image": "images/01-hook.png",
+      "image_prompt": "a meeting room at dusk seen from the door, people out of focus around a table, a clock-like light on the wall, projector glow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[sighs] ประชุมหนึ่งชั่วโมง...",
+      "cards": [
+        "ประชุมหนึ่งชั่วโมง..."
+      ],
+      "audio": "00-hook.mp3",
+      "start": 0.3,
+      "end": 2.22,
+      "align": "00-hook.align.json"
+    },
+    {
+      "id": "body-1",
+      "image": "images/02-body-1.png",
+      "image_prompt": "detail of a notebook with doodles and a pen on a meeting table, coffee cup, projector light, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "ทุกคนพูด... ทุกคนพยักหน้า",
+      "cards": [
+        "ทุกคนพูด",
+        "ทุกคนพยักหน้า"
+      ],
+      "audio": "01-body-1.mp3",
+      "start": 2.67,
+      "end": 5.47,
+      "align": "01-body-1.align.json"
+    },
+    {
+      "id": "body-2",
+      "image": "images/03-body-2.png",
+      "image_prompt": "close-up of a tired office worker's hand resting on chin at a meeting table, out-of-focus slides glow, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "จดไปสามหน้า... ยังไม่รู้ว่าได้อะไร",
+      "cards": [
+        "จดไปสามหน้า",
+        "ยังไม่รู้ว่าได้อะไร"
+      ],
+      "audio": "02-body-2.mp3",
+      "start": 5.92,
+      "end": 8.64,
+      "align": "02-body-2.align.json"
+    },
+    {
+      "id": "twist",
+      "style": "Hook",
+      "image": "images/04-twist.png",
+      "image_prompt": "people seen from behind standing up from a meeting table, chairs pushed back, evening light, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[pause] สรุปว่า... เดี๋ยวค่อยนัดคุยกันอีกที",
+      "cards": [
+        "สรุปว่า...",
+        "\"เดี๋ยวค่อยคุยกันอีกที\""
+      ],
+      "audio": "03-twist.mp3",
+      "start": 9.09,
+      "end": 13.17,
+      "align": "03-twist.align.json"
+    },
+    {
+      "id": "closing",
+      "style": "Hook",
+      "image": "images/05-closing.png",
+      "image_prompt": "close-up of a calendar app glow on a phone in a hand, another event appearing, no readable text, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "text": "[laughs] แท็กเพื่อนที่นั่งประชุมด้วยกันมาเลย",
+      "cards": [
+        "แท็กเพื่อน",
+        "ที่นั่งประชุมด้วยกัน"
+      ],
+      "audio": "04-closing.mp3",
+      "start": 13.62,
+      "end": 16.98,
+      "align": "04-closing.align.json"
+    }
+  ]
+}

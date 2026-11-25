@@ -6,6 +6,7 @@ publish_date:
 ---
 
 Mood: อ่อนโยน ตรง ๆ · โหมด image · 5 ภาพ (~4–5 วิ/ภาพ) · hard cut ทั้งหมด ไม่มี fade
+ภาพ: มังงะ/อนิเมะสไตล์ chibi (ตั้งใน `image_rules` + `image_style`) โทนดึก แสงโคมไฟอุ่น + แสงจอ · prompt ภาษาไทยอยู่ใน `image_prompt_th` ของแต่ละ segment
 
 ## hook
 [softly] สามสัญญาณ ว่าคุณรักตัวเองน้อยเกินไป... ข้อสุดท้ายเจ็บสุด
@@ -26,11 +27,11 @@ Mood: อ่อนโยน ตรง ๆ · โหมด image · 5 ภาพ (
 
 | Seg | Shot | Subject | Line | Sound |
 |---|---|---|---|---|
-| 1 | CU | extreme close-up of a woman's hand holding a phone in the dark | [softly] สามสัญญาณ ว่าคุณรักตัวเองน้อยเกินไป... ข้อสุดท้ายเจ็บสุด | hook hit |
-| 2 | MS | a woman seen from behind sitting on the edge of a bed at night | หนึ่ง... ขอโทษทุกครั้ง ทั้งที่ไม่ได้ผิด | — |
-| 3 | detail | detail of a cold untouched dinner plate on a small table next to a laptop still open late at night | สอง... ดูแลความรู้สึกทุกคน ยกเว้นของตัวเอง | — |
-| 4 | CU | close-up of a woman's face half in shadow | สาม... [pause] ยอมให้ใครทำร้าย แล้วบอกตัวเองว่า ไม่เป็นไร | — |
-| 5 | WS | a woman seen from behind wrapping herself in a blanket by a window | [warmly] คืนนี้ลองพูดกับตัวเองสักคำ... ว่าเราก็สำคัญ | — |
+| 1 | MS | สาว chibi กอดเข่าบนเตียงในความมืด ถือโทรศัพท์ พิมพ์แล้วไม่กล้าส่ง | [softly] สามสัญญาณ ว่าคุณรักตัวเองน้อยเกินไป... ข้อสุดท้ายเจ็บสุด | hook hit |
+| 2 | MS | สาว chibi ก้มหัวขอโทษ เหงื่อตก อีกคนงงเพราะเธอไม่ผิด | หนึ่ง... ขอโทษทุกครั้ง ทั้งที่ไม่ได้ผิด | — |
+| 3 | WS | สาว chibi แจกหัวใจให้เพื่อน ๆ แต่จานข้าวตัวเองเย็นชืดข้างแล็ปท็อป | สอง... ดูแลความรู้สึกทุกคน ยกเว้นของตัวเอง | — |
+| 4 | CU | หน้าสาว chibi ฝืนยิ้ม น้ำตาหยดเดียว ครึ่งหน้าในเงา | สาม... [pause] ยอมให้ใครทำร้าย แล้วบอกตัวเองว่า ไม่เป็นไร | — |
+| 5 | WS | สาว chibi ห่มผ้าริมหน้าต่าง กอดตัวเอง หัวใจเล็กเรืองแสง | [warmly] คืนนี้ลองพูดกับตัวเองสักคำ... ว่าเราก็สำคัญ | — |
 
 ## Review (story-hook-framework + vertical-edit-techniques)
 
@@ -40,7 +41,7 @@ Mood: อ่อนโยน ตรง ๆ · โหมด image · 5 ภาพ (
 | Open loop (3s) | ✅ | hook ตั้งคำถาม/สัญญา ปิดใน seg twist |
 | Pattern interrupt | ✅ | 5 ภาพ สลับ CU / detail / MS / WS ไม่มี wide ติดกัน |
 | Climax (Kishōtenketsu) | ✅ | Ten = seg `sign-3` (~70–80%) มี [pause] ก่อน |
-| Framing / safe zone | ✅ | ทุก prompt: subject กลางเฟรม เว้นบน-ล่าง, คนจากด้านหลัง/ไม่ชัดหน้า |
+| Framing / safe zone | ✅ | ทุก prompt: subject กลางเฟรม เว้นบน-ล่าง, ตัวละคร chibi การ์ตูน (ไม่ใช่คนจริง) |
 | Subtitles | ✅ | cards ≤2–3 บรรทัดสั้น |
 | Sound | ⚠️ | music = null (เสียงพูดล้วน) — เพิ่มเพลงเบา ๆ ได้ตอนรีวิว |
 | Ending | ✅ | ปิดด้วยคำถาม/ชวนคอมเมนต์ |

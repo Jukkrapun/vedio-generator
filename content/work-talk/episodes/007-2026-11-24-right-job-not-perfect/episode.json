@@ -43,7 +43,7 @@
     {
       "id": "body-2",
       "image": "images/03-body-2.png",
-      "image_prompt": "an office worker seen from behind smiling at a coworker beside the desk, late evening office, subject centered in the middle third, empty space top and bottom, vertical 9:16",
+      "image_prompt": "The image shows an office worker from behind, smiling at a colleague at a desk next to them, on a weekday evening. The subject is in the center of the image, with empty space above and below. It is a vertical photograph taken at 9:16 AM.",
       "text": "แต่ก็มีวันที่... ทำเสร็จแล้วยิ้มได้",
       "cards": [
         "แต่ก็มีวันที่",
@@ -74,7 +74,7 @@
     }
   ],
   "review": {
-    "stage": "script",
+    "stage": "done",
     "order": "20261124-222717-work"
   }
 }
