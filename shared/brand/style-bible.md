@@ -1,87 +1,50 @@
 # ตอนตีสอง — Style Bible (channel level)
 
-Sits above every series. Order of authority: **this file → series `series.md` → episode.json**.
-A series may change only what the "Per-series variables" table allows. Source: `reports/Art Director ตอนตีสอง.md` (2026-11-25).
-Values marked *(proposal)* are starting points — confirm on a phone and adjust after the 2-week test (~2026-12-06).
+Three layers. **Only Layer 1–2 are binding.** Layer 3 is a default that each series (`series.md`) and each episode may change to fit its content — the `art-director` skill should actively propose other looks so clips don't repeat.
+Source: `reports/Art Director ตอนตีสอง.md` (2026-11-25). Values marked *(proposal)* need a phone check.
 
-## 1. Channel constants (never change per series)
+## Layer 1 — Channel identity (never changes)
 
 | Item | Rule |
 |---|---|
-| Mood | Quiet, late-night, honest. Not loud, not glossy, no stock-photo smiles. |
-| Light | **One warm, motivated light source in every frame** (bedside lamp, phone glow from below, fridge light, amber streetlight, convenience-store sign) against cool blue night. Face or hands of the subject sit in that light. |
-| Darks | Lift shadows slightly. **No large pure-black areas** — platform compression turns them into banding/mud. Feel dark, don't be dark. |
-| Texture | Light film grain (hides banding); soft vignette OK. Teal-orange grade only subtle. |
+| Voice of the channel | Quiet, honest, never loud or clickbait. (The *visual* mood may be warm, funny, wry, eerie — the honesty stays.) |
 | Subtitles | IBM Plex Sans Thai SemiBold, white + black outline + soft shadow, no box, spoken word gold. |
-| End card | "ตอนตีสอง" end card (HyperFrames overlay) on every short. |
+| End card | "ตอนตีสอง" end card on every short. |
 | Playlist | `ตอนตีสอง · เรื่อง<topic>` |
-| Motion | Slow parallax (default), hard cuts by default, no flashy transitions. |
-| AI label | Always tick the platform AI label (voice is AI → required on Meta/TikTok). Never strip C2PA metadata. |
+| AI label | Always tick the platform AI label. Never strip C2PA metadata. |
 
-## 2. Palette *(proposal, hex)*
+## Layer 2 — Quality standards (every clip)
 
-| Role | Hex | Share |
-|---|---|---|
-| Night base (navy/indigo, not black) | `#141B2D` – `#1E2A44` | ~70% |
-| Teal (cool fill, windows, city) | `#2F5D6B` | ~15% |
-| Warm light | `#F2A65A` / `#FFC98B` | ~15% |
-| Gold accent (= subtitle highlight) | `#E8C170` | accents only |
-
-## 3. Typography
-
-- Max **two families** per clip.
-- Subtitles: IBM Plex Sans Thai SemiBold (loopless — verify the "looped" claim before changing anything).
-- Hook / cover / frame-1 text only: **Kanit SemiBold** (`shared/fonts/Kanit-SemiBold.ttf`).
-- Line height 1.3–1.5× so stacked vowels/tone marks (ั ิ ่ ้) never collide. *(proposal sizes @1080 wide)* hook 90–120 px, 2–3 lines, 8–14 chars/line; subtitles 60–72 px, 1–2 lines.
-- Busy background → local darkening/vignette behind text, never a box.
-
-## 4. Framing & safe zones (9:16, 1080×1920)
-
-Same clip goes to TikTok, Reels and Shorts → use the most cautious numbers:
-- Subject and key text inside the **central ~900×1400 box**.
-- Margins: top 108, left 60, right 120, **bottom 320–480 px** (UI + caption). `lower` subtitles stay above y≈1600.
-- One subject per frame, readable at a glance.
-
-## 5. Frame 1 = cover
-
-- Never fade in from black. Frame 1 is already lit, warm source visible.
-- One-line Thai hook, upper-middle, held ≥ 3 s (`--tiktok` variant).
-- Optional channel motif ("02:00") always in the same corner.
-
-## 6. AI image prompt structure (4 blocks)
-
-| Block | Lives in | Contains |
-|---|---|---|
-| Style | `image_style` (default from `series.md`) | medium, palette, the one warm light, grain, lens feel |
-| Character | fixed text from `persona.md` + `image_refs` | locked traits; "Image 1 = identity sheet. Do not redesign the character." |
-| Shot | `image_prompt` / `image_prompt_th` | action, emotion, shot size, camera angle |
-| Constraints | shared block (below) | format, safe zone, depth, no text |
-
-Shared constraints block (append to every prompt):
+- **Safe zones (1080×1920):** subject + key text inside central ~900×1400; margins top 108, left 60, right 120, bottom 320–480 px; `lower` subtitles above y≈1600.
+- **Frame 1 = cover:** a strong, lit image; never fade in from black.
+- **Compression-safe tones:** no large pure-black areas or blown whites (platforms band them). Light grain helps.
+- **Light has a clear, motivated source** and the subject sits in it — whatever the time of day.
+- **Thai text:** max two font families; line height 1.3–1.5× so vowels/tone marks never collide; hook/cover text may use Kanit SemiBold. *(proposal sizes @1080 wide: hook 90–120 px, subtitles 60–72 px)*
+- **AI images:** no text/logos/watermarks in images; character matches its reference sheet; a human checks hands and faces; never send photos of real people to Codex.
+- **Prompt structure:** Style / Character / Shot / Constraints blocks (see `art-director` skill). Shared constraints block:
 
 ```
 Vertical 9:16. Main subject inside the central 60% of the frame, nothing important in the bottom 25%.
 Clear foreground / midground / background separation for depth parallax; clean subject edges.
-One warm motivated light source against cool blue night; lifted shadows, no large pure-black areas; subtle film grain.
 No text, letters, logos, watermarks or signatures anywhere.
 ```
 
-- Label every attached image by role (identity sheet / style anchor / background).
-- **Style anchor:** one approved frame per series, attached as the 2nd reference.
-- Edits: change one thing, list what must stay the same. Never rely on "same style as before".
-- No seed control in Codex → consistency = references + locked text.
-- Characters: keep turnaround (front/side/back) + expression sheets in `shared/characters/<name>/reference/`.
+## Layer 3 — Default mood (changeable per series / episode)
 
-## 7. Per-series variables (only these may differ)
+Channel default, used when nothing better fits the content:
+- Late night, cool blue/navy base with one warm practical light (lamp, phone glow, streetlight, convenience-store sign), lifted shadows, subtle grain, slow parallax, hard cuts.
+- Default palette *(proposal)*: navy `#141B2D`–`#1E2A44`, teal `#2F5D6B`, warm `#F2A65A`/`#FFC98B`, gold `#E8C170`.
 
-| Series | Accent / light | Setting | Notes |
-|---|---|---|---|
-| love-quotes | rose / amber warmth | close shots, bedroom, phone glow | |
-| work-talk | cool monitor / office neon at night | empty office, desk, commute | warm source still present (desk lamp, screen) |
-| living-life | muted neutral | empty room, window, kitchen at night | |
-| night-stories | storybook warmth | 16:9, chapter cards | long-form, `render_story.py` |
-| poc/cat-2am | 2D cartoon (`image_rules`) | ส้มฉุน's world | **keeps** night palette + end card |
+Change it when the content asks for it — e.g. a midday office for a meeting joke, dawn for a hopeful ending, a bright cartoon world for ส้มฉุน, a daytime scene inside a bedtime story. Keep it from feeling like another channel through Layer 1, not through forcing night.
 
-## 8. Never
+Series starting points (each `series.md` owns and may override):
 
-Bright saturated colours · daylight scenes (unless the story demands, then dim) · stock smiles · flashy transitions/zoom-whooshes · text baked into images · pure black frames · more than two fonts · faces/hands left unchecked by a human · photos of real people sent to Codex.
+| Series | Starting look |
+|---|---|
+| love-quotes | warm, intimate close shots |
+| work-talk | office/commute; tone may be wry or funny, time of day follows the story |
+| living-life | everyday rooms, windows, muted |
+| night-stories | storybook, 16:9, chapter cards |
+| poc/cat-2am | 2D cartoon (`image_rules`) |
+
+**Anti-repetition:** before a new episode, compare with the last 3–5 of that series; don't repeat 3+ of palette / time of day / setting / shot pattern / pose / opening image.
