@@ -394,13 +394,22 @@ def heartbeat() -> bool:
     return True
 
 
+RELOAD_EXIT = 3  # start-worker.ps1 relaunches the worker on this exit code
+
+
 def main() -> None:
     for d in (JOBS, LOGS, POSTERS, OPS / "orders"):
         d.mkdir(parents=True, exist_ok=True)
     once = "--once" in sys.argv
     print(f"worker {ME} ready (root={ROOT})", flush=True)
     last_scan, active = 0.0, False
+    code_mtime = Path(__file__).stat().st_mtime
     while True:
+        # code updated (e.g. a new job feature): exit between jobs; start-worker.ps1 relaunches with the new code
+        if Path(__file__).stat().st_mtime != code_mtime:
+            print("worker.py changed - restarting with the new code", flush=True)
+            WORKER_FILE.unlink(missing_ok=True)  # let the relaunched worker take over at once
+            sys.exit(RELOAD_EXIT)
         if not heartbeat():
             if active:
                 print("another worker took over - standing by", flush=True)
