@@ -18,7 +18,8 @@ import { Confirm, Modal } from "./ui/dialog";
 type Active = { kind: "post" | "pick" | "facebook"; slot: Slot };
 
 export function TodayScreen({ initial, fields }: { initial: Today; fields: Record<string, Record<Platform, PublishField[]>> }) {
-  const { episodes, schedule, picks, setPick, addPost, removePost, enqueue } = useOps();
+  const { episodes, schedule, picks, setPick, addPost, removePost, enqueue, jobs } = useOps();
+  const [fbAll, setFbAll] = useState(false);
   const [active, setActive] = useState<Active | null>(null);
   const [dryRun, setDryRun] = useState(true);
   const [now, setNow] = useState(initial.time);
@@ -66,6 +67,12 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
   const dayLabel = (i: number) => i === 0 ? "วันนี้" : i === 1 ? "พรุ่งนี้"
     : new Intl.DateTimeFormat("th-TH", { timeZone: "Asia/Bangkok", weekday: "short", day: "numeric" }).format(new Date(dates[i] + "T12:00:00+07:00"));
   const posted = today.slots.filter(slot => slot.state === "posted").length;
+  // "ตั้งเวลา FB ทั้งวัน": every FB slot of this day that has a clip, isn't posted, has no FB job pending,
+  // and is still >= 25 min away (Meta needs ~20 min lead time for scheduled Reels)
+  const lead = bangkokNow(new Date(Date.now() + 25 * 60_000));
+  const fbPending = new Set(jobs.filter(job => job.type === "publish_fb" && (job.status === "queued" || job.status === "running")).map(job => job.episodeId));
+  const fbSlots = today.slots.filter(slot => slot.platform === "facebook" && slot.state !== "posted" && slot.episode
+    && !fbPending.has(slot.episode.id) && today.date + " " + slot.time >= lead.date + " " + lead.time);
   const times = [...new Set(today.slots.map(slot => slot.time))].sort();
   const close = () => setActive(null);
   const activeEpisode = active?.slot.episode;
@@ -93,6 +100,8 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
     </section>
 
     <section className="schedule-section"><div className="section-heading"><div><h2>คิวลงคลิป</h2><p className="muted">เวลาไทย · {times.length} ช่วงเวลา</p></div><span className="main-slot"><Star size={14} fill="currentColor" /> รอบหลัก {schedule.main_slot}</span></div>
+      {(!tab || tab === "facebook") && fbSlots.length > 0 && <div className="fb-all"><Button variant="outline" className="facebook-action" onClick={() => { setDryRun(false); setFbAll(true); }}>
+        <CalendarClock size={15} /> ตั้งเวลา FB ทั้งวัน ({fbSlots.length} คลิป)</Button></div>}
       <div className="segmented platform-tabs" role="tablist" aria-label="เลือกแพลตฟอร์ม">
         <button role="tab" aria-pressed={!tab} onClick={() => setTab(null)}>ทั้งหมด <span className="tab-count">{posted}/{today.slots.length}</span></button>
         {platforms.map(platform => { const mine = today.slots.filter(slot => slot.platform === platform); return <button key={platform} role="tab" aria-pressed={tab === platform} onClick={() => setTab(platform)}>
@@ -130,6 +139,15 @@ export function TodayScreen({ initial, fields }: { initial: Today; fields: Recor
         }}><Poster episode={episode} /><span><strong>{episode.title}</strong><SeriesChip series={episode.series} /><ModeBadge mode={takeMode(episode)} /><VersionBadge episode={episode} /></span>{episode.id === activeEpisode?.id && <Check size={18} />}</button>) : <Empty>ไม่มีคลิปที่เลือกได้</Empty>;
       })()}</div>
     </Modal>}
+    {fbAll && <Confirm open close={() => setFbAll(false)} title={"ตั้งเวลา Facebook Reels ทั้งวัน — " + thaiDate(today.date) + "?"}
+      description={"อัปโหลดและตั้งเวลาโพสต์จริง " + fbSlots.length + " คลิป · หลังตั้งเวลาแล้วอย่าลืมติดป้าย AI info ใน Meta Business Suite ทุกคลิป"}
+      confirmLabel={"ตั้งเวลา " + fbSlots.length + " คลิป"} action={async () => {
+        for (const slot of fbSlots) await enqueue("publish_fb", { episode: slot.episode!.id, when: today.date + " " + slot.time, dry_run: dryRun });
+        toast.success("เพิ่มงานตั้งเวลา FB " + fbSlots.length + " คลิป · ดูผลที่หน้างาน");
+      }}>
+      <ul className="fb-all-list">{fbSlots.map(slot => <li key={slot.time}><strong>{slot.time}</strong> {slot.episode!.title}</li>)}</ul>
+      <label className="checkbox"><input type="checkbox" checked={dryRun} onChange={event => setDryRun(event.target.checked)} />ทดสอบคำสั่ง (dry-run)</label>
+    </Confirm>}
     {active?.kind === "facebook" && activeEpisode && <Confirm open close={close}
       title="โพสต์จริงไปที่ Facebook Page — ยืนยัน?"
       description="อัปโหลด Reel และตั้งเวลาโพสต์จริง (ถ้าไม่ติ๊ก dry-run) · อย่าลืมติดป้าย AI info ใน Meta Business Suite"

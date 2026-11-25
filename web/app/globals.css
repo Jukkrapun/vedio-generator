@@ -432,3 +432,5 @@ form[aria-busy="true"] input, form[aria-busy="true"] textarea, form[aria-busy="t
 /* slot card: primary action ("ลงแล้ว") full width so the buttons line up in narrow 4-column cells */
 .slot-actions .button-default { grid-column: 1 / -1; }
 .schedule-row > .slot-card { align-self: start; }
+.fb-all { margin-bottom: 10px; }
+.fb-all-list { margin: 8px 0; padding-left: 18px; display: grid; gap: 4px; font-size: .9rem; }
